@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#003049 !important; background:#f2f7f8 !important; }
+  ::placeholder{ color:#a7b4bc; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(30,30)" fill="none" stroke="#177E89" stroke-width="4">
+      <circle cx="16" cy="16" r="14"></circle>
+      <line x1="26" y1="26" x2="40" y2="40" stroke="#DB3A34"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div></div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#003049; border:1.5px solid #003049; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#8fb3c4;">Chapter 3 · Worksheet</div>
+    <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Search &amp; Filters</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bcd2dc; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#177E89; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">How people search your data is part of designing it. Every filter and sort points to a field that has to be stored and made searchable. For each search, write down who is looking, what they want to find, how they narrow it down, and how the results should be ordered. The first few are filled in as examples.</p>
+
+    <div style="margin-top:18px; background:#eef1f4; border-left:3px solid #003049; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#294552;">Working on your own product instead? Use the <a href="Search%20and%20Filters%20Worksheet%20%28Blank%29.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #9fd0d2;">blank version</a>.</div>
+
+    <div style="margin-top:12px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3a2b4d;">Need ideas? Browse the <a href="User%20Stories%20Reference.dc.html" style="color:#7a5fa6; font-weight:700; text-decoration:none; border-bottom:1.5px solid #cbbde0;">User Stories</a>.</div>
+
+    <!-- PATTERN CARD -->
+    <div style="margin-top:24px; background:#eef1f4; border-radius:8px; padding:18px 20px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#003049; margin-bottom:8px;">The pattern</div>
+      <div style="font-family:'Fraunces',serif; font-size:18px; line-height:1.55; color:#003049;">As a <span style="color:#177E89; font-weight:600;">[user]</span>, I want to find <span style="color:#003049; font-weight:600;">[what]</span>, filtered by <span style="color:#DB3A34; font-weight:600;">[conditions]</span>, sorted by <span style="color:#177E89; font-weight:600;">[order]</span>.</div>
+    </div>
+
+    <div style="margin:22px 0 4px; background:#eef7f7; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#12474e;">"Here is a search my users need: [describe who, what, filters, and sort]. What database fields and indexes would I need to support filtering and sorting it efficiently?"</div>
+    </div>
+
+    <!-- SEARCHES -->
+    <div class="sec" style="margin-top:22px;">
+      <div data-searches="1"></div>
+      <button type="button" data-add-search="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:none; padding:12px 0 0; cursor:pointer;">+ Add a search</button>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://discord.gg/C5Cunu2gT" style="color:#177E89; text-decoration:none;"><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#003049&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-search-filters-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.example = this.buildExample();
+    const data = Object.keys(saved).length ? saved : this.example;
+    this.buildSearches(root, data);
+    Object.entries(data).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this.setupAiButtons(root);
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('click', (e)=>{
+      const af = e.target.closest('[data-add-filter]');
+      if(af){ e.preventDefault(); this.addFilter(root, af.getAttribute('data-add-filter')); this._save(); return; }
+      const asr = e.target.closest('[data-add-search]');
+      if(asr){ e.preventDefault(); this.addSearch(root); this._save(); return; }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+  }
+
+  /* ---------- example (Renovation Revolution searches) ---------- */
+  buildExample(){
+    const s = [
+      { role:'customer', object:'contractors', filters:['available for new work','works in my state'], sort:'' },
+      { role:'customer', object:'renovation items', filters:['not yet purchased'], sort:'' },
+      { role:'contractor', object:'open bids', filters:['in my state'], sort:'project size, largest first' },
+      { role:'contractor', object:'renovation items', filters:[''], sort:'' },
+      { role:'vendor', object:'orders', filters:[''], sort:'' },
+      { role:'customer', object:'past projects', filters:[''], sort:'' },
+      { role:'', object:'', filters:[''], sort:'' },
+      { role:'', object:'', filters:[''], sort:'' },
+      { role:'', object:'', filters:[''], sort:'' }
+    ];
+    const o = {};
+    s.forEach((x, i)=>{
+      if(x.role) o['search-'+i+'-role'] = x.role;
+      if(x.object) o['search-'+i+'-object'] = x.object;
+      if(x.sort) o['search-'+i+'-sort'] = x.sort;
+      x.filters.forEach((f, j)=>{ if(f) o['search-'+i+'-filter-'+j] = f; });
+    });
+    o['__count'] = String(s.length);
+    o['__filters'] = s.map(x=> Math.max(x.filters.length, 2)).join(',');
+    return o;
+  }
+
+  /* ---------- filter lines ---------- */
+  filterLineHTML(s, j){
+    return '<div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;"><span style="color:#DB3A34; font-size:14px; line-height:1; flex:none;">&bull;</span>'+
+      '<input class="save" type="text" name="search-'+s+'-filter-'+j+'" placeholder="filter condition" style="flex:1; min-width:0; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; color:#1f2d33; padding:5px 2px; outline:none; box-sizing:border-box;"></div>';
+  }
+  searchHTML(s, filterCount){
+    let filters = '';
+    for(let j=0;j<filterCount;j++) filters += this.filterLineHTML(s, j);
+    const inp = (suffix, ph, color, flex, weight) => '<input class="save" type="text" name="search-'+s+'-'+suffix+'" placeholder="'+ph+'" style="flex:'+flex+'; min-width:80px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'Lato\',sans-serif; font-weight:'+weight+'; font-size:14px; color:'+color+'; padding:4px 2px; outline:none; box-sizing:border-box;">';
+    return '<div class="card" style="border:1px solid #dbe2e7; border-radius:9px; padding:15px 16px 16px; margin-bottom:12px;">'+
+      '<div style="display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-family:\'Fraunces\',serif; font-size:15px; color:#003049;">'+
+        '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:22px; color:#177E89; margin-right:2px;">'+(s+1)+'</span>'+
+        '<span>As a</span>'+ inp('role','user','#177E89','0.6','600') +
+        '<span>, I want to find</span>'+ inp('object','what they are looking for','#003049','1.3','600') +
+      '</div>'+
+      '<div style="margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">'+
+        '<div>'+
+          '<div style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#7d94a0; margin-bottom:8px;">Filter by</div>'+
+          '<div data-filters="'+s+'">'+filters+'</div>'+
+          '<button type="button" data-add-filter="'+s+'" class="no-print" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; color:#177E89; background:transparent; border:none; padding:4px 0 0; cursor:pointer;">+ Add filter</button>'+
+        '</div>'+
+        '<div>'+
+          '<div style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#7d94a0; margin-bottom:8px;">Sort by</div>'+
+          '<input class="save" type="text" name="search-'+s+'-sort" placeholder="field and direction, or leave blank" style="width:100%; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; color:#1f2d33; padding:5px 2px; outline:none; box-sizing:border-box;">'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+  buildSearches(root, saved){
+    const host = root.querySelector('[data-searches]');
+    if(!host) return;
+    let maxS = 4; const fMax = {};
+    if(saved && saved.__count){ maxS = parseInt(saved.__count,10) - 1; }
+    const presetF = (saved && saved.__filters) ? String(saved.__filters).split(',').map(n=>parseInt(n,10)) : null;
+    Object.keys(saved||{}).forEach(k=>{
+      const m = k.match(/^search-(\d+)-/); if(m) maxS = Math.max(maxS, parseInt(m[1],10));
+      const mf = k.match(/^search-(\d+)-filter-(\d+)$/);
+      if(mf){ fMax[mf[1]] = Math.max(fMax[mf[1]]||0, parseInt(mf[2],10)); }
+    });
+    let h = '';
+    for(let s=0;s<=maxS;s++){
+      let count;
+      if(fMax[s]!==undefined) count = fMax[s] + 1;
+      else if(presetF && presetF[s]) count = presetF[s];
+      else count = 2;
+      h += this.searchHTML(s, Math.max(count, 2));
+    }
+    host.innerHTML = h;
+  }
+  addSearch(root){
+    const host = root.querySelector('[data-searches]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.searchHTML(next, 2));
+    const inp = host.lastElementChild.querySelector('input.save');
+    if(inp) inp.focus();
+  }
+  addFilter(root, s){
+    const host = root.querySelector('[data-filters="'+s+'"]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.filterLineHTML(s, next));
+    const ins = host.querySelectorAll('input'); ins[ins.length-1].focus();
+  }
+
+  /* ---------- AI buttons ---------- */
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim();
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#177E89; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#177E89; background:transparent; border:1.5px solid #9fd0d2; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution examples?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          const data = this.example;
+          this.buildSearches(root, data);
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          Object.entries(data).forEach(([n,v])=>{ const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

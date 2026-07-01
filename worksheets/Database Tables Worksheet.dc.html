@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#003049 !important; background:#f2f7f8 !important; }
+  ::placeholder{ color:#a7b4bc; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(26,28)" stroke="#177E89" stroke-width="4" fill="none">
+      <rect x="0" y="0" width="48" height="44" rx="3"></rect>
+      <line x1="0" y1="15" x2="48" y2="15" stroke="#DB3A34"></line>
+      <line x1="0" y1="29" x2="48" y2="29"></line>
+      <line x1="18" y1="15" x2="18" y2="44"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div></div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#003049; border:1.5px solid #003049; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:900px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#8fb3c4;">Chapter 3 · Worksheet</div>
+    <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Data Model to<br>Database Tables</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bcd2dc; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#177E89; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">Once you know what data to store, the next step is deciding how to structure it. Turn each object from your data model into a table. For every column, pick a type and mark whether it is a primary key that identifies the row, or a foreign key that points to another table. Here are some starter tables from the case study to fill in and build on.</p>
+
+    <div style="margin-top:18px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3a2b4d;">Need ideas? Browse the <a href="User%20Stories%20Reference.dc.html" style="color:#7a5fa6; font-weight:700; text-decoration:none; border-bottom:1.5px solid #cbbde0;">User Stories</a>.</div>
+
+    <!-- LEGEND -->
+    <div class="sec" style="margin-top:22px; display:flex; flex-wrap:wrap; gap:10px 26px;">
+      <div style="display:flex; gap:9px; align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace; font-weight:600; font-size:11px; color:#fff; background:#003049; border-radius:4px; padding:2px 6px;">PK</span><span style="font-size:12.5px; color:#55707e;">primary key, identifies the row</span></div>
+      <div style="display:flex; gap:9px; align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace; font-weight:600; font-size:11px; color:#fff; background:#177E89; border-radius:4px; padding:2px 6px;">FK</span><span style="font-size:12.5px; color:#55707e;">foreign key, points to another table</span></div>
+      <div style="display:flex; gap:9px; align-items:baseline;"><span style="font-size:12.5px; color:#55707e;">Common types: <span style="font-family:'JetBrains Mono',monospace; font-size:11.5px; color:#294552;">uuid, int, varchar, text, boolean, timestamp, json</span></span></div>
+    </div>
+
+    <div style="margin:22px 0 4px; background:#eef7f7; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#12474e;">"Here is my data model: [paste your objects and fields]. Propose normalized database tables with column names, types, and primary and foreign keys. Keep it simple and start with the minimum."</div>
+    </div>
+
+    <!-- TABLES -->
+    <div class="sec" style="margin-top:22px;">
+      <div data-tables="1"></div>
+      <button type="button" data-add-table="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:none; padding:12px 0 0; cursor:pointer;">+ Add a table</button>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://discord.gg/C5Cunu2gT" style="color:#177E89; text-decoration:none;"><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#003049&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-db-tables-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.example = this.buildExample();
+    const data = Object.keys(saved).length ? saved : this.example;
+    this.buildTables(root, data);
+    Object.entries(data).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this.applySegs(root);
+    this.setupAiButtons(root);
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('click', (e)=>{
+      const seg = e.target.closest('[data-val]');
+      if(seg && seg.closest('.seg')){ e.preventDefault(); this.pickSeg(seg); this._save(); return; }
+      const ac = e.target.closest('[data-add-col]');
+      if(ac){ e.preventDefault(); this.addCol(root, ac.getAttribute('data-add-col')); this._save(); return; }
+      const at = e.target.closest('[data-add-table]');
+      if(at){ e.preventDefault(); this.addTable(root); this._save(); return; }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+  }
+
+  /* ---------- example data (Renovation Revolution starter schema) ---------- */
+  buildExample(){
+    const t = [
+      { name:'users', cols:[
+        ['id','PK','unique identifier'], ['name','',''], ['password_hash','',''],
+        ['role','','customer, contractor, vendor, admin'], ['contact','','']
+      ]},
+      { name:'projects', cols:[
+        ['id','PK',''], ['user_id','FK','references users'], ['name','','']
+      ]},
+      { name:'rooms', cols:[
+        ['id','PK',''], ['project_id','FK','references projects'], ['name','','']
+      ]},
+      { name:'images', cols:[
+        ['id','PK',''], ['room_id','FK','references rooms'], ['file_url','',''], ['metadata','','']
+      ]},
+      { name:'quiz_results', cols:[
+        ['id','PK',''], ['user_id','FK','references users'], ['answers','',''], ['style_match','','']
+      ]}
+    ];
+    const o = {};
+    t.forEach((tbl, ti)=>{
+      o['tbl-'+ti+'-name'] = tbl.name;
+      tbl.cols.forEach((c, ci)=>{
+        o['tbl-'+ti+'-col-'+ci+'-name'] = c[0];
+        if(c[1]) o['tbl-'+ti+'-col-'+ci+'-key'] = c[1];
+        if(c[2]) o['tbl-'+ti+'-col-'+ci+'-note'] = c[2];
+      });
+    });
+    return o;
+  }
+
+  /* ---------- key segmented control (single-select PK / FK) ---------- */
+  segHTML(name){
+    const opts = [{label:'PK',val:'PK'},{label:'FK',val:'FK'}];
+    let btns = '';
+    opts.forEach(o=>{
+      btns += '<button type="button" data-val="'+o.val+'" style="min-width:34px; height:28px; padding:0 8px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:11px; color:#55707e; cursor:pointer;">'+o.label+'</button>';
+    });
+    return '<span class="seg" data-seg-name="'+name+'" style="display:inline-flex; gap:6px;"><input type="hidden" class="save" name="'+name+'">'+btns+'</span>';
+  }
+  pickSeg(btn){
+    const seg = btn.closest('.seg');
+    const val = btn.getAttribute('data-val');
+    const inp = seg.querySelector('input');
+    inp.value = (inp.value === val) ? '' : val;
+    this.styleSeg(seg);
+  }
+  styleSeg(seg){
+    const val = seg.querySelector('input').value;
+    seg.querySelectorAll('[data-val]').forEach(b=>{
+      const isPK = b.getAttribute('data-val') === 'PK';
+      const on = b.getAttribute('data-val') === val && val !== '';
+      const bg = isPK ? '#003049' : '#177E89';
+      b.style.background = on ? bg : '#fff';
+      b.style.color = on ? '#fff' : '#55707e';
+      b.style.borderColor = on ? bg : '#cdd5da';
+    });
+  }
+  applySegs(root){ root.querySelectorAll('.seg').forEach(s=> this.styleSeg(s)); }
+
+  /* ---------- column rows ---------- */
+  colHTML(t, i){
+    return '<div class="colrow" style="display:grid; grid-template-columns:1.1fr 0.85fr auto 1.25fr; gap:10px 12px; align-items:center; padding:9px 0; border-bottom:1px solid #eef1f4;">'+
+      '<input class="save" type="text" name="tbl-'+t+'-col-'+i+'-name" placeholder="column" style="min-width:0; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:13px; color:#003049; padding:5px 2px; outline:none; box-sizing:border-box;">'+
+      '<input class="save" type="text" name="tbl-'+t+'-col-'+i+'-type" placeholder="type" style="min-width:0; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'JetBrains Mono\',monospace; font-size:12.5px; color:#294552; padding:5px 2px; outline:none; box-sizing:border-box;">'+
+      '<div style="justify-self:start;">'+this.segHTML('tbl-'+t+'-col-'+i+'-key')+'</div>'+
+      '<input class="save" type="text" name="tbl-'+t+'-col-'+i+'-note" placeholder="notes / reference" style="min-width:0; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; color:#55707e; padding:5px 2px; outline:none; box-sizing:border-box;">'+
+    '</div>';
+  }
+  tableHTML(t, colCount){
+    let rows = '';
+    for(let i=0;i<colCount;i++) rows += this.colHTML(t, i);
+    return '<div class="card" style="border:1px solid #dbe2e7; border-radius:9px; padding:14px 16px 15px; margin-bottom:14px;">'+
+      '<div style="display:flex; align-items:center; gap:9px; margin-bottom:10px;">'+
+        '<span style="font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; background:#177E89; border-radius:4px; padding:3px 7px; flex:none;">table</span>'+
+        '<input class="save" type="text" name="tbl-'+t+'-name" placeholder="table_name" style="flex:1; min-width:0; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:16px; color:#003049; padding:4px 2px; outline:none; box-sizing:border-box;">'+
+      '</div>'+
+      '<div style="display:grid; grid-template-columns:1.1fr 0.85fr auto 1.25fr; gap:12px; padding-bottom:6px; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:#7d94a0;">'+
+        '<div>Column</div><div>Type</div><div>Key</div><div>Notes / Reference</div>'+
+      '</div>'+
+      '<div data-cols="'+t+'">'+rows+'</div>'+
+      '<button type="button" data-add-col="'+t+'" class="no-print" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; color:#177E89; background:transparent; border:none; padding:9px 0 0; cursor:pointer;">+ Add column</button>'+
+    '</div>';
+  }
+  buildTables(root, saved){
+    const host = root.querySelector('[data-tables]');
+    if(!host) return;
+    let maxT = -1; const colMax = {};
+    Object.keys(saved||{}).forEach(k=>{
+      const m = k.match(/^tbl-(\d+)-/); if(m) maxT = Math.max(maxT, parseInt(m[1],10));
+      const mc = k.match(/^tbl-(\d+)-col-(\d+)-/);
+      if(mc){ colMax[mc[1]] = Math.max(colMax[mc[1]]||0, parseInt(mc[2],10)); }
+    });
+    if(maxT < 0){ host.innerHTML = this.tableHTML(0, 4); return; }
+    let h = '';
+    for(let t=0;t<=maxT;t++){
+      const count = (colMax[t]!==undefined ? colMax[t] : 3) + 1;
+      h += this.tableHTML(t, Math.max(count, 3));
+    }
+    host.innerHTML = h;
+  }
+  addTable(root){
+    const host = root.querySelector('[data-tables]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.tableHTML(next, 4));
+    this.applySegs(root);
+    const inp = host.lastElementChild.querySelector('input.save');
+    if(inp) inp.focus();
+  }
+  addCol(root, t){
+    const host = root.querySelector('[data-cols="'+t+'"]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.colHTML(t, next));
+    this.applySegs(root);
+    const inp = host.lastElementChild.querySelector('input.save');
+    if(inp) inp.focus();
+  }
+
+  /* ---------- AI buttons ---------- */
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim();
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#177E89; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#177E89; background:transparent; border:1.5px solid #9fd0d2; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution starter tables?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          const data = this.example;
+          this.buildTables(root, data);
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          Object.entries(data).forEach(([n,v])=>{ const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+          this.applySegs(root);
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

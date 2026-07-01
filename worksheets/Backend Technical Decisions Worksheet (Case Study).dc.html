@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#003049 !important; background:#fff !important; }
+  ::placeholder{ color:#c2a6a3; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .q{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#DB3A34"></rect>
+    <g transform="translate(30,28)" stroke="#003049" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M2 12 l7 7 L24 4"></path>
+      <path d="M2 34 l7 7 L24 26"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Backend Technical Decisions</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#DB3A34; border:1.5px solid #DB3A34; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#DB3A34; color:#003049; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#003049;">Chapter 4 · Worksheet · Case Study</div>
+    <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#003049;">Backend<br>Technical Decisions</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#6e1a16; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#003049; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">A checklist of the technical decisions to make when starting a backend project, worked through for the Renovation Revolution case study. Keep it handy for your own greenfield projects so you catch every early decision. Remember popularity, fit, and cost from Chapter 3 when you are choosing between options.</p>
+
+    <div style="margin-top:18px; background:#eef1f4; border-left:3px solid #003049; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#26323c;">Working on your own product instead? Use the <a href="Backend%20Technical%20Decisions%20Worksheet%20%28Blank%29.dc.html" style="color:#c1352f; font-weight:700; text-decoration:none; border-bottom:1.5px solid #e6b3b0;">blank version</a>.</div>
+    <div style="margin-top:12px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3a2b4d;">Need ideas? Browse the <a href="User%20Stories%20Reference.dc.html" style="color:#7a5fa6; font-weight:700; text-decoration:none; border-bottom:1.5px solid #cbbde0;">User Stories</a>.</div>
+
+    <div style="margin:20px 0 4px; background:#fbecea; border-left:3px solid #DB3A34; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#c1352f; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#7a201b;">"I am starting a backend for [describe the product]. Walk me through the key early decisions for requirements, technology, architecture, security, deployment, and workflow, and flag the ones that are hardest to change later."</div>
+    </div>
+
+    <!-- 1 REQUIREMENTS -->
+    <div class="sec" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#003049;">1</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:0;">Requirements &amp; Planning</h2>
+      </div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What are the expected data volumes and traffic levels?</div><textarea class="save" name="req-traffic" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">Are there any regulatory or compliance requirements (e.g. GDPR, CCPA, PCI DSS)?</div><textarea class="save" name="req-compliance" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+    </div>
+
+    <!-- 2 TECHNOLOGY -->
+    <div class="sec" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#003049;">2</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:0;">Technology Choices</h2>
+      </div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">Which programming language and backend framework best fit the project?</div><textarea class="save" name="tech-language" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What database technology will be used (SQL, NoSQL, in-memory)?</div><textarea class="save" name="tech-db" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What API architecture will be implemented (REST, GraphQL, gRPC)?</div><textarea class="save" name="tech-api" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+    </div>
+
+    <!-- 3 ARCHITECTURE -->
+    <div class="sec" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#003049;">3</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:0;">Architecture &amp; Design</h2>
+      </div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">How will the backend be structured (monolith, microservices, serverless)?</div><textarea class="save" name="arch-structure" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What will the data models and relationships look like?</div><textarea class="save" name="arch-models" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">How will scalability and performance be addressed from the start?</div><textarea class="save" name="arch-scale" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+    </div>
+
+    <!-- 4 SECURITY -->
+    <div class="sec" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#003049;">4</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:0;">Security &amp; Authentication</h2>
+      </div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What authentication and authorization mechanisms are required?</div><textarea class="save" name="sec-auth" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">How will sensitive data be stored and transmitted securely?</div><textarea class="save" name="sec-data" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What security best practices need to be enforced (input validation, error handling, rate limiting)?</div><textarea class="save" name="sec-practices" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+    </div>
+
+    <!-- 5 DEPLOYMENT -->
+    <div class="sec" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#003049;">5</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:0;">Deployment &amp; Operations</h2>
+      </div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">Where will the backend be hosted (cloud provider, on-premises)?</div><textarea class="save" name="ops-hosting" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">How will deployment, monitoring, and logging be set up?</div><textarea class="save" name="ops-deploy" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What is the backup and disaster recovery plan?</div><textarea class="save" name="ops-backup" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+    </div>
+
+    <!-- 6 COLLABORATION -->
+    <div class="sec" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#003049;">6</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:0;">Collaboration &amp; Workflow</h2>
+      </div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">What is the version control and branching strategy?</div><textarea class="save" name="collab-vcs" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">How will tasks, issues, and documentation be tracked and managed?</div><textarea class="save" name="collab-tracking" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#26323c; margin-bottom:6px;">Who are the key stakeholders and points of contact for project decisions?</div><textarea class="save" name="collab-stakeholders" rows="2" placeholder="your answer" style="width:100%; resize:none; overflow:hidden; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box;"></textarea></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #DB3A34;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#c1352f; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#c1352f; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#DB3A34&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-backend-decisions-casestudy-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.example = {
+      'req-traffic': 'Moderate volume with spikes on weekday evenings and during spring and summer renovation season. Autoscale on CPU with headroom to spin up instances before the spikes.',
+      'req-compliance': 'Not a regulated industry, but we store personal information and handle payments, so follow GDPR and CCPA for user data and PCI DSS for payments.',
+      'tech-language': 'Python with Django. The team already knows Python, and Django gives us a mature ORM, built-in admin, and authentication out of the box so we can ship features instead of wiring up plumbing.',
+      'tech-db': 'PostgreSQL, a relational SQL database, for structured project, contractor, and selection data. Add Redis for caching later as we scale.',
+      'tech-api': 'GraphQL, so the web and mobile clients can each request exactly the data they need in one call. It is more modern than REST and avoids the over- and under-fetching REST runs into as pages get complex. Consider gRPC for internal service-to-service calls.',
+      'arch-structure': 'Start as a modular monolith and split out services only where scaling actually demands it.',
+      'arch-models': 'Users, Projects, Rooms, Images, Quiz Results, and Selections, as mapped in the data modeling worksheet.',
+      'arch-scale': 'Design for horizontal scaling. Plan where caching and indexes will go, but do not optimize prematurely.',
+      'sec-auth': 'Role-Based Access Control (RBAC) with a small set of roles: customer, contractor, vendor, and admin.',
+      'sec-data': 'Encrypt data in transit and at rest using a vetted library. Never roll our own encryption.',
+      'sec-practices': 'Input validation, safe error handling, and rate limiting built in from day one.',
+      'ops-hosting': 'AWS. A major public cloud gives us managed autoscaling and databases so we do not maintain hardware, and it is easy to hire engineers with common AWS skills.',
+      'ops-deploy': 'Automated CI/CD with GitHub Actions for low-downtime deploys and easy rollback. Ship metrics, logs, and traces to a hosted observability tool from day one.',
+      'ops-backup': 'Automated daily backups of the PostgreSQL database with point-in-time recovery, plus a restore drill each quarter so we know it actually works.',
+      'collab-vcs': 'Git with short-lived feature branches and reviewed pull requests.',
+      'collab-tracking': 'A ticketing system for work, plus living documentation kept somewhere everyone can find it.',
+      'collab-stakeholders': 'Product for the customer voice, DevOps for infrastructure, plus vendor and contractor partners.'
+    };
+    const data = Object.keys(saved).length ? saved : this.example;
+    Object.entries(data).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this.setupAiButtons(root);
+    requestAnimationFrame(()=> this.autosizeAll(root));
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', (e)=>{ this._save(); if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target); });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#DB3A34';
+  }
+  autosize(el){ if(!el) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 40) + 'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea.save').forEach(el=> this.autosize(el)); }
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim();
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#003049; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#003049; background:transparent; border:1.5px solid #9fb6c4; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution answers?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          Object.entries(this.example).forEach(([n,v])=>{ const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+          this.autosizeAll(root);
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
