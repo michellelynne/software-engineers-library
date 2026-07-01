@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#177E89 !important; border-bottom-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .q{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"/>
+    <g transform="translate(32,28)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linejoin="round">
+      <rect x="0" y="12" width="36" height="32" rx="2"/>
+      <path d="M8 12 V6 a6 6 0 0 1 6-6 h8 a6 6 0 0 1 6 6 V12" stroke="#DB3A34"/>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Organization Context</span>
+    <span id="ws-count" style="font-size:12px; color:#9178B5; white-space:nowrap;">0 of 20 answered</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 2 · Worksheet</div>
+    <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Organization Context</h1>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <!-- CONFIDENTIALITY NOTICE -->
+    <div style="border:1.5px solid #DB3A34; border-radius:6px; padding:16px 18px; display:flex; gap:14px; align-items:flex-start;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:30px; line-height:.8; color:#DB3A34; flex:none;">!</span>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#DB3A34; margin-bottom:5px;">Treat this as a work document</div>
+        <p style="font-size:13.5px; line-height:1.55; color:#3A2449; margin:0;">Unlike the other worksheets in this book, this one is entirely about your current place of work, so it should be treated like a work document. Any information you gather from internal documentation is confidential. Rather than typing answers into this page, use <strong>Print / Save PDF</strong> to make a copy, and keep it on your company drive, email, or wherever you store secure documents. That way, casually filling in a worksheet will not lead to a catastrophic information leak.</p>
+      </div>
+    </div>
+
+    <p style="font-family:'Fraunces',serif; font-style:italic; font-size:16px; line-height:1.58; max-width:62ch; margin:24px 0 0; color:#5a4a66;">This worksheet should be filled out when you start a new job or team, or right now. It can even be helpful before an interview to show your interest in an organization. It can be used as a rubric when generating new ideas: does that idea match the goals of your organization?</p>
+
+    <div style="height:1px; background:#e0d9e6; margin:28px 0 8px;"></div>
+
+    <!-- QUESTIONS -->
+    <div data-questions="1"></div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://discord.gg/C5Cunu2gT" style="color:#177E89; text-decoration:none;"><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#177E89&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; },
+  &quot;showExamples&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-org-context-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.buildQuestions(root, saved);
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    const update = () => {
+      const groups = {};
+      root.querySelectorAll('.save').forEach(el=>{ const q = el.name.split('-')[0]; if(!groups[q]) groups[q] = false; if(el.value && el.value.trim()) groups[q] = true; });
+      const answered = Object.values(groups).filter(Boolean).length;
+      const c = document.getElementById('ws-count');
+      if(c) c.textContent = answered + ' of 20 answered';
+    };
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+      update();
+    };
+    root.addEventListener('input', this._save);
+    update();
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('[data-example]').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+  }
+  area(q, lines){
+    return '<textarea class="save" name="q'+q+'-a" rows="'+(lines||2)+'" style="width:100%; border:1.5px solid #cdd5da; border-radius:5px; background:#fff; font-family:\'Lato\',sans-serif; font-size:14px; line-height:1.5; color:#3A2449; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>';
+  }
+  buildQuestions(root, saved){
+    const host = root.querySelector('[data-questions]');
+    if(!host) return;
+    // [question, exampleOrNote, group]
+    const qs = [
+      ['Is your organization a non-profit, for-profit, or government entity?', '', 'A'],
+      ['What products or services do they provide?', '', 'A'],
+      ['If for-profit, how do they make revenue?', 'Examples: Subscription, selling a product, freemium.', 'A'],
+      ['If a non-profit or government agency, what is their goal?', '', 'A'],
+      ['Who are their customers?', '', 'B'],
+      ['Is there anyone else using their products who is not a customer?', 'Example: A point-of-sale system is paid for by the store but is used by shoppers.', 'B'],
+      ['What metrics do they use to judge company health?', 'Examples: Customer acquisition, churn rate, EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization).', 'B'],
+      ['What were the goals for those metrics last quarter?', 'Example: For 2024 Q1, the goal was to add 1,000 customers.', 'B'],
+      ['What were the results of those metrics last quarter?', 'Example: For 2024 Q1, we acquired 750 customers.', 'B'],
+      ['What division are you in?', 'This is usually multiple teams with a single focus, run by a vice president or director.', 'C'],
+      ['How does your division contribute to the company metrics?', '', 'C'],
+      ['Does your division have any quarterly or yearly goals?', '', 'C'],
+      ['What is the name of your team?', '', 'D'],
+      ['How does your team contribute to the company metrics?', '', 'D'],
+      ['How does your team contribute to the division goals?', '', 'D'],
+      ['Does your team have any quarterly or yearly goals?', '', 'D'],
+      ['Are you on any sub-team or squad within your team?', '', 'E'],
+      ['What software product(s) do you contribute to, design, or maintain?', '', 'E'],
+      ['How do those products fit the team, division, and company goals?', '', 'E'],
+      ['Do you have any personal technical growth goals?', 'Example: I would like to learn more about data science next.', 'E']
+    ];
+    const groupTitles = {
+      A: 'The Company',
+      B: 'Customers & Metrics',
+      C: 'Your Division',
+      D: 'Your Team',
+      E: 'You & Your Products'
+    };
+    let h = '';
+    let lastGroup = null;
+    qs.forEach((row, idx)=>{
+      const n = idx + 1;
+      if(row[2] !== lastGroup){
+        lastGroup = row[2];
+        h += '<div style="display:flex; align-items:baseline; gap:13px; margin:'+(idx===0?'24px':'38px')+' 0 14px;">'+
+               '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:30px; line-height:.78; color:#9178B5;">'+row[2]+'</span>'+
+               '<span style="font-family:\'Fraunces\',serif; font-weight:600; font-size:21px; color:#3A2449;">'+groupTitles[row[2]]+'</span>'+
+             '</div>';
+      }
+      h += '<div class="q" style="margin-bottom:20px;">'+
+             '<div style="display:flex; gap:11px; align-items:baseline;">'+
+               '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:14px; color:#9178B5; flex:none; width:24px;">'+n+'.</span>'+
+               '<div style="flex:1;">'+
+                 '<div style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#3A2449; margin-bottom:'+(row[1]?'4px':'8px')+';">'+row[0]+'</div>'+
+                 (row[1] ? '<div data-example="1" style="font-family:\'Fraunces\',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#8a7a96; margin-bottom:8px;">'+row[1]+'</div>' : '')+
+                 this.area(n, 2)+
+               '</div>'+
+             '</div>'+
+           '</div>';
+    });
+    host.innerHTML = h;
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

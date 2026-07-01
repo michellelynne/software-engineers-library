@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  input.lv:checked + .p-j{ background:#9178B5 !important; color:#fff !important; border-color:#9178B5 !important; }
+  input.lv:checked + .p-m{ background:#177E89 !important; color:#fff !important; border-color:#177E89 !important; }
+  input.lv:checked + .p-s{ background:#003049 !important; color:#fff !important; border-color:#003049 !important; }
+  input.lv:focus-visible + span{ outline:3px solid #177E89; outline-offset:2px; }
+  .note:focus{ border-bottom-color:#177E89 !important; }
+  .pill-wrap label:hover .p-base{ border-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; padding:0 0.1in !important; max-width:none !important; }
+    .chapter{ break-inside:avoid; }
+    .srow{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3A2449"/>
+    <g transform="translate(30,30)">
+      <rect x="0" y="0" width="40" height="9" rx="2" fill="#9178B5"/>
+      <rect x="0" y="15.5" width="40" height="9" rx="2" fill="#177E89"/>
+      <rect x="0" y="31" width="40" height="9" rx="2" fill="#DB3A34"/>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Skills Self-Assessment</span>
+    <span id="ws-count" style="font-size:12px; color:#9178B5; white-space:nowrap;">0 of 65 skills rated</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#003049; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- HEADER / MASTHEAD -->
+  <div style="background:#3A2449; color:#fff; padding:42px 64px 38px; display:flex; justify-content:space-between; align-items:flex-start; gap:24px;" id="ws-masthead">
+    <div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bda9d4;">Software Engineer's Library · Worksheet</div>
+      <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Senior Engineer Skills<br>Self-Assessment</h1>
+      <div style="height:3px; width:64px; background:#DB3A34; margin:20px 0 0;"></div>
+    </div>
+  </div>
+
+  <div style="padding:36px 64px 0;">
+  <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0 0 14px; color:#3A2449;">Like any good teacher, the first day starts with a pop quiz. This worksheet helps you figure out which Senior Engineer skills you need to improve. Be as honest as possible, since you're the only one who will see it. The skills are organized by chapter so you can find more on each one in the book.</p>
+  <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0; color:#3A2449;">Use the rubric below to pick your level. The notes field is for projects and activities that are evidence of a skill, since one project can span many skills. At the end of the book you'll repeat this assessment to map your next step: more training, a talk with your manager, or a job hunt. Remember, every new job should leave room for growth, so you don't need to be perfect at every skill before you apply.</p>
+
+  <!-- RUBRIC -->
+  <div style="margin-top:34px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#003049; margin-bottom:14px;">How to pick your level <span style="color:#9aa7af; font-weight:600;">(Rubric, Table 1.3)</span></div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+      <div style="background:#f3eff7; border-top:4px solid #9178B5; border-radius:3px; padding:16px 16px 18px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#3A2449; display:flex; align-items:center; gap:8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:6px; background:#9178B5; color:#fff; font-size:12px;">J</span>Junior</div>
+        <p style="font-size:12.5px; line-height:1.55; margin:11px 0 0; color:#3A2449;">No real knowledge yet. You've only heard of it, seen others do it, or tried a tutorial or school project. Not used in a professional setting.</p>
+      </div>
+      <div style="background:#eaf4f4; border-top:4px solid #177E89; border-radius:3px; padding:16px 16px 18px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#0f5a62; display:flex; align-items:center; gap:8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:6px; background:#177E89; color:#fff; font-size:12px;">M</span>Mid</div>
+        <p style="font-size:12.5px; line-height:1.55; margin:11px 0 0; color:#13474e;">You've done this under the guidance of a more senior engineer. Ready to try it independently, but not yet ready to teach it to someone else.</p>
+      </div>
+      <div style="background:#e6edf1; border-top:4px solid #003049; border-radius:3px; padding:16px 16px 18px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#003049; display:flex; align-items:center; gap:8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:6px; background:#003049; color:#fff; font-size:12px;">S</span>Senior</div>
+        <p style="font-size:12.5px; line-height:1.55; margin:11px 0 0; color:#1f3a48;">Done it multiple times independently and ready to coach others. You could list it on your resume and speak confidently about it in an interview.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTERS -->
+  <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="3">
+    <div class="chapter" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:6px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">{{ ch.numPad }}</span>
+        <span style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449;">Chapter {{ ch.num }}</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 124px 232px; gap:18px; padding-bottom:7px; border-bottom:2px solid #003049; font-family:'Montserrat',sans-serif; font-weight:600; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9aa7af;">
+        <div>Skill</div>
+        <div style="text-align:center;">Level</div>
+        <div>Notes / Evidence</div>
+      </div>
+      <sc-for list="{{ ch.skills }}" as="sk" hint-placeholder-count="5">
+        <div class="srow" style="display:grid; grid-template-columns:1fr 124px 232px; gap:18px; align-items:center; padding:13px 0; border-bottom:1px solid #eef2f4;">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">{{ sk.name }}</div>
+            <div class="skill-def" style="font-family:'Fraunces',serif; font-size:13px; line-height:1.5; color:#5a4a66; margin-top:3px;">{{ sk.def }}</div>
+          </div>
+          <div class="pill-wrap" role="radiogroup" aria-label="{{ sk.groupLabel }}" style="display:flex; gap:6px; justify-content:center;">
+            <label style="cursor:pointer; position:relative; display:inline-flex;">
+              <input class="lv" type="radio" name="{{ sk.id }}" value="J" aria-label="{{ sk.ariaJ }}" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer;">
+              <span class="p-base p-j" aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1.5px solid #cdd5da; border-radius:7px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#6a7780; background:#fff; transition:all .12s;">J</span>
+            </label>
+            <label style="cursor:pointer; position:relative; display:inline-flex;">
+              <input class="lv" type="radio" name="{{ sk.id }}" value="M" aria-label="{{ sk.ariaM }}" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer;">
+              <span class="p-base p-m" aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1.5px solid #cdd5da; border-radius:7px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#6a7780; background:#fff; transition:all .12s;">M</span>
+            </label>
+            <label style="cursor:pointer; position:relative; display:inline-flex;">
+              <input class="lv" type="radio" name="{{ sk.id }}" value="S" aria-label="{{ sk.ariaS }}" style="position:absolute; inset:0; width:100%; height:100%; margin:0; opacity:0; cursor:pointer;">
+              <span class="p-base p-s" aria-hidden="true" style="display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border:1.5px solid #cdd5da; border-radius:7px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#6a7780; background:#fff; transition:all .12s;">S</span>
+            </label>
+          </div>
+          <input class="note" type="text" name="{{ sk.notesId }}" aria-label="{{ sk.notesLabel }}" placeholder="Projects, evidence…" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:13px; color:#3A2449; padding:6px 2px; outline:none; box-sizing:border-box;">
+        </div>
+      </sc-for>
+    </div>
+  </sc-for>
+
+  <!-- FOOTER -->
+  <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+    <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+    <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+    <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+      <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+      <span style="color:#cdd5da;">·</span>
+      <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+      <span style="color:#cdd5da;">·</span>
+      <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+      <span style="color:#cdd5da;">·</span>
+      <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      <span style="color:#cdd5da;">·</span>
+      <a href="https://discord.gg/C5Cunu2gT" style="color:#177E89; text-decoration:none;"><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+    </div>
+  </div>
+
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: {
+    &quot;editor&quot;: &quot;color&quot;,
+    &quot;default&quot;: &quot;#3A2449&quot;,
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#003049&quot;, &quot;#0f5a62&quot;, &quot;#7a2438&quot;],
+    &quot;section&quot;: &quot;Style&quot;
+  },
+  &quot;showDefinitions&quot;: {
+    &quot;editor&quot;: &quot;boolean&quot;,
+    &quot;default&quot;: true,
+    &quot;tsType&quot;: &quot;boolean&quot;,
+    &quot;section&quot;: &quot;Layout&quot;
+  },
+  &quot;density&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;default&quot;: &quot;Comfortable&quot;,
+    &quot;options&quot;: [&quot;Comfortable&quot;, &quot;Compact&quot;],
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Layout&quot;
+  }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-skills-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    try{
+      const saved = JSON.parse(localStorage.getItem(this.key) || '{}');
+      if(saved.levels) Object.entries(saved.levels).forEach(([n,v])=>{
+        const el = root.querySelector('input.lv[name="'+n+'"][value="'+v+'"]');
+        if(el) el.checked = true;
+      });
+      if(saved.notes) Object.entries(saved.notes).forEach(([n,v])=>{
+        const el = root.querySelector('input.note[name="'+n+'"]');
+        if(el) el.value = v;
+      });
+    }catch(e){}
+    const COLORS = { J:'#9178B5', M:'#177E89', S:'#003049' };
+    const applyPills = () => {
+      root.querySelectorAll('input.lv').forEach(el=>{
+        const span = el.nextElementSibling;
+        if(!span) return;
+        if(el.checked){
+          const c = COLORS[el.value] || '#003049';
+          span.style.background = c;
+          span.style.color = '#fff';
+          span.style.borderColor = c;
+        } else {
+          span.style.background = '#fff';
+          span.style.color = '#6a7780';
+          span.style.borderColor = '#cdd5da';
+        }
+      });
+    };
+    this._applyPills = applyPills;
+    const updateCount = () => {
+      const names = new Set();
+      root.querySelectorAll('input.lv').forEach(el=>names.add(el.name));
+      const done = root.querySelectorAll('input.lv:checked').length;
+      const c = document.getElementById('ws-count');
+      if(c) c.textContent = done + ' of ' + names.size + ' skills rated';
+    };
+    this._save = () => {
+      const levels = {}, notes = {};
+      root.querySelectorAll('input.lv:checked').forEach(el=>levels[el.name]=el.value);
+      root.querySelectorAll('input.note').forEach(el=>{ if(el.value) notes[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify({levels,notes})); }catch(e){}
+      updateCount();
+      applyPills();
+    };
+    root.addEventListener('change', this._save);
+    root.addEventListener('input', this._save);
+    updateCount();
+    applyPills();
+    this.applyTweaks();
+  }
+  componentDidUpdate(){
+    if(this._applyPills) this._applyPills();
+    this.applyTweaks();
+  }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#3A2449';
+    const showDefs = p.showDefinitions !== false;
+    root.querySelectorAll('.skill-def').forEach(el=>{ el.style.display = showDefs ? '' : 'none'; });
+    const compact = p.density === 'Compact';
+    root.querySelectorAll('.srow').forEach(el=>{ el.style.padding = compact ? '7px 0' : '13px 0'; });
+  }
+  renderVals(){
+    const raw = [
+      {num:2, skills:[
+        ['Seek Project Context','Proactively gather all necessary context to understand the full scope of a problem, including any missing dependencies or unclear stakeholder needs.'],
+        ['Strategic Prioritization','Run exercises to help your team use an evidence-based approach to prioritization.'],
+        ['Product Manager Collaboration','Strategies for collaborating tightly with Product Managers by understanding their goals.'],
+        ['Stakeholder Communication','Tailor project communication to the audience so the story and details resonate with different stakeholders.'],
+        ['Write Proposal Memo','Create an effective memo to develop buy-in for a project.']
+      ]},
+      {num:3, skills:[
+        ['Build vs Buy','Apply the "Build vs Buy" framework to evaluate whether creating a new solution in-house is better than adopting an existing product or open-source tool.'],
+        ['Technical Evaluation','Evaluating technical choices using the criteria of Popularity, Fit, and Cost.'],
+        ['DevOps Collaboration','Collaborate effectively with a separate DevOps or Infrastructure team by understanding their core goals (ktlo, under budget, minimize pages).'],
+        ['Data Model Design','Create database models by identifying the minimum necessary data to save and share.'],
+        ['Technical Feedback Negotiation','Techniques to solicit specific, actionable feedback on technical designs while actively avoiding "bikeshedding".']
+      ]},
+      {num:4, skills:[
+        ['Backend Engineer Role','Tasks assigned to the backend engineer role.'],
+        ['Choose API Architecture','Select the optimal API architecture based on project requirements.'],
+        ['Infrastructure Engineer Role','Tasks assigned to the infrastructure engineer role.'],
+        ['Apply IaC Principles','Apply Infrastructure as Code principles for defining, reviewing, and automating infrastructure.'],
+        ['Differentiate DevOps & SRE','Ascertain the key differences in focus, origin, and principles between DevOps and SRE.']
+      ]},
+      {num:5, skills:[
+        ['User-Centric Design','Design an accessible UI/UX with a clear call to action and necessary data.'],
+        ['Designer Collaboration','Collaborate effectively with designers as partners, getting early alignment on user stories, technical constraints, and feasibility.'],
+        ['Link Project Artifacts','Draw a clear line of connection from the original user story to the wireframes and the live page to ensure continuity.'],
+        ['Frontend Fundamentals','Build accessible, responsive user interfaces using modern frameworks (like React or Angular) with HTML, CSS, and JavaScript/TypeScript.'],
+        ['Frontend Tech Stacks','Decide on the correct frontend framework, styling framework, design tool, bundler, and testing tools for a new project.']
+      ]},
+      {num:6, skills:[
+        ['Managing Engineering Skills','Focus on essential knowledge and be comfortable figuring out unknowns on the fly.'],
+        ['Define Project MVP','Break a difficult product down to its Minimal Viable Product (MVP) to tackle the first step.'],
+        ['Balance Code Quality','Prioritize good-enough code delivery over perfectionism, while carefully managing and documenting technical debt.'],
+        ['Coach Engineers','Uplevel junior colleagues by providing problem-solving tools and guidance, rather than the exact solution.'],
+        ['Influence Leadership','Influence leadership to align with your goals by presenting solutions, setting clear expectations, and communicating in their language.']
+      ]},
+      {num:7, skills:[
+        ['User Personas','Create user archetypes for your product to ensure the design isn\u2019t averaged out to a single user.'],
+        ['MVP Metrics','Identify metrics to determine MVP success before giving it to users.'],
+        ['Simple Designs','Create simple designs to gather feedback before investing further engineering hours.'],
+        ['Feature Scope','Set clear roadmaps and successfully push back against feature creep with data-driven decisions.'],
+        ['Product Market Fit','Validate market demand whether an internal or external product.']
+      ]},
+      {num:8, skills:[
+        ['Document Work Impact','Write short, measurable success statements continuously to effectively communicate your impact to management for career advancement.'],
+        ['Decode Promotion Rules','Track down and understand both the documented and unwritten cultural rules and criteria required for career advancement within your organization.'],
+        ['Team Impact Memos','Proactively inform management of the team\u2019s accomplishments and save leadership time.'],
+        ['Soft Power Leadership','Demonstrate leadership and generate goodwill by taking on management tasks such as project management, memo writing and mentorship.'],
+        ['Effective Mentorship','Set clear expectations for mentees and leverage opportunities to demonstrate ability to up-level teammates.']
+      ]},
+      {num:9, skills:[
+        ['Distributed Systems','Basics of a distributed system in the real-world and software engineering.'],
+        ['Monolith vs Microservice Decision','Choose between a monolith and microservices for a new project.'],
+        ['Modernize Legacy Code','Develop strategies to migrate old systems to distributed systems.'],
+        ['Evaluate New Tech','Apply a practical framework to decide which new technologies to learn based on problem-solving ability, ROI, and applicability to current work.']
+      ]},
+      {num:10, skills:[
+        ['Growth Mode','Understand components needed to enter growth mode: desire, sacrifice, and opportunity.'],
+        ['Identify Growth Type','Distinguish between the five main growth desires: financial, respect, influence, autonomy, and accomplishment.'],
+        ['Growth Type to Goal','Translate the type of growth you are looking for into specific goals.'],
+        ['Strategic Sacrifice','Intentionally let go of existing commitments or seek outside help to make time for growth goals.'],
+        ['Build Influence','Affect roadmaps and architectural decisions by increasing the weight given to your ideas and feedback.']
+      ]},
+      {num:11, skills:[
+        ['Resilient Architecture','Configure systems for automated scaling and disaster recovery.'],
+        ['Implement Logging','Logging identifiers across distributed systems to match user workflows.'],
+        ['Manage Deployments','Evaluate the risk of continuous deployments, manage the impact and difficulty of a rollback, and use transparency to communicate issues.'],
+        ['Change Management','Develop a multi-pronged communication strategy to acclimate stakeholders to change.'],
+        ['Review Rewrite','Determine if it is time to do a complete rewrite.']
+      ]},
+      {num:12, skills:[
+        ['Networking','Targeted networking to reach career goals and build community.'],
+        ['Develop Internal Brand','Develop an internal reputation for better opportunities.'],
+        ['Develop External Brand','Engage in the tech community through writing, speaking, or open source contributions.']
+      ]},
+      {num:13, skills:[
+        ['Distributed Logging','Design structured logs with consistent tags that tell a coherent story across multiple systems.'],
+        ['Alert Design','Build alerts tied to user-facing symptoms and SLOs, each with a documented response, so on-call engineers always know what to do.'],
+        ['Incident Command','Run a calm, methodical incident response: triage, communicate, fix, and debrief without assigning blame.'],
+        ['Performance Monitoring','Define what "normal" looks like from the user\u2019s perspective and detect meaningful deviations before customers do.'],
+        ['Chaos Engineering','Simulate failures under controlled conditions to identify resilience gaps before production does.']
+      ]},
+      {num:14, skills:[
+        ['Test Strategy','Know different types of tests and when to use them: unit, integration, smoke, end-to-end, performance, etc.'],
+        ['QA Partnership','Collaborate with QA Engineers to make useful, accurate tests.'],
+        ['Reliability Targets','Create SLIs, SLOs, and SLAs that promise what users care about, and spend error budgets deliberately.'],
+        ['Living Documentation','Write documentation and build processes to keep it from going stale.']
+      ]},
+      {num:15, skills:[
+        ['Maintenance Signals','Analyze product data to know when it\u2019s ready for maintenance mode.'],
+        ['Maintenance Plan','Create a maintenance mode transition roadmap.'],
+        ['Manager Communication','Speak to your manager about accommodations.'],
+        ['Self Awareness','Understand your mental capacity and take action before burnout.']
+      ]},
+      {num:16, skills:[
+        ['Audience Tuning','Tune stories based on the audience.'],
+        ['Story Bank','Keep a library of project stories documented for future interviews.'],
+        ['Beginning Middle End','Structure your stories in clear narrative order.'],
+        ['Scope and Scale','Break down System Design questions to handle business workflow and user location.'],
+        ['Hint Spotting','Listen for constraints embedded in interview prompts.']
+      ]}
+    ];
+    const chapters = raw.map(c => ({
+      num: c.num,
+      numPad: String(c.num).padStart(2,'0'),
+      skills: c.skills.map((s,i) => ({ name:s[0], def:s[1], id:'c'+c.num+'-'+i, notesId:'n'+c.num+'-'+i, groupLabel:s[0]+', select your level', ariaJ:s[0]+': Junior level', ariaM:s[0]+': Mid level', ariaS:s[0]+': Senior level', notesLabel:s[0]+': notes and evidence' }))
+    }));
+    return {
+      chapters,
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        try{ localStorage.removeItem('ssl-skills-v1'); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          root.querySelectorAll('input.lv').forEach(el=>el.checked=false);
+          root.querySelectorAll('input.note').forEach(el=>el.value='');
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
