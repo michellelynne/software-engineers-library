@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .q{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(32,28)" fill="none" stroke="#666" stroke-width="4" stroke-linejoin="round">
+      <rect x="0" y="12" width="36" height="32" rx="2"></rect>
+      <path d="M8 12 V6 a6 6 0 0 1 6-6 h8 a6 6 0 0 1 6 6 V12" stroke="#111"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Organization Context &middot; Print</span>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 2 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Organization Context</h1>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <!-- CONFIDENTIALITY NOTICE -->
+    <div style="border:1.5px solid #111; border-radius:6px; padding:16px 18px; display:flex; gap:14px; align-items:flex-start;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:30px; line-height:.8; color:#111; flex:none;">!</span>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin-bottom:5px;">Treat this as a work document</div>
+        <p style="font-size:13.5px; line-height:1.55; color:#111; margin:0;">Unlike the other worksheets in this book, this one is entirely about your current place of work, so it should be treated like a work document. Any information you gather from internal documentation is confidential. Keep your filled-in copy on your company drive, email, or wherever you store secure documents, so that casually filling in a worksheet does not lead to a catastrophic information leak.</p>
+      </div>
+    </div>
+
+    <p style="font-family:'Fraunces',serif; font-style:italic; font-size:16px; line-height:1.58; max-width:62ch; margin:24px 0 0; color:#444;">This worksheet is designed to help you in meetings and when generating ideas. You will have the context you need to understand what leadership is talking about. At the same time, you can compare ideas to this and ask yourself, &ldquo;Does this idea match the organization&rsquo;s goals?&rdquo;</p>
+
+    <div style="height:1px; background:#111; margin:28px 0 0;"></div>
+
+    <!-- QUESTIONS -->
+      <div class="q" style="display:flex; align-items:baseline; gap:13px; margin:30px 0 16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">1</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111;">The Company</span></div><div style="height:2px; background:#111; margin:0 0 18px;"></div><div id="sec-1">
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">1.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Is your organization a non-profit, for-profit, or government entity?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">2.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What products or services do they provide?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">3.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">If for-profit, how do they make revenue?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">Examples: Subscription, selling a product, freemium.</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">4.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">If a non-profit or government agency, what is their goal?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      </div>
+<div class="q" style="display:flex; align-items:baseline; gap:13px; margin:40px 0 16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">2</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111;">Customers & Metrics</span></div><div style="height:2px; background:#111; margin:0 0 18px;"></div><div id="sec-2">
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">5.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Who are their customers?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">6.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Is there anyone else using their products who is not a customer?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">Example: A point-of-sale system is paid for by the store but is used by shoppers.</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">7.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What metrics do they use to judge company health?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">Examples: Customer acquisition, churn rate, EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization).</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">8.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What were the goals for those metrics last quarter?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">Example: For 2024 Q1, the goal was to add 1,000 customers.</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">9.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What were the results of those metrics last quarter?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">Example: For 2024 Q1, we acquired 750 customers.</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      </div>
+<div class="q" style="display:flex; align-items:baseline; gap:13px; margin:40px 0 16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">3</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111;">Your Division</span></div><div style="height:2px; background:#111; margin:0 0 18px;"></div><div id="sec-3">
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">10.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What division are you in?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">This is usually multiple teams with a single focus, run by a vice president or director.</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">11.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">How does your division contribute to the company metrics?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">12.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Does your division have any quarterly or yearly goals?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      </div>
+<div class="q" style="display:flex; align-items:baseline; gap:13px; margin:40px 0 16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">4</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111;">Your Team</span></div><div style="height:2px; background:#111; margin:0 0 18px;"></div><div id="sec-4">
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">13.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What is the name of your team?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">14.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">How does your team contribute to the company metrics?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">15.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">How does your team contribute to the division goals?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">16.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Does your team have any quarterly or yearly goals?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      </div>
+<div class="q" style="display:flex; align-items:baseline; gap:13px; margin:40px 0 16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">5</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111;">You & Your Products</span></div><div style="height:2px; background:#111; margin:0 0 18px;"></div><div id="sec-5">
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">17.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Are you on any sub-team or squad within your team?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">18.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">What software product(s) do you contribute to, design, or maintain?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">19.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">How do those products fit the team, division, and company goals?</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div>
+      <div class="q" style="margin-bottom:22px;"><div style="display:flex; gap:11px; align-items:baseline;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#666; flex:none; width:24px;">20.</span><div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; line-height:1.4; color:#111;">Do you have any personal technical growth goals?</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.45; color:#444; margin-top:4px;">Example: I would like to learn more about data science next.</div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:10px;"></div><div style="border-bottom:1.5px solid #111; height:28px; margin-top:12px;"></div></div></div></div></div>
+
+  
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

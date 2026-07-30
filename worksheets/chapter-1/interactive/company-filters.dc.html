@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#177E89 !important; border-bottom-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3A2449"></rect>
+    <g transform="translate(34,30)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="0" y1="10" x2="32" y2="10"></line>
+      <line x1="0" y1="30" x2="32" y2="30" stroke="#DB3A34"></line>
+      <circle cx="10" cy="10" r="5" fill="#3A2449"></circle>
+      <circle cx="22" cy="30" r="5" fill="#3A2449" stroke="#DB3A34"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Company Filters</span>
+    <span id="ws-count" style="font-size:12px; color:#9178B5; white-space:nowrap;">0 fields filled</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#3A2449; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bda9d4;">Chapter 1 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:40px; line-height:1.06; white-space:nowrap; margin:14px 0 0; color:#fff;">Find Your <span style="text-decoration:line-through; text-decoration-color:#DB3A34; text-decoration-thickness:4px; color:#9d86b8;">Dream</span> <span style="font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#DB3A34;">Pretty Good</span> Job</h1>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#e7dcf2; margin:16px 0 0;">Company Filters</div>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:18px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Salary is the benefit we think about the most, but there are many options. Give each benefit an acceptable range so that you can compare full packages. The premise is that if a job hits lower in the range in one benefit, they should hit higher in the range for another area. If this is not a benefit that interests you or is relevant to where you live (like retirement benefits), you can leave it blank and not use it as a filter.</p>
+    <p style="font-size:14.5px; line-height:1.62; color:#40324c; margin:16px 0 0;">Many companies use "Cost of Labor" to help them identify the minimal amount of a benefit to offer, so the region you want to work in matters. AI can help you quickly change the question to different regions and collate that data.</p>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Set Your Ranges</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 4px;">Use AI to find realistic market ranges before you fill these in. Swap in your region, target benefit, and years of experience.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"In [region], what is the average range of [benefit] for a senior software engineer with [N] years of experience? What about in [other region]?"</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:170px 1fr; gap:16px; padding:0 0 7px; border-bottom:2px solid #3A2449; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#8a7a96;">
+        <div>Benefit</div>
+        <div>Your acceptable range</div>
+      </div>
+      <div data-rows="benefits"></div>
+      <button type="button" data-add="benefits" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:9px 0 0; cursor:pointer;">+ Add benefit</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Rank Your Top Three</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">You can't optimize for everything. Pull the three benefits that matter the most to you. These will become the filters you apply to the company list.</p>
+      <div data-list="priorities"></div>
+      <button type="button" data-add="priorities" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Culture Filters</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 20px;">These filters are the “how” of work instead of the “what” of industries. If any other cultural filter is important to you but not listed, add that in.</p>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Where do I want to work?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 6px;">Remote / Hybrid / On-Site</div>
+        <input class="save" type="text" name="culture-work" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">If not remote, where can the company be located? Would I move to work for this company?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 6px;">Examples: Any city. Only American East Coast cities. Anywhere in Japan. Anywhere in the world. Only English-speaking countries. Only within 100 miles of x location.</div>
+        <input class="save" type="text" name="culture-location" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">How much travel do I want to do?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 6px;">Examples: Zero, I am a caretaker who needs to be home. Once a quarter, for company meetings or educational opportunities. All the time, I love traveling and want it to be part of my job.</div>
+        <input class="save" type="text" name="culture-travel" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">How much growth are you looking for?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 6px;">Examples: Fast-paced, constantly changing. Stable, but steady growth. Slow growth, but strong job security.</div>
+        <input class="save" type="text" name="culture-growth" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">How much does work/life balance matter right now?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 6px;">Examples: Very much, I would like to work a steady 40 hours per week. Not at all, I am looking to put my all into the company. In the middle, I can be on call and do some weekends, but generally a 40-hour week.</div>
+        <input class="save" type="text" name="culture-balance" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Company Size</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 6px;">Examples: Startup, Small Business (&lt;100), Medium Business (100 – 1500), Large Business (1500+)</div>
+        <input class="save" type="text" name="culture-size" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </div>
+
+      <div data-list="cultureadd"></div>
+      <button type="button" data-add="cultureadd" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add filter</button>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Rank Your Top Three</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">You can't optimize for everything. Pull the three culture filters that matter the most to you. These will become the filters you apply to the company list.</p>
+      <div data-list="culturerank"></div>
+      <button type="button" data-add="culturerank" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">05</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Hard Dealbreakers</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 14px;">Lines you would never cross. Each one should start with "I would never…". Unlike the ranges above, these are non-negotiable.</p>
+      <div data-list="dealbreakers"></div>
+      <button type="button" data-add="dealbreakers" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add dealbreaker</button>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:9px 0 0;">Examples: "I would never work for a political campaign." · "I would never work fully on-site." · "I would never work in a vice-focused industry."</p>
+    </div>
+
+    <!-- SEQUENCE NAV -->
+    <div class="no-print" style="display:flex; justify-content:space-between; gap:16px; margin-top:46px;">
+      <a href="identifying-industries.dc.html" style="display:inline-flex; flex-direction:column; align-items:flex-start; gap:3px; text-decoration:none; border:1.5px solid #e0d9e6; border-radius:8px; padding:12px 18px; min-width:220px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#9178B5;">&larr; Do this first</span>
+        <span style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#177E89;">Identifying Industries</span>
+      </a>
+      <a href="company-list-and-alerts.dc.html" style="display:inline-flex; flex-direction:column; align-items:flex-end; gap:3px; text-decoration:none; border:1.5px solid #e0d9e6; border-radius:8px; padding:12px 18px; min-width:220px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#9178B5;">Do this next &rarr;</span>
+        <span style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#177E89;">Company List &amp; Alerts</span>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-benefits-filters-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.buildBenefits(root, saved);
+    this.buildLists(root, saved);
+    this.setupAiButtons(root);
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    const total = () => root.querySelectorAll('.save').length;
+    const update = () => {
+      const filled = [...root.querySelectorAll('.save')].filter(el=> el.value && el.value.trim()).length;
+      const c = document.getElementById('ws-count');
+      if(c) c.textContent = filled + ' of ' + total() + ' fields filled';
+    };
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+      update();
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-add]');
+      if(!btn) return;
+      e.preventDefault();
+      const key = btn.getAttribute('data-add');
+      if(key === 'benefits'){ this.addBenefit(root, true); }
+      else { this.addLine(root, key, true); }
+      this._save();
+    });
+    update();
+  }
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim().replace(/^"|"$/g,'');
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#177E89; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#177E89; background:transparent; border:1.5px solid #bfe0e2; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask);
+      bar.appendChild(copy);
+      box.appendChild(bar);
+    });
+  }
+  field(name, placeholder){
+    return '<input class="save" type="text" name="'+name+'" placeholder="'+placeholder+'" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">';
+  }
+  benefitRowHTML(label, i, ph){
+    const labelHTML = label !== null
+      ? '<div style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">'+label+'</div>'
+      : '<input class="save" type="text" name="benefitx-'+i+'-label" placeholder="Benefit name" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:13px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">';
+    const valName = label !== null ? 'benefit-'+i : 'benefitx-'+i+'-val';
+    return '<div style="display:grid; grid-template-columns:170px 1fr; gap:16px; align-items:center; padding:9px 0; border-bottom:1px solid #eef2f4;">'+
+      labelHTML + this.field(valName, ph || 'Example: \u2026') + '</div>';
+  }
+  buildBenefits(root, saved){
+    const benefits = [
+      ['Cash salary','Example: $250\u2013300,000'],
+      ['Vacation days','Example: 4\u20136 weeks'],
+      ['401(k) match','Example: 1\u20134%'],
+      ['Equity','Example: 0.1%\u20130.5%'],
+      ['Stock options','Example: 5\u201315,000 shares at current price, vesting 5 years, 1-year cliff'],
+      ['RSUs','Example: $100\u2013200,000 over 4 years, available yearly'],
+      ['Cash bonuses','Example: hiring bonus, yearly performance percentage, or others'],
+      ['Other retirement','Example: pensions, superannuation, RRSP, provident fund'],
+      ['Meals','Example: 0\u20133 per day'],
+      ['Child care','Example: on-site / subsidized / none']
+    ];
+    const host = root.querySelector('[data-rows="benefits"]');
+    if(!host) return;
+    let h = benefits.map((b,i)=> this.benefitRowHTML(b[0], i, b[1])).join('');
+    let max = -1;
+    Object.keys(saved||{}).forEach(k=>{
+      const m = k.match(/^benefitx-(\d+)-/);
+      if(m) max = Math.max(max, parseInt(m[1],10));
+    });
+    for(let i=0;i<=max;i++) h += this.benefitRowHTML(null, i);
+    host.innerHTML = h;
+  }
+  addBenefit(root, focus){
+    const host = root.querySelector('[data-rows="benefits"]');
+    if(!host) return;
+    const i = host.querySelectorAll('[name^="benefitx-"][name$="-label"]').length;
+    host.insertAdjacentHTML('beforeend', this.benefitRowHTML(null, i));
+    if(focus){ const inp = host.querySelector('[name="benefitx-'+i+'-label"]'); if(inp) inp.focus(); }
+  }
+  lineHTML(prefix, i){
+    return '<div style="margin-bottom:5px;"><input class="save" type="text" name="'+prefix+'-'+i+'" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;"></div>';
+  }
+  buildLists(root, saved){
+    [['priorities',3],['culturerank',3],['cultureadd',1],['dealbreakers',3]].forEach(([prefix,starter])=>{
+      const host = root.querySelector('[data-list="'+prefix+'"]');
+      if(!host) return;
+      let max = starter - 1;
+      Object.keys(saved||{}).forEach(k=>{
+        const m = k.match(new RegExp('^'+prefix+'-(\\d+)$'));
+        if(m) max = Math.max(max, parseInt(m[1],10));
+      });
+      let h = '';
+      for(let i=0;i<=max;i++) h += this.lineHTML(prefix, i);
+      host.innerHTML = h;
+    });
+  }
+  addLine(root, prefix, focus){
+    const host = root.querySelector('[data-list="'+prefix+'"]');
+    if(!host) return;
+    const next = host.querySelectorAll('input').length;
+    host.insertAdjacentHTML('beforeend', this.lineHTML(prefix, next));
+    if(focus){ const ins = host.querySelectorAll('input'); ins[ins.length-1].focus(); }
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          this.buildBenefits(root, {});
+          this.buildLists(root, {});
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .expanel{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(28,30)" stroke="#666" stroke-width="4" fill="none" stroke-linecap="round">
+      <line x1="0" y1="8" x2="44" y2="8"></line>
+      <line x1="0" y1="20" x2="44" y2="20"></line>
+      <line x1="0" y1="32" x2="30" y2="32"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">API &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:900px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 4 &middot; System Design &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">API</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">One project can have multiple APIs, so it is helpful to keep the logic in the service layer. For this worksheet, pick one API type to get practice with it. Below is the same Contractor Profile example written three ways so you can compare, then choose. Aim to return data the client can display as-is, so the same call works across web and mobile. Then stay flexible. Once it is live, see how people are using it, and tune the endpoints toward what they reach for most.</p>
+
+    <div id="sec-example" class="sec" style="margin-top:28px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:6px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:30px; line-height:.78; color:#666;">EX</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:21px; color:#111; margin:0;">One example, three API types</h2>
+      </div>
+      <p style="font-size:13px; line-height:1.55; color:#555; margin:0 0 14px;">The Contractor Profile page needs to create a profile and fetch a profile. Here is that same functionality in each style.</p>
+
+      <div class="expanel" style="border:1px solid #ccc; border-radius:8px; overflow:hidden; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f0f0f0; padding:9px 14px; border-bottom:1px solid #ccc;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#111;">Profile data</span><span style="font-size:12px; color:#666;">what a contractor profile holds</span></div>
+        <div style="padding:13px 16px;">
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.4; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;"><strong style="color:#111;">Contractor or company name</strong></div></div>
+            <div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.4; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;"><strong style="color:#111;">Email and phone number</strong> &mdash; with contact preferences</div></div>
+            <div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.4; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;"><strong style="color:#111;">Description of services available</strong> &mdash; as structured categories, not free text</div></div>
+            <div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.4; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;"><strong style="color:#111;">Photos of previous jobs</strong></div></div>
+            <div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.4; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;"><strong style="color:#111;">Customer reviews of previous jobs</strong></div></div>
+            <div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.4; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;"><strong style="color:#111;">Current availability</strong></div></div>
+          </div>
+          <div style="margin-top:13px; background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:11px 14px; font-size:12.5px; line-height:1.55; color:#333;"><strong style="font-family:'Montserrat',sans-serif; font-size:11px; letter-spacing:.03em;">Avoid unstructured data where you can.</strong> When comparing contractors, customers need a clear idea of what each can do. It can be extra confusing if contractors use words they don&rsquo;t understand. With structured data, the app can provide clear definitions where necessary.</div>
+        </div>
+      </div>
+
+      <div class="expanel" style="border:1px solid #ccc; border-radius:8px; overflow:hidden; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f0f0f0; padding:9px 14px; border-bottom:1px solid #ccc;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#111;">REST</span><span style="font-size:12px; color:#666;">simple, default for web &amp; mobile</span></div>
+        <pre style="margin:0; padding:13px 15px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.6; color:#222; white-space:pre-wrap;">POST /api/contractors          create a contractor profile
+{
+  "name": "Sunrise Contracting Co.",
+  "email": "hello@sunrisecontracting.com",
+  "phone": "+1 (415) 555-0182",
+  "services": ["kitchen_remodel", "bathroom_remodel"],
+  "availability": "open"
+}
+
+GET  /api/contractors/8f3a      fetch a contractor profile
+{
+  "id": "8f3a",
+  "name": "Sunrise Contracting Co.",
+  "email": "hello@sunrisecontracting.com",
+  "phone": "+1 (415) 555-0182",
+  "services": ["kitchen_remodel", "bathroom_remodel"],
+  "availability": "open"
+}</pre>
+      </div>
+
+      <div class="expanel" style="border:1px solid #ccc; border-radius:8px; overflow:hidden; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f0f0f0; padding:9px 14px; border-bottom:1px solid #ccc;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#111;">GraphQL</span><span style="font-size:12px; color:#666;">one call, client picks fields</span></div>
+        <pre style="margin:0; padding:13px 15px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.6; color:#222; white-space:pre-wrap;">mutation {
+  createContractor(input: {
+    name: "Sunrise Contracting Co.",
+    email: "hello@sunrisecontracting.com",
+    phone: "+1 (415) 555-0182",
+    services: [KITCHEN_REMODEL, BATHROOM_REMODEL]
+  }) { id name email }
+}
+
+query {
+  contractor(id: "8f3a") {
+    name
+    email
+    phone
+    services
+    availability
+  }
+}</pre>
+      </div>
+
+      <div class="expanel" style="border:1px solid #ccc; border-radius:8px; overflow:hidden;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f0f0f0; padding:9px 14px; border-bottom:1px solid #ccc;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#111;">gRPC</span><span style="font-size:12px; color:#666;">fast, internal service-to-service</span></div>
+        <pre style="margin:0; padding:13px 15px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.6; color:#222; white-space:pre-wrap;">service ContractorService {
+  rpc CreateContractorProfile (ContractorProfileRequest) returns (ContractorProfileResponse);
+  rpc GetContractorProfile (GetContractorProfileRequest) returns (ContractorProfileResponse);
+}
+
+// CreateContractorProfile request
+ContractorProfileRequest {
+  name:     "Sunrise Contracting Co."
+  email:    "hello@sunrisecontracting.com"
+  phone:    "+1 (415) 555-0182"
+  services: [KITCHEN_REMODEL, BATHROOM_REMODEL]
+}
+
+// GetContractorProfile request
+GetContractorProfileRequest { id: "8f3a" }</pre>
+      </div>
+    </div>
+
+    <div id="sec-choice" class="sec" style="margin-top:28px; border:1.5px solid #111; border-radius:9px; padding:18px 20px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#111; margin-bottom:10px;">Your API type for this worksheet</div>
+      <div style="display:flex; gap:8px;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; min-width:72px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#111; border:1.5px solid #999; border-radius:7px; padding:8px 18px;">REST</span>
+        <span style="display:inline-flex; align-items:center; justify-content:center; min-width:72px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#111; border:1.5px solid #999; border-radius:7px; padding:8px 18px;">GraphQL</span>
+        <span style="display:inline-flex; align-items:center; justify-content:center; min-width:72px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#111; border:1.5px solid #999; border-radius:7px; padding:8px 18px;">gRPC</span>
+      </div>
+    </div>
+
+    <div id="sec-endpoints" class="sec" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:12px; padding-bottom:8px; border-bottom:2px solid #111;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.8; color:#666;">1</span><h2 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:23px; margin:0; color:#111;">Pages to Endpoints</h2></div><p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; color:#555; margin:12px 0 16px;">For each page, write out the endpoints you want to have. Remember they should be in your chosen API format.</p>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Page</span><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#111;">Homeowner Profile</span></div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666; margin-bottom:8px;">Endpoints</div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">query homeowner(id: ID!)</span></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">mutation updateHomeowner(input: HomeownerInput!)</span></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Page</span><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#111;">Room Capture</span></div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666; margin-bottom:8px;">Endpoints</div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">mutation createRoom(input: RoomInput!)</span></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">mutation addRoomImage(roomId: ID!, file: Upload!)</span></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">query room(id: ID!)</span></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Page</span><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#111;">Project Bidding</span></div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666; margin-bottom:8px;">Endpoints</div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">query availableProjects(filter: ProjectFilter)</span></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">mutation submitBid(input: BidInput!)</span></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">query bid(id: ID!)</span></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Page</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666; margin-bottom:8px;">Endpoints</div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:12px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Page</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666; margin-bottom:8px;">Endpoints</div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:flex; align-items:baseline; gap:8px; margin-bottom:6px;"><span style="color:#111; font-size:13px; line-height:1.4; flex:none;">&bull;</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div></div>
+    </div>
+
+    <div id="sec-details" class="sec" style="margin-top:36px;">
+      <div style="display:flex; align-items:baseline; gap:12px; padding-bottom:8px; border-bottom:2px solid #111;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.8; color:#666;">2</span><h2 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:23px; margin:0; color:#111;">Endpoint Details</h2></div><p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; color:#555; margin:12px 0 16px;">Take the endpoints you just listed and fill in the details for each one: what it does, what it takes in, what it sends back, who can call it, and what happens when it fails.</p>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:6px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Endpoint</span><span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#111;">query contractor(id: ID!)</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">What it does</span><span style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#222;">Fetch one contractor profile for the bidding and comparison screens</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Request</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">id: ID!</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Response</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">name, email, phone, services, availability, photos, reviews</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Who can call it</span><span style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#222;">Any signed-in homeowner, plus the contractor themselves</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Errors</span><span style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#222;">Not found if the id does not exist, unauthorized if not signed in</span></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:6px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Endpoint</span><span style="font-family:'JetBrains Mono',monospace; font-size:13px; color:#111;">mutation createProject(input: ProjectInput!)</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">What it does</span><span style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#222;">Start a new renovation project owned by the signed-in homeowner</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Request</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">title, address, rooms, budgetRange</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Response</span><span style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#222;">id, title, status, createdAt</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Who can call it</span><span style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#222;">Signed-in homeowners only, and they become the owner</span></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Errors</span><span style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#222;">Validation error on a missing address or budget, forbidden for contractors</span></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:6px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Endpoint</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">What it does</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Request</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Response</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Who can call it</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Errors</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div></div>
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:14px;"><div style="display:flex; align-items:baseline; gap:10px; margin-bottom:6px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#666; flex:none;">Endpoint</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">What it does</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Request</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Response</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Who can call it</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div><div style="display:grid; grid-template-columns:130px 1fr; gap:12px; align-items:baseline; padding:7px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#666;">Errors</span><div style="flex:1; min-width:0; border-bottom:1px solid #999; height:20px;"></div></div></div>
+    </div>
+
+    <div id="sec-ai" style="margin:32px 0 4px; border:1px solid #111; border-left:4px solid #111; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"Here are the pages in my product and the endpoints I drafted for each one, in [REST / GraphQL / gRPC]: [paste]. Check that the naming and shapes are consistent, point out any page that is missing an operation it needs, and for each endpoint suggest the request fields, the response fields, who should be allowed to call it, and the errors it should return."</div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

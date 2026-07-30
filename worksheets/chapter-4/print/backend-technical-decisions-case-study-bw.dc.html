@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .q{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(30,28)" stroke="#666" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M2 12 l7 7 L24 4"></path>
+      <path d="M2 34 l7 7 L24 26"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Backend Technical Decisions &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 4 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Backend<br>Technical Decisions</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">You have just been hired as the backend tech lead for Renovation Revolution. There are many decisions to be made before you even start designing. Remember the structure we learned in Chapter 3? Using the criteria of popularity, fit, and cost can help you narrow down the seemingly infinite technical choices. I have broken down the technical choices into logical groups to make it easier to tackle them one at a time. I have also filled in suggested answers. Practice your decision-making by agreeing with me or changing the answers.</p>
+
+    <div id="ai-prompt" class="sec" style="margin:18px 0 4px; border:1.5px solid #111; border-radius:6px; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"I am starting a backend for [describe the product]. Walk me through the key early decisions for requirements, technology, architecture, security, deployment, and workflow, and flag the ones that are hardest to change later."</div>
+    </div>
+
+    <div id="sec-requirements" class="sec" style="margin-top:26px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">1</span><h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Requirements &amp; Planning</h2></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What are the expected data volumes and traffic levels?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Moderate volume with spikes on weekday evenings and during spring and summer renovation season. Autoscale on CPU with headroom to spin up instances before the spikes.</div></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">Are there any regulatory or compliance requirements (e.g. GDPR, CCPA, PCI DSS)?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Not a regulated industry, but we store personal information and handle payments, so follow GDPR and CCPA for user data and PCI DSS for payments.</div></div>
+    </div>
+
+    <div id="sec-technology" class="sec" style="margin-top:26px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">2</span><h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Technology Choices</h2></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">Which programming language and backend framework best fit the project?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Python with Django. The team already knows Python, and Django gives us a mature ORM, built-in admin, and authentication out of the box so we can ship features instead of wiring up plumbing.</div></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What database technology will be used (SQL, NoSQL, in-memory)?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: PostgreSQL, a relational SQL database, for structured project, contractor, and selection data. Add Redis for caching later as we scale.</div></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What API architecture will be implemented (REST, GraphQL, gRPC)?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: GraphQL, so the web and mobile clients can each request exactly the data they need in one call. It is more modern than REST and avoids the over- and under-fetching REST runs into as pages get complex. Consider gRPC for internal service-to-service calls.</div></div>
+    </div>
+
+    <div id="sec-architecture" class="sec" style="margin-top:26px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">3</span><h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Architecture &amp; Design</h2></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">How will the backend be structured (monolith, microservices, serverless)?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Start as a modular monolith and split out services only where scaling actually demands it.</div></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What will the data models and relationships look like?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Users, Projects, Rooms, Images, Quiz Results, and Selections, as mapped in the data modeling worksheet.</div></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">How will scalability and performance be addressed from the start?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Design for horizontal scaling. Plan where caching and indexes will go, but do not optimize prematurely.</div></div>
+    </div>
+
+    <div id="sec-security" class="sec" style="margin-top:26px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">4</span><h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Security &amp; Authentication</h2></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What authentication and authorization mechanisms are required?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Role-Based Access Control (RBAC) with a small set of roles: customer, contractor, vendor, and admin.</div></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">How will sensitive data be stored and transmitted securely?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Encrypt data in transit and at rest using a vetted library. Never roll our own encryption.</div></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What security best practices need to be enforced (input validation, error handling, rate limiting)?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Input validation, safe error handling, and rate limiting built in from day one.</div></div>
+    </div>
+
+    <div id="sec-deployment" class="sec" style="margin-top:26px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">5</span><h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Deployment &amp; Operations</h2></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">Where will the backend be hosted (cloud provider, on-premises)?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: AWS. A major public cloud gives us managed autoscaling and databases so we do not maintain hardware, and it is easy to hire engineers with common AWS skills.</div></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">How will deployment, monitoring, and logging be set up?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Automated CI/CD with GitHub Actions for low-downtime deploys and easy rollback. Ship metrics, logs, and traces to a hosted observability tool from day one.</div></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What is the backup and disaster recovery plan?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Automated daily backups of the PostgreSQL database with point-in-time recovery, plus a restore drill each quarter so we know it actually works.</div></div>
+    </div>
+
+    <div id="sec-collaboration" class="sec" style="margin-top:26px;">
+      <div style="display:flex; align-items:baseline; gap:13px; margin-bottom:14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#666;">6</span><h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Collaboration &amp; Workflow</h2></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">What is the version control and branching strategy?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Git with short-lived feature branches and reviewed pull requests.</div></div>
+      <div class="q" style="margin-bottom:16px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">How will tasks, issues, and documentation be tracked and managed?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: A ticketing system for work, plus living documentation kept somewhere everyone can find it.</div></div>
+      <div class="q" style="margin-bottom:4px;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; margin-bottom:6px;">Who are the key stakeholders and points of contact for project decisions?</div><div style="border:1px solid #ddd; border-radius:7px; min-height:52px; margin-bottom:6px;"></div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; line-height:1.5; color:#777;">Example: Product for the customer voice, DevOps for infrastructure, plus vendor and contractor partners.</div></div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

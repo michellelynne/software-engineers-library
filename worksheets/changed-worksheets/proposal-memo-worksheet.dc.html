@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#177E89 !important; border-bottom-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(34,28)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linejoin="round">
+      <rect x="0" y="0" width="32" height="44" rx="2"></rect>
+      <line x1="8" y1="13" x2="24" y2="13" stroke="#DB3A34"></line>
+      <line x1="8" y1="22" x2="24" y2="22"></line>
+      <line x1="8" y1="31" x2="18" y2="31"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Proposal Memo</span>
+    <span id="ws-mode" style="font-size:12px; color:#9178B5; white-space:nowrap;">Brainstorm your idea</span>
+  </div>
+  <div style="display:flex; gap:9px; align-items:center;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 2 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Proposal Memo</h1>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">Passive engineers are junior engineers. Senior engineers are proactive. Proposing a new idea is a win for you, even when it is not approved, because it demonstrates your initiative. A memo is also a great way to learn the organization memo standards, how leadership reacts to new ideas, how your team gives feedback, and how to connect your goals to leadership's goals. This worksheet is for brainstorming ideas; you should use the organization's template for your memo.</p>
+
+    <!-- SECTION A: AUDIENCE -->
+    <div class="sec" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">1</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Audience &amp; Goal</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 12px;">The audience is usually your manager, but they may share it upward or ask for stakeholder feedback. Use your <a href="../chapter-2/interactive/organization-context.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #bfe0e2;">Organization Context</a> research to name a goal of theirs that this memo will address.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:6px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#3A2449;">Who is this memo for?</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#3A2449;">Which of their goals does this memo address?</div>
+      </div>
+      <div data-pairs="aud"></div>
+      <button type="button" data-add-pair="aud" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add audience</button>
+    </div>
+
+    <!-- SECTION 2: BLOCKERS -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">2</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Blockers</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 4px;">List what is preventing that goal from being reached today.</p>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:0 0 12px;">Examples: the page takes eight seconds to load on mobile, so users drop off; new sign-ups need three support calls before they can start; the team ships slowly because every release is deployed by hand.</p>
+      <div data-list="blockers"></div>
+      <button type="button" data-add="blockers" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add blocker</button>
+    </div>
+
+    <!-- SECTION 3: IDEAS -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">3</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Ideas You Can Solve</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 4px;">List ideas for solving those blockers that are within your ability to solve.</p>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:0 0 12px;">Examples: add caching and lazy-load images to speed up the page; build a self-service onboarding flow; set up an automated deployment pipeline.</p>
+      <div data-list="ideas"></div>
+      <button type="button" data-add="ideas" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add idea</button>
+    </div>
+
+    <!-- SECTION 4: TOP 3 OPPORTUNITIES -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">4</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Top 3 Opportunities</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 4px;">Pick the three strongest ideas and weigh each one. The pros and cons make the trade-offs clear before you commit to a single proposal.</p>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:0 0 14px;">Example: "Automate the deployment pipeline." Pro: faster, safer releases; frees engineering time; aligns with the velocity goal. Con: upfront setup cost; the team needs to learn the new tooling.</p>
+      <div data-opps="1"></div>
+    </div>
+
+    <!-- SECTION 5: ROI & WHY NOT ADDRESSED -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">5</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">ROI &amp; Why It Has Waited</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 4px;">For those same three opportunities, weigh the return on investment, then name why it has not been done yet. A strong idea with good ROI usually has a reason it has waited, and naming it shows you understand the context.</p>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:0 0 14px;">ROI examples: new revenue, reduced churn, engineering time saved, against the cost of build and upkeep. Why-it-waited examples: it was overlooked, left out of the MVP, blocked by tech debt, or the resources were not there until now.</p>
+      <div data-roi="1"></div>
+    </div>
+
+    <!-- SECTION 6: CHOOSE THE STRONGEST -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">6</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Choose the Strongest Idea</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 12px;">Pick one to propose. The strongest idea is a combination of high ROI and feasibility with your current technology and resources.&nbsp;</p>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#3A2449; margin-bottom:5px;">The idea you will propose</div>
+      <input class="save" type="text" name="chosen" style="width:100%; border:1.5px solid #cdd5da; border-radius:5px; padding:8px 11px; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; outline:none; box-sizing:border-box; margin-bottom:12px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#3A2449; margin-bottom:5px;">Why you chose this one</div>
+      <div data-field="chosenwhy"></div>
+    </div>
+
+    <!-- SECTION 7: DRAFT THE MEMO -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">7</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Draft the Memo</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">This is the content to help you write the memo. Write it addressed to your audience, then move it into your organization's template.</p>
+
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">What is the problem?</div>
+      <div data-field="memo-problem" style="margin-bottom:16px;"></div>
+
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">What is the solution?</div>
+      <div data-field="memo-solution" style="margin-bottom:16px;"></div>
+
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">What other solutions were researched but not chosen, and why?</div>
+      <div data-field="memo-other"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://discord.gg/C5Cunu2gT" style="color:#177E89; text-decoration:none;"><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#177E89&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; },
+  &quot;showExamples&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-proposal-memo-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.buildPairs(root, saved);
+    this.buildLists(root, saved);
+    this.buildOpps(root, saved);
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('click', (e)=>{
+      const pairBtn = e.target.closest('[data-add-pair]');
+      if(pairBtn){ e.preventDefault(); this.addPair(root, pairBtn.getAttribute('data-add-pair'), true); this._save(); return; }
+      const btn = e.target.closest('[data-add]');
+      if(!btn) return;
+      e.preventDefault();
+      this.addLine(root, btn.getAttribute('data-add'), true);
+      this._save();
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('.hint').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+  }
+  pairHTML(prefix, i){
+    const inp = (suffix, ph) => '<input class="save" type="text" name="'+prefix+'-'+i+'-'+suffix+'" placeholder="'+ph+'" style="width:100%; border:1.5px solid #cdd5da; border-radius:5px; padding:8px 11px; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; outline:none; box-sizing:border-box;">';
+    return '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:8px;">'+
+      inp('who', i===0?'e.g. my manager, the VP of Product':'')+
+      inp('goal', i===0?'e.g. increase the number of customers':'')+
+    '</div>';
+  }
+  buildPairs(root, saved){
+    const host = root.querySelector('[data-pairs="aud"]');
+    if(!host) return;
+    let max = 0;
+    Object.keys(saved||{}).forEach(k=>{ const m = k.match(/^aud-(\d+)-/); if(m) max = Math.max(max, parseInt(m[1],10)); });
+    let h = '';
+    for(let i=0;i<=max;i++) h += this.pairHTML('aud', i);
+    host.innerHTML = h;
+  }
+  addPair(root, prefix, focus){
+    const host = root.querySelector('[data-pairs="'+prefix+'"]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.pairHTML(prefix, next));
+    if(focus){ const ins = host.lastElementChild.querySelectorAll('input'); if(ins[0]) ins[0].focus(); }
+  }
+  lineHTML(prefix, i){
+    return '<div style="display:flex; align-items:center; gap:9px; margin-bottom:6px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span>'+
+      '<input class="save" type="text" name="'+prefix+'-'+i+'" style="flex:1; min-width:0; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; padding:6px 2px; outline:none; box-sizing:border-box;"></div>';
+  }
+  buildLists(root, saved){
+    ['blockers','ideas'].forEach(prefix=>{
+      const host = root.querySelector('[data-list="'+prefix+'"]');
+      if(!host) return;
+      let max = 2;
+      Object.keys(saved||{}).forEach(k=>{ const m = k.match(new RegExp('^'+prefix+'-(\\d+)$')); if(m) max = Math.max(max, parseInt(m[1],10)); });
+      let h = '';
+      for(let i=0;i<=max;i++) h += this.lineHTML(prefix, i);
+      host.innerHTML = h;
+    });
+  }
+  addLine(root, prefix, focus){
+    const host = root.querySelector('[data-list="'+prefix+'"]');
+    if(!host) return;
+    const next = host.querySelectorAll('input').length;
+    host.insertAdjacentHTML('beforeend', this.lineHTML(prefix, next));
+    if(focus){ const ins = host.querySelectorAll('input'); ins[ins.length-1].focus(); }
+  }
+  buildOpps(root, saved){
+    const host = root.querySelector('[data-opps]');
+    if(!host) return;
+    let h = '';
+    for(let i=1;i<=3;i++){
+      h += '<div style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">'+
+        '<div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">'+
+          '<span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:12px; flex:none;">'+i+'</span>'+
+          '<input class="save" type="text" name="opp-'+i+'-title" placeholder="Opportunity '+i+'" style="flex:1; min-width:0; border:none; background:transparent; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:14px; color:#3A2449; outline:none;">'+
+        '</div>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr;">'+
+          '<div style="padding:12px 14px; border-right:1px solid #eef2f4;">'+
+            '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Pros</div>'+
+            '<textarea class="save" name="opp-'+i+'-pros" rows="3" style="width:100%; border:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449; padding:0; outline:none; box-sizing:border-box; resize:vertical;"></textarea>'+
+          '</div>'+
+          '<div style="padding:12px 14px;">'+
+            '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#DB3A34; margin-bottom:7px;">Cons</div>'+
+            '<textarea class="save" name="opp-'+i+'-cons" rows="3" style="width:100%; border:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449; padding:0; outline:none; box-sizing:border-box; resize:vertical;"></textarea>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }
+    host.innerHTML = h;
+    // ROI + why-it-waited cards (mirror the top 3)
+    const roiHost = root.querySelector('[data-roi]');
+    if(roiHost){
+      let rh = '';
+      for(let i=1;i<=3;i++){
+        rh += '<div style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">'+
+          '<div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">'+
+            '<span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:12px; flex:none;">'+i+'</span>'+
+            '<input class="save" type="text" name="roi-'+i+'-title" placeholder="Opportunity '+i+'" style="flex:1; min-width:0; border:none; background:transparent; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:14px; color:#3A2449; outline:none;">'+
+          '</div>'+
+          '<div style="display:grid; grid-template-columns:1fr 1fr;">'+
+            '<div style="padding:12px 14px; border-right:1px solid #eef2f4;">'+
+              '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Return on investment</div>'+
+              '<textarea class="save" name="roi-'+i+'-roi" rows="3" style="width:100%; border:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449; padding:0; outline:none; box-sizing:border-box; resize:vertical;"></textarea>'+
+            '</div>'+
+            '<div style="padding:12px 14px;">'+
+              '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#9178B5; margin-bottom:7px;">Why it has waited</div>'+
+              '<textarea class="save" name="roi-'+i+'-why" rows="3" style="width:100%; border:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449; padding:0; outline:none; box-sizing:border-box; resize:vertical;"></textarea>'+
+            '</div>'+
+          '</div>'+
+        '</div>';
+      }
+      roiHost.innerHTML = rh;
+    }
+    // single-field textareas
+    ['chosenwhy','memo-problem','memo-solution','memo-other'].forEach(name=>{
+      const host2 = root.querySelector('[data-field="'+name+'"]');
+      if(host2) host2.innerHTML = '<textarea class="save" name="'+name+'" rows="3" style="width:100%; border:1.5px solid #cdd5da; border-radius:5px; background:#fff; font-family:\'Lato\',sans-serif; font-size:14px; line-height:1.55; color:#3A2449; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>';
+    });
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          this.buildPairs(root, {});
+          this.buildLists(root, {});
+          this.buildOpps(root, {});
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

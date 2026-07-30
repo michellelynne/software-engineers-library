@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#c2a6a3; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    .seg button:not(.on){ display:none !important; }
+    .piecerow textarea, .card input, .card textarea{ border:none !important; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#DB3A34"></rect>
+    <g transform="translate(26,30)" stroke="#003049" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4 h40 v40 h-40 z"></path>
+      <line x1="24" y1="4" x2="24" y2="44"></line>
+      <path d="M9 18 l4 4 l6 -8"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Build vs Buy</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#DB3A34; border:1.5px solid #DB3A34; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:960px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#DB3A34; color:#003049; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#003049;">Chapter 3 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#003049;">Build vs Buy</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#6e1a16; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#003049; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">For each user story, I&rsquo;ve listed the technical components it requires. Do you build or buy it? Think about whether the component is a universal issue, unique to your industry, or part of your organization&rsquo;s core competency. This is filled in with user stories and components from the Renovation Revolution case study.</p>
+
+    <div class="sec" style="margin:18px 0 4px; background:#fbecea; border-left:3px solid #DB3A34; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#c1352f; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#7a201b;">"Here is a technical component of my product: [describe it]. Are there existing vendors or open-source tools that address this issue? Should I build or buy?"</div>
+    </div>
+
+    <div id="cards" style="margin-top:22px;"></div>
+
+    <button type="button" data-add-story="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:1.5px dashed #cdd5da; border-radius:8px; padding:12px 0; width:100%; margin-top:16px; cursor:pointer;">+ Add another user story</button>
+
+    <div style="margin-top:38px; padding-top:22px; border-top:2px solid #DB3A34;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#c1352f; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#c1352f; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#DB3A34&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-build-vs-buy-stories-v1';
+    this.DECISIONS = [
+      { v:'Build', c:'#177E89' },
+      { v:'Buy',   c:'#003049' }
+    ];
+    this.stories = [
+      { story:'As a homeowner, I want to scan my room with my phone so that the application can create a 3D model of my space.',
+        components:['Authorization & Authentication','3D Image Capture'] },
+      { story:'As a homeowner, I want the application to analyze my room and provide a comprehensive list of all possible upgrades so that I can see all my renovation options in one place.',
+        components:['3D Image Analyzer','Datastore of renovation options','Algorithm for matching an image to data'] },
+      { story:'As a homeowner, I want to take a style quiz before viewing options, so the application can recommend items that fit my taste and reduce decision fatigue.',
+        components:['Interactive Quiz','Save results to the datastore','Ability to write and modify questions','User profile saved with quiz results'] },
+      { story:'As a homeowner, I want to view upgrade options visually on the 3D model or as a list, so I can easily understand what each change would look like in my space.',
+        components:['3D image replacement'] },
+      { story:'As a homeowner, I want to select specific items for each upgrade from a curated, style-matched list, so I am not overwhelmed by too many choices.',
+        components:['Algorithm for matching choices to style results'] },
+      { story:'As a homeowner, I want the application to ensure that all required additional or supporting parts are included in my order so that nothing is forgotten on installation day.',
+        components:['Data store connecting parts','Part taxonomy'] },
+      { story:'As a homeowner, I want to send my final selections directly to my contractor so they can review and finalize the order without confusion.',
+        components:['Authentication sharing'] }
+    ];
+
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = null;
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || 'null'); }catch(e){}
+    const hasContent = Array.isArray(saved) && saved.some(s=>
+      (s.story && s.story.trim()) || (s.components||[]).some(c=> (c.name && c.name.trim()) || (c.why && c.why.trim()) || c.decision)
+    );
+    if(!hasContent){ try{ localStorage.removeItem(this.key); }catch(e){} }
+    const data = hasContent ? saved : this.defaults();
+    this.render(root, data);
+    this.bind(root);
+    this.setupAiButtons(root);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+
+  escAttr(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  escHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  colorFor(v){ const d = this.DECISIONS.find(x=> x.v===v); return d ? d.c : '#003049'; }
+
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#DB3A34';
+  }
+  autosize(el){ if(!el || el.tagName !== 'TEXTAREA') return; el.style.height='auto'; el.style.height=Math.max(el.scrollHeight,22)+'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea').forEach(el=> this.autosize(el)); }
+
+  defaults(){
+    return this.stories.map(s=> ({
+      story: s.story,
+      components: s.components.map(name=> ({ name:name, decision:'', why:'' }))
+    }));
+  }
+
+  segBtn(v){
+    const base = 'padding:5px 12px; border:1.5px solid #cdd5da; border-radius:999px; background:#fff; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:.02em; color:#7a8b93; cursor:pointer; white-space:nowrap; line-height:1.1;';
+    return '<button type="button" data-val="'+v+'" style="'+base+'">'+v+'</button>';
+  }
+  compRowHTML(c, ci){
+    const bt = ci > 0 ? 'border-top:1px solid #f3eae8;' : '';
+    const nameStyle = 'flex:1 1 200px; min-width:150px; border:none; border-bottom:1.5px solid #d8cfcc; background:transparent; font-family:\'Fraunces\',serif; font-weight:600; font-size:15px; color:#003049; padding:3px 2px; outline:none;';
+    const whyStyle = 'width:100%; resize:none; overflow:hidden; margin-top:8px; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#1f2d33; padding:8px 10px; outline:none; box-sizing:border-box;';
+    const rm = 'width:22px; height:22px; border:none; background:transparent; color:#c9b8b5; font-size:17px; line-height:1; cursor:pointer; flex:none;';
+    const segs = this.DECISIONS.map(d=> this.segBtn(d.v)).join('');
+    return '<div class="piecerow" data-status="'+this.escAttr(c.decision||'')+'" style="padding:11px 0; '+bt+'">'+
+      '<div style="display:flex; align-items:center; gap:8px 12px; flex-wrap:wrap;">'+
+        '<input data-field="name" type="text" value="'+this.escAttr(c.name)+'" placeholder="technical component" style="'+nameStyle+'">'+
+        '<span class="seg" style="display:flex; gap:6px; flex-wrap:wrap;">'+segs+'</span>'+
+        '<button type="button" data-remove-comp class="no-print" title="Remove component" style="'+rm+'">&times;</button>'+
+      '</div>'+
+      '<textarea data-field="why" rows="1" placeholder="Why?" style="'+whyStyle+'">'+this.escHtml(c.why)+'</textarea>'+
+    '</div>';
+  }
+  cardHTML(s, si){
+    const comps = (s.components && s.components.length) ? s.components : [{ name:'', decision:'', why:'' }];
+    const rows = comps.map((c,ci)=> this.compRowHTML(c,ci)).join('');
+    const storyStyle = 'flex:1 1 auto; min-width:0; resize:none; overflow:hidden; border:none; background:transparent; font-family:\'Fraunces\',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#003049; padding:1px 0; outline:none; box-sizing:border-box;';
+    return '<div class="card" data-si="'+si+'" style="border:1px solid #ecd8d5; border-radius:11px; overflow:hidden; margin-top:14px;">'+
+      '<div style="background:#faf6f5; padding:14px 18px; border-bottom:1px solid #ecd8d5; display:flex; align-items:flex-start; gap:12px;">'+
+        '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:26px; color:#DB3A34; line-height:.85; flex:none; margin-top:1px;">'+(si+1)+'</span>'+
+        '<textarea data-field="story" rows="1" placeholder="As a [user], I want to [do something], so that [benefit]." style="'+storyStyle+'">'+this.escHtml(s.story)+'</textarea>'+
+      '</div>'+
+      '<div style="padding:4px 18px 12px;">'+ rows +
+        '<button type="button" data-add-comp class="no-print" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:11px; color:#003049; background:transparent; border:none; padding:11px 0 2px; cursor:pointer;">+ Add a component</button>'+
+      '</div>'+
+    '</div>';
+  }
+
+  render(root, data){
+    const host = root.querySelector('#cards');
+    if(!host) return;
+    host.innerHTML = (data||[]).map((s,si)=> this.cardHTML(s,si)).join('');
+    root.querySelectorAll('.piecerow').forEach(r=> this.styleRow(r));
+    requestAnimationFrame(()=> this.autosizeAll(root));
+  }
+
+  styleRow(row){
+    const st = row.getAttribute('data-status') || '';
+    row.querySelectorAll('.seg [data-val]').forEach(b=>{
+      const v = b.getAttribute('data-val');
+      const on = (v === st && st !== '');
+      const color = this.colorFor(v);
+      b.classList.toggle('on', on);
+      b.style.background = on ? color : '#fff';
+      b.style.color = on ? '#fff' : '#7a8b93';
+      b.style.borderColor = on ? color : '#cdd5da';
+    });
+  }
+
+  collect(root){
+    const out = [];
+    root.querySelectorAll('.card').forEach(card=>{
+      const st = card.querySelector('[data-field="story"]');
+      const s = { story: st ? st.value : '', components: [] };
+      card.querySelectorAll('.piecerow').forEach(row=>{
+        const nm = row.querySelector('[data-field="name"]');
+        const wh = row.querySelector('[data-field="why"]');
+        s.components.push({ name: nm ? nm.value : '', decision: row.getAttribute('data-status') || '', why: wh ? wh.value : '' });
+      });
+      out.push(s);
+    });
+    return out;
+  }
+  save(root){ try{ localStorage.setItem(this.key, JSON.stringify(this.collect(root))); }catch(e){} }
+  idxOf(list, el){ return [...list].indexOf(el); }
+
+  bind(root){
+    root.addEventListener('input', (e)=>{
+      if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target);
+      this.save(root);
+    });
+    root.addEventListener('click', (e)=>{
+      const seg = e.target.closest('.seg [data-val]');
+      if(seg){
+        e.preventDefault();
+        const row = seg.closest('.piecerow');
+        const v = seg.getAttribute('data-val');
+        const cur = row.getAttribute('data-status') || '';
+        row.setAttribute('data-status', cur === v ? '' : v);
+        this.styleRow(row);
+        this.save(root);
+        return;
+      }
+      const acomp = e.target.closest('[data-add-comp]');
+      if(acomp){
+        e.preventDefault();
+        const card = acomp.closest('.card');
+        const si = this.idxOf(root.querySelectorAll('.card'), card);
+        const data = this.collect(root);
+        data[si].components.push({ name:'', decision:'', why:'' });
+        this.render(root, data);
+        this.save(root);
+        const rows = root.querySelectorAll('.card')[si].querySelectorAll('.piecerow');
+        const inp = rows[rows.length-1].querySelector('[data-field="name"]');
+        if(inp) inp.focus();
+        return;
+      }
+      const rm = e.target.closest('[data-remove-comp]');
+      if(rm){
+        e.preventDefault();
+        const card = rm.closest('.card');
+        const row = rm.closest('.piecerow');
+        const si = this.idxOf(root.querySelectorAll('.card'), card);
+        const ci = this.idxOf(card.querySelectorAll('.piecerow'), row);
+        const data = this.collect(root);
+        data[si].components.splice(ci, 1);
+        if(!data[si].components.length) data[si].components.push({ name:'', decision:'', why:'' });
+        this.render(root, data);
+        this.save(root);
+        return;
+      }
+      const astory = e.target.closest('[data-add-story]');
+      if(astory){
+        e.preventDefault();
+        const data = this.collect(root);
+        data.push({ story:'', components:[{ name:'', decision:'', why:'' }] });
+        this.render(root, data);
+        this.save(root);
+        const cards = root.querySelectorAll('.card');
+        const st = cards[cards.length-1].querySelector('[data-field="story"]');
+        if(st) st.focus();
+        return;
+      }
+    });
+  }
+
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim().replace(/^"|"$/g,'');
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#DB3A34; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#c1352f; background:transparent; border:1.5px solid #e6b3b0; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied, paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution user stories and components?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){ this.render(root, this.defaults()); this.save(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

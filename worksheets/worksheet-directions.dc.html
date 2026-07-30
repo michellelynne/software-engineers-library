@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  body{ margin:0; }
+  .pill{ display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:7px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; }
+  .pill-off{ background:#fff; color:#6a7780; border:1.5px solid #cdd5da; }
+</style>
+</helmet>
+
+<!-- ===================== DIRECTION A — CLEAN & MINIMAL ===================== -->
+<div style="position:absolute; left:0px; top:0px; width:760px;">
+  <div data-drags-parent="1" style="cursor:grab; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Direction A · Clean &amp; Minimal</div>
+  <div data-drags-parent="1" style="cursor:grab; font-family:'Lato',sans-serif; font-size:12.5px; color:#5a6a72; margin-bottom:14px; max-width:560px; line-height:1.5;">White page, crisp grid, Bebas chapter numerals. Maximum writing room, reads like a clean reference sheet.</div>
+  <div style="background:#fff; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.10); padding:52px 52px 40px; box-sizing:border-box; font-family:'Lato',sans-serif; color:#003049;">
+
+    <div style="font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#177E89;">Software Engineer's Library · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:36px; line-height:1.04; margin:11px 0 0; color:#003049;">Senior Engineer Skills<br>Self-Assessment</h1>
+    <div style="height:3px; width:60px; background:#DB3A34; margin:18px 0;"></div>
+    <p style="font-size:14px; line-height:1.6; max-width:62ch; margin:0; color:#2b4150;">The first day starts with a pop quiz. Rate yourself honestly on each skill &mdash; you're the only one who'll see it. Skills are grouped by chapter so you can read more on each one.</p>
+
+    <!-- rubric -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:11px; margin-top:26px;">
+      <div style="background:#f3eff7; border-top:4px solid #9178B5; border-radius:3px; padding:13px 13px 14px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#3A2449; display:flex; align-items:center; gap:7px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:5px;background:#9178B5;color:#fff;font-size:11px;">J</span>Junior</div>
+        <p style="font-size:11px; line-height:1.5; margin:8px 0 0; color:#3A2449;">Heard of it or tried a tutorial. Not used professionally yet.</p>
+      </div>
+      <div style="background:#eaf4f4; border-top:4px solid #177E89; border-radius:3px; padding:13px 13px 14px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#0f5a62; display:flex; align-items:center; gap:7px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:5px;background:#177E89;color:#fff;font-size:11px;">M</span>Mid</div>
+        <p style="font-size:11px; line-height:1.5; margin:8px 0 0; color:#13474e;">Done with guidance. Ready to try solo, not yet to teach.</p>
+      </div>
+      <div style="background:#e6edf1; border-top:4px solid #003049; border-radius:3px; padding:13px 13px 14px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#003049; display:flex; align-items:center; gap:7px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:5px;background:#003049;color:#fff;font-size:11px;">S</span>Senior</div>
+        <p style="font-size:11px; line-height:1.5; margin:8px 0 0; color:#1f3a48;">Done it solo repeatedly and ready to coach others.</p>
+      </div>
+    </div>
+
+    <!-- chapter -->
+    <div style="margin-top:26px; display:flex; align-items:baseline; gap:11px;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">03</span>
+      <span style="font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#177E89;">Chapter 3</span>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 116px 190px; gap:16px; padding-bottom:6px; margin-top:6px; border-bottom:2px solid #003049; font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#9aa7af;">
+      <div>Skill</div><div style="text-align:center;">Level</div><div>Notes / Evidence</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 116px 190px; gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid #eef2f4;">
+      <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px;">Build vs Buy</div><div style="font-size:11.5px; line-height:1.45; color:#65757e; margin-top:2px;">Evaluate building in-house vs adopting an existing tool.</div></div>
+      <div style="display:flex; gap:5px; justify-content:center;"><span class="pill" style="background:#9178B5;color:#fff;border:1.5px solid #9178B5;">J</span><span class="pill pill-off">M</span><span class="pill pill-off">S</span></div>
+      <div style="border-bottom:1.5px solid #cdd5da; height:21px;"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 116px 190px; gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid #eef2f4;">
+      <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px;">Technical Evaluation</div><div style="font-size:11.5px; line-height:1.45; color:#65757e; margin-top:2px;">Judge choices on popularity, fit, and cost.</div></div>
+      <div style="display:flex; gap:5px; justify-content:center;"><span class="pill pill-off">J</span><span class="pill" style="background:#177E89;color:#fff;border:1.5px solid #177E89;">M</span><span class="pill pill-off">S</span></div>
+      <div style="border-bottom:1.5px solid #cdd5da; height:21px;"></div>
+    </div>
+
+    <div style="margin-top:32px; padding-top:15px; border-top:2px solid #177E89;">
+      <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Michelle Brenner — <span style="color:#177E89;">Software Engineer's Library</span></div>
+      <div style="margin-top:7px; font-family:'Lato',sans-serif; font-size:11px; color:#5a6a72;">michellebrenner.com · linkedin.com/in/michellebrenner · @michellebspeaks · GitHub · Discord</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DIRECTION B — WARM & EDITORIAL ===================== -->
+<div style="position:absolute; left:850px; top:0px; width:760px;">
+  <div data-drags-parent="1" style="cursor:grab; font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#9178B5; margin-bottom:7px;">Direction B · Warm &amp; Editorial</div>
+  <div data-drags-parent="1" style="cursor:grab; font-family:'Lato',sans-serif; font-size:12.5px; color:#5a6a72; margin-bottom:14px; max-width:560px; line-height:1.5;">Cream paper, deep-plum masthead, Fraunces serif headings. Feels lifted straight from the book's pages.</div>
+  <div style="background:#faf6f0; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.10); box-sizing:border-box; font-family:'Lato',sans-serif; color:#3A2449; overflow:hidden;">
+
+    <div style="background:#3A2449; color:#faf6f0; padding:34px 52px 30px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:#bda9d4;">Software Engineer's Library</div>
+        <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; line-height:1.02; margin:10px 0 0;">Skills<br>Self-Assessment</h1>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:64px; line-height:.8; color:#9178B5;">W1</div>
+    </div>
+
+    <div style="padding:30px 52px 44px;">
+      <p style="font-family:'Fraunces',serif; font-size:16px; line-height:1.6; font-weight:400; margin:0; color:#3A2449;">The first day starts with a pop quiz. Rate yourself honestly on each skill &mdash; you're the only one who'll see it. Skills are grouped by chapter so you can read more on each.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:11px; margin-top:24px;">
+        <div style="background:#efe8f3; border-radius:2px; padding:13px 14px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#3A2449;">J · Junior</div><p style="font-size:11px; line-height:1.5; margin:7px 0 0;">Heard of it or tried a tutorial. Not used professionally.</p></div>
+        <div style="background:#e3eeec; border-radius:2px; padding:13px 14px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#0f5a62;">M · Mid</div><p style="font-size:11px; line-height:1.5; margin:7px 0 0;">Done with guidance. Ready to try solo.</p></div>
+        <div style="background:#e2e7eb; border-radius:2px; padding:13px 14px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#003049;">S · Senior</div><p style="font-size:11px; line-height:1.5; margin:7px 0 0;">Done solo repeatedly, ready to coach.</p></div>
+      </div>
+
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:21px; margin:30px 0 0;">Chapter 3</h2>
+      <div style="height:3px; width:48px; background:#DB3A34; margin:9px 0 14px;"></div>
+
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:14px; padding:13px 0; border-bottom:1px solid #e4dcd1;">
+        <div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449;">Build vs Buy</div><div style="font-family:'Fraunces',serif; font-size:12px; line-height:1.5; color:#6f5f7a; margin-top:2px;">Evaluate building in-house vs adopting an existing tool.</div></div>
+        <div style="display:flex; gap:5px;"><span class="pill" style="background:#9178B5;color:#fff;border:1.5px solid #9178B5;">J</span><span class="pill" style="background:#fff;color:#6a7780;border:1.5px solid #d8cebf;">M</span><span class="pill" style="background:#fff;color:#6a7780;border:1.5px solid #d8cebf;">S</span></div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:14px; padding:13px 0; border-bottom:1px solid #e4dcd1;">
+        <div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449;">Technical Evaluation</div><div style="font-family:'Fraunces',serif; font-size:12px; line-height:1.5; color:#6f5f7a; margin-top:2px;">Judge choices on popularity, fit, and cost.</div></div>
+        <div style="display:flex; gap:5px;"><span class="pill" style="background:#fff;color:#6a7780;border:1.5px solid #d8cebf;">J</span><span class="pill" style="background:#177E89;color:#fff;border:1.5px solid #177E89;">M</span><span class="pill" style="background:#fff;color:#6a7780;border:1.5px solid #d8cebf;">S</span></div>
+      </div>
+
+      <div style="margin-top:30px; padding-top:15px; border-top:1px solid #d8cebf;">
+        <div style="font-family:'Fraunces',serif; font-weight:700; font-size:14px; color:#3A2449;">Michelle Brenner · Software Engineer's Library</div>
+        <div style="margin-top:6px; font-family:'Lato',sans-serif; font-size:11px; color:#6f5f7a;">michellebrenner.com · linkedin.com/in/michellebrenner · @michellebspeaks · GitHub · Discord</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DIRECTION C — BOLD & COLORFUL ===================== -->
+<div style="position:absolute; left:1700px; top:0px; width:760px;">
+  <div data-drags-parent="1" style="cursor:grab; font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#DB3A34; margin-bottom:7px;">Direction C · Bold &amp; Colorful</div>
+  <div data-drags-parent="1" style="cursor:grab; font-family:'Lato',sans-serif; font-size:12.5px; color:#5a6a72; margin-bottom:14px; max-width:560px; line-height:1.5;">Full palette, blocky color fields, oversized type. High energy and modern — the levels read as a color system.</div>
+  <div style="background:#fff; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,.10); box-sizing:border-box; font-family:'Lato',sans-serif; color:#003049; overflow:hidden;">
+
+    <div style="background:#003049; padding:34px 44px 30px; color:#fff; position:relative;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#5fd0c5;">Software Engineer's Library</div>
+      <h1 style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:40px; line-height:.98; letter-spacing:-.02em; margin:9px 0 0;">SKILLS SELF-<br>ASSESSMENT</h1>
+      <div style="display:flex; gap:6px; margin-top:16px;"><span style="height:8px; width:64px; background:#9178B5; border-radius:4px;"></span><span style="height:8px; width:64px; background:#177E89; border-radius:4px;"></span><span style="height:8px; width:64px; background:#DB3A34; border-radius:4px;"></span></div>
+    </div>
+
+    <div style="padding:28px 44px 42px;">
+      <p style="font-size:14.5px; line-height:1.55; margin:0; color:#2b4150; font-weight:400;">The first day starts with a pop quiz. Rate yourself honestly on each skill &mdash; you're the only one who'll see it.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0; margin-top:22px; border-radius:8px; overflow:hidden;">
+        <div style="background:#9178B5; color:#fff; padding:15px 15px 17px;"><div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px;">J</div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-top:1px;">Junior</div><p style="font-size:11px; line-height:1.45; margin:8px 0 0; opacity:.92;">Heard of it or tried a tutorial.</p></div>
+        <div style="background:#177E89; color:#fff; padding:15px 15px 17px;"><div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px;">M</div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-top:1px;">Mid</div><p style="font-size:11px; line-height:1.45; margin:8px 0 0; opacity:.92;">Done with guidance, ready to solo.</p></div>
+        <div style="background:#003049; color:#fff; padding:15px 15px 17px;"><div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px;">S</div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; margin-top:1px;">Senior</div><p style="font-size:11px; line-height:1.45; margin:8px 0 0; opacity:.92;">Done solo repeatedly, can coach.</p></div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px; margin-top:26px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:13px; color:#fff; background:#DB3A34; padding:5px 11px; border-radius:6px;">CH 3</span>
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#003049;">Technical Decision Making</span>
+      </div>
+
+      <div style="margin-top:14px; background:#f5f8f9; border-radius:9px; padding:6px 14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid #e3ebee;">
+          <div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px;">Build vs Buy</div><div style="font-size:11.5px; line-height:1.45; color:#65757e; margin-top:2px;">Build in-house vs adopt an existing tool.</div></div>
+          <div style="display:flex; gap:5px;"><span class="pill" style="background:#9178B5;color:#fff;border:1.5px solid #9178B5;">J</span><span class="pill pill-off">M</span><span class="pill pill-off">S</span></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:14px; padding:12px 0;">
+          <div style="flex:1;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px;">Technical Evaluation</div><div style="font-size:11.5px; line-height:1.45; color:#65757e; margin-top:2px;">Judge on popularity, fit, and cost.</div></div>
+          <div style="display:flex; gap:5px;"><span class="pill pill-off">J</span><span class="pill" style="background:#177E89;color:#fff;border:1.5px solid #177E89;">M</span><span class="pill pill-off">S</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:28px; padding:15px 18px; background:#003049; border-radius:9px; color:#fff;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:800; font-size:13.5px;">Michelle Brenner</div>
+        <div style="margin-top:6px; font-family:'Lato',sans-serif; font-size:11px; color:#a9c6cb;">michellebrenner.com · linkedin.com/in/michellebrenner · @michellebspeaks · GitHub · Discord</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

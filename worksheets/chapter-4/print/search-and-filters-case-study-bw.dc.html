@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(30,30)" fill="none" stroke="#666" stroke-width="4">
+      <circle cx="16" cy="16" r="14"></circle>
+      <line x1="26" y1="26" x2="40" y2="40"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Search &amp; Filters &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:900px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 4 &middot; System Design &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Search &amp; Filters</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">The way people search shapes the system behind it. Like a user story, every search says who is looking, what they want to find, and how they want it narrowed down. Each filter and sort names a field that has to be stored and searchable, so mapping searches first tells you which tables, keys, and indexes you need to return results quickly and accurately.</p>
+
+    <div id="sec-pattern" class="sec" style="margin-top:24px; background:#f4f4f4; border-radius:8px; padding:18px 20px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#111; margin-bottom:8px;">The pattern</div>
+      <div style="font-family:'Fraunces',serif; font-size:18px; line-height:1.55; color:#111;">As a <strong>[user]</strong>, I want to find <strong>[what]</strong>, filtered by <strong>[conditions]</strong>, sorted by <strong>[order]</strong>.</div>
+    </div>
+
+    <div id="sec-searches" class="sec" style="margin-top:26px;">
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:12px;">
+        <div style="font-family:'Fraunces',serif; font-size:15px; color:#111;"><span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#666; margin-right:8px;">1</span>As a <strong>homeowner</strong>, I want to find <strong>contractors</strong>.</div>
+        <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:6px;">Filter by</div><div style="font-size:13.5px; color:#333;">available for new work<br>works in my state</div></div>
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:6px;">Sort by</div><div style="font-size:13.5px; color:#333;">rating, highest first</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:12px;">
+        <div style="font-family:'Fraunces',serif; font-size:15px; color:#111;"><span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#666; margin-right:8px;">2</span>As a <strong>homeowner</strong>, I want to find <strong>renovation items</strong>.</div>
+        <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:6px;">Filter by</div><div style="font-size:13.5px; color:#333;">not yet purchased</div></div>
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:6px;">Sort by</div><div style="font-size:13.5px; color:#333;">price, low to high</div></div>
+        </div>
+      </div>
+
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 16px; margin-bottom:12px;">
+        <div style="font-family:'Fraunces',serif; font-size:15px; color:#111;"><span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#666; margin-right:8px;">3</span>As a <strong>contractor</strong>, I want to find <strong>open bids</strong>.</div>
+        <div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:6px;">Filter by</div><div style="font-size:13.5px; color:#333;">in my state</div></div>
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:6px;">Sort by</div><div style="font-size:13.5px; color:#333;">project size, largest first</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sec-your-turn" class="sec" style="margin-top:30px;">
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 20px; margin-bottom:12px;">
+        <div style="font-family:'Fraunces',serif; font-size:15px; color:#111; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 8px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#666; margin-right:2px;">4</span>As a <span style="display:inline-block; width:130px; border-bottom:1px solid #999;">&nbsp;</span>, I want to find <span style="display:inline-block; width:180px; border-bottom:1px solid #999;">&nbsp;</span>.</div>
+        <div style="margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter by</div><div style="border-bottom:1px solid #ddd; height:20px; margin-bottom:8px;"></div><div style="border-bottom:1px solid #ddd; height:20px;"></div></div>
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:8px;">Sort by</div><div style="border-bottom:1px solid #ddd; height:20px;"></div></div>
+        </div>
+      </div>
+
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 20px; margin-bottom:12px;">
+        <div style="font-family:'Fraunces',serif; font-size:15px; color:#111; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 8px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#666; margin-right:2px;">5</span>As a <span style="display:inline-block; width:130px; border-bottom:1px solid #999;">&nbsp;</span>, I want to find <span style="display:inline-block; width:180px; border-bottom:1px solid #999;">&nbsp;</span>.</div>
+        <div style="margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter by</div><div style="border-bottom:1px solid #ddd; height:20px; margin-bottom:8px;"></div><div style="border-bottom:1px solid #ddd; height:20px;"></div></div>
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:8px;">Sort by</div><div style="border-bottom:1px solid #ddd; height:20px;"></div></div>
+        </div>
+      </div>
+
+      <div class="card" style="border:1px solid #ccc; border-radius:9px; padding:15px 16px 20px; margin-bottom:12px;">
+        <div style="font-family:'Fraunces',serif; font-size:15px; color:#111; display:flex; align-items:baseline; flex-wrap:wrap; gap:6px 8px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#666; margin-right:2px;">6</span>As a <span style="display:inline-block; width:130px; border-bottom:1px solid #999;">&nbsp;</span>, I want to find <span style="display:inline-block; width:180px; border-bottom:1px solid #999;">&nbsp;</span>.</div>
+        <div style="margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:8px;">Filter by</div><div style="border-bottom:1px solid #ddd; height:20px; margin-bottom:8px;"></div><div style="border-bottom:1px solid #ddd; height:20px;"></div></div>
+          <div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777; margin-bottom:8px;">Sort by</div><div style="border-bottom:1px solid #ddd; height:20px;"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

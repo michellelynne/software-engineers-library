@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3A2449"></rect>
+    <g transform="translate(34,30)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="0" y1="10" x2="32" y2="10"></line>
+      <line x1="0" y1="30" x2="32" y2="30" stroke="#DB3A34"></line>
+      <circle cx="10" cy="10" r="5" fill="#3A2449"></circle>
+      <circle cx="22" cy="30" r="5" fill="#3A2449" stroke="#DB3A34"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Company Filters &middot; Print</span>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div style="background:#3A2449; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bda9d4;">Chapter 1 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:40px; line-height:1.06; white-space:nowrap; margin:14px 0 0; color:#fff;">Find Your <span style="text-decoration:line-through; text-decoration-color:#DB3A34; text-decoration-thickness:4px; color:#9d86b8;">Dream</span> <span style="font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#DB3A34;">Pretty Good</span> Job</h1>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#e7dcf2; margin:16px 0 0;">Company Filters</div>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:18px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Salary is the benefit we think about the most, but there are many options. Give each benefit an acceptable range so that you can compare full packages. The premise is that if a job hits lower in the range in one benefit, they should hit higher in the range for another area. If this is not a benefit that interests you or is relevant to where you live (like retirement benefits), you can leave it blank and not use it as a filter.</p>
+    <p style="font-size:14.5px; line-height:1.62; color:#40324c; margin:16px 0 0;">Many companies use &ldquo;Cost of Labor&rdquo; to help them identify the minimal amount of a benefit to offer, so the region you want to work in matters. AI can help you quickly change the question to different regions and collate that data.</p>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Set Your Ranges</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 4px;">Use AI to find realistic market ranges before you fill these in. Swap in your region, target benefit, and years of experience.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">&ldquo;In [region], what is the average range of [benefit] for a senior software engineer with [N] years of experience? What about in [other region]?&rdquo;</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; padding:0 0 7px; border-bottom:2px solid #3A2449; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#8a7a96;">
+        <div>Benefit</div>
+        <div>Your acceptable range</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Cash salary</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: $250&ndash;300,000</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Vacation days</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: 4&ndash;6 weeks</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">401(k) match</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: 1&ndash;4%</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Equity</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: 0.1%&ndash;0.5%</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Stock options</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: 5&ndash;15,000 shares at current price, vesting 5 years, 1-year cliff</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">RSUs</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: $100&ndash;200,000 over 4 years, available yearly</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Cash bonuses</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: hiring bonus, yearly performance percentage, or others</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Other retirement</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: pensions, superannuation, RRSP, provident fund</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Meals</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: 0&ndash;3 per day</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div><div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449;">Child care</div><div style="font-family:'Fraunces',serif; font-style:italic; font-size:11px; color:#8a7a96; margin-top:2px;">Example: on-site / subsidized / none</div></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div style="border-bottom:1.5px solid #cdd5da; height:22px;"></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:16px; align-items:end; padding:11px 0; border-bottom:1px solid #eef2f4;"><div style="border-bottom:1.5px solid #cdd5da; height:22px;"></div><div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Rank Your Top Three</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 16px;">You can&rsquo;t optimize for everything. Pull the three benefits that matter the most to you. These will become the filters you apply to the company list.</p>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:#9178B5; width:20px;">1</span><div style="flex:1; border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:#9178B5; width:20px;">2</span><div style="flex:1; border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:#9178B5; width:20px;">3</span><div style="flex:1; border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Culture Filters</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 20px;">These filters are the &ldquo;how&rdquo; of work instead of the &ldquo;what&rdquo; of industries. If any other cultural filter is important to you but not listed, add that in.</p>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Where do I want to work?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 8px;">Remote / Hybrid / On-Site</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">If not remote, where can the company be located? Would I move to work for this company?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 8px;">Examples: Any city. Only American East Coast cities. Anywhere in Japan. Anywhere in the world. Only English-speaking countries. Only within 100 miles of x location.</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">How much travel do I want to do?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 8px;">Examples: Zero, I am a caretaker who needs to be home. Once a quarter, for company meetings or educational opportunities. All the time, I love traveling and want it to be part of my job.</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">How much growth are you looking for?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 8px;">Examples: Fast-paced, constantly changing. Stable, but steady growth. Slow growth, but strong job security.</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">How much does work/life balance matter right now?</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 8px;">Examples: Very much, I would like to work a steady 40 hours per week. Not at all, I am looking to put my all into the company. In the middle, I can be on call and do some weekends, but generally a 40-hour week.</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Company Size</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#8a7a96; margin:3px 0 8px;">Examples: Startup, Small Business (&lt;100), Medium Business (100 &ndash; 1500), Large Business (1500+)</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px;"></div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Other cultural filter</div>
+        <div style="border-bottom:1.5px solid #cdd5da; height:26px; margin-top:8px;"></div>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Rank Your Top Three</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 16px;">You can&rsquo;t optimize for everything. Pull the three culture filters that matter the most to you. These will become the filters you apply to the company list.</p>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:#9178B5; width:20px;">1</span><div style="flex:1; border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:#9178B5; width:20px;">2</span><div style="flex:1; border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; line-height:1; color:#9178B5; width:20px;">3</span><div style="flex:1; border-bottom:1.5px solid #cdd5da; height:26px;"></div></div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">05</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Hard Dealbreakers</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 6px;">Lines you would never cross. Each one should start with &ldquo;I would never&hellip;&rdquo;. Unlike the ranges above, these are non-negotiable.</p>
+      <p style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 16px;">Examples: &ldquo;I would never work for a political campaign.&rdquo; &middot; &ldquo;I would never work fully on-site.&rdquo; &middot; &ldquo;I would never work in a vice-focused industry.&rdquo;</p>
+      <div style="border-bottom:1.5px solid #cdd5da; height:26px; margin-bottom:16px;"></div>
+      <div style="border-bottom:1.5px solid #cdd5da; height:26px; margin-bottom:16px;"></div>
+      <div style="border-bottom:1.5px solid #cdd5da; height:26px; margin-bottom:16px;"></div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

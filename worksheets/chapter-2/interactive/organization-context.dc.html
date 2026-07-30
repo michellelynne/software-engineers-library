@@ -55,7 +55,7 @@
   <!-- MASTHEAD -->
   <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
     <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 2 · Worksheet</div>
-    <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Organization Context</h1>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Organization Context</h1>
     <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
   </div>
 
@@ -69,7 +69,7 @@
       </div>
     </div>
 
-    <p style="font-family:'Fraunces',serif; font-style:italic; font-size:16px; line-height:1.58; max-width:62ch; margin:24px 0 0; color:#5a4a66;">This worksheet should be filled out when you start a new job or team, or right now. It can even be helpful before an interview to show your interest in an organization. It can be used as a rubric when generating new ideas: does that idea match the goals of your organization?</p>
+    <p style="font-family:'Fraunces',serif; font-style:italic; font-size:16px; line-height:1.58; max-width:62ch; margin:24px 0 0; color:#5a4a66;">This worksheet is designed to help you in meetings and when generating ideas. You will have the context you need to understand what leadership is talking about. At the same time, you can compare ideas to this and ask yourself, &ldquo;Does this idea match the organization&rsquo;s goals?&rdquo;</p>
 
     <div style="height:1px; background:#e0d9e6; margin:28px 0 8px;"></div>
 
@@ -177,12 +177,14 @@ class Component extends DCLogic {
     };
     let h = '';
     let lastGroup = null;
+    let sectionNum = 0;
     qs.forEach((row, idx)=>{
       const n = idx + 1;
       if(row[2] !== lastGroup){
         lastGroup = row[2];
+        sectionNum += 1;
         h += '<div style="display:flex; align-items:baseline; gap:13px; margin:'+(idx===0?'24px':'38px')+' 0 14px;">'+
-               '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:30px; line-height:.78; color:#9178B5;">'+row[2]+'</span>'+
+               '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:30px; line-height:.78; color:#9178B5;">'+sectionNum+'</span>'+
                '<span style="font-family:\'Fraunces\',serif; font-weight:600; font-size:21px; color:#3A2449;">'+groupTitles[row[2]]+'</span>'+
              '</div>';
       }

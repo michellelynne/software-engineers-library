@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700&family=Josefin+Sans:wght@400;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .story{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#222"></rect>
+    <g transform="translate(30,32)" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="20" cy="10" r="9"></circle>
+      <path d="M4 36 a16 16 0 0 1 32 0"></path>
+    </g>
+  </svg>
+</template>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,0,0,.12); box-sizing:border-box; overflow:hidden;">
+
+  <!-- HEADER -->
+  <div style="padding:42px 64px 26px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 2 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">User Stories</h1>
+    <div style="height:3px; width:64px; background:#111; margin:18px 0 0;"></div>
+    <div style="display:flex; flex-wrap:wrap; gap:7px 16px; margin-top:18px; font-family:'Lato',sans-serif; font-size:12.5px;">
+      <a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#333; text-decoration:none;">Buy The Book!<span class="lk-url" style="margin-left:6px; opacity:.8;">amazon.com/dp/B0FS7R6MN4</span></a>
+      <span style="color:#bbb;">&middot;</span>
+      <a href="https://www.michellebrenner.com" style="color:#333; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+      <span style="color:#bbb;">&middot;</span>
+      <a href="https://linkedin.com/in/michellebrenner" style="color:#333; text-decoration:none; display:inline-flex; align-items:center; gap:5px;"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="flex-shrink:0;"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.73v20.53C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.73C24 .78 23.2 0 22.22 0z"></path></svg><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+      <span style="color:#bbb;">&middot;</span>
+      <a href="https://instagram.com/michellebspeaks" style="color:#333; text-decoration:none; display:inline-flex; align-items:center; gap:5px;"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="flex-shrink:0;"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.12 1.38C1.36 2.67.94 3.34.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.12.66.66 1.33 1.08 2.12 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.12-1.38.66-.66 1.08-1.33 1.38-2.12.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.12A5.9 5.9 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0z"></path><path d="M12 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"></path><circle cx="18.41" cy="5.59" r="1.44"></circle></svg><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+      <span style="color:#bbb;">&middot;</span>
+      <a href="https://discord.gg/C5Cunu2gT" style="color:#333; text-decoration:none; display:inline-flex; align-items:center; gap:5px;"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="flex-shrink:0;"><path d="M20.32 4.37A19.8 19.8 0 0 0 15.45 2.9a.07.07 0 0 0-.08.04c-.21.37-.44.86-.6 1.24a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.24.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.47.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.05 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.29 1.23-1.99a.08.08 0 0 0-.04-.11c-.65-.25-1.27-.55-1.87-.89a.08.08 0 0 1-.01-.13l.37-.29a.07.07 0 0 1 .08-.01 14.2 14.2 0 0 0 12.06 0 .07.07 0 0 1 .08 0l.37.3a.08.08 0 0 1-.01.13c-.6.35-1.22.64-1.87.89a.08.08 0 0 0-.04.11c.36.7.78 1.36 1.23 1.99a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 6-3.03.08.08 0 0 0 .03-.05c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03zM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42zm7.97 0c-1.18 0-2.16-1.08-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.34-.95 2.42-2.16 2.42z"></path></svg><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+    </div>
+  </div>
+
+  <div style="padding:32px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:16px; line-height:1.58; max-width:62ch; margin:0;">A user story captures one small piece of what your product does, told from the point of view of the person using it. It keeps the focus on the user and the reason behind a feature, rather than the code. Write a story for each thing a user needs to do, then walk the most important one through its happy path. These stories feed the rest of your design, including the data you will need to store.</p>
+
+    <!-- FORMAT CARD -->
+    <div id="usb-format" style="margin-top:22px; border:1px solid #111; border-radius:8px; padding:16px 20px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#555; margin-bottom:8px;">The format</div>
+      <div style="font-family:'Fraunces',serif; font-size:18px; line-height:1.5; color:#111;">As a <strong>[type of user]</strong>, I want to <strong>[do something]</strong>, so that <strong>[I get some benefit]</strong>.</div>
+      <p style="font-size:13px; line-height:1.5; color:#444; margin:12px 0 0;">Example: As a <strong>returning customer</strong>, I want to <strong>save my payment details</strong>, so that <strong>I can check out faster next time</strong>.</p>
+    </div>
+
+    <!-- SECTION 1 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#111;">1</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Who Are Your Users?</h2>
+      </div><div id="usb-1">
+      <p style="font-size:13.5px; line-height:1.55; color:#444; margin:8px 0 4px;">List every type of person who will use the product. Include people who use it but are not the paying customer.</p>
+      <p style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#777; margin:0 0 14px;">Examples: a first-time visitor, a returning customer, an account admin, a support agent who uses it on the customer's behalf.</p>
+      <sc-for list="{{ users }}" as="u" hint-placeholder-count="5">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:11px;"><span style="color:#111; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="flex:1; border-bottom:1.5px solid #999; height:22px;"></span></div>
+      </sc-for>
+    </div></div>
+
+    <!-- SECTION 2 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#111;">2</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Write the Stories</h2>
+      </div><div id="usb-2">
+      <p style="font-size:13.5px; line-height:1.55; color:#444; margin:8px 0 14px;">One story for each thing a user needs to do. Keep each one small enough to build and test on its own.</p>
+      <sc-for list="{{ stories }}" as="s" hint-placeholder-count="5">
+        <div class="story" style="display:flex; flex-wrap:wrap; align-items:flex-end; gap:6px 8px; padding:14px 16px; border:1px solid #ccc; border-radius:8px; margin-bottom:11px; font-family:'Fraunces',serif; font-size:15px; color:#111;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#111; margin-right:2px;">{{ s.n }}</span>
+          <span>As a</span><span style="flex:0.6 1 90px; border-bottom:1.5px solid #999; height:20px;"></span>
+          <span>, I want to</span><span style="flex:1.4 1 130px; border-bottom:1.5px solid #999; height:20px;"></span>
+          <span>, so that</span><span style="flex:1.4 1 130px; border-bottom:1.5px solid #999; height:20px;"></span>
+          <span>.</span>
+        </div>
+      </sc-for>
+    </div></div>
+
+    <!-- SECTION 3 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#111;">3</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:0;">Happy Path Workflow</h2>
+      </div><div id="usb-3">
+      <p style="font-size:13.5px; line-height:1.55; color:#444; margin:8px 0 4px;">Pick your most important story and walk through the ideal path, step by step, as if everything goes right. This is the workflow you build first.</p>
+      <p style="font-family:'Fraunces',serif; font-style:italic; font-size:12.5px; color:#777; margin:0 0 14px;">Example: opens the app, signs in, searches for what they need, reviews the options, makes a selection, confirms.</p>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#111; margin-bottom:8px;">The story this workflow is for</div>
+      <div style="border-bottom:1.5px solid #999; height:24px; margin-bottom:16px;"></div>
+      <sc-for list="{{ steps }}" as="st" hint-placeholder-count="6">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:11px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; color:#111; width:22px; flex:none;">{{ st.n }}.</span><span style="flex:1; border-bottom:1.5px solid #999; height:22px;"></span></div>
+      </sc-for>
+    </div></div>
+
+  
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    const n = k => Array.from({length:k}, (_,i)=>({ n:i+1 }));
+    return { users:n(5), stories:n(5), steps:n(6) };
+  }
+}
+</script>
+</body>
+</html>

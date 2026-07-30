@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#b7a6c6; font-style:italic; }
+  .lk-url{ display:none; }
+  .ta{ width:100%; box-sizing:border-box; resize:none; overflow:hidden; border:1px solid #e6ddf0; background:#fbfafc; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; border-radius:7px; }
+  .ta:focus{ border-color:#9178B5; background:#fff; }
+  .lbl{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#8a7f97; margin-bottom:6px; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    .ta{ background:#fff; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#9178B5"></rect>
+    <g transform="translate(28,30)" stroke="#241c33" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M0 20 L14 6 L28 20 L44 6"></path>
+      <circle cx="0" cy="20" r="3" fill="#241c33"></circle>
+      <circle cx="44" cy="6" r="3" fill="#241c33"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Frontend Decision Worksheet</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#9178B5; border:1.5px solid #9178B5; border-radius:7px; padding:8px 16px; cursor:pointer; color:#241c33;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#9178B5; color:#241c33; padding:42px 60px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#3a2449;">Chapter 5 &middot; Frontend &amp; Design &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#241c33;">Frontend Decision Worksheet</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#4a3563; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#241c33; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:66ch; margin:0;">Now you are the Senior Frontend Engineer. Before writing a line of code, you map how each persona moves through the app, then make the technical decisions that shape the whole project. The <strong>Contractor</strong> persona is filled in as an example &mdash; complete the <strong>Customer</strong>, then work through the project decisions.</p>
+
+    <!-- PART 1 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">01</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">User Workflow</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-size:14px; line-height:1.6; color:#4a3f56; margin:0 0 22px; max-width:64ch;">For each persona, note the <em>devices</em> they use, the <em>page flow story</em> of how they move through the app, and the shorthand <em>page flows</em> (page &rarr; page). There should be one workflow per persona.</p>
+
+    <!-- Contractor persona -->
+    <div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+      <div style="background:#f3eff7; padding:12px 18px; display:flex; align-items:center; gap:10px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Persona</span>
+        <span style="font-family:'Fraunces',serif; font-weight:700; font-size:19px; color:#241c33;">Contractor</span>
+        <span style="margin-left:auto; font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#a08fb5;">Example</span>
+      </div>
+      <div style="padding:16px 18px 18px; display:flex; flex-direction:column; gap:16px;">
+        <div><div class="lbl">Devices &mdash; what will they use to access the app?</div><textarea class="ta save" name="dev-contractor" rows="1" placeholder="devices…"></textarea></div>
+        <div><div class="lbl">Page Flow Story &mdash; which pages, in what order?</div><textarea class="ta save" name="story-contractor" rows="1" placeholder="the journey…"></textarea></div>
+        <div><div class="lbl">Page Flows &mdash; page &rarr; page shorthand</div><textarea class="ta save" name="flows-contractor" rows="1" placeholder="Page A → Page B → Page C" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#003049;"></textarea></div>
+      </div>
+    </div>
+
+    <!-- Customer persona -->
+    <div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+      <div style="background:#f6f4f9; padding:12px 18px; display:flex; align-items:center; gap:10px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Persona</span>
+        <span style="font-family:'Fraunces',serif; font-weight:700; font-size:19px; color:#241c33;">Homeowner</span>
+        <span style="margin-left:auto; font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#c0b3d0;">Your turn</span>
+      </div>
+      <div style="padding:16px 18px 18px; display:flex; flex-direction:column; gap:16px;">
+        <div><div class="lbl">Devices &mdash; what will they use to access the app?</div><textarea class="ta save" name="dev-customer" rows="1" placeholder="As the Homeowner, I…"></textarea></div>
+        <div><div class="lbl">Page Flow Story &mdash; which pages, in what order?</div><textarea class="ta save" name="story-customer" rows="1" placeholder="the journey…"></textarea></div>
+        <div><div class="lbl">Page Flows &mdash; page &rarr; page shorthand</div><textarea class="ta save" name="flows-customer" rows="1" placeholder="Page A → Page B → Page C" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#003049;"></textarea></div>
+      </div>
+    </div>
+    <p style="font-size:12.5px; line-height:1.55; color:#8a7f97; font-style:italic; margin:0 0 8px;">Need more practice? Add the Vendor persona too &mdash; use the button below.</p>
+    <div data-personas="1"></div>
+    <button type="button" data-add-persona="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add a persona</button>
+
+    <!-- PART 2 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:46px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">02</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">Project Decisions</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-size:14px; line-height:1.6; color:#4a3f56; margin:0 0 8px; max-width:64ch;">These decisions are made once for the project. Each has a short definition and common options &mdash; pick what fits Renovation Revolution and note why. Unsure? AI can help you weigh the pros and cons of each option.</p>
+
+    <div data-decisions="1"></div>
+
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #9178B5;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#9178B5&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#9178B5&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#3A2449&quot;], &quot;section&quot;: &quot;Style&quot; }}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-frontend-decision-casestudy-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    this.buildDecisions(root);
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.example = this.buildExample();
+    const hasData = Object.keys(saved).some(k=> !k.startsWith('__'));
+    const data = hasData ? saved : this.example;
+    if(data.__personas) this.restorePersonas(root, data.__personas);
+    Object.entries(data).forEach(([n,v])=>{
+      if(n.startsWith('__')) return;
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    requestAnimationFrame(()=> this.autosizeAll(root));
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      o['__personas'] = String(root.querySelectorAll('[data-personas] > .block').length);
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', (e)=>{ this._save(); if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target); });
+    root.addEventListener('click', (e)=>{
+      const ap = e.target.closest('[data-add-persona]');
+      if(ap){ e.preventDefault(); this.addPersona(root); this._save(); return; }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#9178B5';
+  }
+  decisionDefs(){
+    return [
+      { key:'framework', title:'Framework', def:'Prewritten code, tools, and libraries for building the UI\u2019s dynamic, interactive components. TypeScript, a typed superset of JavaScript, is now part of most new frontend projects.', opts:['React','Angular','Vue'] },
+      { key:'styling', title:'Styling Framework', def:'The same idea as a framework, but focused on design, appearance, and responsiveness \u2014 the style, not the interactive components.', opts:['Plain CSS','Tailwind','CSS Framework'] },
+      { key:'designtool', title:'Design Tool', def:'Stores your design tokens (atomic values like colors, typography, and spacing) and lets you create your pages.', opts:['Figma','Sketch','Penpot'] },
+      { key:'bundler', title:'Bundler', def:'Packages your source code for production \u2014 handling minification, code-splitting, and module resolution.', opts:['Webpack','Vite','Rollup'] },
+      { key:'routing', title:'Routing', def:'Defines how URLs map to content in your app and how navigation between pages is handled.', opts:['File-based','Custom','URL conventions'] },
+      { key:'rendering', title:'Rendering', def:'Determines how and when your HTML, CSS, and JavaScript are processed and displayed to users.', opts:['SSG','SSR','CSR','ISR','Streaming'], follow:'Should any specific pages be rendered differently? Why?' },
+      { key:'testing', title:'Testing', def:'Frontend tests generally include unit, component, and end-to-end (E2E). Pick one for each layer.', opts:['Jest','Vitest','Playwright'] },
+      { key:'accessibility', title:'Accessibility', def:'Critical for the frontend \u2014 it widens your user base and gives people flexibility in how they use the app. Tools scan and advise on changes.', opts:['Axe','WAVE','pa11y'], note:'No choosing here \u2014 go try them all!' },
+      { key:'performance', title:'Performance Tracking', def:'Performance budgets set measurable targets for speed and responsiveness. Even small delays cost engagement and revenue.', opts:['Lighthouse','WebPageTest','CrUX'] },
+    ];
+  }
+  buildDecisions(root){
+    const host = root.querySelector('[data-decisions]');
+    if(!host) return;
+    const defs = this.decisionDefs();
+    let h = '';
+    defs.forEach((d, i)=>{
+      const pills = d.opts.map(o=> '<span style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:11px; color:#4a3f56; background:#f0ebf6; border:1px solid #e2d7ee; border-radius:20px; padding:5px 12px;">'+o+'</span>').join('');
+      const note = d.note ? '<div style="font-family:\'Fraunces\',serif; font-style:italic; font-size:12.5px; color:#b5651d; margin-top:8px;">'+d.note+'</div>' : '';
+      const follow = d.follow ? '<div style="margin-top:12px;"><div class="lbl">'+d.follow+'</div><textarea class="ta save" name="d-'+d.key+'-follow" rows="1" placeholder="notes\u2026"></textarea></div>' : '';
+      h += '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; padding:16px 18px 18px; margin-bottom:12px;">'+
+        '<div style="display:flex; align-items:baseline; gap:11px;">'+
+          '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:22px; color:#9178B5; line-height:1; flex:none; width:26px;">'+String(i+1).padStart(2,'0')+'</span>'+
+          '<div style="flex:1; min-width:0;">'+
+            '<div style="font-family:\'Fraunces\',serif; font-weight:600; font-size:18px; color:#241c33;">'+d.title+'</div>'+
+            '<p style="font-size:13px; line-height:1.55; color:#5a4f66; margin:5px 0 0;">'+d.def+'</p>'+
+            '<div style="display:flex; flex-wrap:wrap; gap:7px; margin:11px 0 0;">'+pills+'</div>'+
+            note+
+            '<div style="margin-top:12px;"><div class="lbl">My choice</div><textarea class="ta save" name="d-'+d.key+'" rows="1" placeholder="what I\u2019ll use, and why\u2026"></textarea></div>'+
+            follow+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+  }
+  personaHTML(idx){
+    const lbl = 'font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#8a7f97; margin-bottom:6px;';
+    return '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">'+
+      '<div style="background:#f6f4f9; padding:12px 18px; display:flex; align-items:center; gap:10px;">'+
+        '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Persona</span>'+
+        '<input class="save" name="pname-'+idx+'" placeholder="persona name" style="flex:1; border:none; border-bottom:1px solid #e2d9ec; background:transparent; font-family:\'Fraunces\',serif; font-weight:700; font-size:18px; color:#241c33; outline:none; padding:2px 0;">'+
+      '</div>'+
+      '<div style="padding:16px 18px 18px; display:flex; flex-direction:column; gap:16px;">'+
+        '<div><div style="'+lbl+'">Devices</div><textarea class="ta save" name="dev-x'+idx+'" rows="1" placeholder="devices\u2026"></textarea></div>'+
+        '<div><div style="'+lbl+'">Page Flow Story</div><textarea class="ta save" name="story-x'+idx+'" rows="1" placeholder="the journey\u2026"></textarea></div>'+
+        '<div><div style="'+lbl+'">Page Flows</div><textarea class="ta save" name="flows-x'+idx+'" rows="1" placeholder="Page A \u2192 Page B" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:12.5px; color:#003049;"></textarea></div>'+
+      '</div>'+
+    '</div>';
+  }
+  restorePersonas(root, n){
+    const host = root.querySelector('[data-personas]');
+    if(!host) return;
+    const count = parseInt(n,10) || 0;
+    let h = '';
+    for(let i=0;i<count;i++) h += this.personaHTML(i);
+    host.innerHTML = h;
+  }
+  addPersona(root){
+    const host = root.querySelector('[data-personas]');
+    if(!host) return;
+    host.insertAdjacentHTML('beforeend', this.personaHTML(host.children.length));
+    const el = host.lastElementChild.querySelector('input');
+    if(el) el.focus();
+  }
+  buildExample(){
+    return {
+      'dev-contractor':'As the Contractor, I am often on the road and tend to use iPhone devices to interact with applications. I am rarely able to work on a desktop.',
+      'story-contractor':'As the contractor, I will first start with the onboarding user workflow. Then I will review the information I have provided that is visible to others on my profile page.\n\nWhen I am satisfied with my profile, I can start reviewing the available projects on the summary page. From there, I will select a project and can view a limited set of project information, excluding any customer contact information. If it looks interesting to me, I will create a bid for that contract.\n\nOnce a project is awarded, I can view customer contact information. I can examine each room in the project in detail and suggest changes to the work or purchases, and the project details page shows the status of any suggestions I have made.',
+      'flows-contractor':'Contractor Onboarding Page \u2192 Contractor Profile Page\nAvailable Projects Summary Page \u2192 Project Detail Page (Pre-Contract) \u2192 Project Bidding Page\nCurrent Projects Summary Page \u2192 Project Detail Page (Post-Contract) \u2192 Room Detail Page \u2192 Room Suggestions Page',
+      '__personas':'0'
+    };
+  }
+  autosize(el){ if(!el || el.tagName!=='TEXTAREA') return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 22) + 'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea.save').forEach(el=> this.autosize(el)); }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution example?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(!root) return;
+        const host = root.querySelector('[data-personas]'); if(host) host.innerHTML='';
+        root.querySelectorAll('.save').forEach(el=> el.value='');
+        Object.entries(this.example).forEach(([n,v])=>{ if(n.startsWith('__')) return; const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+        this.autosizeAll(root);
+        if(this._save) this._save();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

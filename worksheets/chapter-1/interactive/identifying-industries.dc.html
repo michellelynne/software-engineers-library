@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#177E89 !important; border-bottom-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3A2449"></rect>
+    <g transform="translate(30,34)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 26 L2 6 L14 14 L26 4 L38 12"></path>
+      <line x1="38" y1="12" x2="38" y2="30" stroke="#DB3A34"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Identifying Industries</span>
+    <span id="ws-count" style="font-size:12px; color:#9178B5; white-space:nowrap;">0 fields filled</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#3A2449; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bda9d4;">Chapter 1 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.04; margin:14px 0 0; color:#fff;">Find Your <span style="text-decoration:line-through; text-decoration-color:#DB3A34; text-decoration-thickness:4px; color:#9d86b8;">Dream</span> <span style="font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#DB3A34;">Pretty Good</span> Job</h1>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#e7dcf2; margin:16px 0 0;">Identifying Industries</div>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:18px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">This exercise is designed to help you find the most suitable industries. By applying within industries that match your interests and values, you will make it easier to answer questions about why you are there.</p>
+    <p style="font-size:14.5px; line-height:1.62; color:#40324c; margin:16px 0 0;">You may want to say to me, "Michelle, I don't need to do this, I'm willing to work anywhere." That's not entirely true — everyone has some dealbreakers. For instance, most people don't want to move to Antarctica and get paid $20/hour. That is an extreme example, but by undergoing some introspection, you will discover your priorities.</p>
+    <p style="font-size:14.5px; line-height:1.62; color:#40324c; margin:16px 0 0;">Getting a job is easier when you are interested in their product. The less experience you have, the more you want to show excitement for the product. Tech is huge. Almost every company uses software in some form. Even an enterprise more grounded in the physical world, like a lawn care company, has to organize its crew, clients, and finances. Then there are the companies for which software/technology is the product, from Google to Salesforce. To narrow down your high-potential industries, let's start with your interests.</p>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Identifying Interests</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 4px;">First, let's identify your general interests. These might seem obvious, but you'd be surprised how often you connect a job to something you are interested in by just writing it down.</p>
+      <p style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449; margin:16px 0 10px;">Which industries are you most interested in?</p>
+      <div data-list="industries"></div>
+      <button type="button" data-add="industries" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 20px; cursor:pointer;">+ Add line</button>
+
+      <!-- Hobbies -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin:0 0 8px;">Hobbies</div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:0 0 8px;">What do you like to do in your spare time?</div>
+      <div data-list="hobbies"></div>
+      <button type="button" data-add="hobbies" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:5px 0 0;">Examples: Music, TV, Surfing, Basketball, Board Games</p>
+
+      <!-- Interests -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin:24px 0 4px;">Interests</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 6px;">Examples: History Documentaries, Animal Planet, Tech Blogs, Space Travel, Marine Biology, HGTV Real Estate Shows</p>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">Which non-fiction subjects do you like to read about?</div>
+      <input class="save" type="text" name="interests-q0" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">What kind of documentaries do you watch, if any?</div>
+      <input class="save" type="text" name="interests-q1" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">What kind of reality shows do you watch, if any?</div>
+      <input class="save" type="text" name="interests-q2" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">What kind of news do you consume that's not current events?</div>
+      <input class="save" type="text" name="interests-q3" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+
+      <!-- Passions -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin:24px 0 4px;">Passions</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 6px;">Examples: Healthcare, Immigration, Veterans, Education, Climate Change</p>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">What are you passionate about? What social or societal issues are important to you?</div>
+      <input class="save" type="text" name="passions-q0" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">What charities do you regularly support?</div>
+      <input class="save" type="text" name="passions-q1" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">What inspires you to make a statement? What injustice makes you want to make a change?</div>
+      <input class="save" type="text" name="passions-q2" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">Is there a specific industry in which you would like to make a positive change?</div>
+      <input class="save" type="text" name="passions-q3" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:14px 0 6px;">Is there someone in your life who has experienced a hardship you wish you could change or improve with technology?</div>
+      <input class="save" type="text" name="passions-q4" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;">
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Expand on Interests</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">For each of the interests you have identified above, answer each of these questions. This task is an excellent opportunity to practice using AI for a non-coding exercise. One thing AI is very good for is market research. It will give you answers you would have never thought of on your own by just brainstorming. You can also have an ongoing conversation to narrow down your interests and then finally create the summary.</p>
+
+      <div style="display:inline-block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#3A2449; background:#f3eff7; border-radius:20px; padding:5px 13px;">Example Interest: Playing Music</div>
+
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:14px 0 12px;">I have two different options here. When I first wrote this chapter, I was doing this type of research step by step. As AIs have already gotten so much better, you can take a shortcut and go with a simple prompt. I have included both options for you to try.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt · Shortcut</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"I like music. Create a list of companies I might like to work at."</div>
+      </div>
+      <div data-list="shortcut" style="margin-top:10px;"></div>
+      <button type="button" data-add="shortcut" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+
+      <h3 style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#3A2449; margin:26px 0 4px;">Multi-Step Research</h3>
+      <div style="height:2px; width:40px; background:#9178B5; margin:0 0 18px;"></div>
+
+      <!-- B2B -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:0 0 4px;">What are some B2B (business-to-business) companies (or categories thereof) that align with one of your key interests?</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 8px;">Examples: Music Distribution, Nielsen Ratings for Radio</p>
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Give me a list of companies in the music industry that are B2B."</div>
+      </div>
+      <div data-list="research-b2b" style="margin-top:10px;"></div>
+      <button type="button" data-add="research-b2b" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+
+      <!-- B2C -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:22px 0 4px;">What are some B2C (business-to-consumer) companies (or categories thereof) that align with one of your key interests?</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 8px;">Examples: Pandora, Spotify</p>
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Give me a list of companies in the music industry that are B2C."</div>
+      </div>
+      <div data-list="research-b2c" style="margin-top:10px;"></div>
+      <button type="button" data-add="research-b2c" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+
+      <!-- Education -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:22px 0 4px;">In what ways do companies provide education in that space?</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 8px;">Examples: Apps to Learn an Instrument, Tools for Music Teachers</p>
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Give me a list of companies in the music education industry."</div>
+      </div>
+      <div data-list="research-edu" style="margin-top:10px;"></div>
+      <button type="button" data-add="research-edu" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+
+      <!-- Vendors -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:22px 0 4px;">What type of companies supply in that category?</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 8px;">Examples: Instruments, Speakers, Ticket Sales, (Fender, Klipsch, LiveNation)</p>
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Give me a list of companies in the music industry that provide a physical item. Give me a list of companies that are vendors or suppliers for a company in the music industry."</div>
+      </div>
+      <div data-list="research-vendors" style="margin-top:10px;"></div>
+      <button type="button" data-add="research-vendors" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+
+      <!-- Retail -->
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13.5px; color:#3A2449; margin:22px 0 4px;">What type of companies provide retail or e-commerce in that category?</div>
+      <p class="hint" style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 8px;">Examples: Bandcamp, Guitar Store</p>
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Give me a list of retail companies in the music industry."</div>
+      </div>
+      <div data-list="research-retail" style="margin-top:10px;"></div>
+      <button type="button" data-add="research-retail" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:7px 0 0; cursor:pointer;">+ Add line</button>
+
+      <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Putting It All Together</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">It's good to think through the different options first, but then you can use a single prompt for the entire table.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:0 0 18px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">◇ AI Prompt · Full Table</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Create a table with the headers interest, B2B, B2C, Education, Vendors, and Retail. For the first row, the interest is music. Format it as a CSV. Add a row for healthcare. Also, provide a list of companies in alphabetical order outside of the table."</div>
+      </div>
+
+      <!-- table -->
+      <div style="overflow:hidden; border:1px solid #e0d9e6; border-radius:5px;">
+        <div style="display:grid; grid-template-columns:1fr 1.15fr 1.15fr 1.15fr 1.15fr 1.15fr; background:#3A2449;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:9px 8px;">Interest</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:9px 8px;">B2B</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:9px 8px;">B2C</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:9px 8px;">Education</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:9px 8px;">Vendors / Suppliers</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.05em; text-transform:uppercase; color:#fff; padding:9px 8px;">Retail / Ecommerce</div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1.15fr 1.15fr 1.15fr 1.15fr 1.15fr; background:#f3eff7; border-bottom:1px solid #e0d9e6;">
+          <div style="padding:8px; font-family:'Lato',sans-serif; font-size:11.5px; line-height:1.35; color:#5a4a66;"><span style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:8px; letter-spacing:.1em; text-transform:uppercase; color:#9178B5; margin-bottom:2px;">Example</span>Music</div>
+          <div style="padding:8px; font-family:'Lato',sans-serif; font-size:11.5px; line-height:1.35; color:#5a4a66;">Music Distribution, Nielsen Ratings for Radio</div>
+          <div style="padding:8px; font-family:'Lato',sans-serif; font-size:11.5px; line-height:1.35; color:#5a4a66;">Pandora, Spotify</div>
+          <div style="padding:8px; font-family:'Lato',sans-serif; font-size:11.5px; line-height:1.35; color:#5a4a66;">Apps to Learn an Instrument, Tools for Music Teachers</div>
+          <div style="padding:8px; font-family:'Lato',sans-serif; font-size:11.5px; line-height:1.35; color:#5a4a66;">Fender, Klipsch, LiveNation</div>
+          <div style="padding:8px; font-family:'Lato',sans-serif; font-size:11.5px; line-height:1.35; color:#5a4a66;">Bandcamp, Guitar Store</div>
+        </div>
+        <div data-rows="map"></div>
+      </div>
+      <div class="no-print" style="display:flex; gap:16px; align-items:center; padding:9px 0 0;">
+        <button type="button" data-add="map" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:0; cursor:pointer;">+ Add row</button>
+        <button type="button" data-csv="1" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:1.5px solid #bfe0e2; border-radius:6px; padding:6px 11px; cursor:pointer;">⤓ Export CSV</button>
+      </div>
+
+      <p style="font-size:14.5px; line-height:1.62; color:#40324c; margin:20px 0 0;">This table is going to be very large. That is good because it helps you change your career goal from "dream company" to "dream industry". If you only want to work at a single company, you are setting yourself up for failure. I never got to work at Pixar. But, by enlarging that to "Entertainment Industry," it was a lot easier to find a job. After the table is filled in, look over the companies. Which of them seems the most interesting at a glance? Can you pull out the top hundred? It might be helpful to sort the interests by the most interesting first, or you might realize you want the education companies from all the interests. These are more like gut feelings than data-driven. How do the companies make you feel? The following two worksheets will help you gather the data to create a data-driven decision.</p>
+    </div>
+
+    <!-- SEQUENCE NAV -->
+    <div class="no-print" style="display:flex; justify-content:flex-end; gap:16px; margin-top:46px;">
+      <a href="company-filters.dc.html" style="display:inline-flex; flex-direction:column; align-items:flex-end; gap:3px; text-decoration:none; border:1.5px solid #e0d9e6; border-radius:8px; padding:12px 18px; min-width:220px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#9178B5;">Do this next &rarr;</span>
+        <span style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#177E89;">Company Filters</span>
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#3A2449&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#003049&quot;, &quot;#0f5a62&quot;, &quot;#7a2438&quot;], &quot;section&quot;: &quot;Style&quot; },
+  &quot;showExamples&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-identifying-industries-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.buildRows(root, saved);
+    this.buildLists(root, saved);
+    this.setupAiButtons(root);
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    const total = () => root.querySelectorAll('.save').length;
+    const update = () => {
+      const filled = [...root.querySelectorAll('.save')].filter(el=> el.value && el.value.trim()).length;
+      const c = document.getElementById('ws-count');
+      if(c) c.textContent = filled + ' of ' + total() + ' fields filled';
+    };
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+      update();
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-add]');
+      if(!btn) return;
+      e.preventDefault();
+      const key = btn.getAttribute('data-add');
+      if(key === 'map'){ this.addMapRow(root, true); }
+      else { this.addLine(root, key, true); }
+      this._save();
+    });
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-csv]');
+      if(!btn) return;
+      e.preventDefault();
+      this.exportCsv(root);
+    });
+    update();
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#3A2449';
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('.hint').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+  }
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim().replace(/^"|"$/g,'');
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#177E89; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#177E89; background:transparent; border:1.5px solid #bfe0e2; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask);
+      bar.appendChild(copy);
+      box.appendChild(bar);
+    });
+  }
+  lineHTML(prefix, i){
+    return '<div style="margin-bottom:5px;"><input class="save" type="text" name="'+prefix+'-'+i+'" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;"></div>';
+  }
+  buildLists(root, saved){
+    [['industries',2],['hobbies',2],['shortcut',1],['research-b2b',1],['research-b2c',1],['research-edu',1],['research-vendors',1],['research-retail',1]].forEach(([prefix,starter])=>{
+      const host = root.querySelector('[data-list="'+prefix+'"]');
+      if(!host) return;
+      let max = starter;
+      Object.keys(saved||{}).forEach(k=>{
+        const m = k.match(new RegExp('^'+prefix+'-(\\d+)$'));
+        if(m) max = Math.max(max, parseInt(m[1],10));
+      });
+      let h = '';
+      for(let i=0;i<=max;i++) h += this.lineHTML(prefix, i);
+      host.innerHTML = h;
+    });
+  }
+  addLine(root, prefix, focus){
+    const host = root.querySelector('[data-list="'+prefix+'"]');
+    if(!host) return;
+    const next = host.querySelectorAll('input').length;
+    host.insertAdjacentHTML('beforeend', this.lineHTML(prefix, next));
+    if(focus){ const ins = host.querySelectorAll('input'); ins[ins.length-1].focus(); }
+  }
+  mapRowHTML(r){
+    let h = '<div style="display:grid; grid-template-columns:1fr 1.15fr 1.15fr 1.15fr 1.15fr 1.15fr; border-bottom:1px solid #eef2f4;">';
+    for(let c=0;c<6;c++){
+      h += '<div style="padding:3px 6px; border-left:'+(c===0?'none':'1px solid #f0f2f4')+';"><input class="save" type="text" name="map-'+r+'-'+c+'" style="width:100%; border:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:12px; color:#3A2449; padding:7px 2px; outline:none; box-sizing:border-box;"></div>';
+    }
+    h += '</div>';
+    return h;
+  }
+  buildRows(root, saved){
+    const host = root.querySelector('[data-rows="map"]');
+    if(!host) return;
+    let max = 5;
+    Object.keys(saved||{}).forEach(k=>{
+      const m = k.match(/^map-(\d+)-\d+$/);
+      if(m) max = Math.max(max, parseInt(m[1],10));
+    });
+    let h = '';
+    for(let r=0;r<=max;r++) h += this.mapRowHTML(r);
+    host.innerHTML = h;
+  }
+  addMapRow(root, focus){
+    const host = root.querySelector('[data-rows="map"]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.mapRowHTML(next));
+    if(focus){ const rows = host.children; const inp = rows[rows.length-1].querySelector('input'); if(inp) inp.focus(); }
+  }
+  exportCsv(root){
+    const host = root.querySelector('[data-rows="map"]');
+    const headers = ['Interest','B2B','B2C','Education','Vendors / Suppliers','Retail / Ecommerce'];
+    const rows = [headers];
+    rows.push(['Music','Music Distribution, Nielsen Ratings for Radio','Pandora, Spotify','Apps to Learn an Instrument, Tools for Music Teachers','Fender, Klipsch, LiveNation','Bandcamp, Guitar Store']);
+    if(host){
+      [...host.children].forEach(rowDiv=>{
+        const cells = [...rowDiv.querySelectorAll('input')].map(i=> i.value || '');
+        if(cells.some(c=> c.trim())) rows.push(cells);
+      });
+    }
+    const esc = s => '"' + String(s).replace(/"/g,'""') + '"';
+    const csv = rows.map(r=> r.map(esc).join(',')).join('\r\n');
+    const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'identifying-industries-table.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=> URL.revokeObjectURL(url), 1000);
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          this.buildLists(root, {});
+          this.buildRows(root, {});
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    .permrow{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(32,26)" fill="none" stroke="#666" stroke-width="4">
+      <rect x="0" y="18" width="36" height="28" rx="3"></rect>
+      <path d="M6 18 V11 a12 12 0 0 1 24 0 V18"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Stakeholder Authorization &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:900px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 4 &middot; System Design &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Stakeholder Authorization</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">Renovation Revolution contains personal information that should be handled with care and shared only when necessary. Let's build a tool-agnostic authorization plan. We'll start at a granular level and work our way up.</p>
+
+    <div style="margin-top:30px; display:flex; align-items:baseline; gap:12px; padding-bottom:8px; border-bottom:2px solid #111;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.8; color:#777;">1</span>
+      <h2 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:23px; margin:0; color:#111;">List Resources</h2>
+    </div>
+    <div id="sec-resources" class="sec">
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; color:#444; text-wrap:normal; margin:12px 0 16px;">List the resources on each page. Going page by page just makes them easier to recall, so skip any you have already named.</p>
+      <div id="pages-host"></div>
+    </div>
+
+    <div style="margin-top:34px; display:flex; align-items:baseline; gap:12px; padding-bottom:8px; border-bottom:2px solid #111;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.8; color:#777;">2</span>
+      <h2 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:23px; margin:0; color:#111;">Roles and Resources</h2>
+    </div>
+    <div id="sec-roles" class="sec">
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; color:#444; margin:12px 0 16px;">For each role list the resources they need access to.</p>
+      <div id="roles-host"></div>
+    </div>
+
+    <div style="margin-top:34px; display:flex; align-items:baseline; gap:12px; padding-bottom:8px; border-bottom:2px solid #111;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.8; color:#777;">3</span>
+      <h2 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:23px; margin:0; color:#111;">Permissions and Scopes</h2>
+    </div>
+    <div id="sec-permissions" class="sec">
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; color:#444; text-wrap:normal; margin:12px 0 16px;">A permission pairs a role with an action on a resource, such as "homeowners can see projects". The scope then narrows it from every record of that resource in the database down to the ones that role should actually reach, such as "only the projects they own" or "read only, no edits". Using your roles and resources, write out each permission and its scope.</p>
+      <div style="display:grid; grid-template-columns:1fr 1.15fr; gap:12px; padding-bottom:8px; border-bottom:1.5px solid #bbb; font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#777;">
+        <div>Permission</div>
+        <div>Scope</div>
+      </div>
+      <div id="perms-host"></div>
+    </div>
+
+    <div id="sec-ai" style="margin:30px 0 4px; border:1px solid #111; border-left:4px solid #111; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#222;">"Here are the pages, resources, and roles in my product: [paste]. Draft an authorization plan that pairs each role with the resources it needs, write the permissions, and suggest a scope for each one. Flag anything sensitive that should be restricted further."</div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    const line = 'border-bottom:1px solid #bbb; min-height:20px; padding:4px 2px; font-family:\'Lato\',sans-serif; font-size:13.5px; color:#111;';
+    const card = (label, name, res, resN) => {
+      let cells = '';
+      for(let j=0;j<resN;j++) cells += '<div style="'+line+'">'+(res[j] || '&nbsp;')+'</div>';
+      return '<div class="card" style="border:1px solid #ccc; border-radius:10px; padding:15px 18px 16px; margin-bottom:12px;">'+
+        '<div style="display:flex; align-items:baseline; gap:10px;">'+
+          '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.11em; text-transform:uppercase; color:#777; flex:none;">'+label+'</span>'+
+          '<div style="flex:1; border-bottom:1.5px solid #999; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:14px; color:#111; padding:4px 2px;">'+(name || '&nbsp;')+'</div>'+
+        '</div>'+
+        '<div style="margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:9px 20px;">'+cells+'</div>'+
+      '</div>';
+    };
+
+    const pages = [
+      ['Room Detail', ['Project','Room','Image','Image metadata','Visible item','Renovation item','Accessory','Team member']],
+      ['Project Dashboard', []],
+      ['Contractor Bids', []],
+      ['', []],
+      ['', []]
+    ];
+    const ph = document.getElementById('pages-host');
+    if(ph) ph.innerHTML = pages.map(p=> card('Page', p[0], p[1], Math.max(p[1].length, 6))).join('');
+
+    const roles = [
+      ['Homeowner', ['Project','Room','Image','Renovation item','Accessory','Team member']],
+      ['Contractor', ['Project','Room','Renovation item','Image','Team member']],
+      ['', []]
+    ];
+    const rh = document.getElementById('roles-host');
+    if(rh) rh.innerHTML = roles.map(r=> card('Role', r[0], r[1], 6)).join('');
+
+    const perms = [
+      ['Homeowners can see projects','Only the projects they own'],
+      ['Homeowners can edit rooms','Only rooms inside their own projects'],
+      ['Homeowners can delete images','Only images they uploaded to their own rooms'],
+      ['Contractors can see images','Only images in rooms on projects they are bidding on'],
+      ['Contractors can add renovation items','Only to rooms in projects they have been invited to'],
+      ['',''],['',''],['',''],['',''],['','']
+    ];
+    const mh = document.getElementById('perms-host');
+    if(mh) mh.innerHTML = perms.map(p=>
+      '<div class="permrow" style="display:grid; grid-template-columns:1fr 1.15fr; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid #e4e4e4;">'+
+        '<div style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:13px; color:#111; min-height:19px;">'+(p[0] || '&nbsp;')+'</div>'+
+        '<div style="font-family:\'Lato\',sans-serif; font-size:13.5px; color:#222; min-height:19px;">'+(p[1] || '&nbsp;')+'</div>'+
+      '</div>').join('');
+  }
+  renderVals(){ return { doPrint: () => window.print() }; }
+}
+</script>
+</body>
+</html>

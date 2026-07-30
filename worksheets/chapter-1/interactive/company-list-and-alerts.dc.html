@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#177E89 !important; border-bottom-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3A2449"></rect>
+    <g transform="translate(32,28)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="0" y1="6" x2="26" y2="6"></line>
+      <line x1="0" y1="22" x2="26" y2="22"></line>
+      <line x1="0" y1="38" x2="26" y2="38" stroke="#DB3A34"></line>
+      <circle cx="34" cy="38" r="6" fill="#3A2449" stroke="#DB3A34"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Company List &amp; Alerts</span>
+    <span id="ws-count" style="font-size:12px; color:#9178B5; white-space:nowrap;">0 fields filled</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#3A2449; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bda9d4;">Chapter 1 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:40px; line-height:1.06; white-space:nowrap; margin:14px 0 0; color:#fff;">Find Your <span style="text-decoration:line-through; text-decoration-color:#DB3A34; text-decoration-thickness:4px; color:#9d86b8;">Dream</span> <span style="font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#DB3A34;">Pretty Good</span> Job</h1>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#e7dcf2; margin:16px 0 0;">Company List &amp; Alerts</div>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:18px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Now that you have a list of companies and filters for them, it&rsquo;s time to put them together. Take the top 3 filters you picked from the <a href="company-filters.dc.html" style="color:#177E89; font-weight:700; text-decoration:none;">Company Filters</a> worksheet. For the hard dealbreakers, you need to have them all. Take another look and make sure there is really no negotiating with them. Maybe you would prefer fully remote, but would do 1&ndash;2 days on-site, if they didn&rsquo;t have any other hard dealbreakers.</p>
+
+    <!-- REFERENCE CALLOUT -->
+    <div style="background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 4px 4px 0; padding:14px 16px; margin:20px 0 0;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7a5ba6; margin-bottom:7px;">&#9671; Bring these with you</div>
+      <div style="font-size:13.5px; line-height:1.62; color:#40324c;">Your raw company list comes from the <a href="identifying-industries.dc.html" style="color:#177E89; font-weight:700; text-decoration:none;">Identifying Industries</a> worksheet. Your filters come from the <a href="company-filters.dc.html" style="color:#177E89; font-weight:700; text-decoration:none;">Company Filters</a> worksheet. Gather both before you begin.</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Build Your Final List</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">For each company on your list, check to see if it hits any of your filters. If it does, remove it from the list. You can find some of the information on their website or through AI. I didn&rsquo;t do all the filters at once because then you can&rsquo;t see the companies you are losing for each one. You might change your mind about something if it&rsquo;s a company that is high on your other lists.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Given this list of companies (copy and paste or uploaded), which ones allow for remote work? Create a new list based on the answer. Create a new list based on if they have 401(k) match. Create a new list based on whether they pay their Senior Software Engineers more than $200k on average."</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 6px;">Sometimes, you won&rsquo;t be able to find the information anywhere. Work/life balance isn&rsquo;t usually on the website. It is something you can find out through networking or during the interview. I will talk more about networking in a future chapter. Ideally, you will have 25-50 companies that interest you at the end of this process. If you end up with too few, I would rework the filters.</p>
+
+      <div style="display:flex; align-items:baseline; gap:10px; margin:24px 0 4px; padding-bottom:7px; border-bottom:2px solid #3A2449;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#3A2449;">Final Companies</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96;">aim for 25-50</div>
+      </div>
+      <div data-rows="companies" style="display:grid; grid-template-columns:1fr 1fr; gap:0 28px; margin-top:6px;"></div>
+      <button type="button" data-add="companies" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:11px 0 0; cursor:pointer;">+ Add company</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:48px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#9178B5;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">Set Up Your Alerts</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">If you are looking for a new job right now, plenty of tools are available for you to search and apply directly to jobs. If you want to be prepared for when something comes up, it is time to set up alerts. There are lots of options available to automate the process, but since it&rsquo;s hard to know if the same tools will exist in the time between when I am writing this and its publication, I am going to stick with Google Alerts. Since you might not want to automatically connect the AI to your Google account, here are the prompts to create the alert and instructions for adding them manually. I also recommend researching current AI job tools, reading their reviews, checking with Reddit, etc.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt &middot; Simple</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Create a Google search alert for Senior Software Engineer jobs at Spotify and Bandcamp. They should be sent as a daily digest."</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 12px;">Modify as needed for the company and job info you are looking for. One gotcha is the name &ldquo;Senior Software Engineer.&rdquo; The job title might be something completely different. I tested this with FAANG companies. I added a caveat when I realized it was searching for all the titles at all the companies. While that would give you more results, you would also get false positives. You want to be sure you are searching for the correct level you want to apply at. I made it broad but you might want to specify L4 here, L5 there, E3 there, and so on.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt &middot; Recommended</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"For the companies in the list, create a Google search alert query that searches for jobs with the job equivalent to Senior Software Engineer. Make sure the title matches the company. For example, do not search for L4 at Netflix, only at Google. They should be sent as a daily digest."</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:0 0 10px;">This is the result I got. It gets complicated quickly if you are trying to write the queries yourself. Now, instead of checking 50 websites manually, you will get the results sent to you. Save that energy for studying Data Structures &amp; Algorithms.</p>
+
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#8a7a96; margin:0 0 6px;">Example result</div>
+      <div style="font-family:'Menlo','Consolas',monospace; font-size:12px; line-height:1.6; color:#241c33; background:#f3eff7; border:1px solid #e0d9e6; border-radius:5px; padding:14px 16px; white-space:pre-wrap; word-break:break-word;">("senior software engineer" job Google) OR ("software engineer l4" job Google) OR ("senior software engineer" job Meta) OR ("senior software engineer" job Facebook) OR ("software engineer e5" job Meta) OR ("software engineer e5" job Facebook) OR ("software development engineer ii" job Amazon) OR ("sde ii" job Amazon) OR ("senior sde" job Amazon) OR ("senior software engineer" job Apple) OR ("senior software engineer" job Netflix)</div>
+
+      <div style="margin:22px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#3A2449; margin-bottom:4px;">Your alert query</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#8a7a96; margin:0 0 8px;">Paste the query AI generates for your companies, so you have it when you set up the alert.</div>
+        <textarea class="save" name="alert-query" rows="4" placeholder="Paste your Google Alert query here&hellip;" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:transparent; font-family:'Menlo','Consolas',monospace; font-size:12.5px; line-height:1.55; color:#3A2449; padding:11px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      </div>
+
+      <div style="background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 4px 4px 0; padding:14px 16px; margin:20px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7a5ba6; margin-bottom:8px;">Adding it to Google Alerts</div>
+        <ol style="margin:0; padding-left:18px; font-size:13.5px; line-height:1.7; color:#40324c;">
+          <li>Sign in to your Google account and go to <a href="https://www.google.com/alerts" target="_blank" rel="noopener" style="font-style:italic; color:#177E89; text-decoration:none;">google.com/alerts</a>.</li>
+          <li>Paste your query into the box at the top.</li>
+          <li>Click <em style="font-style:italic; color:#177E89;">Show options</em>. Set <em style="font-style:italic; color:#177E89;">How often</em> to <em style="font-style:italic; color:#177E89;">At most once a day</em> for a daily digest, and set <em style="font-style:italic; color:#177E89;">Deliver to</em> to your email.</li>
+          <li>Click <em style="font-style:italic; color:#177E89;">Create Alert</em>. Come back any time to edit or delete it as your list changes.</li>
+        </ol>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#5a4a66; margin:20px 0 0;">The alerts can also be used to inform you of networking opportunities. You can add words to the alert about conferences or events sponsored by the companies. Of course, I recommend going beyond automated alerts to engaging your real-world network. I assume you have a LinkedIn page and if not, make one now. It is necessary in today&rsquo;s job market. Search your connections for anyone who works or worked at the companies you are interested in. Don&rsquo;t pester strangers online, but if you have had conversations with them in the past, you can ask for a coffee chat to learn more about the company. This is how you learn about their real work/life balance, growth opportunities, etc. If you don&rsquo;t know anyone to talk to, you can follow recruiters or hiring managers; anyone you see who frequently posts jobs. Their posts can get you information, but I wouldn&rsquo;t expect a personal connection or referral from people you follow.</p>
+
+      <div style="background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt &middot; Events</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#13474e;">"Create a Google search alert query that finds conferences, meetups, and events sponsored by or featuring the companies in my list, so I can meet people who work there. Send it as a weekly digest."</div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-company-list-alerts-v1';
+    this.companyStart = 30;
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.buildCompanies(root, saved);
+    this.setupAiButtons(root);
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    const total = () => root.querySelectorAll('.save').length;
+    const update = () => {
+      const filled = [...root.querySelectorAll('.save')].filter(el=> el.value && el.value.trim()).length;
+      const c = document.getElementById('ws-count');
+      if(c) c.textContent = filled + ' of ' + total() + ' fields filled';
+    };
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+      update();
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-add]');
+      if(!btn) return;
+      e.preventDefault();
+      if(btn.getAttribute('data-add') === 'companies') this.addCompany(root, true);
+      this._save();
+    });
+    update();
+  }
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim().replace(/^"|"$/g,'');
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#177E89; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#177E89; background:transparent; border:1.5px solid #bfe0e2; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask);
+      bar.appendChild(copy);
+      box.appendChild(bar);
+    });
+  }
+  companyRowHTML(i){
+    return '<div style="display:flex; align-items:center; gap:9px; padding:6px 0; border-bottom:1px solid #eef2f4;">'+
+      '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:16px; line-height:1; color:#9178B5; min-width:22px; text-align:right;">'+(i+1)+'</span>'+
+      '<input class="save" type="text" name="company-'+i+'" style="flex:1; min-width:0; border:none; border-bottom:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; padding:4px 2px; outline:none; box-sizing:border-box;">'+
+      '</div>';
+  }
+  buildCompanies(root, saved){
+    const host = root.querySelector('[data-rows="companies"]');
+    if(!host) return;
+    let max = this.companyStart - 1;
+    Object.keys(saved||{}).forEach(k=>{
+      const m = k.match(/^company-(\d+)$/);
+      if(m) max = Math.max(max, parseInt(m[1],10));
+    });
+    let h = '';
+    for(let i=0;i<=max;i++) h += this.companyRowHTML(i);
+    host.innerHTML = h;
+  }
+  addCompany(root, focus){
+    const host = root.querySelector('[data-rows="companies"]');
+    if(!host) return;
+    const i = host.querySelectorAll('input').length;
+    host.insertAdjacentHTML('beforeend', this.companyRowHTML(i));
+    if(focus){ const inp = host.querySelector('[name="company-'+i+'"]'); if(inp) inp.focus(); }
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          this.buildCompanies(root, {});
+          root.querySelectorAll('.save').forEach(el=>{ el.value=''; });
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

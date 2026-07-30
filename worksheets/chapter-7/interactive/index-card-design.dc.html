@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#9aa9b2; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .icard{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(22,30)">
+      <rect x="0" y="0" width="40" height="30" rx="3" fill="#fff"></rect>
+      <rect x="12" y="8" width="42" height="30" rx="3" fill="#f4efe6" stroke="#9178B5" stroke-width="2"></rect>
+      <line x1="18" y1="16" x2="48" y2="16" stroke="#DB3A34" stroke-width="1.5"></line>
+      <line x1="18" y1="24" x2="44" y2="24" stroke="#c9d2d6" stroke-width="1.5"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(23,126,137,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Index Card Design</span>
+    <span style="font-size:12px; color:#bfe3e2; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ addCard }}" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#dff0f0; background:transparent; border:1.5px solid #4fa3ab; border-radius:7px; padding:8px 14px; cursor:pointer;">+ Add card</button>
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#dff0f0; background:transparent; border:1.5px solid #4fa3ab; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#0f5a63; border:1.5px solid #0f5a63; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 7 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Index Card Design</h1>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">This simple exercise can be done with any pack of index cards, and it&rsquo;s great for quickly trying out new ideas. If you use this worksheet, print it out so you can use the paper like index cards.</p>
+
+    <div style="margin-top:22px; background:#eaf4f4; border-radius:8px; padding:18px 20px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:10px;">How to run the test</div>
+      <div data-steps="1" style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#294552;"></div>
+    </div>
+
+    <!-- FLOW HEADER -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:30px 0 8px;">
+      <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; margin:0 0 6px;">Flow you&rsquo;re prototyping</label><input class="save" type="text" name="flow-name" placeholder="e.g. Onboarding, contractor" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+      <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; margin:0 0 6px;">Persona &amp; device</label><input class="save" type="text" name="flow-persona" placeholder="e.g. Contractor, on a phone" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+    </div>
+
+    <!-- CARDS -->
+    <div data-cards="1" style="margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:18px;"></div>
+
+    <div class="no-print" style="margin-top:16px;">
+      <button type="button" data-add-card="1" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#fff; background:#177E89; border:none; border-radius:8px; padding:10px 16px; cursor:pointer;">+ Add a card</button>
+    </div>
+
+    <!-- INSTRUCTIONS -->
+    <div style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">Card Interactions</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <div data-instructions="1" style="display:flex; flex-direction:column; gap:9px;"></div>
+      <div class="no-print" style="margin-top:14px;">
+        <button type="button" data-add-instr="1" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#0f5a63; background:transparent; border:1.5px solid #9178B5; border-radius:8px; padding:9px 15px; cursor:pointer;">+ Add a line</button>
+      </div>
+    </div>
+
+    <!-- TEST NOTES -->
+    <div style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">What you learned from testing</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <div style="display:grid; grid-template-columns:40px 1fr 1fr; gap:10px 16px; align-items:end;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89;">Card</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89;">Notes for testing</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89;">Changes to make</div>
+      </div>
+      <div data-testnotes="1" style="display:grid; grid-template-columns:40px 1fr 1fr; gap:10px 16px; align-items:start; margin-top:8px;"></div>
+      <div class="no-print" style="margin-top:14px;">
+        <button type="button" data-add-card="1" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#fff; background:#177E89; border:none; border-radius:8px; padding:10px 16px; cursor:pointer;">+ Add a card</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#0f5a63;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#177E89&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; },
+  &quot;showExamples&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-7-indexcard-v1';
+    this.STEPS = [
+      'Draw each page on a single index card. Use the case study <a href="../../chapter-5/interactive/frontend-decision-case-study.dc.html" style="color:#177E89; font-weight:700; text-decoration:underline;">Page Flows</a> if you want to practice.',
+      'If you need more room, such as a scroll or a popup, add a new card. Collect them into a deck.',
+      'Try to find a test user you haven\u2019t told about the app.<br>Write down what interacting with the card does so you know what to do, but don\u2019t share it with users.',
+      'Hand them a single home screen card with the instruction: &ldquo;Treat this like an app.&rdquo;',
+      'Record the session if they\u2019ll let you. If not, take detailed notes of where they look and interact with the cards.',
+      'If they click, swipe, pinch or zoom, hand them the card for that page. If you don’t have a card for what they do, mark that as an error.',
+      'Don\u2019t interrupt or give them any help, since a real visitor gets none either.',
+      'Repeat the test with new cards as long as they\u2019ll let you. With index cards, you can quickly add and remove.'
+    ];
+    this.example = {
+      'flow-name': 'Onboarding, contractor',
+      'flow-persona': 'Contractor, on a phone',
+      'c-0-name': 'Welcome',
+      'c-1-name': 'Business details',
+      'c-2-name': 'Service area & trades',
+      'c-3-name': 'Project feed',
+      'instr-0': 'Card 1: Tap \u201CGet started\u201D \u2192 hand them Card 2.',
+      'instr-1': 'Card 2: Fill the fields, tap \u201CNext\u201D \u2192 hand them Card 3.',
+      'instr-2': 'Card 3: Tap \u201CNext\u201D \u2192 hand them Card 4.',
+      'instr-3': 'Card 4: Scroll the list; tap a project \u2192 hand them the project detail card.'
+    };
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    this.buildSteps(root);
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    const data = Object.keys(saved).length ? saved : this.example;
+    this.buildCards(root, data);
+    this.buildInstructions(root, data);
+    this.buildTestNotes(root, data);
+    this.restore(root, data);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    root.addEventListener('click', (e)=>{
+      const a = e.target.closest('[data-add-card]');
+      if(a){ e.preventDefault(); this.addCard(root); this._save(); }
+      const b = e.target.closest('[data-add-instr]');
+      if(b){ e.preventDefault(); this.addInstr(root); this._save(); }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('.save').forEach(el=>{
+      const ex = this.example[el.name];
+      if(ex === undefined) return;
+      if(showEx){ if(!el.value) el.value = ex; }
+      else { if(el.value === ex) el.value = ''; }
+    });
+  }
+  buildSteps(root){
+    const host = root.querySelector('[data-steps]');
+    if(!host) return;
+    let h = '';
+    this.STEPS.forEach((s,i)=>{
+      h += '<div style="display:flex; gap:10px; margin-bottom:7px; align-items:flex-start;"><span style="font-family:\'Bebas Neue\',sans-serif; font-size:16px; color:#177E89; flex:none; line-height:1.25;">'+(i+1)+'</span><span>'+s+'</span></div>';
+    });
+    host.innerHTML = h;
+  }
+  cardHTML(i){
+    const n = (i+1<10?'0':'')+(i+1);
+    return '<div class="icard" style="border:1px solid #dfe7e8; border-radius:11px; background:#fff; overflow:hidden; box-shadow:0 1px 6px rgba(15,90,99,.06);">'+
+      '<div style="display:flex; align-items:center; gap:10px; padding:11px 14px; background:#eaf4f4; border-bottom:1px solid #dfe7e8;">'+
+        '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:20px; color:#0f5a63; line-height:1; flex:none;">'+n+'</span>'+
+        '<input class="save" type="text" name="c-'+i+'-name" placeholder="Screen name" style="flex:1; min-width:0; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:13px; color:#0f5a63; background:transparent; border:none; border-bottom:1px solid #cfe0e0; padding:4px 2px; outline:none; box-sizing:border-box;">'+
+      '</div>'+
+      '<div style="position:relative; height:360px; margin:14px 16px; border:2px solid #cfe0e0; border-radius:20px; background:repeating-linear-gradient(#fff, #fff 27px, #eef3f4 27px, #eef3f4 28px); box-shadow:0 1px 4px rgba(15,90,99,.08); overflow:hidden;">'+
+        '<div style="position:absolute; left:50%; top:8px; transform:translateX(-50%); width:46px; height:5px; border-radius:3px; background:#dbe6e6;"></div>'+
+        '<div class="no-print" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; font-family:\'Caveat\',cursive; font-size:17px; color:#c2ccd0;">sketch this screen by hand</div>'+
+      '</div>'+
+    '</div>';
+  }
+  buildCards(root, saved){
+    const host = root.querySelector('[data-cards]');
+    if(!host) return;
+    let max = 3;
+    Object.keys(saved||{}).forEach(k=>{ const m = k.match(/^c-(\d+)-/); if(m) max = Math.max(max, parseInt(m[1],10)); });
+    let h = '';
+    for(let i=0;i<=max;i++) h += this.cardHTML(i);
+    host.innerHTML = h;
+  }
+  addCard(root){
+    root = root || document.getElementById('ws-root');
+    const host = root.querySelector('[data-cards]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.cardHTML(next));
+    const tn = root.querySelector('[data-testnotes]');
+    if(tn) tn.insertAdjacentHTML('beforeend', this.testRowHTML(next));
+    const inp = host.lastElementChild.querySelector('input');
+    if(inp) inp.focus();
+  }
+  instrHTML(i){
+    return '<div style="display:flex; align-items:center; gap:11px;">'+
+      '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:17px; color:#9178B5; line-height:1; flex:none; width:20px; text-align:right;">'+(i+1)+'</span>'+
+      '<input class="save" type="text" name="instr-'+i+'" placeholder="Card &hellip;: what an interaction does &rarr; which card to hand over" style="flex:1; min-width:0; font-family:\'Lato\',sans-serif; font-size:13.5px; color:#1f2d33; background:#f7f9fa; border:1px solid #dfe7e8; border-radius:6px; padding:8px 11px; outline:none; box-sizing:border-box;">'+
+    '</div>';
+  }
+  buildInstructions(root, saved){
+    const host = root.querySelector('[data-instructions]');
+    if(!host) return;
+    let max = 3;
+    Object.keys(saved||{}).forEach(k=>{ const m = k.match(/^instr-(\d+)$/); if(m) max = Math.max(max, parseInt(m[1],10)); });
+    let h = '';
+    for(let i=0;i<=max;i++) h += this.instrHTML(i);
+    host.innerHTML = h;
+  }
+  testRowHTML(i){
+    const n = (i+1<10?'0':'')+(i+1);
+    const ta = 'width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:\'Lato\',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;';
+    return '<div style="font-family:\'Bebas Neue\',sans-serif; font-size:19px; color:#0f5a63; padding-top:8px;">'+n+'</div>'+
+      '<textarea class="save" name="test-note-'+i+'" rows="3" placeholder="Where they got stuck or unsure&hellip;" style="'+ta+'"></textarea>'+
+      '<textarea class="save" name="test-change-'+i+'" rows="3" placeholder="What will you redraw or remove?" style="'+ta+'"></textarea>';
+  }
+  buildTestNotes(root, saved){
+    const host = root.querySelector('[data-testnotes]');
+    if(!host) return;
+    let max = 3;
+    Object.keys(saved||{}).forEach(k=>{ const m = k.match(/^c-(\d+)-/); if(m) max = Math.max(max, parseInt(m[1],10)); });
+    let h = '';
+    for(let i=0;i<=max;i++) h += this.testRowHTML(i);
+    host.innerHTML = h;
+  }
+  addInstr(root){
+    root = root || document.getElementById('ws-root');
+    const host = root.querySelector('[data-instructions]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.instrHTML(next));
+    const inp = host.lastElementChild.querySelector('input');
+    if(inp) inp.focus();
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, data){
+    Object.entries(data).forEach(([n,v])=>{ const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      addCard: () => { this.addCard(); this._save && this._save(); },
+      clearAll: () => {
+        if(!window.confirm('Reset this worksheet to the contractor onboarding example?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          this.buildCards(root, this.example);
+          this.buildInstructions(root, this.example);
+          this.buildTestNotes(root, this.example);
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          this.restore(root, this.example);
+          this._save && this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&amp;display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(32,28)" fill="none" stroke="#666" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="0" y1="6" x2="26" y2="6"></line>
+      <line x1="0" y1="22" x2="26" y2="22"></line>
+      <line x1="0" y1="38" x2="26" y2="38" stroke="#111"></line>
+      <circle cx="34" cy="38" r="6" fill="#111" stroke="#111"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Company List &amp; Alerts &middot; Print</span>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 1 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:40px; line-height:1.06; white-space:nowrap; margin:14px 0 0; color:#111;">Find Your <span style="text-decoration:line-through; text-decoration-color:#111; text-decoration-thickness:4px; color:#888;">Dream</span> <span style="font-family:'Fraunces',serif; font-style:italic; font-weight:600; color:#111;">Pretty Good</span> Job</h1>
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#333; margin:16px 0 0;">Company List &amp; Alerts</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Now that you have a list of companies and filters for them, it&rsquo;s time to put them together. Take the top 3 filters you picked from the Company Filters worksheet. For the hard dealbreakers, you need to have them all. Take another look and make sure there is really no negotiating with them. Maybe you would prefer fully remote, but would do 1&ndash;2 days on-site, if they didn&rsquo;t have any other hard dealbreakers.</p>
+
+    <!-- REFERENCE CALLOUT -->
+    <div style="background:#f2f2f2; border-left:3px solid #666; border-radius:0 4px 4px 0; padding:14px 16px; margin:20px 0 0;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#555; margin-bottom:7px;">&#9671; Bring these with you</div>
+      <div style="font-size:13.5px; line-height:1.62; color:#333;">Your raw company list comes from the Identifying Industries worksheet. Your filters come from the Company Filters worksheet. Gather both before you begin.</div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Build Your Final List</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <div id="body-01">
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 12px;">For each company on your list, check to see if it hits any of your filters. If it does, remove it from the list. You can find some of the information on their website or through AI. I didn&rsquo;t do all the filters at once because then you can&rsquo;t see the companies you are losing for each one. You might change your mind about something if it&rsquo;s a company that is high on your other lists.</p>
+
+      <div style="background:#f2f2f2; border-left:3px solid #111; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">&#9671; AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"Given this list of companies (copy and paste or uploaded), which ones allow for remote work? Create a new list based on the answer. Create a new list based on if they have 401(k) match. Create a new list based on whether they pay their Senior Software Engineers more than $200k on average."</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 6px;">Sometimes, you won&rsquo;t be able to find the information anywhere. Work/life balance isn&rsquo;t usually on the website. It is something you can find out through networking or during the interview. I will talk more about networking in a future chapter. Ideally, you will have 25-50 companies that interest you at the end of this process. If you end up with too few, I would rework the filters.</p>
+
+      <div style="display:flex; align-items:baseline; gap:10px; margin:24px 0 4px; padding-bottom:7px; border-bottom:2px solid #111;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#111;">Final Companies</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#777;">aim for 25-50</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0 28px; margin-top:6px;">
+        <sc-for list="{{ companies }}" as="c" hint-placeholder-count="16">
+          <div style="display:flex; align-items:center; gap:9px; padding:9px 0; border-bottom:1px solid #cccccc;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:16px; line-height:1; color:#666; min-width:22px; text-align:right;">{{ c.n }}</span>
+            <div style="flex:1; height:15px;"></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:48px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Set Up Your Alerts</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <div id="body-02">
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 12px;">If you are looking for a new job right now, plenty of tools are available for you to search and apply directly to jobs. If you want to be prepared for when something comes up, it is time to set up alerts. There are lots of options available to automate the process, but since it&rsquo;s hard to know if the same tools will exist in the time between when I am writing this and its publication, I am going to stick with Google Alerts. Since you might not want to automatically connect the AI to your Google account, here are the prompts to create the alert and instructions for adding them manually. I also recommend researching current AI job tools, reading their reviews, checking with Reddit, etc.</p>
+
+      <div style="background:#f2f2f2; border-left:3px solid #111; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">&#9671; AI Prompt &middot; Simple</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"Create a Google search alert for Senior Software Engineer jobs at Spotify and Bandcamp. They should be sent as a daily digest."</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 12px;">Modify as needed for the company and job info you are looking for. One gotcha is the name &ldquo;Senior Software Engineer.&rdquo; The job title might be something completely different. I tested this with FAANG companies. I added a caveat when I realized it was searching for all the titles at all the companies. While that would give you more results, you would also get false positives. You want to be sure you are searching for the correct level you want to apply at. I made it broad but you might want to specify L4 here, L5 there, E3 there, and so on.</p>
+
+      <div style="background:#f2f2f2; border-left:3px solid #111; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">&#9671; AI Prompt &middot; Recommended</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"For the companies in the list, create a Google search alert query that searches for jobs with the job equivalent to Senior Software Engineer. Make sure the title matches the company. For example, do not search for L4 at Netflix, only at Google. They should be sent as a daily digest."</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 10px;">This is the result I got. It gets complicated quickly if you are trying to write the queries yourself. Now, instead of checking 50 websites manually, you will get the results sent to you. Save that energy for studying Data Structures &amp; Algorithms.</p>
+
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#777; margin:0 0 6px;">Example result</div>
+      <div style="font-family:'Menlo','Consolas',monospace; font-size:12px; line-height:1.6; color:#222; background:#f2f2f2; border:1px solid #cccccc; border-radius:5px; padding:14px 16px; white-space:pre-wrap; word-break:break-word;">("senior software engineer" job Google) OR ("software engineer l4" job Google) OR ("senior software engineer" job Meta) OR ("senior software engineer" job Facebook) OR ("software engineer e5" job Meta) OR ("software engineer e5" job Facebook) OR ("software development engineer ii" job Amazon) OR ("sde ii" job Amazon) OR ("senior sde" job Amazon) OR ("senior software engineer" job Apple) OR ("senior software engineer" job Netflix)</div>
+
+      <div style="margin:22px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#111; margin-bottom:4px;">Your alert query</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:12px; color:#777; margin:0 0 8px;">Write the query AI generates for your companies here, so you have it when you set up the alert.</div>
+        <div style="border:1.5px solid #c9c9c9; border-radius:6px; height:96px;"></div>
+      </div>
+
+      <div style="background:#f2f2f2; border-left:3px solid #666; border-radius:0 4px 4px 0; padding:14px 16px; margin:20px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#555; margin-bottom:8px;">Adding it to Google Alerts</div>
+        <ol style="margin:0; padding-left:18px; font-size:13.5px; line-height:1.7; color:#333;">
+          <li>Sign in to your Google account and go to <a href="https://www.google.com/alerts" target="_blank" rel="noopener" style="font-style:italic; color:#111; text-decoration:none;">google.com/alerts</a>.</li>
+          <li>Paste your query into the box at the top.</li>
+          <li>Click <em style="font-style:italic; color:#111;">Show options</em>. Set <em style="font-style:italic; color:#111;">How often</em> to <em style="font-style:italic; color:#111;">At most once a day</em> for a daily digest, and set <em style="font-style:italic; color:#111;">Deliver to</em> to your email.</li>
+          <li>Click <em style="font-style:italic; color:#111;">Create Alert</em>. Come back any time to edit or delete it as your list changes.</li>
+        </ol>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:20px 0 0;">The alerts can also be used to inform you of networking opportunities. You can add words to the alert about conferences or events sponsored by the companies. Of course, I recommend going beyond automated alerts to engaging your real-world network. I assume you have a LinkedIn page and if not, make one now. It is necessary in today&rsquo;s job market. Search your connections for anyone who works or worked at the companies you are interested in. Don&rsquo;t pester strangers online, but if you have had conversations with them in the past, you can ask for a coffee chat to learn more about the company. This is how you learn about their real work/life balance, growth opportunities, etc. If you don&rsquo;t know anyone to talk to, you can follow recruiters or hiring managers; anyone you see who frequently posts jobs. Their posts can get you information, but I wouldn&rsquo;t expect a personal connection or referral from people you follow.</p>
+
+      <div style="background:#f2f2f2; border-left:3px solid #111; border-radius:0 4px 4px 0; padding:12px 15px; margin:16px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">&#9671; AI Prompt &middot; Events</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"Create a Google search alert query that finds conferences, meetups, and events sponsored by or featuring the companies in my list, so I can meet people who work there. Send it as a weekly digest."</div>
+      </div>
+    </div>
+    </div>
+
+  
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    const companies = Array.from({length:30}, (_,i)=>({ n: i+1 }));
+    return { companies, doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

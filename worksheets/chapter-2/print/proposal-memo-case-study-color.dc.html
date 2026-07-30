@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(34,28)" fill="none" stroke="#9178B5" stroke-width="4" stroke-linejoin="round">
+      <rect x="0" y="0" width="32" height="44" rx="2"></rect>
+      <line x1="8" y1="13" x2="24" y2="13" stroke="#DB3A34"></line>
+      <line x1="8" y1="22" x2="24" y2="22"></line>
+      <line x1="8" y1="31" x2="18" y2="31"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Proposal Memo &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 2 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Proposal Memo</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bfe3e2; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">Senior engineers are proactive. Proposing a new idea is a win for you, even when it is not approved, because it demonstrates your initiative. A memo is also a great way to learn:</p>
+    <ul style="list-style:none; margin:14px 0 0; padding:0; max-width:62ch; display:flex; flex-direction:column; gap:9px;">
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>your organization's memo standards</span></li>
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>how leadership reacts to new ideas</span></li>
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>how your team gives feedback</span></li>
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>how to connect your goals to leadership's goals</span></li>
+    </ul>
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:16px 0 0;">This is filled in with answers from the Renovation Revolution case study.</p>
+
+    <!-- SECTION 1 -->
+    <div class="sec" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">1</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Audience &amp; Goal</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">The audience is usually your manager, but they may share it upward or ask for stakeholder feedback. Name a goal of theirs that this memo will address.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; padding-bottom:7px; border-bottom:2px solid #003049; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#9aa7af;"><div>Who is this memo for?</div><div>Which of their goals does this memo address?</div></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:10px 0; border-bottom:1px solid #eef2f4;"><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">My engineering manager</div><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Grow the customer base with a new product line</div></div><div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:10px 0; border-bottom:1px solid #eef2f4;"><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">The VP of Product</div><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Diversify how the company reaches customers</div></div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">2</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Blockers</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">What is preventing that goal from being reached today.</p>
+      <div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Homeowners struggle to find and compare qualified contractors for a renovation.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Contractors have no easy way to discover relevant local projects to bid on.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Estimating labor hours and parts cost for a job is manual and inconsistent.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">A contractor’s past work and reviews are scattered, so trust is hard to establish.</span></div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">3</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Ideas You Can Solve</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">Ideas for solving those blockers that are within your ability to solve.</p>
+      <div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">A marketplace app, Renovation Revolution, connecting homeowners with contractors.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Structured contractor profiles: services, photos of past jobs, and customer reviews.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">A project posting and bidding flow with pre-contract privacy for the homeowner.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Photo-based search using image recognition to find the contractor behind a look.</span></div><div style="display:flex; gap:11px; align-items:baseline; margin-bottom:9px;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Data-driven estimate suggestions for labor and parts that improve as data grows.</span></div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">4</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Top 3 Opportunities</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">The three strongest ideas, each weighed so the trade-offs are clear before committing to a single proposal.</p>
+      <div class="sec" style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span>
+          <span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Marketplace and bidding flow</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 14px; border-right:1px solid #eef2f4;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Pros</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Opens a new revenue stream through transaction or lead fees. Serves both homeowners and contractors, so each side draws in the other. Every later feature (search, reviews, estimates) builds on this foundation, and network effects make it defensible once it has traction.</div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#DB3A34; margin-bottom:7px;">Cons</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Two-sided cold start: it earns nothing until enough of both sides have joined. It is the largest build and the slowest path to revenue, and it needs payment, trust, and safety systems in place before any money can change hands.</div>
+          </div>
+        </div>
+      </div><div class="sec" style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span>
+          <span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Photo-based contractor search</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 14px; border-right:1px solid #eef2f4;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Pros</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">A standout differentiator; helps homeowners find a specific look.</div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#DB3A34; margin-bottom:7px;">Cons</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Needs image-recognition tooling and a library of job photos first.</div>
+          </div>
+        </div>
+      </div><div class="sec" style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span>
+          <span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Data-driven estimates</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 14px; border-right:1px solid #eef2f4;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Pros</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Long-term ROI; brings contractors back to the app repeatedly.</div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#DB3A34; margin-bottom:7px;">Cons</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Needs many completed transactions before the numbers are trustworthy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">5</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">ROI &amp; Why It Has Waited</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">For those same three opportunities, the return on investment and why each has not been done yet.</p>
+      <div class="sec" style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span>
+          <span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Marketplace and bidding flow</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 14px; border-right:1px solid #eef2f4;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Return on investment</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">New homeowners on both sides of the marketplace; the foundation every other feature builds on.</div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#9178B5; margin-bottom:7px;">Why it has waited</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">It is the largest build, so it needs to start as an MVP rather than the full vision.</div>
+          </div>
+        </div>
+      </div><div class="sec" style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span>
+          <span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Photo-based contractor search</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 14px; border-right:1px solid #eef2f4;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Return on investment</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Differentiates us from directories and improves retention.</div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#9178B5; margin-bottom:7px;">Why it has waited</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Relies on accumulated job photos and image-recognition tooling, so it was not part of the MVP.</div>
+          </div>
+        </div>
+      </div><div class="sec" style="border:1px solid #e0d9e6; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="display:flex; align-items:center; gap:10px; background:#f3eff7; padding:10px 14px; border-bottom:1px solid #e0d9e6;">
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#9178B5; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span>
+          <span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:14px; color:#3A2449;">Data-driven estimates</span>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <div style="padding:12px 14px; border-right:1px solid #eef2f4;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin-bottom:7px;">Return on investment</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Higher-quality bids and repeat use; a confidence score that rises as data accumulates.</div>
+          </div>
+          <div style="padding:12px 14px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#9178B5; margin-bottom:7px;">Why it has waited</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#3A2449;">Needs transaction volume and data expertise before the estimates are reliable.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 6 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">6</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Choose the Strongest Idea</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 14px;">The strongest idea is a combination of high ROI and feasibility with your current technology and resources.</p>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">The idea you will propose</div>
+      <div style="margin-bottom:14px;"><div style="border:1.5px solid #cdd5da; border-radius:5px; background:#faf8fc; padding:11px 13px; font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Launch the Renovation Revolution marketplace MVP: contractor profiles, project posting, and bidding.</div></div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">Why you chose this one</div>
+      <div style="border:1.5px solid #cdd5da; border-radius:5px; background:#faf8fc; padding:11px 13px; font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">It has the highest ROI and is feasible now with our current stack (REST, a relational database, and object storage for photos). It defers the image-recognition and estimate features until we have the data to support them.</div>
+    </div>
+
+    <!-- SECTION 7 -->
+    <div class="sec" style="margin-top:32px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">7</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Draft the Memo</h2>
+      </div>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 16px;">The content to help you write the memo. Write it addressed to your audience, then move it into your organization's template.</p>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">What is the problem?</div>
+      <div style="margin-bottom:16px;"><div style="border:1.5px solid #cdd5da; border-radius:5px; background:#faf8fc; padding:11px 13px; font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Homeowners cannot easily find and compare trustworthy contractors, and contractors cannot find relevant projects to bid on. Reputation, past work, and estimates all live in scattered places, which makes both sides slow and uncertain.</div></div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">What is the solution?</div>
+      <div style="margin-bottom:16px;"><div style="border:1.5px solid #cdd5da; border-radius:5px; background:#faf8fc; padding:11px 13px; font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">A marketplace app, Renovation Revolution, with structured contractor profiles (services, job photos, reviews) and a project posting and bidding flow with pre-contract privacy for the homeowner. We launch it as an MVP we can expand.</div></div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#3A2449; margin-bottom:6px;">What other solutions were researched but not chosen, and why?</div>
+      <div style="border:1.5px solid #cdd5da; border-radius:5px; background:#faf8fc; padding:11px 13px; font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3A2449;">Photo-based image-recognition search was researched but deferred until we have a library of job photos and the ML tooling to support it. Automated labor and parts estimates were also deferred until we have enough completed transactions to produce a useful confidence score.</div>
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://discord.gg/C5Cunu2gT" style="color:#177E89; text-decoration:none;"><span class="lk-title">Discord</span><span class="lk-url">discord.gg/C5Cunu2gT</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+</script>
+</body>
+</html>

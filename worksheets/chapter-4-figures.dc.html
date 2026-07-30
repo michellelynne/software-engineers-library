@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Montserrat:wght@600;700&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .fig{ background:#fff; box-sizing:border-box; }
+  .fig-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9178B5; }
+  .fig-title{ font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; margin:10px 0 0; color:#003049; }
+  .fig-rule{ height:4px; width:70px; background:#DB3A34; margin:16px 0 34px; }
+  .box-lbl{ font-family:'Fraunces',serif; font-weight:600; }
+  .fig-caption{ font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#003049; margin-top:6px; }
+  .fig-caption span{ font-family:'Montserrat',sans-serif; font-weight:700; color:#9178B5; }
+  svg{ display:block; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="24" y="30" width="18" height="18" rx="3" fill="none" stroke="#fff" stroke-width="3"></rect>
+    <rect x="58" y="30" width="18" height="18" rx="3" fill="none" stroke="#177E89" stroke-width="3"></rect>
+    <line x1="42" y1="39" x2="58" y2="39" stroke="#DB3A34" stroke-width="3"></line>
+  </svg>
+</template>
+
+<div style="max-width:1080px; margin:26px auto; display:flex; flex-direction:column; gap:24px;">
+
+  <div id="fig-4-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 4.1</div>
+    <h1 class="fig-title">Backend Engineer Workflow</h1>
+    <div class="fig-rule"></div>
+    <svg viewBox="0 0 920 320" width="100%">
+      <defs>
+        <marker id="arw1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#177E89"></path></marker>
+      </defs>
+      <rect x="30" y="40" width="180" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="120" y="81" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">User Story</text>
+
+      <rect x="260" y="40" width="260" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="390" y="70" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Business Logic /</text>
+      <text x="390" y="92" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Algorithm Coded</text>
+
+      <rect x="570" y="40" width="260" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="700" y="70" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Database Changes as</text>
+      <text x="700" y="92" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Necessary</text>
+
+      <rect x="140" y="230" width="260" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="270" y="260" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Unit / Integration /</text>
+      <text x="270" y="282" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Smoke Tests</text>
+
+      <rect x="460" y="230" width="180" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="550" y="271" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">Code Reviewed</text>
+
+      <rect x="700" y="230" width="180" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="790" y="271" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">Code Merged</text>
+
+      <path d="M210,75 L260,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw1)"></path>
+      <path d="M520,75 L570,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw1)"></path>
+      <path d="M700,110 L700,190 L270,190 L270,230" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw1)"></path>
+      <path d="M400,265 L460,265" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw1)"></path>
+      <path d="M640,265 L700,265" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw1)"></path>
+    </svg>
+    <div class="fig-caption"><span>Figure 4.1:</span> Backend Engineer Workflow</div>
+  </div>
+
+  <div id="fig-4-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 4.2</div>
+    <h1 class="fig-title">Deployment Tasks</h1>
+    <div class="fig-rule"></div>
+    <svg viewBox="0 0 950 150" width="100%">
+      <defs>
+        <marker id="arw2" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#177E89"></path></marker>
+      </defs>
+      <rect x="30" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="130" y="70" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Disk Image with</text>
+      <text x="130" y="92" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Code Created</text>
+
+      <rect x="260" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="360" y="81" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Instances Deployed</text>
+
+      <rect x="490" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="590" y="70" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Traffic Re-routed</text>
+      <text x="590" y="92" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Carefully</text>
+
+      <rect x="720" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="820" y="70" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Old Instances</text>
+      <text x="820" y="92" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Destroyed</text>
+
+      <path d="M230,75 L260,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw2)"></path>
+      <path d="M460,75 L490,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw2)"></path>
+      <path d="M690,75 L720,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw2)"></path>
+    </svg>
+    <div class="fig-caption"><span>Figure 4.2:</span> Deployment Tasks</div>
+  </div>
+
+  <div id="fig-4-3" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 4.3</div>
+    <h1 class="fig-title">Data Model Example</h1>
+    <div class="fig-rule"></div>
+    <svg viewBox="0 0 1300 500" width="100%">
+      <defs>
+        <marker id="arw3" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#177E89"></path></marker>
+      </defs>
+
+      <path d="M650,206 L650,300" fill="none" stroke="#177E89" stroke-width="2" marker-end="url(#arw3)"></path>
+      <path d="M500,120 C 300,120 320,200 320,260" fill="none" stroke="#177E89" stroke-width="2" marker-end="url(#arw3)"></path>
+      <path d="M800,120 C 1020,120 1020,200 1020,260" fill="none" stroke="#177E89" stroke-width="2" marker-end="url(#arw3)"></path>
+      <path d="M320,320 L500,340" fill="none" stroke="#177E89" stroke-width="2" marker-end="url(#arw3)"></path>
+      <path d="M800,360 L960,340" fill="none" stroke="#177E89" stroke-width="2" marker-end="url(#arw3)"></path>
+
+      <g>
+        <rect x="500" y="20" width="300" height="36" rx="10" fill="#003049"></rect>
+        <text x="650" y="44" text-anchor="middle" class="box-lbl" font-size="15" fill="#fff">User</text>
+        <rect x="500" y="56" width="300" height="150" fill="#fff" stroke="#003049" stroke-width="2"></rect>
+        <line x1="620" y1="56" x2="620" y2="206" stroke="#dfe3e6" stroke-width="1.5"></line>
+        <g class="box-lbl" font-size="13" fill="#294552">
+          <text x="510" y="78">id</text><text x="630" y="78">UUID</text>
+          <text x="510" y="108">name</text><text x="630" y="108">STR</text>
+          <text x="510" y="138">metadata</text><text x="630" y="138">JSON</text>
+          <text x="510" y="168">type</text><text x="630" y="168">ENUM</text>
+          <text x="510" y="198">project_id</text><text x="630" y="198">Foreign Key</text>
+        </g>
+        <line x1="500" y1="86" x2="800" y2="86" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="500" y1="116" x2="800" y2="116" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="500" y1="146" x2="800" y2="146" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="500" y1="176" x2="800" y2="176" stroke="#eef1f4" stroke-width="1"></line>
+      </g>
+
+      <g>
+        <rect x="20" y="260" width="300" height="36" rx="10" fill="#177E89"></rect>
+        <text x="170" y="284" text-anchor="middle" class="box-lbl" font-size="15" fill="#fff">Images</text>
+        <rect x="20" y="296" width="300" height="150" fill="#fff" stroke="#177E89" stroke-width="2"></rect>
+        <line x1="140" y1="296" x2="140" y2="446" stroke="#dfe3e6" stroke-width="1.5"></line>
+        <g class="box-lbl" font-size="13" fill="#294552">
+          <text x="30" y="318">id</text><text x="150" y="318">UUID</text>
+          <text x="30" y="348">name</text><text x="150" y="348">STR</text>
+          <text x="30" y="378">metadata</text><text x="150" y="378">JSON</text>
+          <text x="30" y="408">room_id</text><text x="150" y="408">Foreign Key</text>
+          <text x="30" y="438">photographer_id</text><text x="150" y="438">Foreign Key</text>
+        </g>
+        <line x1="20" y1="326" x2="320" y2="326" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="20" y1="356" x2="320" y2="356" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="20" y1="386" x2="320" y2="386" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="20" y1="416" x2="320" y2="416" stroke="#eef1f4" stroke-width="1"></line>
+      </g>
+
+      <g>
+        <rect x="500" y="340" width="300" height="36" rx="10" fill="#9178B5"></rect>
+        <text x="650" y="364" text-anchor="middle" class="box-lbl" font-size="15" fill="#fff">Rooms</text>
+        <rect x="500" y="376" width="300" height="90" fill="#fff" stroke="#9178B5" stroke-width="2"></rect>
+        <line x1="620" y1="376" x2="620" y2="466" stroke="#dfe3e6" stroke-width="1.5"></line>
+        <g class="box-lbl" font-size="13" fill="#294552">
+          <text x="510" y="398">id</text><text x="630" y="398">UUID</text>
+          <text x="510" y="428">name</text><text x="630" y="428">STR</text>
+          <text x="510" y="458">project_id</text><text x="630" y="458">Foreign Key</text>
+        </g>
+        <line x1="500" y1="406" x2="800" y2="406" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="500" y1="436" x2="800" y2="436" stroke="#eef1f4" stroke-width="1"></line>
+      </g>
+
+      <g>
+        <rect x="960" y="260" width="320" height="36" rx="10" fill="#DB3A34"></rect>
+        <text x="1120" y="284" text-anchor="middle" class="box-lbl" font-size="15" fill="#fff">Project</text>
+        <rect x="960" y="296" width="320" height="180" fill="#fff" stroke="#DB3A34" stroke-width="2"></rect>
+        <line x1="1090" y1="296" x2="1090" y2="476" stroke="#dfe3e6" stroke-width="1.5"></line>
+        <g class="box-lbl" font-size="13" fill="#294552">
+          <text x="970" y="318">id</text><text x="1100" y="318">UUID</text>
+          <text x="970" y="348">start_date</text><text x="1100" y="348">DATE</text>
+          <text x="970" y="378">room_id</text><text x="1100" y="378">Foreign Key</text>
+          <text x="970" y="408">name</text><text x="1100" y="408">STR</text>
+          <text x="970" y="438">customer_id</text><text x="1100" y="438">Foreign Key</text>
+          <text x="970" y="468">contractor_id</text><text x="1100" y="468">Foreign Key</text>
+        </g>
+        <line x1="960" y1="326" x2="1280" y2="326" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="960" y1="356" x2="1280" y2="356" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="960" y1="386" x2="1280" y2="386" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="960" y1="416" x2="1280" y2="416" stroke="#eef1f4" stroke-width="1"></line>
+        <line x1="960" y1="446" x2="1280" y2="446" stroke="#eef1f4" stroke-width="1"></line>
+      </g>
+    </svg>
+    <div class="fig-caption"><span>Figure 4.3:</span> Data Model Example</div>
+  </div>
+
+  <div id="fig-4-4" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 4.4</div>
+    <h1 class="fig-title">Basic System Design</h1>
+    <div class="fig-rule"></div>
+    <svg viewBox="0 0 900 180" width="100%">
+      <defs>
+        <marker id="arw4" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#177E89"></path></marker>
+      </defs>
+      <rect x="40" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="140" y="81" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">UI</text>
+      <rect x="350" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="450" y="81" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">API</text>
+      <rect x="660" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="760" y="81" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">Database</text>
+
+      <path d="M240,75 L350,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw4)"></path>
+      <path d="M550,75 L660,75" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw4)"></path>
+      <path d="M450,110 L450,150 L140,150 L140,110" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw4)"></path>
+      <path d="M760,110 L760,150 L450,150" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw4)"></path>
+    </svg>
+    <div class="fig-caption"><span>Figure 4.4:</span> Basic System Design</div>
+  </div>
+
+  <div id="fig-4-5" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 4.5</div>
+    <h1 class="fig-title">Intermediate System Design</h1>
+    <div class="fig-rule"></div>
+    <svg viewBox="0 0 1300 280" width="100%">
+      <defs>
+        <marker id="arw5" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#177E89"></path></marker>
+        <marker id="arw5b" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#003049"></path></marker>
+      </defs>
+      <rect x="20" y="100" width="170" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="105" y="141" text-anchor="middle" class="box-lbl" font-size="19" fill="#003049">UI</text>
+
+      <rect x="270" y="100" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="370" y="141" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Security Gateway</text>
+
+      <rect x="550" y="100" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="650" y="141" text-anchor="middle" class="box-lbl" font-size="17" fill="#003049">Load Balancers</text>
+
+      <rect x="850" y="90" width="180" height="90" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <rect x="862" y="102" width="180" height="90" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="952" y="155" text-anchor="middle" class="box-lbl" font-size="20" fill="#003049">API</text>
+
+      <rect x="1090" y="20" width="200" height="70" rx="12" fill="#fff" stroke="#177E89" stroke-width="2.5"></rect>
+      <text x="1190" y="50" text-anchor="middle" class="box-lbl" font-size="15" fill="#177E89">Database Read</text>
+      <text x="1190" y="72" text-anchor="middle" class="box-lbl" font-size="15" fill="#177E89">Replicas</text>
+
+      <rect x="1090" y="180" width="200" height="70" rx="12" fill="#fff" stroke="#DB3A34" stroke-width="2.5"></rect>
+      <text x="1190" y="221" text-anchor="middle" class="box-lbl" font-size="17" fill="#DB3A34">Database Writes</text>
+
+      <path d="M190,125 L270,125" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw5b)"></path>
+      <path d="M270,145 L190,145" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw5b)"></path>
+      <path d="M470,125 L550,125" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw5b)"></path>
+      <path d="M550,145 L470,145" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw5b)"></path>
+      <path d="M750,125 L862,140" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw5b)"></path>
+      <path d="M862,160 L750,145" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw5b)"></path>
+      <path d="M1042,120 C 1070,100 1070,80 1090,60" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw5)"></path>
+      <path d="M1042,175 L1090,205" fill="none" stroke="#DB3A34" stroke-width="2.5" marker-end="url(#arw5)"></path>
+    </svg>
+    <div class="fig-caption"><span>Figure 4.5:</span> Intermediate System Design</div>
+  </div>
+
+  <div id="fig-4-6" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 4.6</div>
+    <h1 class="fig-title">Advanced System Design</h1>
+    <div class="fig-rule"></div>
+    <svg viewBox="0 0 1400 680" width="100%">
+      <defs>
+        <marker id="arw6" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#177E89"></path></marker>
+        <marker id="arw6b" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#003049"></path></marker>
+        <marker id="arw6c" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#9178B5"></path></marker>
+      </defs>
+
+      <path d="M105,240 L105,140 C 105,90 180,90 240,80" fill="none" stroke="#9178B5" stroke-width="2.5" marker-end="url(#arw6c)"></path>
+      <path d="M190,265 L270,265" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw6b)"></path>
+      <path d="M270,285 L190,285" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw6b)"></path>
+      <path d="M470,265 L550,265" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw6b)"></path>
+      <path d="M550,285 L470,285" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw6b)"></path>
+      <path d="M750,265 L862,280" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw6b)"></path>
+      <path d="M862,300 L750,285" fill="none" stroke="#003049" stroke-width="2.5" marker-end="url(#arw6b)"></path>
+      <path d="M1042,260 C 1070,240 1070,220 1090,200" fill="none" stroke="#177E89" stroke-width="2.5" marker-end="url(#arw6)"></path>
+      <path d="M1042,315 L1090,345" fill="none" stroke="#DB3A34" stroke-width="2.5" marker-end="url(#arw6)"></path>
+      <path d="M900,332 L800,450" fill="none" stroke="#9178B5" stroke-width="2.5" marker-end="url(#arw6c)"></path>
+      <path d="M780,520 L780,590" fill="none" stroke="#9178B5" stroke-width="2.5" marker-end="url(#arw6c)"></path>
+      <path d="M940,332 C 990,380 1000,420 1000,460" fill="none" stroke="#9178B5" stroke-width="2.5" marker-end="url(#arw6c)"></path>
+      <path d="M1115,520 L1115,590" fill="none" stroke="#9178B5" stroke-width="2.5" marker-end="url(#arw6c)"></path>
+      <path d="M1230,625 C 1350,625 1350,600 1350,560 L1350,300 C 1350,278 1330,275 1300,275 L1042,275" fill="none" stroke="#9178B5" stroke-width="2.5" marker-end="url(#arw6c)"></path>
+
+      <rect x="20" y="240" width="170" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="105" y="286" text-anchor="middle" class="box-lbl" font-size="32" fill="#003049">UI</text>
+
+      <rect x="240" y="40" width="200" height="70" rx="12" fill="#fff" stroke="#9178B5" stroke-width="2.5"></rect>
+      <text x="340" y="87" text-anchor="middle" class="box-lbl" font-size="34" fill="#9178B5">S3</text>
+
+      <rect x="270" y="240" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="370" y="270" text-anchor="middle" class="box-lbl" font-size="20" fill="#003049">Security</text>
+      <text x="370" y="292" text-anchor="middle" class="box-lbl" font-size="20" fill="#003049">Gateway</text>
+
+      <rect x="550" y="240" width="200" height="70" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="650" y="270" text-anchor="middle" class="box-lbl" font-size="20" fill="#003049">Load</text>
+      <text x="650" y="292" text-anchor="middle" class="box-lbl" font-size="20" fill="#003049">Balancers</text>
+
+      <rect x="850" y="230" width="180" height="90" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <rect x="862" y="242" width="180" height="90" rx="12" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+      <text x="952" y="295" text-anchor="middle" class="box-lbl" font-size="24" fill="#003049">API</text>
+
+      <rect x="1090" y="160" width="200" height="70" rx="12" fill="#fff" stroke="#177E89" stroke-width="2.5"></rect>
+      <text x="1190" y="190" text-anchor="middle" class="box-lbl" font-size="18" fill="#177E89">Database Read</text>
+      <text x="1190" y="212" text-anchor="middle" class="box-lbl" font-size="18" fill="#177E89">Replicas</text>
+
+      <rect x="1090" y="320" width="200" height="70" rx="12" fill="#fff" stroke="#DB3A34" stroke-width="2.5"></rect>
+      <text x="1190" y="349" text-anchor="middle" class="box-lbl" font-size="18" fill="#DB3A34">Database</text>
+      <text x="1190" y="371" text-anchor="middle" class="box-lbl" font-size="18" fill="#DB3A34">Writes</text>
+
+      <rect x="680" y="450" width="200" height="70" rx="12" fill="#fff" stroke="#9178B5" stroke-width="2.5"></rect>
+      <text x="780" y="480" text-anchor="middle" class="box-lbl" font-size="16" fill="#9178B5">Notifications</text>
+      <text x="780" y="502" text-anchor="middle" class="box-lbl" font-size="16" fill="#9178B5">Event Queue</text>
+
+      <rect x="680" y="590" width="200" height="70" rx="12" fill="#fff" stroke="#9178B5" stroke-width="2.5"></rect>
+      <text x="780" y="620" text-anchor="middle" class="box-lbl" font-size="16" fill="#9178B5">Notifications</text>
+      <text x="780" y="642" text-anchor="middle" class="box-lbl" font-size="16" fill="#9178B5">Service</text>
+
+      <rect x="1000" y="450" width="230" height="70" rx="12" fill="#fff" stroke="#9178B5" stroke-width="2.5"></rect>
+      <text x="1115" y="480" text-anchor="middle" class="box-lbl" font-size="15" fill="#9178B5">Image Review</text>
+      <text x="1115" y="502" text-anchor="middle" class="box-lbl" font-size="15" fill="#9178B5">Service Event Queue</text>
+
+      <rect x="1000" y="590" width="230" height="70" rx="12" fill="#fff" stroke="#9178B5" stroke-width="2.5"></rect>
+      <text x="1115" y="620" text-anchor="middle" class="box-lbl" font-size="16" fill="#9178B5">Image Review</text>
+      <text x="1115" y="642" text-anchor="middle" class="box-lbl" font-size="16" fill="#9178B5">Service</text>
+
+    </svg>
+    <div class="fig-caption"><span>Figure 4.6:</span> Advanced System Design</div>
+  </div>
+
+</div>
+
+</x-dc>
+</body>
+</html>

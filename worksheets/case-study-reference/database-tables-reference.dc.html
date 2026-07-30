@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#0f5f68; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .grp{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(26,28)" stroke="#9178B5" stroke-width="4" fill="none">
+      <rect x="0" y="0" width="48" height="44" rx="3"></rect>
+      <line x1="0" y1="15" x2="48" y2="15"></line>
+      <line x1="0" y1="29" x2="48" y2="29"></line>
+      <line x1="18" y1="15" x2="18" y2="44"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Database Tables &middot; Reference</span>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#9178B5; border:1.5px solid #9178B5; border-radius:7px; padding:8px 16px; cursor:pointer; color:#241c33;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#3A2449; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 60px; box-shadow:0 2px 24px rgba(0,48,73,.12); box-sizing:border-box; overflow:hidden;">
+
+  <div style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#8fb3c4;">Case Study Reference</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Database Tables</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bcd2dc; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:32px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">Every table for the Renovation Revolution case study, built from the objects behind the screens. Keep this handy while you design endpoints, authorization, and search. To see where the data comes from, use the <a href="pages-reference.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #9fd0d2;">Pages</a> reference; to work through the tables yourself, use the <a href="../chapter-4/interactive/database-tables.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #9fd0d2;">Database Tables worksheet</a>.</p>
+
+    <div style="margin-top:22px; display:flex; flex-wrap:wrap; gap:10px 26px;">
+      <div style="display:flex; gap:9px; align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace; font-weight:600; font-size:11px; color:#fff; background:#003049; border-radius:4px; padding:2px 6px;">PK</span><span style="font-size:12.5px; color:#55707e;">primary key, identifies the row</span></div>
+      <div style="display:flex; gap:9px; align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace; font-weight:600; font-size:11px; color:#fff; background:#177E89; border-radius:4px; padding:2px 6px;">FK</span><span style="font-size:12.5px; color:#55707e;">foreign key, points to another table</span></div>
+      <div style="display:flex; gap:9px; align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace; font-weight:600; font-size:11px; color:#fff; background:#9178B5; border-radius:4px; padding:2px 6px;">IDX</span><span style="font-size:12.5px; color:#55707e;">indexed for faster lookups</span></div>
+    </div>
+
+    <div id="groups-host"></div>
+
+    <div style="margin-top:40px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#3A2449;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;">Software Engineer's Library</a></div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    const groups = [
+      { name:'Accounts & Access', tables:[
+        { name:'users', note:'One row per person, whatever their role', cols:[
+          ['id','uuid','PK',''],
+          ['email','varchar','IDX','unique, used to sign in'],
+          ['password_hash','varchar','',''],
+          ['name','varchar','',''],
+          ['phone','varchar','',''],
+          ['role','varchar','IDX','homeowner, contractor, vendor, admin'],
+          ['contact_preference','varchar','','email or phone'],
+          ['created_at','timestamptz','','']
+        ]},
+        { name:'contractor_profiles', note:'The public profile a homeowner compares when bidding opens', cols:[
+          ['id','uuid','PK',''],
+          ['user_id','uuid','FK','references users, unique'],
+          ['company_name','varchar','IDX',''],
+          ['services','varchar[]','IDX','structured categories, not free text'],
+          ['availability','varchar','IDX','open, limited, booked'],
+          ['insurance_expires_on','date','',''],
+          ['service_area','varchar','IDX','']
+        ]},
+        { name:'vendor_profiles', note:'Suppliers who list products in the catalog', cols:[
+          ['id','uuid','PK',''],
+          ['user_id','uuid','FK','references users, unique'],
+          ['company_name','varchar','IDX',''],
+          ['ships_to','varchar[]','','']
+        ]}
+      ]},
+      { name:'Projects & Rooms', tables:[
+        { name:'projects', note:'A renovation owned by one homeowner', cols:[
+          ['id','uuid','PK',''],
+          ['user_id','uuid','FK','references users, the owner'],
+          ['name','varchar','',''],
+          ['address','varchar','',''],
+          ['budget_low','integer','','stored in cents'],
+          ['budget_high','integer','','stored in cents'],
+          ['status','varchar','IDX','draft, open_for_bids, active, complete'],
+          ['created_at','timestamptz','IDX','']
+        ]},
+        { name:'project_team', note:'Who else can reach a project, and as what', cols:[
+          ['id','uuid','PK',''],
+          ['project_id','uuid','FK','references projects'],
+          ['user_id','uuid','FK','references users'],
+          ['role','varchar','','contractor, designer, viewer'],
+          ['invited_at','timestamptz','',''],
+          ['accepted_at','timestamptz','','null until they accept']
+        ]},
+        { name:'rooms', note:'One scanned space inside a project', cols:[
+          ['id','uuid','PK',''],
+          ['project_id','uuid','FK','references projects'],
+          ['name','varchar','','kitchen, primary bath'],
+          ['scan_model_url','text','','the 3D model built from the scan'],
+          ['square_feet','numeric','','']
+        ]},
+        { name:'images', note:'Photos captured during a room scan', cols:[
+          ['id','uuid','PK',''],
+          ['room_id','uuid','FK','references rooms'],
+          ['uploaded_by','uuid','FK','references users'],
+          ['file_url','text','',''],
+          ['created_at','timestamptz','','']
+        ]},
+        { name:'image_metadata', note:'What the camera and the scan recorded about an image', cols:[
+          ['id','uuid','PK',''],
+          ['image_id','uuid','FK','references images, unique'],
+          ['captured_at','timestamptz','',''],
+          ['width_px','integer','',''],
+          ['height_px','integer','',''],
+          ['camera_position','jsonb','','where the phone was in the room']
+        ]},
+        { name:'visible_items', note:'Something the scan recognized in the room', cols:[
+          ['id','uuid','PK',''],
+          ['room_id','uuid','FK','references rooms'],
+          ['image_id','uuid','FK','references images'],
+          ['label','varchar','IDX','countertop, faucet, cabinet'],
+          ['bounding_box','jsonb','','where it sits in the image'],
+          ['confidence','numeric','','how sure the scan is']
+        ]},
+        { name:'renovation_items', note:'An upgrade proposed for a visible item', cols:[
+          ['id','uuid','PK',''],
+          ['visible_item_id','uuid','FK','references visible_items'],
+          ['product_id','uuid','FK','references products'],
+          ['status','varchar','IDX','suggested, selected, ordered'],
+          ['selected_at','timestamptz','',''],
+          ['price_cents','integer','','captured when it was selected']
+        ]},
+        { name:'accessories', note:'Smaller parts a renovation item needs to work', cols:[
+          ['id','uuid','PK',''],
+          ['renovation_item_id','uuid','FK','references renovation_items'],
+          ['product_id','uuid','FK','references products'],
+          ['required','boolean','','flagged on the Order Review page']
+        ]}
+      ]},
+      { name:'Style & Suggestions', tables:[
+        { name:'quiz_results', note:'The style quiz answers that filter every suggestion', cols:[
+          ['id','uuid','PK',''],
+          ['user_id','uuid','FK','references users'],
+          ['answers','jsonb','',''],
+          ['style_match','varchar','IDX','modern, farmhouse, traditional'],
+          ['completed_at','timestamptz','','']
+        ]},
+        { name:'suggestions', note:'What the app offers for a room before the homeowner picks', cols:[
+          ['id','uuid','PK',''],
+          ['room_id','uuid','FK','references rooms'],
+          ['product_id','uuid','FK','references products'],
+          ['style_match','varchar','IDX','matched against quiz_results'],
+          ['rank','integer','','order shown on the page']
+        ]}
+      ]},
+      { name:'Bidding', tables:[
+        { name:'bids', note:'A contractor committing to a project', cols:[
+          ['id','uuid','PK',''],
+          ['project_id','uuid','FK','references projects'],
+          ['contractor_id','uuid','FK','references users'],
+          ['amount_cents','integer','',''],
+          ['estimated_days','integer','',''],
+          ['status','varchar','IDX','submitted, withdrawn, won, lost'],
+          ['submitted_at','timestamptz','IDX','']
+        ]}
+      ]},
+      { name:'Catalog & Orders', tables:[
+        { name:'product_categories', note:'The structured service and product categories', cols:[
+          ['id','uuid','PK',''],
+          ['parent_id','uuid','FK','references product_categories, null at the top'],
+          ['name','varchar','IDX',''],
+          ['definition','text','','plain-language help shown in the app']
+        ]},
+        { name:'products', note:'Everything a vendor lists for selection', cols:[
+          ['id','uuid','PK',''],
+          ['vendor_id','uuid','FK','references vendor_profiles'],
+          ['category_id','uuid','FK','references product_categories'],
+          ['name','varchar','IDX',''],
+          ['sku','varchar','IDX','unique per vendor'],
+          ['price_cents','integer','IDX',''],
+          ['style_tags','varchar[]','IDX','used to match quiz results'],
+          ['featured','boolean','IDX','drives the Featured Products page'],
+          ['lead_time_days','integer','','']
+        ]},
+        { name:'orders', note:'One purchase submitted from a project', cols:[
+          ['id','uuid','PK',''],
+          ['project_id','uuid','FK','references projects'],
+          ['placed_by','uuid','FK','references users'],
+          ['status','varchar','IDX','draft, placed, shipped, delivered'],
+          ['total_cents','integer','',''],
+          ['placed_at','timestamptz','IDX','']
+        ]},
+        { name:'order_items', note:'The line items inside an order', cols:[
+          ['id','uuid','PK',''],
+          ['order_id','uuid','FK','references orders'],
+          ['product_id','uuid','FK','references products'],
+          ['renovation_item_id','uuid','FK','references renovation_items'],
+          ['quantity','integer','',''],
+          ['unit_price_cents','integer','','']
+        ]},
+        { name:'deliveries', note:'Tracking for the Order & Delivery page', cols:[
+          ['id','uuid','PK',''],
+          ['order_id','uuid','FK','references orders'],
+          ['carrier','varchar','',''],
+          ['tracking_number','varchar','IDX',''],
+          ['status','varchar','IDX','pending, in_transit, delivered'],
+          ['expected_on','date','IDX',''],
+          ['delivered_at','timestamptz','','']
+        ]}
+      ]},
+      { name:'Reviews & Insights', tables:[
+        { name:'reviews', note:'Homeowner feedback shown on a contractor profile', cols:[
+          ['id','uuid','PK',''],
+          ['project_id','uuid','FK','references projects'],
+          ['contractor_id','uuid','FK','references users'],
+          ['author_id','uuid','FK','references users'],
+          ['rating','integer','IDX','1 to 5'],
+          ['body','text','',''],
+          ['created_at','timestamptz','','']
+        ]},
+        { name:'supplier_deals', note:'Negotiated pricing built from aggregated purchasing', cols:[
+          ['id','uuid','PK',''],
+          ['vendor_id','uuid','FK','references vendor_profiles'],
+          ['category_id','uuid','FK','references product_categories'],
+          ['discount_percent','numeric','',''],
+          ['min_volume','integer','',''],
+          ['starts_on','date','',''],
+          ['ends_on','date','','']
+        ]},
+        { name:'interest_events', note:'What vendors see on the Homeowner Interest page', cols:[
+          ['id','uuid','PK',''],
+          ['user_id','uuid','FK','references users'],
+          ['product_id','uuid','FK','references products'],
+          ['event_type','varchar','IDX','viewed, saved, selected'],
+          ['occurred_at','timestamptz','IDX','']
+        ]}
+      ]}
+    ];
+
+    const badge = (v) => {
+      if(!v) return '<span style="color:#cdd5da; font-family:\'JetBrains Mono\',monospace; font-size:11px;">&mdash;</span>';
+      const bg = v==='PK' ? '#003049' : (v==='FK' ? '#177E89' : '#9178B5');
+      return '<span style="font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:10px; color:#fff; background:'+bg+'; border-radius:4px; padding:2px 7px;">'+v+'</span>';
+    };
+    const grid = 'display:grid; grid-template-columns:1.05fr 0.7fr auto 1.15fr; gap:12px;';
+
+    const card = (t) => {
+      const rows = t.cols.map(c=> '<div style="'+grid+' align-items:center; padding:8px 0; border-bottom:1px solid #f0f3f5;">'+
+        '<div style="font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:12.5px; color:#003049;">'+c[0]+'</div>'+
+        '<div style="font-family:\'JetBrains Mono\',monospace; font-size:12px; color:#55707e;">'+c[1]+'</div>'+
+        '<div>'+badge(c[2])+'</div>'+
+        '<div style="font-size:12.5px; color:#6b7f8a;">'+(c[3]||'')+'</div>'+
+      '</div>').join('');
+      return '<div class="card" style="border:1px solid #e3e9ec; border-radius:10px; padding:15px 17px 14px; margin-bottom:14px;">'+
+        '<div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">'+
+          '<span style="font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:#fff; background:#177E89; border-radius:4px; padding:3px 7px;">table</span>'+
+          '<span style="font-family:\'JetBrains Mono\',monospace; font-weight:600; font-size:16px; color:#003049;">'+t.name+'</span>'+
+        '</div>'+
+        '<p style="font-family:\'Fraunces\',serif; font-size:14px; line-height:1.5; color:#4a5b66; margin:8px 0 12px;">'+t.note+'</p>'+
+        '<div style="'+grid+' padding-bottom:6px; border-bottom:1.5px solid #cdd5da; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:#8fa2ad;">'+
+          '<div>Column</div><div>Type</div><div>Key</div><div>Notes</div>'+
+        '</div>'+ rows +
+      '</div>';
+    };
+
+    const host = document.getElementById('groups-host');
+    if(!host) return;
+    host.innerHTML = groups.map(g=>
+      '<div class="grp">'+
+        '<div style="display:flex; align-items:baseline; gap:12px; margin:34px 0 4px;">'+
+          '<h2 style="font-family:\'Fraunces\',serif; font-weight:600; font-size:24px; color:#3A2449; margin:0;">'+g.name+'</h2>'+
+          '<span style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:#177E89;">'+g.tables.length+(g.tables.length===1?' table':' tables')+'</span>'+
+        '</div>'+
+        '<div style="height:2px; background:#9178B5; width:100%; margin-bottom:14px;"></div>'+
+        g.tables.map(card).join('')+
+      '</div>').join('');
+  }
+  renderVals(){ return { doPrint: () => window.print() }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#9aa9b2; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .tcard{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(28,26)" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round">
+      <circle cx="22" cy="22" r="20"></circle>
+      <path d="M13 23 l7 7 l14 -16" stroke="#9178B5"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(23,126,137,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div></div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#dff0f0; background:transparent; border:1.5px solid #4fa3ab; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#0f5a63; border:1.5px solid #0f5a63; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <!-- MASTHEAD -->
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 7 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Product Market Fit<br>User Testing</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bfe3e2; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">For product-market fit you&rsquo;ll want to test as often as you can, with each of your personas. To get answers you can act on, every session needs a few things prepared ahead of time. The list below is that preparation &mdash; it will make the most sense read against the filled-in example.</p>
+
+    <!-- THE QUESTIONS REFERENCE -->
+    <div style="margin-top:22px; background:#eaf4f4; border-radius:8px; padding:18px 20px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:4px;">The questions</div>
+      <div style="font-family:'Lato',sans-serif; font-size:12.5px; font-style:italic; color:#5b7681; margin-bottom:12px;">The same ones from the start of this section. Each test answers one of them.</div>
+      <div data-qlist="1" style="columns:2; column-gap:34px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.45; color:#294552;"></div>
+    </div>
+
+    <!-- PROTOTYPE NOTE -->
+    <div style="margin-top:12px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3a2b4d;">A note on prototypes: if a feature can&rsquo;t be built accurately for the MVP but could exist in the real product, fake it with test data &mdash; pre-made projects with estimates, or a scripted vision demo. You&rsquo;re not selling the product, only learning whether it could sell. Always tell users the data isn&rsquo;t real.</div>
+
+    <!-- AI PROMPT -->
+    <div style="margin:22px 0 0; background:#eef7f7; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#12474e;">"I want to test this hypothesis with users: [paste]. Suggest what to measure when it can't be observed directly, and 3 open questions to ask during and after the session."</div>
+    </div>
+
+    <!-- TEST PLANS -->
+    <div data-tests="1" style="margin-top:30px;"></div>
+
+    <div class="no-print" style="margin-top:2px;">
+      <button type="button" data-add-test="1" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#fff; background:#177E89; border:none; border-radius:8px; padding:10px 16px; cursor:pointer;">+ Add a test</button>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#0f5a63;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#177E89&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; },
+  &quot;showExamples&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-pmf-usertesting-casestudy-v1';
+    this.QUESTIONS = [
+      'Are the users delighted with the solution?',
+      'Do they love it \u2014 would they find it indispensable?',
+      'Are they sad when you take away the alpha version?',
+      'Do they hound you for updates on the next version?',
+      'Would they share the app with their colleagues?',
+      'Would they advocate for their organization to adopt it? Would they return again and again?',
+      'Would they pay to use it \u2014 and what are they willing to pay?',
+      'Would a subscription work, or a percentage of revenue?',
+      'Does it save them time and money?',
+      'Does the app stand out against the competition?',
+      'What is the \u201Caha\u201D feature that sets it apart?'
+    ];
+    this.example = {
+      't-0-q': 'Are the users delighted with the solution?',
+      't-0-who': 'Contractor',
+      't-0-hypo': 'The contractor will be delighted by seeing the approximate project cost estimate.',
+      't-0-feat-0': 'A model that calculates a project cost estimate from homeowner and historical data.',
+      't-0-feat-1': 'Access to historical renovation data to build the model and test its accuracy.',
+      't-0-proto': 'Fake projects with pre-calculated estimates shown to contractors. Say up front that the estimates are test data, not real.',
+      't-0-measure': 'Delight can\u2019t be measured directly, so infer it. Are they excited or bored? Do they focus on the estimate? Given several filters, do they reach for this one \u2014 or a different feature, or none?',
+      't-0-pages': 'Project list, and a project detail page showing the cost estimate.',
+      't-0-ask': 'What did you think when you saw the project cost estimate? Is that number useful to you?',
+      't-1-q': 'Are the users delighted with the solution?',
+      't-1-who': 'Homeowner',
+      't-1-hypo': 'The homeowner will be delighted by seeing a breakdown of every possible change just by taking a picture.',
+      't-1-feat-0': 'An AI vision tool that analyzes a room and breaks out each item.',
+      't-1-feat-1': 'A model that determines whether an item can be updated in a renovation.',
+      't-1-proto': 'A scripted demo of how the vision tool would work on a sample room. Say up front that it\u2019s a demo, not the finished model.',
+      't-1-measure': 'Infer delight from their reaction \u2014 do they lean in or lose interest? Do they keep exploring the breakdown or move on quickly?',
+      't-1-pages': 'Camera / capture screen, and a results screen listing every change the app found.',
+      't-1-ask': 'What went through your mind when the app broke down your room? Which of these changes would you actually want to make?'
+    };
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    this.buildQList(root);
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    const data = Object.keys(saved).length ? saved : this.example;
+    this.buildTests(root, data);
+    Object.entries(data).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this.setupAiButtons(root);
+    requestAnimationFrame(()=> this.autosizeAll(root));
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    root.addEventListener('input', (e)=>{ if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target); });
+    root.addEventListener('click', (e)=>{
+      const at = e.target.closest('[data-add-test]');
+      if(at){ e.preventDefault(); this.addTest(root); this._save(); return; }
+      const af = e.target.closest('[data-add-feat]');
+      if(af){ e.preventDefault(); this.addFeat(root, af.getAttribute('data-add-feat')); this._save(); return; }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('.save').forEach(el=>{
+      const ex = this.example[el.name];
+      if(ex === undefined) return;
+      if(showEx){ if(!el.value){ el.value = ex; } }
+      else { if(el.value === ex){ el.value = ''; } }
+      if(el.tagName === 'TEXTAREA') this.autosize(el);
+    });
+  }
+
+  /* ---------- questions reference list ---------- */
+  buildQList(root){
+    const host = root.querySelector('[data-qlist]');
+    if(!host) return;
+    let h = '';
+    this.QUESTIONS.forEach((q,i)=>{
+      h += '<div style="break-inside:avoid; display:flex; gap:8px; margin-bottom:7px;"><span style="font-family:\'Bebas Neue\',sans-serif; font-size:15px; color:#177E89; flex:none; line-height:1.2;">'+(i+1)+'</span><span>'+q+'</span></div>';
+    });
+    host.innerHTML = h;
+  }
+
+  /* ---------- autosize ---------- */
+  autosize(el){ if(!el) return; el.style.height='auto'; el.style.height=Math.max(el.scrollHeight,38)+'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea.save').forEach(el=> this.autosize(el)); }
+
+  /* ---------- field helpers ---------- */
+  fieldLabel(t, help){
+    return '<div style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#7d94a0; margin-bottom:4px;">'+t+'</div>'+
+      (help ? '<div style="font-family:\'Lato\',sans-serif; font-size:11px; font-style:italic; color:#9aa9b2; margin:-1px 0 6px; line-height:1.35;">'+help+'</div>' : '');
+  }
+  taHTML(name, ph){
+    return '<textarea class="save" name="'+name+'" rows="2" placeholder="'+ph+'" style="width:100%; resize:none; overflow:hidden; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; line-height:1.5; color:#1f2d33; padding:3px 0 8px; outline:none; box-sizing:border-box;"></textarea>';
+  }
+  featLineHTML(i, j){
+    return '<div style="display:flex; align-items:center; gap:8px; margin-bottom:5px;"><span style="color:#177E89; font-size:14px; line-height:1; flex:none;">&bull;</span>'+
+      '<input class="save" type="text" name="t-'+i+'-feat-'+j+'" placeholder="feature" style="flex:1; min-width:0; border:none; border-bottom:1px solid #d5dde2; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; color:#1f2d33; padding:4px 2px; outline:none; box-sizing:border-box;"></div>';
+  }
+
+  /* ---------- test card ---------- */
+  cardHTML(i, featCount){
+    let feats = '';
+    for(let j=0;j<featCount;j++) feats += this.featLineHTML(i,j);
+    const n = (i+1<10?'0':'')+(i+1);
+    return '<div class="tcard" style="border:1px solid #d7e6e6; border-radius:11px; margin-bottom:20px; overflow:hidden;">'+
+      '<div style="background:#eaf4f4; padding:13px 18px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">'+
+        '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:22px; color:#0f5a63; line-height:1;">Test '+n+'</span>'+
+        '<select class="save" data-qsel="1" name="t-'+i+'-q" style="flex:1; min-width:210px; font-family:\'Lato\',sans-serif; font-size:13.5px; color:#294552; background:#fff; border:1px solid #cdd5da; border-radius:7px; padding:8px 10px; outline:none;"></select>'+
+        '<input class="save" type="text" name="t-'+i+'-who" placeholder="stakeholder" style="width:132px; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:12px; color:#0f5a63; background:#fff; border:1px solid #cdd5da; border-radius:7px; padding:8px 10px; outline:none; box-sizing:border-box;">'+
+      '</div>'+
+      '<div style="padding:16px 18px 8px;">'+
+        this.fieldLabel('Part of the app that could answer it \u2014 as a hypothesis','One stakeholder, one thing that could delight or satisfy them. Write it as a claim you could prove wrong.')+
+        '<textarea class="save" name="t-'+i+'-hypo" rows="2" placeholder="e.g. The contractor will be delighted by seeing the project cost estimate." style="width:100%; resize:none; overflow:hidden; border:1px solid #d7e6e6; border-radius:8px; background:#fbfdfd; font-family:\'Fraunces\',serif; font-size:15px; line-height:1.45; color:#294552; padding:11px 13px; outline:none; box-sizing:border-box;"></textarea>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:18px;">'+
+          '<div>'+
+            '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#177E89; padding-bottom:7px; border-bottom:1.5px solid #cfe6e6; margin-bottom:12px;">Build it</div>'+
+            this.fieldLabel('Features that create that part','What you&rsquo;d need to build for that part to exist.')+
+            '<div data-feat="'+i+'">'+feats+'</div>'+
+            '<button type="button" data-add-feat="'+i+'" class="no-print" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; color:#177E89; background:transparent; border:none; padding:3px 0 14px; cursor:pointer;">+ Add feature</button>'+
+            this.fieldLabel('Prototype data for pre-built features','If it can&rsquo;t be built accurately yet, fake it with test data &mdash; and tell users it&rsquo;s a demo.')+
+            this.taHTML('t-'+i+'-proto','What test data or demo stands in?')+
+          '</div>'+
+          '<div>'+
+            '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#9178B5; padding-bottom:7px; border-bottom:1.5px solid #e0d6ec; margin-bottom:12px;">Measure it</div>'+
+            this.fieldLabel('Data to measure the users','Often a heuristic &mdash; infer the answer from reactions and behavior.')+
+            this.taHTML('t-'+i+'-measure','What will you watch for?')+
+            this.fieldLabel('Pages of the app users will see','The screens they&rsquo;ll actually touch in the session.')+
+            this.taHTML('t-'+i+'-pages','Which screens?')+
+            this.fieldLabel('Questions you&rsquo;ll ask during &amp; after','How you&rsquo;ll interpret what you saw.')+
+            this.taHTML('t-'+i+'-ask','What will you ask them?')+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+  populateSelects(root){
+    root.querySelectorAll('select[data-qsel]').forEach(sel=>{
+      if(sel.options.length) return;
+      let html = '<option value="">Pick a question\u2026</option>';
+      this.QUESTIONS.forEach(q=>{ html += '<option>'+q.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</option>'; });
+      sel.innerHTML = html;
+    });
+  }
+  buildTests(root, saved){
+    const host = root.querySelector('[data-tests]');
+    if(!host) return;
+    let maxT = 1; const fMax = {};
+    Object.keys(saved||{}).forEach(k=>{
+      const m = k.match(/^t-(\d+)-/); if(m) maxT = Math.max(maxT, parseInt(m[1],10));
+      const mf = k.match(/^t-(\d+)-feat-(\d+)$/);
+      if(mf){ fMax[mf[1]] = Math.max(fMax[mf[1]]||0, parseInt(mf[2],10)); }
+    });
+    let h = '';
+    for(let i=0;i<=maxT;i++){
+      const count = (fMax[i]!==undefined ? fMax[i] : 1) + 1;
+      h += this.cardHTML(i, Math.max(count, 2));
+    }
+    host.innerHTML = h;
+    this.populateSelects(root);
+  }
+  addTest(root){
+    const host = root.querySelector('[data-tests]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.cardHTML(next, 2));
+    this.populateSelects(root);
+    this.autosizeAll(root);
+    const sel = host.lastElementChild.querySelector('select');
+    if(sel) sel.focus();
+  }
+  addFeat(root, i){
+    const host = root.querySelector('[data-feat="'+i+'"]');
+    if(!host) return;
+    const next = host.children.length;
+    host.insertAdjacentHTML('beforeend', this.featLineHTML(i, next));
+    const ins = host.querySelectorAll('input'); ins[ins.length-1].focus();
+  }
+
+  /* ---------- AI buttons ---------- */
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim();
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#177E89; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#177E89; background:transparent; border:1.5px solid #9fd0d2; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution example?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          const data = this.example;
+          this.buildTests(root, data);
+          root.querySelectorAll('.save').forEach(el=> el.value='');
+          Object.entries(data).forEach(([n,v])=>{ const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+          this.autosizeAll(root);
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

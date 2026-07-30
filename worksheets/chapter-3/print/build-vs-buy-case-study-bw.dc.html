@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .seg button:not(.on){ display:none !important; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(26,30)" stroke="#666" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4 h40 v40 h-40 z"></path>
+      <line x1="24" y1="4" x2="24" y2="44"></line>
+      <path d="M9 18 l4 4 l6 -8"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Build vs Buy &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 3 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Build vs Buy</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">For each user story, I&rsquo;ve listed the technical components it requires. Do you build or buy it? Think about whether the component is a universal issue, unique to your industry, or part of your organization&rsquo;s core competency. This is filled in with user stories and components from the Renovation Revolution case study.</p>
+
+    <div id="ai-prompt" class="sec" style="margin:18px 0 4px; border:1.5px solid #111; border-radius:6px; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111; margin-bottom:6px;">AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#333;">"Here is a technical component of my product: [describe it]. Are there existing vendors or open-source tools that address this issue? Should I build or buy?"</div>
+    </div>
+
+    <div style="margin-top:26px;">
+
+      <div id="story-1" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">1</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want to scan my room with my phone so that the application can create a 3D model of my space.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Authorization &amp; Authentication</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="0" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="0" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">A well-established, universal problem with proven identity providers. Not worth building ourselves.</div></div>
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">3D Image Capture</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="1" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="1" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Outside our core competency as a construction marketplace. Better handled by an existing SDK.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+      <div id="story-2" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">2</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want the application to analyze my room and provide a comprehensive list of all possible upgrades so that I can see all my renovation options in one place.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">3D Image Analyzer</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="2" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="2" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Requires specialized computer-vision expertise we don&rsquo;t have in-house.</div></div>
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Datastore of renovation options</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="3" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="3" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Specific to how we categorize renovation options; tailored to our own taxonomy.</div></div>
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Algorithm for matching an image to data</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="4" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="4" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Unique matching logic tied to our own catalog; a core part of our value proposition.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+      <div id="story-3" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">3</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want to take a style quiz before viewing options, so the application can recommend items that fit my taste and reduce decision fatigue.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Interactive Quiz</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="5" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="5" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Simple enough to write ourselves, and lets us tune questions to our own style categories.</div></div>
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Save results to the datastore</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="6" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="6" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Standard application logic connected to our own systems.</div></div>
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Ability to write and modify questions</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="7" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="7" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Needs to stay flexible as our style catalog grows; not worth licensing.</div></div>
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">User profile saved with quiz results</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="8" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="8" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Core to our own user data model.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+      <div id="story-4" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">4</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want to view upgrade options visually on the 3D model or as a list, so I can easily understand what each change would look like in my space.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">3D image replacement</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="9" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="9" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Best handled by the same vendor providing 3D capture and analysis.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+      <div id="story-5" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">5</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want to select specific items for each upgrade from a curated, style-matched list, so I am not overwhelmed by too many choices.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Algorithm for matching choices to style results</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="10" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="10" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Ties directly to our proprietary style-quiz results; a differentiator worth owning.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+      <div id="story-6" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">6</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want the application to ensure that all required additional or supporting parts are included in my order so that nothing is forgotten on installation day.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0; border-bottom:1px solid #ddd;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Data store connecting parts</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="11" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="11" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Vendor catalogs exist for construction parts; we&rsquo;ll license the data and make small tweaks ourselves.</div></div>
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Part taxonomy</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="12" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="12" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">Comes bundled with the parts catalog vendor.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+      <div id="story-7" class="sec" style="border:1px solid #111; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+        <div style="background:#f0f0f0; padding:14px 18px; border-bottom:1px solid #111; display:flex; align-items:flex-start; gap:12px;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#666; line-height:.85; flex:none; margin-top:1px;">7</span>
+          <span style="font-family:'Fraunces',serif; font-style:italic; font-size:15.5px; line-height:1.45; color:#111;">As a homeowner, I want to send my final selections directly to my contractor so they can review and finalize the order without confusion.</span>
+        </div>
+        <div style="padding:4px 18px 14px;">
+          <div style="padding:12px 0;"><div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#111;">Authentication sharing</span><span class="seg" data-status="" style="display:inline-flex; gap:6px;"><button type="button" data-fld="13" data-val="Build" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Build</button><button type="button" data-fld="13" data-val="Buy" class="" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.05em; text-transform:uppercase; border:1.5px solid #111; border-radius:999px; padding:3px 11px; cursor:pointer; background:#fff; color:#111;">Buy</button></span></div><div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.5; color:#333; margin-top:6px;">A well-established pattern; no need to build from scratch.</div></div>
+        </div>
+        <div class="no-print-hide" style="padding:14px 18px 16px; border-top:1px dashed #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#777; margin-bottom:8px;">Your reasoning</div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+            <div style="border-bottom:1px solid #ccc; height:22px;"></div>
+          </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-build-vs-buy-cs-bw-v2';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    root.querySelectorAll('.seg[data-status]').forEach(seg=>{
+      const idxAttr = seg.querySelector('[data-fld]').getAttribute('data-fld');
+      this.setVal(seg, saved[idxAttr] || '');
+    });
+    root.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.seg button[data-val]');
+      if(!btn) return;
+      e.preventDefault();
+      const seg = btn.closest('.seg');
+      this.setVal(seg, btn.getAttribute('data-val'));
+      this.save(root);
+    });
+  }
+  setVal(seg, v){
+    seg.setAttribute('data-status', v);
+    seg.querySelectorAll('button[data-val]').forEach(b=>{
+      const on = b.getAttribute('data-val') === v;
+      b.classList.toggle('on', on);
+      b.style.background = on ? '#111' : '#fff';
+      b.style.color = on ? '#fff' : '#111';
+    });
+  }
+  save(root){
+    const out = {};
+    root.querySelectorAll('.seg[data-status]').forEach(seg=>{
+      const i = seg.querySelector('[data-fld]').getAttribute('data-fld');
+      out[i] = seg.getAttribute('data-status');
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(out)); }catch(e){}
+  }
+  renderVals(){
+    return { doPrint: () => window.print() };
+  }
+}
+
+</script>
+</body>
+</html>

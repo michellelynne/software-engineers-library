@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#9aa9b2; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .rblock{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(24,26)">
+      <rect x="0" y="0" width="52" height="8" rx="4" fill="#fff"></rect>
+      <rect x="0" y="16" width="38" height="8" rx="4" fill="#9178B5"></rect>
+      <rect x="0" y="32" width="46" height="8" rx="4" fill="#fff"></rect>
+      <circle cx="60" cy="4" r="4" fill="#DB3A34"></circle>
+      <circle cx="46" cy="20" r="4" fill="#DB3A34"></circle>
+      <circle cx="54" cy="36" r="4" fill="#DB3A34"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(23,126,137,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">MVP Roadmap</span>
+    <span style="font-size:12px; color:#bfe3e2; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#dff0f0; background:transparent; border:1.5px solid #4fa3ab; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#0f5a63; border:1.5px solid #0f5a63; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 7 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">MVP Roadmap</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:16px; color:#bfe3e2; margin:12px 0 0; max-width:52ch;">&ldquo;Putting in the work upfront to really make sure that you understand the requirements from the stakeholders&hellip; saves a lot of time later on.&rdquo;</div>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">Let&rsquo;s practice building a roadmap by using the MVP.</p>
+
+    <!-- HYPOTHESIS -->
+    <div class="rblock" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">What is the hypothesis for the MVP?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <textarea class="save" name="hypothesis" rows="3" placeholder="The one thing this MVP needs to prove…" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">Resources</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 14px;">We need to gather the team resources. Never assume someone can work 8 hours a day, unless you have cleared all their other work, meetings and personal commitments. If they work more than you expect on a project, that&rsquo;s a bonus. The engineers can have a focus which limits the tickets they pick up, or they can handle anything. I have added in a small team as an example.</p>
+      <div data-res-head="1"></div>
+      <div data-res="1"></div>
+      <button type="button" data-add-res="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add person / role</button>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">Tickets</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 6px;">Only what proves the hypothesis. For each ticket ask: is it critical to a customer posting a project, or a contractor seeing one? If not, it goes on the &ldquo;maybe later&rdquo; list. Skip onboarding and seed sample data instead.</p>
+      <div data-tick-head="1"></div>
+      <div data-tick="1"></div>
+      <button type="button" data-add-tick="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add ticket</button>
+    </div>
+
+    <!-- ESTIMATE -->
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">MVP Estimate</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 16px;">The two tracks run in parallel, so the MVP takes as long as the <em>slower</em> one. This updates as you edit the tables above.</p>
+      <div data-estimate="1"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#0f5a63;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#177E89&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-7-roadmap-v1';
+    this.TYPES = ['Infra', 'Backend', 'Frontend'];
+    this.exRes = [
+      { how:'Priya Nair',     focus:'Backend/Infra', hpd:'4', dpw:'5' },
+      { how:'Marcus Johnson', focus:'Frontend',      hpd:'4', dpw:'5' },
+      { how:'Sofia Alvarez',  focus:'Backend/Infra', hpd:'4', dpw:'5' }
+    ];
+    this.exTick = [
+      { name:'Setup database', dod:'Database with tables', type:'Infra', hrs:'4' },
+      { name:'Start customer service', dod:'Service to save customer info. Endpoints for create, delete, update. Decide API format.', type:'Backend', hrs:'8' },
+      { name:'Create page for list of projects', dod:'Project list page', type:'Frontend', hrs:'8' },
+      { name:'Start contractor service', dod:'Service to save contractor info. Endpoints for create, delete, update. Decide API format.', type:'Backend', hrs:'8' },
+      { name:'Create page for list of contractors', dod:'Contractor list page', type:'Frontend', hrs:'8' },
+      { name:'AI image research', dod:'Research AI image recognition services', type:'Infra', hrs:'16' }
+    ];
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = null;
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || 'null'); }catch(e){}
+    this.usingExample = !saved;
+    const data = saved || { res: this.exRes.slice(), tick: this.exTick.slice() };
+    this.res = data.res && data.res.length ? data.res : [{how:'',focus:'Backend/Infra',hpd:'',dpw:''}];
+    this.tick = data.tick && data.tick.length ? data.tick : [{name:'',dod:'',type:'Backend',hrs:''}];
+    this.renderResHead(root);
+    this.renderTickHead(root);
+    this.renderRes(root);
+    this.renderTick(root);
+    this.renderEstimate(root);
+    root.addEventListener('input', (e)=> this.onEdit(root, e));
+    root.addEventListener('change', (e)=> this.onEdit(root, e));
+    root.addEventListener('click', (e)=>{
+      if(e.target.closest('[data-add-res]')){ e.preventDefault(); this.res.push({how:'',focus:'Backend/Infra',hpd:'',dpw:''}); this.renderRes(root); this.renderEstimate(root); this.persist(); }
+      else if(e.target.closest('[data-add-tick]')){ e.preventDefault(); this.tick.push({name:'',dod:'',type:'Backend',hrs:''}); this.renderTick(root); this.renderEstimate(root); this.persist(); }
+      else if(e.target.closest('[data-del-res]')){ e.preventDefault(); const i=+e.target.closest('[data-del-res]').getAttribute('data-del-res'); this.res.splice(i,1); this.renderRes(root); this.renderEstimate(root); this.persist(); }
+      else if(e.target.closest('[data-del-tick]')){ e.preventDefault(); const i=+e.target.closest('[data-del-tick]').getAttribute('data-del-tick'); this.tick.splice(i,1); this.renderTick(root); this.renderEstimate(root); this.persist(); }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+  }
+  esc(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  isFrontend(s){ return /front/i.test(s||''); }
+  onEdit(root, e){
+    const el = e.target;
+    const rr = el.getAttribute('data-r'); const rf = el.getAttribute('data-rf');
+    const tr = el.getAttribute('data-t'); const tf = el.getAttribute('data-tf');
+    if(rr!=null && rf){ this.res[+rr][rf] = el.value; if(rf==='focus') this.renderEstimate(root); if(rf==='hpd'||rf==='dpw'||rf==='how') this.renderEstimate(root); this.persist(); }
+    else if(tr!=null && tf){ this.tick[+tr][tf] = el.value; if(tf==='hrs'||tf==='type') this.renderEstimate(root); this.persist(); }
+  }
+  persist(){
+    this.usingExample = false;
+    try{ localStorage.setItem(this.key, JSON.stringify({res:this.res, tick:this.tick})); }catch(e){}
+  }
+  cellHead(t){ return '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#0f5a63;">'+t+'</div>'; }
+  renderResHead(root){
+    const h = root.querySelector('[data-res-head]');
+    if(h) h.innerHTML = '<div style="display:grid; grid-template-columns:1.3fr 1fr 92px 92px 26px; gap:10px; align-items:end; padding:0 0 8px; border-bottom:1.5px solid #cfe6e6;">'+
+      this.cellHead('Name')+this.cellHead('Focus')+this.cellHead('Hrs / day')+this.cellHead('Days / wk')+'<span></span></div>';
+  }
+  inp(name, attrs, val, ph, extra){
+    return '<input type="text" '+attrs+' value="'+this.esc(val)+'" placeholder="'+(ph||'')+'" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box; '+(extra||'')+'">';
+  }
+  renderRes(root){
+    const host = root.querySelector('[data-res]');
+    if(!host) return;
+    let h = '';
+    this.res.forEach((r,i)=>{
+      const foc = '<select data-r="'+i+'" data-rf="focus" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box;">'+
+        ['Backend/Infra','Frontend'].map(o=>'<option'+(o===r.focus?' selected':'')+'>'+o+'</option>').join('')+'</select>';
+      h += '<div style="display:grid; grid-template-columns:1.3fr 1fr 92px 92px 26px; gap:10px; align-items:center; padding:3px 0;">'+
+        this.inp('','data-r="'+i+'" data-rf="how"', r.how, 'Name')+
+        foc+
+        this.inp('','data-r="'+i+'" data-rf="hpd"', r.hpd, '4', 'text-align:center;')+
+        this.inp('','data-r="'+i+'" data-rf="dpw"', r.dpw, '5', 'text-align:center;')+
+        '<button type="button" data-del-res="'+i+'" class="no-print" title="Remove" style="border:none; background:transparent; color:#c2ccd0; font-size:16px; cursor:pointer; line-height:1; padding:0;">&times;</button>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+  }
+  renderTickHead(root){
+    const h = root.querySelector('[data-tick-head]');
+    if(h) h.innerHTML = '<div style="display:grid; grid-template-columns:1.1fr 1.8fr 108px 66px 26px; gap:10px; align-items:end; padding:0 0 8px; border-bottom:1.5px solid #cfe6e6;">'+
+      this.cellHead('Name')+this.cellHead('Definition of done')+this.cellHead('Type')+this.cellHead('Hours')+'<span></span></div>';
+  }
+  renderTick(root){
+    const host = root.querySelector('[data-tick]');
+    if(!host) return;
+    let h = '';
+    this.tick.forEach((t,i)=>{
+      const type = '<select data-t="'+i+'" data-tf="type" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box;">'+
+        this.TYPES.map(o=>'<option'+(o===t.type?' selected':'')+'>'+o+'</option>').join('')+'</select>';
+      h += '<div style="display:grid; grid-template-columns:1.1fr 1.8fr 108px 66px 26px; gap:10px; align-items:center; padding:5px 0; border-bottom:1px solid #f1f4f5;">'+
+        this.inp('','data-t="'+i+'" data-tf="name"', t.name, 'Ticket name')+
+        '<textarea data-t="'+i+'" data-tf="dod" rows="1" placeholder="What &lsquo;done&rsquo; looks like" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; line-height:1.4; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box; resize:vertical; min-height:32px;">'+this.esc(t.dod)+'</textarea>'+
+        type+
+        this.inp('','data-t="'+i+'" data-tf="hrs"', t.hrs, '8', 'text-align:center;')+
+        '<button type="button" data-del-tick="'+i+'" class="no-print" title="Remove" style="border:none; background:transparent; color:#c2ccd0; font-size:16px; cursor:pointer; line-height:1; padding:0;">&times;</button>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+  }
+  capacity(){
+    let be = 0, fe = 0;
+    this.res.forEach(r=>{
+      const cap = (parseFloat(r.hpd)||0) * (parseFloat(r.dpw)||0);
+      if(this.isFrontend(r.focus)) fe += cap; else be += cap;
+    });
+    return { be, fe };
+  }
+  ticketHours(){
+    let be = 0, fe = 0;
+    this.tick.forEach(t=>{
+      const h = parseFloat(t.hrs)||0;
+      if(this.isFrontend(t.type)) fe += h; else be += h;
+    });
+    return { be, fe };
+  }
+  fmtWeeks(w){ return (Math.round(w*10)/10).toString(); }
+  renderEstimate(root){
+    const host = root.querySelector('[data-estimate]');
+    if(!host) return;
+    const cap = this.capacity();
+    const hrs = this.ticketHours();
+    const beWeeks = cap.be > 0 ? hrs.be / cap.be : 0;
+    const feWeeks = cap.fe > 0 ? hrs.fe / cap.fe : 0;
+    const total = Math.max(beWeeks, feWeeks);
+    const track = (label, color, h, capw, weeks, note) => {
+      return '<div style="flex:1; min-width:200px; background:#fbfdfd; border:1px solid #e0eaea; border-radius:10px; padding:15px 17px;">'+
+        '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:'+color+'; margin-bottom:8px;">'+label+'</div>'+
+        '<div style="font-family:\'Lato\',sans-serif; font-size:12.5px; color:#5b7681; line-height:1.5;">'+h+' ticket hrs &divide; '+(capw||'0')+' hrs/wk</div>'+
+        '<div style="display:flex; align-items:baseline; gap:6px; margin-top:6px;"><span style="font-family:\'Bebas Neue\',sans-serif; font-size:38px; color:#0f5a63; line-height:.9;">'+this.fmtWeeks(weeks)+'</span><span style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:13px; color:#7d94a0;">weeks</span></div>'+
+        (note?'<div style="font-family:\'Lato\',sans-serif; font-size:11px; font-style:italic; color:#9aa9b2; margin-top:4px;">'+note+'</div>':'')+
+      '</div>';
+    };
+    host.innerHTML =
+      '<div style="display:flex; gap:16px; flex-wrap:wrap;">'+
+        track('Backend / Infra', '#177E89', hrs.be, cap.be, beWeeks, cap.be? '':'add a Backend/Infra person above')+
+        track('Frontend', '#9178B5', hrs.fe, cap.fe, feWeeks, cap.fe? '':'add a Frontend person above')+
+      '</div>'+
+      '<div style="margin-top:16px; background:#0f5a63; border-radius:10px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">'+
+        '<div><div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#8fd0d2;">MVP Estimate</div>'+
+          '<div style="font-family:\'Lato\',sans-serif; font-size:12.5px; color:#cfeaea; margin-top:3px;">The longer of the two parallel tracks</div></div>'+
+        '<div style="display:flex; align-items:baseline; gap:8px;"><span style="font-family:\'Bebas Neue\',sans-serif; font-size:52px; color:#fff; line-height:.85;">'+this.fmtWeeks(total)+'</span><span style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:16px; color:#8fd0d2;">weeks</span></div>'+
+      '</div>';
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the Renovation Revolution example?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        this.res = this.exRes.map(r=>Object.assign({}, r));
+        this.tick = this.exTick.map(t=>Object.assign({}, t));
+        this.usingExample = true;
+        if(root){ this.renderRes(root); this.renderTick(root); this.renderEstimate(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

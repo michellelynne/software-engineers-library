@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#c2a6a3; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    .seg button:not(.on){ display:none !important; }
+    .toolrow.empty{ display:none !important; }
+    .toolrow input{ border:none !important; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#DB3A34"></rect>
+    <g transform="translate(22,26)" stroke="#003049" stroke-width="3.5" fill="none">
+      <rect x="2" y="2" width="52" height="14" rx="3"></rect>
+      <rect x="2" y="22" width="52" height="14" rx="3"></rect>
+      <rect x="2" y="42" width="52" height="6" rx="3" fill="#003049"></rect>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Engineering Survey</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#DB3A34; border:1.5px solid #DB3A34; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:960px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#DB3A34; color:#003049; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#003049;">Chapter 3 &middot; Survey</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#003049;">Engineering Survey</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#6e1a16; margin:12px 0 0;">Popular Tools</div>
+    <div style="height:3px; width:64px; background:#003049; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">When you are ready to use an external tool to solve your problem, remember that it is a popularity contest. Software that people already know how to use reduces training time and makes it easier to hire. If there is already a large pool of experts, the organization doesn&rsquo;t have to spend money on training. The question is, how do you know what&rsquo;s popular? Use this survey with your team and nearby teams to get you started.</p>
+
+    <div class="sec" style="margin:18px 0 4px; background:#fbecea; border-left:3px solid #DB3A34; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#c1352f; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#7a201b;">"I'm choosing [category] tools for my team. Based on recent developer surveys like the Stack Overflow Developer Survey, what are the most popular and widely-adopted options, which are growing, and which are declining? How large is the talent pool for each?"</div>
+    </div>
+
+    <!-- LEGEND -->
+    <div class="sec" style="display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;">
+      <div style="flex:1; min-width:150px; background:#f4f6f8; border-left:3px solid #003049; border-radius:0 6px 6px 0; padding:10px 13px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:#003049;">Used Here</div><div style="font-family:'Lato',sans-serif; font-size:12px; line-height:1.4; color:#33424c; margin-top:2px;">On the team or at the organization</div></div>
+      <div style="flex:1; min-width:150px; background:#fcf1ef; border-left:3px solid #DB3A34; border-radius:0 6px 6px 0; padding:10px 13px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:#c1352f;">Favorite</div><div style="font-family:'Lato',sans-serif; font-size:12px; line-height:1.4; color:#33424c; margin-top:2px;">What they wish they could use</div></div>
+      <div style="flex:1; min-width:150px; background:#eff6f6; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:10px 13px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:#12636b;">Know Some</div><div style="font-family:'Lato',sans-serif; font-size:12px; line-height:1.4; color:#33424c; margin-top:2px;">Some familiarity with it</div></div>
+      <div style="flex:1; min-width:150px; background:#f2f4f5; border-left:3px solid #8a9aa2; border-radius:0 6px 6px 0; padding:10px 13px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:#63757e;">Please No</div><div style="font-family:'Lato',sans-serif; font-size:12px; line-height:1.4; color:#33424c; margin-top:2px;">Really hope never again</div></div>
+    </div>
+
+    <!-- SURVEY CARDS -->
+    <div class="sec" style="margin-top:12px;">
+      <div id="cards"></div>
+      <button type="button" data-add-category="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:1.5px dashed #cdd5da; border-radius:8px; padding:12px 0; width:100%; margin-top:14px; cursor:pointer;">+ Add a category</button>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="margin-top:38px; padding-top:22px; border-top:2px solid #DB3A34;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#c1352f; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#c1352f; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#DB3A34&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-engineering-survey-v2';
+    this.STATUS = [
+      { v:'Used Here', c:'#003049' },
+      { v:'Favorite',  c:'#DB3A34' },
+      { v:'Know Some', c:'#177E89' },
+      { v:'Please No', c:'#8a9aa2' }
+    ];
+    this.categories = [
+      'IDE','Programming Languages','Cloud Services','Open Source Tools','Version Control',
+      'Project Management Tools','Communication Tools','Incident Management','Frontend Frameworks',
+      'Testing Frameworks','Deployment Tools','Design Tools','Flowchart Tools','Presentation Tools',
+      'Accessibility Tools','Package Managers','Observability Tools','API Clients & Docs','AI Coding Tools'
+    ];
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = null;
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || 'null'); }catch(e){}
+    const hasContent = Array.isArray(saved) && saved.some(d=>
+      (d.name && d.name.trim()) || (d.tools||[]).some(t=> t.name && t.name.trim())
+    );
+    if(!hasContent){ try{ localStorage.removeItem(this.key); }catch(e){} }
+    const data = hasContent ? saved : this.defaults();
+    this.render(root, data);
+    this.bind(root);
+    this.setupAiButtons(root);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+
+  escAttr(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  clone(x){ return JSON.parse(JSON.stringify(x)); }
+  colorFor(v){ const s = this.STATUS.find(x=> x.v===v); return s ? s.c : '#003049'; }
+
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#DB3A34';
+  }
+
+  defaults(){ return this.categories.map(c=> ({ name:c, tools:[{ name:'', status:'' }] })); }
+
+  segBtn(v){
+    const base = 'padding:5px 11px; border:1.5px solid #cdd5da; border-radius:999px; background:#fff; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:.02em; color:#7a8b93; cursor:pointer; white-space:nowrap; line-height:1.1;';
+    return '<button type="button" data-val="'+v+'" style="'+base+'">'+v+'</button>';
+  }
+  toolRowHTML(t, ti){
+    const bt = ti > 0 ? 'border-top:1px solid #f3eae8;' : '';
+    const nameStyle = 'flex:1 1 190px; min-width:150px; border:none; border-bottom:1.5px solid #d8cfcc; background:transparent; font-family:\'Lato\',sans-serif; font-size:14px; color:#003049; padding:4px 2px; outline:none;';
+    const rm = 'width:22px; height:22px; border:none; background:transparent; color:#c9b8b5; font-size:17px; line-height:1; cursor:pointer; flex:none;';
+    const segs = this.STATUS.map(s=> this.segBtn(s.v)).join('');
+    return '<div class="toolrow'+((t.name&&t.name.trim())?'':' empty')+'" data-status="'+this.escAttr(t.status||'')+'" style="display:flex; align-items:center; gap:8px 12px; flex-wrap:wrap; padding:9px 0; '+bt+'">'+
+      '<input data-field="name" type="text" value="'+this.escAttr(t.name)+'" placeholder="tool name" style="'+nameStyle+'">'+
+      '<span class="seg" style="display:flex; gap:6px; flex-wrap:wrap;">'+segs+'</span>'+
+      '<button type="button" data-remove-tool class="no-print" title="Remove tool" style="'+rm+'">&times;</button>'+
+    '</div>';
+  }
+  cardHTML(d, ci){
+    const tools = (d.tools && d.tools.length) ? d.tools : [{ name:'', status:'' }];
+    const rows = tools.map((t,ti)=> this.toolRowHTML(t,ti)).join('');
+    const catStyle = 'flex:1 1 auto; min-width:0; border:none; background:transparent; font-family:\'Josefin Sans\',sans-serif; font-weight:700; font-size:17px; color:#003049; padding:2px 0; outline:none;';
+    return '<div class="card" data-ci="'+ci+'" style="border:1px solid #ecd8d5; border-radius:11px; overflow:hidden; margin-top:14px;">'+
+      '<div style="background:#faf6f5; padding:12px 18px; border-bottom:1px solid #ecd8d5; display:flex; align-items:center; gap:10px;">'+
+        '<input data-field="cat" type="text" value="'+this.escAttr(d.name)+'" placeholder="category" style="'+catStyle+'">'+
+      '</div>'+
+      '<div style="padding:6px 18px 12px;">'+ rows +
+        '<button type="button" data-add-tool class="no-print" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:11px; color:#003049; background:transparent; border:none; padding:10px 0 2px; cursor:pointer;">+ Add a tool</button>'+
+      '</div>'+
+    '</div>';
+  }
+
+  render(root, data){
+    const host = root.querySelector('#cards');
+    if(!host) return;
+    host.innerHTML = (data||[]).map((d,ci)=> this.cardHTML(d,ci)).join('');
+    root.querySelectorAll('.toolrow').forEach(tr=> this.styleTool(tr));
+  }
+
+  styleTool(tr){
+    const st = tr.getAttribute('data-status') || '';
+    tr.querySelectorAll('.seg [data-val]').forEach(b=>{
+      const v = b.getAttribute('data-val');
+      const on = (v === st && st !== '');
+      const color = this.colorFor(v);
+      b.classList.toggle('on', on);
+      b.style.background = on ? color : '#fff';
+      b.style.color = on ? '#fff' : '#7a8b93';
+      b.style.borderColor = on ? color : '#cdd5da';
+    });
+  }
+
+  collect(root){
+    const cards = [];
+    root.querySelectorAll('.card').forEach(card=>{
+      const catEl = card.querySelector('[data-field="cat"]');
+      const d = { name: catEl ? catEl.value : '', tools: [] };
+      card.querySelectorAll('.toolrow').forEach(tr=>{
+        const nm = tr.querySelector('[data-field="name"]');
+        d.tools.push({ name: nm ? nm.value : '', status: tr.getAttribute('data-status') || '' });
+      });
+      cards.push(d);
+    });
+    return cards;
+  }
+  save(root){ try{ localStorage.setItem(this.key, JSON.stringify(this.collect(root))); }catch(e){} }
+
+  idxOf(list, el){ return [...list].indexOf(el); }
+
+  bind(root){
+    root.addEventListener('input', (e)=>{
+      const t = e.target;
+      if(t && t.getAttribute && t.getAttribute('data-field') === 'name'){
+        const tr = t.closest('.toolrow');
+        if(tr) tr.classList.toggle('empty', !t.value.trim());
+      }
+      this.save(root);
+    });
+    root.addEventListener('click', (e)=>{
+      const seg = e.target.closest('.seg [data-val]');
+      if(seg){
+        e.preventDefault();
+        const tr = seg.closest('.toolrow');
+        const v = seg.getAttribute('data-val');
+        const cur = tr.getAttribute('data-status') || '';
+        tr.setAttribute('data-status', cur === v ? '' : v);
+        this.styleTool(tr);
+        this.save(root);
+        return;
+      }
+      const at = e.target.closest('[data-add-tool]');
+      if(at){
+        e.preventDefault();
+        const card = at.closest('.card');
+        const ci = this.idxOf(root.querySelectorAll('.card'), card);
+        const data = this.collect(root);
+        data[ci].tools.push({ name:'', status:'' });
+        this.render(root, data);
+        this.save(root);
+        const rows = root.querySelectorAll('.card')[ci].querySelectorAll('.toolrow');
+        const inp = rows[rows.length-1].querySelector('[data-field="name"]');
+        if(inp) inp.focus();
+        return;
+      }
+      const rm = e.target.closest('[data-remove-tool]');
+      if(rm){
+        e.preventDefault();
+        const tr = rm.closest('.toolrow');
+        const card = rm.closest('.card');
+        const ci = this.idxOf(root.querySelectorAll('.card'), card);
+        const ti = this.idxOf(card.querySelectorAll('.toolrow'), tr);
+        const data = this.collect(root);
+        data[ci].tools.splice(ti, 1);
+        if(!data[ci].tools.length) data[ci].tools.push({ name:'', status:'' });
+        this.render(root, data);
+        this.save(root);
+        return;
+      }
+      const ac = e.target.closest('[data-add-category]');
+      if(ac){
+        e.preventDefault();
+        const data = this.collect(root);
+        data.push({ name:'', tools:[{ name:'', status:'' }] });
+        this.render(root, data);
+        this.save(root);
+        const cards = root.querySelectorAll('.card');
+        const inp = cards[cards.length-1].querySelector('[data-field="cat"]');
+        if(inp) inp.focus();
+        return;
+      }
+    });
+  }
+
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim().replace(/^"|"$/g,'');
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#DB3A34; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#c1352f; background:transparent; border:1.5px solid #e6b3b0; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset the survey to the default categories and clear all entries?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){ this.render(root, this.defaults()); this.save(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

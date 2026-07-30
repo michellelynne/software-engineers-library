@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; }
+  body { background:#f0eee6; }
+  a { text-decoration:none; color:inherit; }
+</style>
+</helmet>
+
+<div style="max-width:980px; margin:0 auto; padding:64px 32px 110px; font-family:'Lato',sans-serif; color:#1f2d33;">
+
+  <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#9178B5;">Software Engineer's Library</div>
+  <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:64px; line-height:.98; margin:16px 0 0; color:#003049;">Worksheets</h1>
+  <div style="height:4px; width:72px; background:#DB3A34; margin:22px 0 20px;"></div>
+  <p style="font-family:'Fraunces',serif; font-size:19px; line-height:1.55; max-width:62ch; margin:0; color:#3A2449;">Every worksheet from the book, organized by chapter. Each comes in up to four versions: a blank to fill in, a worked case-study example, and print-ready color and black-and-white sheets.</p>
+  <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#6b6459; margin-top:14px;">{{ meta }}</div>
+
+  <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="16">
+    <section style="margin-top:50px;">
+      <div style="display:flex; align-items:center; gap:16px; padding-bottom:14px; border-bottom:2px solid #003049;">
+        <div style="flex:none; width:52px; height:52px; border-radius:4px; background:{{ ch.color }}; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:24px; color:{{ ch.badgeFg }};">{{ ch.numPad }}</div>
+        <div style="display:flex; flex-direction:column; gap:3px;">
+          <div style="font-family:'Fraunces',serif; font-weight:700; font-size:26px; color:#003049; line-height:1;">Chapter {{ ch.num }}</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:{{ ch.taglineColor }};">{{ ch.tagline }}</div>
+        </div>
+      </div>
+
+      <sc-if value="{{ ch.hasItems }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;">
+          <sc-for list="{{ ch.items }}" as="item" hint-placeholder-count="3">
+            <div style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid {{ ch.color }}; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:14px;">
+              <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">{{ item.title }}</div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ item.chips }}" as="c" hint-placeholder-count="4">
+                  <a href="{{ c.href }}" style="{{ c.style }}" style-hover="{{ c.styleHover }}">{{ c.label }}</a>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ ch.empty }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:18px; border:2px dashed {{ ch.emptyBorder }}; border-radius:8px; padding:26px 24px; display:flex; align-items:center; gap:14px; background:{{ ch.emptyBg }};">
+          <div style="flex:none; width:10px; height:10px; border-radius:50%; background:{{ ch.color }};"></div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:{{ ch.taglineColor }};">Worksheets coming soon</div>
+        </div>
+      </sc-if>
+    </section>
+  </sc-for>
+
+  <section style="margin-top:50px;">
+    <div style="display:flex; align-items:center; gap:16px; padding-bottom:14px; border-bottom:2px solid #003049;">
+      <div style="flex:none; width:52px; height:52px; border-radius:4px; background:#9178B5; display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-weight:700; font-size:24px; color:#241c33;">&#9733;</div>
+      <div style="display:flex; flex-direction:column; gap:3px;">
+        <div style="font-family:'Fraunces',serif; font-weight:700; font-size:26px; color:#003049; line-height:1;">Case Study Reference</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#6b6459;">Guides &amp; explainers</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;">
+      <sc-for list="{{ reference }}" as="item" hint-placeholder-count="1">
+        <div style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #9178B5; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:14px;">
+          <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">{{ item.title }}</div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            <sc-for list="{{ item.chips }}" as="c" hint-placeholder-count="1">
+              <a href="{{ c.href }}" style="{{ c.style }}" style-hover="{{ c.styleHover }}">{{ c.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="26" y="30" width="14" height="40" rx="2" fill="#DB3A34"></rect>
+    <rect x="43" y="30" width="14" height="40" rx="2" fill="#177E89"></rect>
+    <rect x="60" y="30" width="14" height="40" rx="2" fill="#9178B5"></rect>
+  </svg>
+</template>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const PLUM='#3A2449', TEAL='#177E89', NAVY='#003049', RED='#DB3A34', LILAC='#9178B5';
+    const cycle = [PLUM, TEAL, NAVY, RED, LILAC];
+
+    const VPAL = {
+      blank:      { bg:'#eef1f4', fg:'#3f5a66' },
+      caseStudy:  { bg:'#f6e7d6', fg:'#b5651d' },
+      printColor: { bg:'#e6eff0', fg:'#2c6b73' },
+      printBw:    { bg:'#ececec', fg:'#4a4a4a' },
+      overview:   { bg:'#dbe4e8', fg:'#003049' },
+    };
+    const CHIP_DEFS = [
+      ['blank', 'Blank'],
+      ['caseStudy', 'Case Study'],
+      ['printColor', 'Print \u00B7 Color'],
+      ['printBw', 'Print \u00B7 B&W'],
+    ];
+    const BASE = "display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; border-radius:6px; padding:8px 12px; transition:filter .15s ease, transform .15s ease;";
+
+    const chip = (key, label, href) => {
+      if (href) {
+        const p = VPAL[key];
+        const style = BASE + `color:${p.fg}; background:${p.bg}; border:1px solid ${p.bg}; cursor:pointer;`;
+        const styleHover = style + ' filter:brightness(.94); transform:translateY(-1px);';
+        return { label, href, style, styleHover };
+      }
+      const style = BASE + 'color:#b7b1a6; background:transparent; border:1px dashed #d3cdc2; cursor:default;';
+      return { label, href: null, style, styleHover: style };
+    };
+
+    const item = (title, v = {}) => {
+      if (v.overview) {
+        return { title, chips: [ chip('overview', 'Overview', v.overview) ] };
+      }
+      return {
+        title,
+        chips: CHIP_DEFS.map(([k, lbl]) => chip(k, lbl, v[k] || null)),
+      };
+    };
+
+    // Known chapters with real worksheet files (root-level canonical DCs).
+    const TAGLINES = {
+      1: 'Creating the Software Engineering Career You Want',
+      2: 'Navigating Product Ambiguity',
+      3: 'Technical Decision Making',
+      4: 'A Beginner\u2019s Guide to System Design',
+      5: 'Frontend & design',
+      6: 'Keeping up & leveling others',
+      7: 'MVP & experiments',
+    };
+    const ITEMS = {
+      1: [
+        item('Identifying Industries', { blank:'chapter-1/interactive/identifying-industries.dc.html',    printColor:'chapter-1/print/identifying-industries-color.dc.html',   printBw:'chapter-1/print/identifying-industries-bw.dc.html' }),
+        item('Company Filters',        { blank:'chapter-1/interactive/company-filters.dc.html',          printColor:'chapter-1/print/company-filters-color.dc.html',          printBw:'chapter-1/print/company-filters-bw.dc.html' }),
+        item('Company List & Alerts',  { blank:'chapter-1/interactive/company-list-and-alerts.dc.html',   printColor:'chapter-1/print/company-list-and-alerts-color.dc.html',  printBw:'chapter-1/print/company-list-and-alerts-bw.dc.html' }),
+        item('Skills Self-Assessment', { blank:'chapter-1/interactive/skills-self-assessment.dc.html',    printColor:'chapter-1/print/skills-self-assessment-color.dc.html',   printBw:'chapter-1/print/skills-self-assessment-bw.dc.html' }),
+      ],
+      2: [
+        item('Prioritization for Engineers', { blank:'chapter-2/interactive/prioritization.dc.html', printColor:'chapter-2/print/prioritization-color.dc.html', printBw:'chapter-2/print/prioritization-bw.dc.html' }),
+        item('Organization Context',      { blank:'chapter-2/interactive/organization-context.dc.html', printColor:'chapter-2/print/organization-context-color.dc.html', printBw:'chapter-2/print/organization-context-bw.dc.html' }),
+        item('Proposal Memo',             { blank:'chapter-2/interactive/proposal-memo.dc.html', caseStudy:'chapter-2/interactive/proposal-memo-case-study.dc.html', printColor:'chapter-2/print/proposal-memo-case-study-color.dc.html', printBw:'chapter-2/print/proposal-memo-case-study-bw.dc.html' }),
+        item('User Stories',              { blank:'chapter-2/interactive/user-stories.dc.html', caseStudy:'chapter-2/interactive/user-stories-case-study.dc.html', printBw:'chapter-2/print/user-stories-bw.dc.html' }),
+      ],
+      3: [
+        item('Build vs Buy',       { blank:'chapter-3/interactive/build-vs-buy-blank.dc.html', caseStudy:'chapter-3/interactive/build-vs-buy-case-study.dc.html' }),
+        item('Engineering Survey', { blank:'chapter-3/interactive/engineering-survey.dc.html' }),
+      ],
+      4: [
+        item('Backend Technical Decisions', { blank:'chapter-4/interactive/backend-technical-decisions-blank.dc.html', caseStudy:'chapter-4/interactive/backend-technical-decisions-case-study.dc.html' }),
+        item('Backend Designer',            { overview:'chapter-4/interactive/backend-designer.dc.html' }),
+        item('Search & Filters',            { blank:'chapter-4/interactive/search-and-filters-blank.dc.html', caseStudy:'chapter-4/interactive/search-and-filters.dc.html' }),
+        item('Stakeholder Authorization',     { blank:'chapter-4/interactive/permissions-blank.dc.html', caseStudy:'chapter-4/interactive/permissions.dc.html' }),
+        item('Database Tables',             { caseStudy:'chapter-4/interactive/database-tables.dc.html' }),
+        item('API',                         { caseStudy:'chapter-4/interactive/api-case-study.dc.html' }),
+      ],
+      5: [
+        item('Designer Worksheet',         { blank:'chapter-5/interactive/designer-blank.dc.html', caseStudy:'chapter-5/interactive/designer-case-study.dc.html' }),
+        item('Frontend Decision Worksheet',{ blank:'chapter-5/interactive/frontend-decision-blank.dc.html', caseStudy:'chapter-5/interactive/frontend-decision-case-study.dc.html' }),
+        item('Accessibility Audit Worksheet', {}),
+      ],
+      6: [
+        item('Starting a Mentorship',          { blank:'chapter-6/interactive/mentorship.dc.html' }),
+      ],
+      7: [
+        item('Index Card Design', { blank:'chapter-7/interactive/index-card-design.dc.html' }),
+        item('Roadmap',           { blank:'chapter-7/interactive/roadmap.dc.html' }),
+        item('MVP Experiment',    { caseStudy:'chapter-7/interactive/mvp-experiment-case-study.dc.html' }),
+      ],
+    };
+
+    const tint = (hex, a) => {
+      const n = parseInt(hex.slice(1), 16);
+      const r = (n>>16)&255, g = (n>>8)&255, b = n&255;
+      const mix = (c) => Math.round(c + (255 - c) * (1 - a));
+      return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
+    };
+
+    const chapters = [];
+    for (let num = 1; num <= 16; num++) {
+      const color = cycle[(num - 1) % 5];
+      const items = ITEMS[num] || [];
+      chapters.push({
+        num,
+        numPad: String(num).padStart(2, '0'),
+        color,
+        badgeFg: color === LILAC ? '#241c33' : '#fff',
+        tagline: TAGLINES[num] || 'Coming soon',
+        taglineColor: TAGLINES[num] ? '#6b6459' : '#a8a196',
+        items,
+        hasItems: items.length > 0,
+        empty: items.length === 0,
+        emptyBg: tint(color, 0.055),
+        emptyBorder: tint(color, 0.4),
+      });
+    }
+
+    const refChip = (label, href) => {
+      const style = BASE + 'color:#6f5691; background:#ece5f2; border:1px solid #ece5f2; cursor:pointer;';
+      return { label, href, style, styleHover: style + ' filter:brightness(.94); transform:translateY(-1px);' };
+    };
+    const reference = [
+      { title: 'User Stories', chips: [ refChip('Interactive', 'case-study-reference/user-stories-reference.dc.html'), refChip('Print', 'case-study-reference/user-stories-reference-print.dc.html') ] },
+      { title: 'Pages', chips: [ refChip('Interactive', 'case-study-reference/pages-reference.dc.html'), refChip('Print', 'case-study-reference/pages-reference-print.dc.html') ] },
+      { title: 'Database Tables', chips: [ refChip('Interactive', 'case-study-reference/database-tables-reference.dc.html') ] },
+    ];
+
+    const total = Object.values(ITEMS).reduce((n, arr) =>
+      n + arr.filter(it => it.chips.some(c => c.href)).length, 0) + reference.length;
+    const meta = `${total} worksheets \u00B7 16 chapters`;
+
+    return { chapters, reference, meta };
+  }
+}
+</script>
+</body>
+</html>

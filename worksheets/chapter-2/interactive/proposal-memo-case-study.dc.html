@@ -57,14 +57,21 @@
   <!-- MASTHEAD -->
   <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
     <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 2 · Worksheet · Case Study</div>
-    <h1 style="font-family:'Fraunces',serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Proposal Memo</h1>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Proposal Memo</h1>
     <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bfe3e2; margin:12px 0 0;">Renovation Revolution</div>
     <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
   </div>
 
   <div style="padding:34px 64px 0;">
-    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">This is the Renovation Revolution case study from the book, filled in so you can see what a finished brainstorm looks like before you write your own. Renovation Revolution is a marketplace app connecting homeowners with contractors for renovation projects.</p>
-    <div style="margin-top:18px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3A2449;">Want a blank one for your own product? Use the <a href="proposal-memo.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #bfe0e2;">blank Proposal Memo worksheet</a>.</div>
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:0;">Senior engineers are proactive. Proposing a new idea is a win for you, even when it is not approved, because it demonstrates your initiative. A memo is also a great way to learn:</p>
+    <ul style="list-style:none; margin:14px 0 0; padding:0; max-width:62ch; display:flex; flex-direction:column; gap:9px;">
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>your organization's memo standards</span></li>
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>how leadership reacts to new ideas</span></li>
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>how your team gives feedback</span></li>
+      <li style="display:flex; gap:11px; align-items:baseline; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3A2449;"><span style="color:#9178B5; font-size:16px; line-height:1; flex:none;">&bull;</span><span>how to connect your goals to leadership's goals</span></li>
+    </ul>
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:62ch; margin:16px 0 0;">This is filled in with answers from the Renovation Revolution case study.</p>
+    <div style="margin-top:18px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3A2449;">Want a blank one for your own product? Use the <a href="proposal-memo.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #bfe0e2;">blank Proposal Memo worksheet</a>.</div>
 
     <!-- SECTION A: AUDIENCE -->
     <div class="sec" style="margin-top:34px;">
@@ -72,7 +79,7 @@
         <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">1</span>
         <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#3A2449; margin:0;">Audience &amp; Goal</h2>
       </div>
-      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 12px;">The audience is usually your manager, but they may share it upward or ask for stakeholder feedback. Use your <a href="organization-context.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #bfe0e2;">Organization Context</a> research to name a goal of theirs that this memo will address.</p>
+      <p style="font-size:13.5px; line-height:1.55; color:#5a4a66; margin:8px 0 12px;">The audience is usually your manager, but they may share it upward or ask for stakeholder feedback. Use your <a href="organization-context.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #bfe0e2;">Organization Context</a> research to name a goal of theirs that this memo will address.</p>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:6px;">
         <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#3A2449;">Who is this memo for?</div>
         <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; color:#3A2449;">Which of their goals does this memo address?</div>
@@ -188,14 +195,14 @@ class Component extends DCLogic {
     const root = document.getElementById('ws-root');
     if(!root) return;
     this.example = {
-      'aud-0-who': 'My engineering manager', 'aud-0-goal': 'Grow the customer base with a new product line',
-      'aud-1-who': 'The VP of Product', 'aud-1-goal': 'Diversify how the company reaches customers',
+      'aud-0-who': 'My engineering manager', 'aud-0-goal': 'Grow the homeowner base with a new product line',
+      'aud-1-who': 'The VP of Product', 'aud-1-goal': 'Diversify how the company reaches homeowners',
       'blockers-0': 'Homeowners struggle to find and compare qualified contractors for a renovation.',
       'blockers-1': 'Contractors have no easy way to discover relevant local projects to bid on.',
       'blockers-2': 'Estimating labor hours and parts cost for a job is manual and inconsistent.',
       'blockers-3': 'A contractor\u2019s past work and reviews are scattered, so trust is hard to establish.',
       'ideas-0': 'A marketplace app, Renovation Revolution, connecting homeowners with contractors.',
-      'ideas-1': 'Structured contractor profiles: services, photos of past jobs, and customer reviews.',
+      'ideas-1': 'Structured contractor profiles: services, photos of past jobs, and homeowner reviews.',
       'ideas-2': 'A project posting and bidding flow with pre-contract privacy for the homeowner.',
       'ideas-3': 'Photo-based search using image recognition to find the contractor behind a look.',
       'ideas-4': 'Data-driven estimate suggestions for labor and parts that improve as data grows.',
@@ -209,7 +216,7 @@ class Component extends DCLogic {
       'opp-3-pros': 'Long-term ROI; brings contractors back to the app repeatedly.',
       'opp-3-cons': 'Needs many completed transactions before the numbers are trustworthy.',
       'roi-1-title': 'Marketplace and bidding flow',
-      'roi-1-roi': 'New customers on both sides of the marketplace; the foundation every other feature builds on.',
+      'roi-1-roi': 'New homeowners on both sides of the marketplace; the foundation every other feature builds on.',
       'roi-1-why': 'It is the largest build, so it needs to start as an MVP rather than the full vision.',
       'roi-2-title': 'Photo-based contractor search',
       'roi-2-roi': 'Differentiates us from directories and improves retention.',
@@ -264,7 +271,7 @@ class Component extends DCLogic {
     const inp = (suffix, ph) => '<input class="save" type="text" name="'+prefix+'-'+i+'-'+suffix+'" placeholder="'+ph+'" style="width:100%; border:1.5px solid #cdd5da; border-radius:5px; padding:8px 11px; font-family:\'Lato\',sans-serif; font-size:14px; color:#3A2449; outline:none; box-sizing:border-box;">';
     return '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:8px;">'+
       inp('who', i===0?'e.g. my manager, the VP of Product':'')+
-      inp('goal', i===0?'e.g. increase the number of customers':'')+
+      inp('goal', i===0?'e.g. increase the number of homeowners':'')+
     '</div>';
   }
   buildPairs(root, saved){

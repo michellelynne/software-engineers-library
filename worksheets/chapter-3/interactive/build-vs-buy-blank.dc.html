@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#c2a6a3; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .sec{ break-inside:avoid; }
+    .card{ break-inside:avoid; }
+    .seg button:not(.on){ display:none !important; }
+    .card input, .card textarea{ border:none !important; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#DB3A34"></rect>
+    <g transform="translate(26,30)" stroke="#003049" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4 h40 v40 h-40 z"></path>
+      <line x1="24" y1="4" x2="24" y2="44"></line>
+      <path d="M9 18 l4 4 l6 -8"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Build vs Buy</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#DB3A34; border:1.5px solid #DB3A34; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:960px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#DB3A34; color:#003049; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#003049;">Chapter 3 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#003049;">Build vs Buy</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#6e1a16; margin:12px 0 0;">Common features for a new application</div>
+    <div style="height:3px; width:64px; background:#003049; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; max-width:64ch; margin:0;">Almost every new application needs the same foundational pieces. You don&rsquo;t have unlimited time, so you can&rsquo;t build all of them. For each common feature below, decide whether you&rsquo;ll <strong>build</strong> it in-house or <strong>buy</strong> an existing tool or service &mdash; and note why. Add your own product-specific features at the bottom.</p>
+
+    <div class="sec" style="margin:20px 0 4px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px;">
+      <div style="border:1px solid #ecd8d5; border-radius:10px; padding:13px 15px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.02em; color:#DB3A34; line-height:1;">Everyone&rsquo;s problem?</div>
+        <div style="font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.45; color:#4a5b62; margin-top:6px;">A universal need like auth or payments. The solution almost definitely exists &mdash; lean <strong style="color:#003049;">Buy</strong>.</div>
+      </div>
+      <div style="border:1px solid #ecd8d5; border-radius:10px; padding:13px 15px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.02em; color:#DB3A34; line-height:1;">Your industry&rsquo;s?</div>
+        <div style="font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.45; color:#4a5b62; margin-top:6px;">A vendor probably exists. Research fit and customization before you build.</div>
+      </div>
+      <div style="border:1px solid #ecd8d5; border-radius:10px; padding:13px 15px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:.02em; color:#DB3A34; line-height:1;">Your core competency?</div>
+        <div style="font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.45; color:#4a5b62; margin-top:6px;">Unique to your company and where your value lives &mdash; this is your farm. <strong style="color:#003049;">Build</strong> it.</div>
+      </div>
+    </div>
+
+    <div class="sec" style="margin:16px 0 4px; background:#fbecea; border-left:3px solid #DB3A34; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#c1352f; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#7a201b;">"Here is a technical component of my product: [describe it]. Are there existing vendors or open-source tools that address this issue? Should I build or buy?"</div>
+    </div>
+
+    <div id="feats" style="margin-top:22px;"></div>
+
+    <button type="button" data-add-feat="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:1.5px dashed #cdd5da; border-radius:8px; padding:12px 0; width:100%; margin-top:16px; cursor:pointer;">+ Add a feature</button>
+
+    <div style="margin-top:38px; padding-top:22px; border-top:2px solid #DB3A34;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#c1352f; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#c1352f; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#c1352f; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#DB3A34&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#3A2449&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#9178B5&quot;], &quot;section&quot;: &quot;Style&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-build-vs-buy-blank-v1';
+    this.DECISIONS = [
+      { v:'Build', c:'#177E89' },
+      { v:'Buy',   c:'#003049' }
+    ];
+    this.COMMON = [
+      'Authentication & Authorization',
+      'User profiles & account management',
+      'Payments & billing',
+      'Transactional email',
+      'Push & in-app notifications',
+      'Search',
+      'File & media storage',
+      'Analytics & event tracking',
+      'Error monitoring & logging',
+      'Admin dashboard / CMS',
+      'Customer support & chat',
+      'Programming language & framework'
+    ];
+
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = null;
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || 'null'); }catch(e){}
+    const hasContent = Array.isArray(saved) && saved.some(f=> (f.name && f.name.trim()) || (f.why && f.why.trim()) || f.decision);
+    if(!hasContent){ try{ localStorage.removeItem(this.key); }catch(e){} }
+    const data = hasContent ? saved : this.defaults();
+    this.render(root, data);
+    this.bind(root);
+    this.setupAiButtons(root);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+
+  escAttr(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  escHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  colorFor(v){ const d = this.DECISIONS.find(x=> x.v===v); return d ? d.c : '#003049'; }
+
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#DB3A34';
+  }
+  autosize(el){ if(!el || el.tagName !== 'TEXTAREA') return; el.style.height='auto'; el.style.height=Math.max(el.scrollHeight,22)+'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea').forEach(el=> this.autosize(el)); }
+
+  defaults(){
+    return this.COMMON.map(name=> ({ name:name, decision:'', why:'' }));
+  }
+
+  segBtn(v){
+    const base = 'padding:5px 12px; border:1.5px solid #cdd5da; border-radius:999px; background:#fff; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:10.5px; letter-spacing:.02em; color:#7a8b93; cursor:pointer; white-space:nowrap; line-height:1.1;';
+    return '<button type="button" data-val="'+v+'" style="'+base+'">'+v+'</button>';
+  }
+  cardHTML(f, i){
+    const nameStyle = 'flex:1 1 220px; min-width:150px; border:none; border-bottom:1.5px solid #d8cfcc; background:transparent; font-family:\'Fraunces\',serif; font-weight:600; font-size:16px; color:#003049; padding:3px 2px; outline:none;';
+    const whyStyle = 'width:100%; resize:none; overflow:hidden; margin-top:11px; border:1px solid #e8dcda; border-radius:7px; background:#faf6f5; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#1f2d33; padding:8px 10px; outline:none; box-sizing:border-box;';
+    const rm = 'width:22px; height:22px; border:none; background:transparent; color:#c9b8b5; font-size:17px; line-height:1; cursor:pointer; flex:none;';
+    const segs = this.DECISIONS.map(d=> this.segBtn(d.v)).join('');
+    return '<div class="card" data-status="'+this.escAttr(f.decision||'')+'" style="border:1px solid #ecd8d5; border-radius:11px; padding:14px 18px 15px; margin-top:14px;">'+
+      '<div style="display:flex; align-items:center; gap:8px 12px; flex-wrap:wrap;">'+
+        '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:24px; color:#DB3A34; line-height:.85; flex:none;">'+(i+1)+'</span>'+
+        '<input data-field="name" type="text" value="'+this.escAttr(f.name)+'" placeholder="feature or technical component" style="'+nameStyle+'">'+
+        '<span class="seg" style="display:flex; gap:6px; flex-wrap:wrap;">'+segs+'</span>'+
+        '<button type="button" data-remove-feat class="no-print" title="Remove feature" style="'+rm+'">&times;</button>'+
+      '</div>'+
+      '<textarea data-field="why" rows="1" placeholder="Why? Universal, industry-specific, or your core competency?" style="'+whyStyle+'">'+this.escHtml(f.why)+'</textarea>'+
+    '</div>';
+  }
+
+  render(root, data){
+    const host = root.querySelector('#feats');
+    if(!host) return;
+    host.innerHTML = (data||[]).map((f,i)=> this.cardHTML(f,i)).join('');
+    root.querySelectorAll('.card[data-status]').forEach(c=> this.styleRow(c));
+    requestAnimationFrame(()=> this.autosizeAll(root));
+  }
+
+  styleRow(card){
+    const st = card.getAttribute('data-status') || '';
+    card.querySelectorAll('.seg [data-val]').forEach(b=>{
+      const v = b.getAttribute('data-val');
+      const on = (v === st && st !== '');
+      const color = this.colorFor(v);
+      b.classList.toggle('on', on);
+      b.style.background = on ? color : '#fff';
+      b.style.color = on ? '#fff' : '#7a8b93';
+      b.style.borderColor = on ? color : '#cdd5da';
+    });
+  }
+
+  collect(root){
+    const out = [];
+    root.querySelectorAll('.card[data-status]').forEach(card=>{
+      const nm = card.querySelector('[data-field="name"]');
+      const wh = card.querySelector('[data-field="why"]');
+      out.push({ name: nm ? nm.value : '', decision: card.getAttribute('data-status') || '', why: wh ? wh.value : '' });
+    });
+    return out;
+  }
+  save(root){ try{ localStorage.setItem(this.key, JSON.stringify(this.collect(root))); }catch(e){} }
+  idxOf(list, el){ return [...list].indexOf(el); }
+
+  bind(root){
+    root.addEventListener('input', (e)=>{
+      if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target);
+      this.save(root);
+    });
+    root.addEventListener('click', (e)=>{
+      const seg = e.target.closest('.seg [data-val]');
+      if(seg){
+        e.preventDefault();
+        const card = seg.closest('.card');
+        const v = seg.getAttribute('data-val');
+        const cur = card.getAttribute('data-status') || '';
+        card.setAttribute('data-status', cur === v ? '' : v);
+        this.styleRow(card);
+        this.save(root);
+        return;
+      }
+      const rm = e.target.closest('[data-remove-feat]');
+      if(rm){
+        e.preventDefault();
+        const card = rm.closest('.card');
+        const i = this.idxOf(root.querySelectorAll('.card[data-status]'), card);
+        const data = this.collect(root);
+        data.splice(i, 1);
+        if(!data.length) data.push({ name:'', decision:'', why:'' });
+        this.render(root, data);
+        this.save(root);
+        return;
+      }
+      const af = e.target.closest('[data-add-feat]');
+      if(af){
+        e.preventDefault();
+        const data = this.collect(root);
+        data.push({ name:'', decision:'', why:'' });
+        this.render(root, data);
+        this.save(root);
+        const cards = root.querySelectorAll('.card[data-status]');
+        const inp = cards[cards.length-1].querySelector('[data-field="name"]');
+        if(inp) inp.focus();
+        return;
+      }
+    });
+  }
+
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim().replace(/^"|"$/g,'');
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button';
+      ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#DB3A34; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button';
+      copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#c1352f; background:transparent; border:1.5px solid #e6b3b0; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied, paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the blank list of common features?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){ this.render(root, this.defaults()); this.save(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
