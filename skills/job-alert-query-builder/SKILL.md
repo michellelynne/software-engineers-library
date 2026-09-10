@@ -5,7 +5,7 @@ description: Build ready-to-paste job search alert queries that map "Senior Soft
 
 # SKILL: Job-Alert Query Builder
 
-**From:** Chapter 1, Company List and Alerts (Set Up Your Alerts)
+**From:** Company List and Alerts (Set Up Your Alerts)
 
 ## When to load this skill
 

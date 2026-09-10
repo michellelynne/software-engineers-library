@@ -5,7 +5,7 @@ description: Find realistic market ranges for a specific job benefit given a reg
 
 # SKILL: Regional Benefit Benchmarking
 
-**From:** Chapter 1, Company Filters (Set Your Ranges Worksheet)
+**From:** Company Filters (Set Your Ranges Worksheet)
 
 ## When to load this skill
 

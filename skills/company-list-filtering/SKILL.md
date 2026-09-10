@@ -5,7 +5,7 @@ description: Apply job-search filters to a list of companies one filter at a tim
 
 # SKILL: Company List Filtering
 
-**From:** Chapter 1, Company List and Alerts (Build Your Final List)
+**From:** Company List and Alerts (Build Your Final List)
 
 ## When to load this skill
 
@@ -55,7 +55,7 @@ a question saved for the interview), and carry it forward to the next pass.
 **Step 3. Offer the override.** After each pass, say plainly that any cut can be reversed.
 A company scoring well on the reader's other lists is worth keeping through a filter it fails.
 
-**Step 4. Report the final count against the target.** The chapter's target is 25 to 50
+**Step 4. Report the final count against the target.** The book's target is 25 to 50
 companies. If the list comes out short, do not pad it. Say which filter cut the most and
 suggest loosening that one specifically, then rerun from that pass.
 

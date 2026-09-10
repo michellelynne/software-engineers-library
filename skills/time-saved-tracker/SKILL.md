@@ -5,9 +5,8 @@ description: Estimate how long a task would take by hand before starting it, tim
 
 # SKILL: Time-Saved Tracker
 
-**New skill. Not tied to a single chapter.** Pairs with the AI Tool Decision Checklist
-(Chapter 7) and the Workflow Process Mapping skill (Chapter 6), and can wrap any other skill
-in this set.
+**Not tied to one section of the book.** Pairs with the AI Tool Decision Checklist and the
+Workflow Process Mapping skill, and can wrap any other skill in this set.
 
 ## When to load this skill
 
@@ -17,9 +16,9 @@ need a number to put in front of a manager who is asking what the tooling is buy
 
 ## Why the number matters
 
-Chapter 7 asks three questions before handing a task to AI, and the second one is whether
-redoing the work will cost more than doing the task. That question is usually answered by
-feeling. This skill answers it with two timestamps and an honest estimate.
+The book's AI tool decision checklist asks three questions before handing a task to AI, and the
+second one is whether redoing the work will cost more than doing the task. That question is
+usually answered by feeling. This skill answers it with two timestamps and an honest estimate.
 
 The answer is allowed to be no. A skill that reports a loss is doing its job. A tracker that
 always finds a saving is a tracker nobody should trust.
@@ -74,7 +73,7 @@ how much correction it needed. Never report elapsed time as if review were free.
 | **Verdict** | Worth handing over, borderline, or slower than doing it |
 
 **9. Say what the number does not include.** Setup time paid once, waiting on a slow tool,
-and the learning the reader skipped by not doing the task by hand. Chapter 7 is explicit that
+and the learning the reader skipped by not doing the task by hand. The book is explicit that
 delegating a task can mean never learning it, and that cost does not show up on a stopwatch.
 
 **10. Give the verdict a reason.** "Worth it because the manual version is mostly mechanical

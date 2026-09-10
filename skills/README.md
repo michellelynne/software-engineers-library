@@ -30,21 +30,22 @@ you are doing, not by name, so there is nothing to memorize.
 
 ## What is here
 
-| Skill | Chapter | What it does |
+| Skill | Where it comes from | What it does |
 |---|---|---|
-| `interest-to-company-research` | 1 | Turns one interest into a wide table of real companies across the industry, plus an alphabetized list |
-| `regional-benefit-benchmarking` | 1 | Market ranges for a single benefit by region and years of experience, with a two-region comparison |
-| `company-list-filtering` | 1 | Applies your filters one at a time, showing which companies drop off at each pass and why |
-| `job-alert-query-builder` | 1 | Maps "Senior Software Engineer" to each company's real level name, then writes one alert query per company |
-| `ai-job-tool-scout` | 1 | Surveys current job search tools with community reputation and a recency stamp |
-| `time-saved-tracker` | any | Estimates the manual time before you start, times the assisted run, reports net time saved |
+| `interest-to-company-research` | Identifying Industries | Turns one interest into a wide table of real companies across the industry, plus an alphabetized list |
+| `regional-benefit-benchmarking` | Company Filters | Market ranges for a single benefit by region and years of experience, with a two-region comparison |
+| `company-list-filtering` | Company List and Alerts | Applies your filters one at a time, showing which companies drop off at each pass and why |
+| `job-alert-query-builder` | Company List and Alerts | Maps "Senior Software Engineer" to each company's real level name, then writes one alert query per company |
+| `ai-job-tool-scout` | Company List and Alerts | Surveys current job search tools with community reputation and a recency stamp |
+| `time-saved-tracker` | Any section | Estimates the manual time before you start, times the assisted run, reports net time saved |
 
 `time-saved-tracker` is built to wrap any of the others. It is the only skill here that is
 allowed to tell you the AI was slower than doing the task yourself.
 
 ## Status
 
-Chapter 1 is complete. The rest are being added a chapter at a time.
+The job search skills are complete. More are added as the remaining sections of the book are
+finalized.
 
 ## If you are adding a skill
 

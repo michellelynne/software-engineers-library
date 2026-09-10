@@ -1,11 +1,11 @@
 ---
 name: ai-job-tool-scout
-description: Survey the job search and alert tools available right now, summarize what each does and how the community actually rates it, and flag how current the information is, so a tool recommendation stays useful after the book is printed. Use when someone asks which AI job search tools to use, wants alternatives to manual applications, or wants to know whether a tool they heard about is worth trying.
+description: Survey the job search and alert tools available right now, summarize what each does and how the community actually rates it, and flag how current the information is, so the answer reflects what exists today rather than what existed at publication. Use when someone asks which AI job search tools to use, wants alternatives to manual applications, or wants to know whether a tool they heard about is worth trying.
 ---
 
 # SKILL: AI Job-Tool Scout
 
-**From:** Chapter 1, Company List and Alerts
+**From:** Company List and Alerts
 
 ## When to load this skill
 

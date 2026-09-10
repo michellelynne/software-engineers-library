@@ -5,7 +5,7 @@ description: Turn a personal interest into a wide list of real companies that hi
 
 # SKILL: Interest-to-Company Market Research
 
-**From:** Chapter 1, Expand on Interests (Identifying Industries Worksheet)
+**From:** Expand on Interests (Identifying Industries Worksheet)
 
 ## When to load this skill
 
