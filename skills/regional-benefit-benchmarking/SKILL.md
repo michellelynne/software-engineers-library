@@ -1,11 +1,11 @@
 ---
 name: regional-benefit-benchmarking
-description: Find realistic market ranges for a specific job benefit given a region and years of experience, and compare two regions side by side, so acceptable ranges can be set before comparing offers. Use when someone is filling in the Set Your Ranges worksheet, asks what is normal for a benefit like 401(k) match, PTO, parental leave, or learning budget, or wants to know how a benefit shifts by location or seniority.
+description: Find realistic market ranges for a specific job benefit given a region and years of experience, and compare two regions side by side, so acceptable ranges can be set before comparing offers. Use when someone is setting their acceptable ranges in the Find Your Dream Pretty Good Job worksheet, asks what is normal for a benefit like 401(k) match, PTO, parental leave, or learning budget, or wants to know how a benefit shifts by location or seniority.
 ---
 
 # SKILL: Regional Benefit Benchmarking
 
-**From:** Company Filters (Set Your Ranges Worksheet)
+**From:** Company Filters (Find Your Dream Pretty Good Job Worksheet)
 
 ## When to load this skill
 
