@@ -1,11 +1,11 @@
 ---
 name: job-alert-query-builder
-description: Build ready-to-paste job search alert queries that map "Senior Software Engineer" to each target company's actual level name, so alerts return the right seniority instead of every open role. Use when someone is setting up Google Alerts or job alerts for a list of companies, asks how to avoid false positives in job searches, or is working the Set Up Your Alerts worksheet.
+description: Build ready-to-paste job search alert queries that map "Senior Software Engineer" to each target company's actual level name, so alerts return the right seniority instead of every open role. Use when someone is setting up Google Alerts or job alerts for a list of companies, asks how to avoid false positives in job searches, or is working the Set Up Your Alerts step of the Find Your Dream Pretty Good Job worksheet.
 ---
 
 # SKILL: Job-Alert Query Builder
 
-**From:** Company List and Alerts (Set Up Your Alerts)
+**From:** Set Up Your Alerts (Find Your Dream Pretty Good Job Worksheet)
 
 ## When to load this skill
 

@@ -1,11 +1,11 @@
 ---
 name: company-list-filtering
-description: Apply job-search filters to a list of companies one filter at a time, showing which companies drop off at each pass and why, so the reader can override a cut for a company they care about. Use when someone is building their final company list, wants to narrow a long list of employers against criteria like remote work, retirement match, or pay threshold, or is working the Build Your Final List worksheet.
+description: Apply job-search filters to a list of companies one filter at a time, showing which companies drop off at each pass and why, so the reader can override a cut for a company they care about. Use when someone is building their final company list, wants to narrow a long list of employers against criteria like remote work, retirement match, or pay threshold, or is working the Build Your Final List step of the Find Your Dream Pretty Good Job worksheet.
 ---
 
 # SKILL: Company List Filtering
 
-**From:** Company List and Alerts (Build Your Final List)
+**From:** Build Your Final List (Find Your Dream Pretty Good Job Worksheet)
 
 ## When to load this skill
 

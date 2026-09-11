@@ -1,11 +1,11 @@
 ---
 name: interest-to-company-research
-description: Turn a personal interest into a wide list of real companies that hire software engineers, working category by category across the industry's value chain and returning a filled table plus an alphabetized company list. Use when someone wants to widen a "dream company" into a "dream industry," is filling in the Identifying Industries worksheet, or asks which companies work in a field they care about.
+description: Turn a personal interest into a wide list of real companies that hire software engineers, working category by category across the industry's value chain and returning a filled table plus an alphabetized company list. Use when someone wants to widen a "dream company" into a "dream industry," is filling in the Find Your Dream Pretty Good Job worksheet, or asks which companies work in a field they care about.
 ---
 
 # SKILL: Interest-to-Company Market Research
 
-**From:** Expand on Interests (Identifying Industries Worksheet)
+**From:** Expand on Interests (Find Your Dream Pretty Good Job Worksheet)
 
 ## When to load this skill
 
