@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#003049 !important; border-bottom-color:#003049 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  a{ color:#177E89; text-decoration:none; }
+  a:hover{ color:#003049; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(30,30)" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 0 H36 V40 L20 29 L4 40 Z"></path>
+      <path d="M13 15 L19 21 L29 10" stroke="#DB3A34"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Branding Review</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#003049; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#9fc4cf;">Chapter 9 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Branding Review</h1>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Everyone has a brand, both internally at their organization and externally in the community. Your brand is the impression people have of you or the feeling they get when your name is mentioned. A positive brand can open doors to new opportunities. A neutral or negative brand can lead to you being forgotten or worse. Use this worksheet to decide what you want your brand to be and how to implement it.</p>
+
+    <div data-example="1" style="position:relative; margin:26px 0 0; background:#eef4f4; border:1.5px solid #cfe1e3; border-radius:12px; padding:24px 20px 18px;">
+      <div style="font-family:'Fraunces',serif; font-size:16px; line-height:1.55; color:#003049; font-style:italic;">"It's this simple: You are a brand. You are in charge of your brand."</div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#177E89; margin-top:9px;">Tom Peters</div>
+    </div>
+
+    <div class="step" id="sec-internal-now">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Internal Brand</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What do you think your internal brand is right now?</span></div>
+      <textarea class="save" name="int-now" rows="4" style="width:100%; margin-bottom:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Why do you think that&rsquo;s your brand? Have you gotten feedback?</span></div>
+      <textarea class="save" name="int-evidence" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Is there anyone you trust at your organization that you can ask about your brand?</span></div>
+      <textarea class="save" name="int-friend" rows="2" style="width:100%; margin-bottom:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What actions do you take to cultivate that brand?</span></div>
+      <textarea class="save" name="int-truthteller" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Would you like to change or improve your brand at your organization? <span style="font-weight:400; color:#3f6070;">If no, skip section 2.</span></span></div>
+      <textarea class="save" name="int-change" rows="2" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-internal-want">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Internal Brand Goal</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What would you like your brand to be?</span></div>
+      <sc-for list="{{ wantWords }}" as="f" hint-placeholder-count="3">
+        <input class="save" type="text" name="{{ f }}" style="width:100%; margin-bottom:9px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </sc-for>
+      <div style="height:22px;"></div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What are three actions you could take to create that brand?</span></div>
+      <sc-for list="{{ nowWords }}" as="f" hint-placeholder-count="3">
+        <input class="save" type="text" name="{{ f }}" style="width:100%; margin-bottom:9px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+      </sc-for>
+      <div style="height:22px;"></div>
+      <div style="display:flex; flex-direction:column; gap:22px;">
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Pick one action to prioritize</span></div>
+          <input class="save" type="text" name="brand-priority" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+        </div>
+        <div>
+          <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">When can you start?</span></div>
+          <input class="save" type="text" name="brand-start" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" id="sec-external">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">External Brand</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 16px;">Your external brand could be anything from completely unknown to tech celebrity. If you are a tech celebrity please tell everyone you know how much you like my book. Being known in the tech community for sharing my knowledge has helped me thrive and get new opportunities. It won&rsquo;t happen overnight, but slow growth will help you over time.</p>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What is your brand in the tech community?</span></div>
+      <textarea class="save" name="ext-now" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What would you like it to be?</span></div>
+      <textarea class="save" name="ext-want" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div data-example="1" style="position:relative; margin:0 0 24px; background:#f4f8f8; border:1.5px solid #cfe1e3; border-radius:12px; padding:26px 18px 18px;">
+        <div style="position:absolute; top:-10px; left:18px; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:5px 11px; border-radius:20px;">Want to speak?</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.6; color:#003049;">Meetup organizers are always looking for more content. If you want to speak, select a meetup from the networking worksheet and talk to the organizers.</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Select thought leadership task(s) that you can:</span></div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:0 0 14px;">
+        <div style="display:flex; align-items:center; gap:10px; border:1.5px solid #cfe1e3; border-left:4px solid #177E89; border-radius:8px; background:#f4f8f8; padding:11px 14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:24px; line-height:1; color:#177E89;">01</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.03em; color:#003049;">Commit to doing</span></div>
+        <div style="display:flex; align-items:center; gap:10px; border:1.5px solid #cfe1e3; border-left:4px solid #DB3A34; border-radius:8px; background:#f4f8f8; padding:11px 14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:24px; line-height:1; color:#DB3A34;">02</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.03em; color:#003049;">Will help your brand</span></div>
+        <div style="display:flex; align-items:center; gap:10px; border:1.5px solid #cfe1e3; border-left:4px solid #003049; border-radius:8px; background:#f4f8f8; padding:11px 14px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:24px; line-height:1; color:#003049;">03</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.03em; color:#003049;">You will enjoy</span></div>
+      </div>
+      <div style="border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden; margin-bottom:12px;">
+        <sc-for list="{{ actRows }}" as="row" hint-placeholder-count="10">
+          <label style="display:flex; align-items:center; gap:11px; padding:11px 14px; border-top:1px solid #e2e8ec; cursor:pointer;">
+            <input class="save" type="checkbox" name="{{ row.check }}" style="width:17px; height:17px; accent-color:#177E89; flex:none; margin:0;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.03em; color:#003049;">{{ row.label }}</span>
+          </label>
+        </sc-for>
+        <sc-for list="{{ actBlanks }}" as="row" hint-placeholder-count="1">
+          <div style="display:flex; align-items:center; gap:11px; padding:11px 14px; border-top:1px solid #e2e8ec;">
+            <input class="save" type="checkbox" name="{{ row.check }}" style="width:17px; height:17px; accent-color:#177E89; flex:none; margin:0;">
+            <input class="save" type="text" name="{{ row.label }}" style="flex:1; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; color:#003049; padding:4px 2px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+      <div class="no-print" style="margin:0 0 20px;">
+        <button onClick="{{ addActRow }}" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:#177E89; background:#fff; border:1.5px solid #177E89; border-radius:6px; padding:7px 13px; cursor:pointer;">+ Add line</button>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Pick one to prioritize</span></div>
+      <input class="save" type="text" name="act-first" style="width:100%; margin-bottom:18px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">How much time can you work on it? <span style="font-weight:400; color:#3f6070;">(example: 1 hour/week)</span></span></div>
+      <input class="save" type="text" name="act-time" style="width:100%; margin-bottom:0px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+    </div>
+
+    <div class="step" id="sec-brainstorm">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Content Creation</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 16px;">Pick one of these and write a five-minute lightning talk, blog post, or short-form video. Tag me on socials or tell me in Discord when you publish, and I will promote it!</p>
+      <div data-example="1" style="position:relative; margin:0 0 26px; background:#fbecea; border:1.5px solid #f0d2cf; border-radius:12px; padding:26px 18px 18px;">
+        <div style="position:absolute; top:-10px; left:18px; background:#DB3A34; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:5px 11px; border-radius:20px;">"I have nothing to say"</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.6; color:#003049;">People can search for technical solutions, but they won&rsquo;t find your story. Your experience is what makes the content unique.</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What is something you have been talking about with your colleagues?</span></div>
+      <textarea class="save" name="bs-colleagues" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Have you recently completed a difficult project?</span></div>
+      <textarea class="save" name="bs-project" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Did you learn a new technology?</span></div>
+      <textarea class="save" name="bs-tech" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What is something you are interested in learning?</span></div>
+      <textarea class="save" name="bs-learning" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Did you change a process for your team that could help other teams?</span></div>
+      <textarea class="save" name="bs-process" rows="2" style="width:100%; margin-bottom:0; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#003049; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#003049; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#003049; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#003049; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#003049; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900},&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#003049&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#003049&quot;,&quot;#177E89&quot;,&quot;#3A2449&quot;,&quot;#DB3A34&quot;],&quot;section&quot;:&quot;Style&quot;},&quot;showExamples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  state = { counts: {} };
+  componentDidMount(){
+    this.key = 'ssl-12-branding-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this._saved = saved;
+    const sc = (saved.__counts && typeof saved.__counts === 'object') ? saved.__counts : null;
+    if(sc) this.setState({ counts: sc }, () => this.restore(root, saved));
+    else this.restore(root, saved);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('[data-example]').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; return; }
+      if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    const counts = (this.state && this.state.counts) || {};
+    if(Object.keys(counts).length) o.__counts = counts;
+    this._saved = o;
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      if(n === '__counts') return;
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(!el) return;
+      if(el.type === 'checkbox') el.checked = !!v; else el.value = v;
+    });
+  }
+  renderVals(){
+    const counts = (this.state && this.state.counts) || {};
+    const cnt = (k,d) => Math.max(d, counts[k] || d);
+    const lines = (k,d,prefix) => Array.from({length: cnt(k,d)}, (_,i)=> prefix+(i+1));
+    const nowWords = lines('now',3,'word-now-');
+    const wantWords = lines('want',3,'word-want-');
+    const addLine = (k,d) => () => {
+      this.setState({ counts: Object.assign({}, counts, { [k]: cnt(k,d) + 1 }) }, () => {
+        const root = document.getElementById('ws-root');
+        if(root) this.restore(root, this._saved || {});
+      });
+    };
+    const actRows = [
+      ['Answering forum questions','No commitment, good for ideas','act-forums'],
+      ['Posting to LinkedIn','Short form, low setup','act-linkedin'],
+      ['Mentoring','Free, lower stakes, easy to start','act-mentoring'],
+      ['Open source contributions','Skills, resume, and community','act-oss'],
+      ['Blogging','Your own site or a publication','act-blog'],
+      ['A newsletter','Recurring, needs a schedule','act-newsletter'],
+      ['Video or streaming','More setup, closer audience','act-video'],
+      ['Workshops or classes','Teaching in a room','act-workshops'],
+      ['Coaching','Paid, people take it seriously','act-coaching'],
+      ['Conference speaking','A real deadline, and travel','act-speaking']
+    ].map(([label,hint,k])=>({label, check:k+'-try'}));
+    const actBlanks = Array.from({length: cnt('act',1)}, (_,i)=>({
+      label:'act-other-'+(i+1)+'-label', check:'act-other-'+(i+1)+'-try'
+    }));
+    return {
+      nowWords, wantWords, actRows, actBlanks,
+      addActRow: addLine('act',1),
+      addNowWord: addLine('now',3),
+      addWantWord: addLine('want',3),
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=> { if(el.type==='checkbox') el.checked=false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

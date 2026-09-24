@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#003049 !important; border-bottom-color:#003049 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  a{ color:#177E89; text-decoration:none; }
+  a:hover{ color:#003049; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="26" y="30" width="48" height="34" rx="6" fill="none" stroke="#fff" stroke-width="4"></rect>
+    <path d="M38 64 L38 76 L52 64" fill="none" stroke="#DB3A34" stroke-width="4" stroke-linejoin="round"></path>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Behavioral Story Bank</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#003049; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#9fc4cf;">Chapter 15 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Behavioral Story Bank</h1>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Start with your most recent favorite project, ideally one where you showed leadership or worked as a Senior engineer. The project itself may have been chaotic. You can smooth out the edges when you tell it. The interviewer knows they are only hearing the important parts. Fill this out once per project until you have more stories than you think you need.</p>
+
+    <div data-example="1" style="position:relative; margin:26px 0 0; background:#eef4f4; border:1.5px solid #cfe1e3; border-radius:12px; padding:24px 20px 18px;">
+      <div style="position:absolute; top:-10px; left:20px; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:5px 11px; border-radius:20px;">Why this works</div>
+      <div style="font-family:'Fraunces',serif; font-size:16px; line-height:1.55; color:#003049; font-style:italic;">"People don't want to buy a quarter-inch drill. They want a quarter-inch hole."</div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:#177E89; margin-top:9px;">Theodore Levitt</div>
+    </div>
+
+    <div class="step" id="sec-project">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">The Project</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Project name</span></div>
+      <input class="save" type="text" name="proj-name" style="width:100%; margin-bottom:18px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What problem did you solve? <span style="font-weight:400; color:#3f6070;">In words anyone at the company would understand.</span></span></div>
+      <textarea class="save" name="proj-problem" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What was your role?</span></div>
+      <textarea class="save" name="proj-role" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Who did you work with? <span style="font-weight:400; color:#3f6070;">Use plain titles: manager, teammate, team lead, stakeholder.</span></span></div>
+      <textarea class="save" name="proj-people" rows="3" style="width:100%; margin-bottom:0; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-middle">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">What Happened</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Did you get feedback during the design phase?</span></div>
+      <textarea class="save" name="mid-feedback" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Did it change your solution? Why or why not?</span></div>
+      <textarea class="save" name="mid-changed" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What were the major milestones?</span></div>
+      <textarea class="save" name="mid-milestones" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What blockers did you have to get past?</span></div>
+      <textarea class="save" name="mid-blockers" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Any issues with collaborators?</span></div>
+      <textarea class="save" name="mid-collab" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">6</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Any major pivots from outside forces? <span style="font-weight:400; color:#3f6070;">A new tax that changed the math, for example.</span></span></div>
+      <textarea class="save" name="mid-pivots" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">7</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Did you distribute tasks?</span></div>
+      <textarea class="save" name="mid-tasks" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">8</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Did you mentor a more junior engineer on it?</span></div>
+      <textarea class="save" name="mid-mentor" rows="2" style="width:100%; margin-bottom:0; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-impact">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">How It Landed</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What is different today because of what you did?</span></div>
+      <textarea class="save" name="imp-today" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Any patents granted, or other major accomplishments?</span></div>
+      <textarea class="save" name="imp-accomplishments" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">What did you learn?</span></div>
+      <textarea class="save" name="imp-learned" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">If you started over fresh, what would you do?</span></div>
+      <textarea class="save" name="imp-redo" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Draw the line from your work to a goal anyone would recognize</span></div>
+      <p style="font-size:13px; line-height:1.55; color:#3f6070; margin:0 0 10px;">It can take a few hops. "I did x, which affected y, which led to z, and in the end it sold more mugs."</p>
+      <textarea class="save" name="imp-line" rows="3" style="width:100%; margin-bottom:0; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-write">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Write the Story</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 16px;">Now use the details above to write the story where this project showed good judgment. Beginning, middle, end, told in the order it happened. Then write it again for another skill.</p>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">The judgment story</span></div>
+      <textarea class="save" name="story-judgment" rows="7" style="width:100%; margin-bottom:18px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Which skill is this second story for?</span></div>
+      <input class="save" type="text" name="story-2-skill" style="width:100%; margin-bottom:12px; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+      <textarea class="save" name="story-2" rows="7" style="width:100%; margin-bottom:0; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-coverage">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">05</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Skill Coverage</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 16px;">Name the story you would tell for each skill. Any gap here is a question you are not ready for. Before a specific interview, redo this using the skills in that organization's values or mission statement.</p>
+      <div style="border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden;">
+        <sc-for list="{{ skills }}" as="s" hint-placeholder-count="6">
+          <div style="display:flex; align-items:center; gap:14px; padding:12px 16px; border-top:1px solid #e2e8ec;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.03em; color:#003049; width:190px; flex:none;">{{ s.label }}</span>
+            <input class="save" type="text" name="{{ s.field }}" style="flex:1; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:5px 2px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-practice">
+      <div style="display:flex; align-items:center; gap:15px; margin:42px 0 0; padding:0 0 13px; border-bottom:1.5px solid #e2e8ec;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:11px; background:#003049; color:#fff; font-family:'Bebas Neue',sans-serif; font-size:27px; line-height:1; letter-spacing:.04em; flex:none;">06</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Practice Plan</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:0 0 18px;"></div>
+      <div style="border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden; margin-bottom:18px;">
+        <sc-for list="{{ practice }}" as="p" hint-placeholder-count="5">
+          <label style="display:flex; align-items:center; gap:11px; padding:11px 14px; border-top:1px solid #e2e8ec; cursor:pointer;">
+            <input class="save" type="checkbox" name="{{ p.field }}" style="width:17px; height:17px; accent-color:#177E89; flex:none; margin:0;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12.5px; letter-spacing:.03em; color:#003049;">{{ p.label }}</span>
+          </label>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 10px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Who is running your practice interview, and when?</span></div>
+      <input class="save" type="text" name="practice-who" style="width:100%; margin-bottom:0; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:16px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#003049; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#003049; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#003049; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#003049; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#003049; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#241c33; color:#fff; border:1px solid #241c33; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-15-behavioral-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.restore(root, saved);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('[data-example]').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; return; }
+      if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(!el) return;
+      if(el.type === 'checkbox') el.checked = !!v; else el.value = v;
+    });
+  }
+  renderVals(){
+    return {
+      skills: [
+        { label:'Judgment', field:'skill-judgment' },
+        { label:'Collaboration', field:'skill-collaboration' },
+        { label:'Emotional Intelligence', field:'skill-eq' },
+        { label:'Self-Awareness', field:'skill-self' },
+        { label:'Systemic Thinking', field:'skill-systemic' },
+        { label:'Scope of Influence', field:'skill-influence' }
+      ],
+      practice: [
+        { label:'Told each story out loud, from an outline and not a script', field:'pr-outloud' },
+        { label:'Recorded myself and listened back', field:'pr-recorded' },
+        { label:'Ran them past a peer playing a friendly interviewer', field:'pr-friendly' },
+        { label:'Ran them past a peer playing a cold interviewer', field:'pr-cold' },
+        { label:'Booked a real interview somewhere low stakes first', field:'pr-lowstakes' }
+      ],
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=>{ if(el.type==='checkbox') el.checked=false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
