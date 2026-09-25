@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#177E89 !important; border-bottom-color:#177E89 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .sc-dot input{ position:absolute; opacity:0; width:0; height:0; }
+  .sc-dot span{ display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; border:1.5px solid #cdd5da; background:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#6f8b96; cursor:pointer; }
+  .sc-dot input:checked + span{ background:#177E89; border-color:#177E89; color:#fff; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 200 200" width="100%">
+    <rect width="200" height="200" fill="#177E89"></rect>
+    <rect x="42" y="48" width="116" height="104" rx="10" fill="#fff"></rect>
+    <path d="M62,100 L80,120 L138,68" fill="none" stroke="#DB3A34" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Productionizing Checklist</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#003049; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bde3e6;">Chapter 10 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Productionizing</h1>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Being able to determine whether an app is ready for production and how to get it there is a key skill for a Senior Engineer. Susan J. Fowler defines a production-ready service as one that is stable, reliable, scalable, fault-tolerant, performant, monitored, documented, and prepared for catastrophe (<em>Production-Ready Microservices</em>, O'Reilly, 2016). Since she already made us that excellent breakdown, we'll use it to analyze any app you're currently working on.</p>
+
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:16px 0 0;">This worksheet works on multiple levels. You are testing your app, but also your skills. For each category, you need to be able to make a judgment call and know what improvement looks like. Being perfect in every way is basically impossible. Software is built to meet organizational goals, not to be technically perfect. Higher-traffic services do need to be better, since it will be easier to see the fault lines. Software also degrades over time, so it could be an 8 a year ago and a 6 today.</p>
+
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:16px 0 0;">The value of this worksheet lies in identifying gaps and prioritizing improvements, both for the app and for your skills. I have included a mini further reading list at the end for any section you want to take a deeper dive into.</p>
+
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:16px 0 0;">Almost nothing scores a ten across the board, and it does not need to. Zero is nothing in place, five is partly there, and ten is fully handled and verified. The numbers in between are yours to judge. Be honest rather than generous.</p>
+
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:16px 0 0;">For each section:</p>
+    <ul style="font-family:'Fraunces',serif; font-size:17px; line-height:1.55; margin:12px 0 0; padding:0 0 0 22px; display:flex; flex-direction:column; gap:6px;">
+      <li>Read the three definitions</li>
+      <li>Mark where your application sits today</li>
+      <li>Say why you picked that number</li>
+      <li>Write down the next step</li>
+      <li>Note the impact on the organization, both if you make the change and if you do not</li>
+    </ul>
+
+    <div class="step" id="sec-app" style="margin:32px 0 0;">
+      <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#177E89; margin:0 0 8px;">Application</label>
+      <input class="save" type="text" name="app-name" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:22px; color:#003049; padding:6px 2px; outline:none; box-sizing:border-box;">
+    </div>
+
+    <sc-for list="{{ criteria }}" as="c" hint-placeholder-count="8">
+      <div class="step" id="{{ c.id }}">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#177E89;">{{ c.num }}</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">{{ c.title }}</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+        <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 14px;">{{ c.summary }}</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden;">
+          <div style="border-right:1.5px solid #e2e8ec;">
+            <div style="background:#f4f8f8; border-bottom:1px solid #e2e8ec; padding:8px 12px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#6f8b96;">0</div>
+            <div style="padding:11px 12px; font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.5; color:#003049;">{{ c.d0 }}</div>
+          </div>
+          <div style="border-right:1.5px solid #e2e8ec;">
+            <div style="background:#f4f8f8; border-bottom:1px solid #e2e8ec; padding:8px 12px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#6f8b96;">5</div>
+            <div style="padding:11px 12px; font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.5; color:#003049;">{{ c.d5 }}</div>
+          </div>
+          <div>
+            <div style="background:#f4f8f8; border-bottom:1px solid #e2e8ec; padding:8px 12px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#6f8b96;">10</div>
+            <div style="padding:11px 12px; font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.5; color:#003049;">{{ c.d10 }}</div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; flex-wrap:wrap; gap:12px 16px; margin:16px 0 0;">
+          <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#177E89;">Where we are</span>
+          <div style="display:flex; gap:6px;">
+            <sc-for list="{{ scale }}" as="n" hint-placeholder-count="11">
+              <label class="sc-dot" style="position:relative; display:inline-flex;"><input class="save" type="radio" name="{{ c.field }}" value="{{ n }}"><span>{{ n }}</span></label>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px; margin:18px 0 0;">
+          <div>
+            <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; color:#003049; margin:0 0 7px;">Why did you pick that number?</label>
+            <textarea class="save" name="{{ c.whyField }}" rows="3" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+          </div>
+          <div>
+            <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; color:#003049; margin:0 0 7px;">What is the next step to improve it?</label>
+            <textarea class="save" name="{{ c.nextField }}" rows="3" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+          </div>
+          <div>
+            <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; color:#003049; margin:0 0 7px;">What is the impact on the organization, if you make the change and if you do not?</label>
+            <textarea class="save" name="{{ c.impactField }}" rows="3" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+    </sc-for>
+
+    <div class="step" id="sec-priority" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#177E89;">09</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Prioritization</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 8px;">Sort the eight sections by impact, not by score. A section could have a higher score but a bigger impact on the organization if no change is made.</p>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 16px;">Tech debt improvements like these can be difficult to prioritize, so having the impact ready to go will help you make your case.</p>
+      <div style="display:flex; flex-direction:column; gap:9px;">
+        <sc-for list="{{ priority }}" as="p" hint-placeholder-count="8">
+          <div style="display:flex; align-items:baseline; gap:12px;">
+            <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#177E89; width:16px; flex:none;">{{ p.num }}</span>
+            <input class="save" type="text" name="{{ p.field }}" style="flex:1; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:7px 2px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin:22px 0 0;">
+        <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; color:#003049; margin:0 0 7px;">Why is this the highest impact item?</label>
+        <textarea class="save" name="pri-why" rows="3" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      </div>
+    </div>
+
+    <div class="step" id="sec-reading" style="margin:44px 0 0;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#9178B5;">Mini further reading</div>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#003049; margin:8px 0 0;">Going deeper on a section</h2>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <sc-for list="{{ reading }}" as="r" hint-placeholder-count="4">
+          <div>
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; margin:0 0 5px;">{{ r.label }}</div>
+            <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.55; color:#003049;">{{ r.text }}<a href="{{ r.url }}" style="color:#177E89; font-style:italic;">{{ r.title }}</a>{{ r.tail }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#003049; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#003049; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#003049; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#003049; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#003049; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900},&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#177E89&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#177E89&quot;,&quot;#003049&quot;,&quot;#3A2449&quot;,&quot;#DB3A34&quot;],&quot;section&quot;:&quot;Style&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-9-productionizing-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.restore(root, saved);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; }
+      else if(el.type === 'radio'){ if(el.checked) o[el.name] = el.value; }
+      else if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const els = root.querySelectorAll('.save[name="'+n+'"]');
+      if(!els.length) return;
+      if(els[0].type === 'radio'){
+        els.forEach(el=>{ el.checked = (String(el.value) === String(v)); });
+      } else if(els[0].type === 'checkbox'){
+        els[0].checked = (v === '1');
+      } else {
+        els[0].value = v;
+      }
+    });
+  }
+  renderVals(){
+    const defs = [
+      ['stable','Stable','The way changes reach production does not break the service.',
+        'Changes go out ad hoc. Deployments regularly break things and there is no dependable way to undo them.',
+        'There is a standard build and deploy pipeline with a staging step and a rollback path, but changes still cause occasional unplanned outages.',
+        'Every change can be deployed automatically, since it goes through automated testing and a one-step rollback. Deploying is routine and rarely causes an incident.'],
+      ['reliable','Reliable','The service can be trusted by the clients and dependencies around it.',
+        'Nobody can say what the service promises. Dependencies fail without warning and clients hear about it from users.',
+        'Availability targets exist and dependencies are known, but a failure upstream or downstream still degrades the service in unplanned ways.',
+        'The service has published targets, understood dependencies, and graceful degradation. Clients can build on documented behavior.'],
+      ['scalable','Scalable','Growth in traffic and data is expected and handled.',
+        'Capacity is unknown. Load spikes are handled by hoping they do not happen.',
+        'The service has been load-tested and can be scaled by hand once someone notices pressure.',
+        'Growth is forecast, bottlenecks are known, and capacity scales both up and down automatically ahead of demand for efficient use of resources.'],
+      ['faultTolerant','Fault-tolerant','A single failure does not take everything down.',
+        'Any one failure, whether a host, a dependency, or bad input, can take the whole service down.',
+        'Obvious single points of failure are gone and timeouts and retries exist, but failure modes have never been tested deliberately.',
+        'Failure modes are known, contained, and rehearsed through regular failure testing. Losing one part degrades the service instead of ending it.'],
+      ['performant','Performant','It is fast enough for what it does, at a cost you can defend.',
+        'No one knows how fast the service is, or what fast enough would mean.',
+        'Latency and throughput are measured and mostly acceptable, but slow paths are found by complaint rather than by data.',
+        'Latency, throughput, and resource cost have targets, are tracked release over release, and regressions are caught before customers feel them.'],
+      ['monitored','Monitored','You can see what the service is doing without being told.',
+        'Problems are discovered when users report them.',
+        'Logs, metrics, and dashboards exist, but alerts are noisy or missing and only a few people can interpret them.',
+        'Key metrics are dashboarded, every alert is actionable and owned, and whoever is on call can find a cause quickly.'],
+      ['documented','Documented','The knowledge needed to run it is written down and actually used.',
+        'The knowledge lives in a few people\u2019s heads.',
+        'Documentation exists but is scattered, partly stale, and rarely opened in a real incident.',
+        'Architecture, runbooks, interfaces, and onboarding are current, easy to find, and updated as part of shipping changes.'],
+      ['catastrophe','Ready for catastrophe','The worst case has been thought through and practiced.',
+        'No one has asked what happens if a region, a database, or the whole provider disappears.',
+        'Backups exist and there is a rough plan, but restores and failover have never been practiced.',
+        'Disaster scenarios are documented, recovery objectives are agreed, and failover and restore are tested on a schedule.']
+    ];
+    return {
+      scale: [0,1,2,3,4,5,6,7,8,9,10],
+      criteria: defs.map((d,i)=>({
+        id: 'sec-'+d[0],
+        num: String(i+1).padStart(2,'0'),
+        title: d[1],
+        summary: d[2],
+        d0: d[3], d5: d[4], d10: d[5],
+        field: d[0]+'-score',
+        whyField: d[0]+'-why',
+        nextField: d[0]+'-next',
+        impactField: d[0]+'-impact'
+      })),
+      reading: [
+        { label:'Reliable, Monitored, Ready for catastrophe', text:'Beyer, Betsy, Chris Jones, Christof Leng, David Huska, Jennifer Petoff, and Niall Richard Murphy. ', title:'Site Reliability Engineering: How Google Runs Production Systems', tail:'. 2nd ed. O\u2019Reilly Media, 2026.', url:'https://www.amazon.com/s?k=Site+Reliability+Engineering+How+Google+Runs+Production+Systems+2nd+edition' },
+        { label:'Scalable, Performant, Fault-tolerant', text:'Kleppmann, Martin, and Chris Riccomini. ', title:'Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems', tail:'. 2nd ed. O\u2019Reilly Media, 2026.', url:'https://www.amazon.com/s?k=Designing+Data-Intensive+Applications+2nd+edition+Kleppmann+Riccomini' },
+        { label:'Stable', text:'Nygard, Michael T. ', title:'Release It! Design and Deploy Production-Ready Software', tail:'. 2nd ed. Pragmatic Bookshelf, 2018.', url:'https://www.amazon.com/s?k=Release+It+Design+and+Deploy+Production-Ready+Software+Nygard' },
+        { label:'Documented', text:'Bhatti, Jared, Zachary Sarah Corleissen, Jen Lambourne, David Nu\u00f1ez, and Heidi Waterhouse. ', title:'Docs for Developers: An Engineer\u2019s Field Guide to Technical Writing', tail:'. Apress, 2021.', url:'https://www.amazon.com/s?k=Docs+for+Developers+An+Engineers+Field+Guide+to+Technical+Writing' }
+      ],
+      priority: [1,2,3,4,5,6,7,8].map(n=>({ num: n, field: 'pri-'+n })),
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=>{ if(el.type==='checkbox'||el.type==='radio') el.checked=false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  .save:focus{ border-color:#003049 !important; border-bottom-color:#003049 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(26,26)">
+      <path d="M0 44 L16 26 L30 34 L48 6" stroke="#fff" stroke-width="4" fill="none"></path>
+      <circle cx="48" cy="6" r="6" fill="#DB3A34"></circle>
+      <circle cx="0" cy="44" r="5" fill="#177E89"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Growth Mode</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#003049; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#9fc4cf;">Chapter 13 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Growth Mode</h1>
+    <div style="font-family:'Fraunces',serif; font-size:17px; color:#bde3e6; margin:12px 0 0;">Desire, sacrifice, opportunity</div>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Growth mode needs all three parts:</p>
+    <ul style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:12px 0 0; padding:0 0 0 22px; display:flex; flex-direction:column; gap:6px;">
+      <li><strong style="font-weight:600;">Desire</strong> to make a change</li>
+      <li><strong style="font-weight:600;">Sacrifice</strong> that creates the time for it</li>
+      <li><strong style="font-weight:600;">Opportunity</strong> to act</li>
+    </ul>
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:16px 0 0;">Bring your top priorities from the Goal Types worksheets, then we'll figure out if you have the desire, sacrifice and opportunity to act.</p>
+
+    <div class="step" id="sec-desire">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#177E89;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Desire</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 12px;">Which financial level do you want to fund but need more money for? The levels are a ladder, so pick the first one you cannot comfortably cover.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:9px 22px; margin:0 0 20px;">
+        <label style="display:flex; align-items:center; gap:9px; font-size:14px; color:#003049;"><input class="save" type="checkbox" name="fin-fixed" style="width:16px; height:16px; accent-color:#177E89;">Fixed costs</label>
+        <label style="display:flex; align-items:center; gap:9px; font-size:14px; color:#003049;"><input class="save" type="checkbox" name="fin-savings" style="width:16px; height:16px; accent-color:#177E89;">Savings</label>
+        <label style="display:flex; align-items:center; gap:9px; font-size:14px; color:#003049;"><input class="save" type="checkbox" name="fin-invest" style="width:16px; height:16px; accent-color:#177E89;">Investments</label>
+        <label style="display:flex; align-items:center; gap:9px; font-size:14px; color:#003049;"><input class="save" type="checkbox" name="fin-time" style="width:16px; height:16px; accent-color:#177E89;">Buying time</label>
+        <label style="display:flex; align-items:center; gap:9px; font-size:14px; color:#003049;"><input class="save" type="checkbox" name="fin-fun" style="width:16px; height:16px; accent-color:#177E89;">Guilt-free spending</label>
+      </div>
+      <div style="display:grid; grid-template-columns:1.7fr 1fr 1fr; gap:14px; margin:0 0 22px;">
+        <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; margin:0 0 6px;">Financial goal</label><input class="save" type="text" name="fin-goal" placeholder="What the money is for" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+        <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; margin:0 0 6px;">Amount</label><input class="save" type="text" name="fin-amount" placeholder="$" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+        <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; margin:0 0 6px;">Deadline</label><input class="save" type="text" name="fin-deadline" placeholder="When" style="width:100%; border:none; border-bottom:1.5px solid #cdd5da; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+      </div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 12px;">What was your number one priority for each type on the Goal Types worksheet?</p>
+      <div style="border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden;">
+        <sc-for list="{{ typeRows }}" as="row" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:190px 1fr; border-top:1px solid #e2e8ec;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#003049; padding:12px 13px; border-right:1px solid #e2e8ec; background:#f4f8f8;">{{ row.label }}</div>
+            <input class="save" type="text" name="{{ row.desireField }}" placeholder="Top priority" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:12px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-sacrifice">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#177E89;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Sacrifice</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 12px;">You cannot add time to the day, you can only remove something that currently uses it. Start with the total minutes you can free up, then split them between the goals.</p>
+      <div style="display:flex; align-items:center; gap:14px; margin:0 0 0;">
+        <label style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#177E89; white-space:nowrap;">Minutes per week you can devote to growth</label>
+        <input class="save" type="text" name="sac-minutes" placeholder="120" style="width:110px; border:none; border-bottom:2px solid #003049; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:20px; color:#003049; padding:6px 2px; outline:none; box-sizing:border-box;">
+      </div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:18px 0 12px;">Now split those minutes between the goals. Some goals need less time than others. If you are blocked or not ready for one, set it to zero, and change the budget as your priorities move.</p>
+      <div style="border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1fr 120px; background:#003049;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Goal</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px; text-align:right;">Minutes</div>
+        </div>
+        <sc-for list="{{ typeRows }}" as="row" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:1fr 120px; border-top:1px solid #e2e8ec;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#003049; padding:12px 13px; border-right:1px solid #e2e8ec; background:#f4f8f8;">{{ row.label }}</div>
+            <input class="save mins" type="text" name="{{ row.minsField }}" placeholder="0" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:12px 13px; text-align:right; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:1fr 120px; border-top:2px solid #003049; background:#f4f8f8;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#003049; padding:11px 13px;">Total</div>
+          <div id="mins-total" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#003049; padding:11px 13px; text-align:right;">0</div>
+        </div>
+      </div>
+      <div data-example="1" style="margin-top:14px; background:#fbecea; border-left:3px solid #DB3A34; border-radius:0 6px 6px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#DB3A34; margin-bottom:6px;">Example: 120 minutes per week</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.7; color:#3f6070;">Respect: 0. Influence: 60. Autonomy: 30. Accomplishment: 30.</div>
+      </div>
+      <textarea class="save" name="sac-help" rows="3" placeholder="Write down every task you do in a week. Which ones could a partner, friend, neighbor, or local group take on? Which could you pay someone to do at market rate?" style="width:100%; margin-top:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-opportunity">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#177E89;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Opportunity</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 12px;">Big opportunities come from pursuing many small ones. Mark what is blocking each goal, and be honest about which blockers are outside your control.</p>
+      <div style="border:1.5px solid #cdd5da; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:190px 1fr 130px; background:#003049;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Goal</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Blocker</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">In my control?</div>
+        </div>
+        <sc-for list="{{ typeRows }}" as="row" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:190px 1fr 130px; border-top:1px solid #e2e8ec;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#003049; padding:12px 13px; border-right:1px solid #e2e8ec; background:#f4f8f8;">{{ row.label }}</div>
+            <input class="save" type="text" name="{{ row.blockField }}" placeholder="What is in the way" style="border:none; border-right:1px solid #e2e8ec; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:12px 13px; outline:none; box-sizing:border-box;">
+            <input class="save" type="text" name="{{ row.controlField }}" placeholder="Yes / No" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:12px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; margin:20px 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">Growth during work hours</span></div>
+      <textarea class="save" name="opp-manager" rows="3" placeholder="Have you spoken to your manager about working on growth during work hours? What was their response? Which skills did you link to the work you are already doing?" style="width:100%; margin-bottom:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#177E89; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#003049;">The small opportunities you can start now</span></div>
+      <textarea class="save" name="opp-small" rows="3" placeholder="A talk proposal, a growth-opportunity memo, a volunteer role on the hiring pipeline. Which one can you put on the calendar this month?" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-verdict">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#177E89;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">The Call</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 16px;">Growth mode is not a permanent state, it is a decision you make when all three parts are present. If one is missing, maintenance mode is the right answer for now.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <label style="display:flex; align-items:flex-start; gap:11px; border:1.5px solid #177E89; border-radius:8px; padding:14px 16px; cursor:pointer;">
+          <input class="save" type="checkbox" name="call-growth" style="width:18px; height:18px; margin-top:1px; accent-color:#177E89; flex:none;">
+          <span><span style="display:block; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:17px; color:#003049;">Growth mode</span><span style="display:block; font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#3f6070; margin-top:3px;">Desire, sacrifice, and opportunity are all in place. Put the first block of time on the calendar.</span></span>
+        </label>
+        <label style="display:flex; align-items:flex-start; gap:11px; border:1.5px solid #cdd5da; border-radius:8px; padding:14px 16px; cursor:pointer;">
+          <input class="save" type="checkbox" name="call-maintenance" style="width:18px; height:18px; margin-top:1px; accent-color:#DB3A34; flex:none;">
+          <span><span style="display:block; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:17px; color:#003049;">Maintenance mode</span><span style="display:block; font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#3f6070; margin-top:3px;">One part is missing. Note what would have to change, and come back to this worksheet then.</span></span>
+        </label>
+      </div>
+      <textarea class="save" name="call-why" rows="3" placeholder="Which part is strongest right now, and which one decides it? Write the sentence you would tell a friend who asked what you are working on this year." style="width:100%; margin-top:16px; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-ai-prompt" style="margin-top:38px;">
+      <p style="font-size:14px; line-height:1.55; color:#3f6070; margin:0 0 12px;">Turning a growth type into a specific, actionable goal is the hardest step. Use AI to pressure-test the one you wrote.</p>
+      <div style="background:#eef4f4; border-left:3px solid #177E89; border-radius:0 8px 8px 0; padding:16px 18px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#177E89; margin-bottom:8px;">AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#003049;">You are a career coach for software engineers. I want to grow in <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[growth type]</span>, specifically <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[top priority]</span>. I am a <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[level and role]</span> at a <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[company size and industry]</span>, and I have <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[minutes]</span> minutes a week for it. Turn that into three candidate goals with different time horizons, each written as something I could tell whether I had achieved. For each, list the first three actions and how many weeks they take at my available time. Then tell me which of the three is the wrong goal for what I said I want, and why.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#003049; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#003049; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#003049; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#003049; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#003049; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900},&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#003049&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#003049&quot;,&quot;#177E89&quot;,&quot;#3A2449&quot;,&quot;#DB3A34&quot;],&quot;section&quot;:&quot;Style&quot;},&quot;showExamples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showAiPrompt&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-10-growthmode-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.restore(root, saved);
+    this._save = () => { this.save(root); this.updateTotal(root); };
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.updateTotal(root);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){
+    const root = document.getElementById('ws-root');
+    if(root) this.updateTotal(root);
+    this.applyTweaks();
+  }
+  updateTotal(root){
+    const num = el => { const n = parseFloat(String(el && el.value).replace(/[^0-9.\-]/g,'')); return isNaN(n) ? 0 : n; };
+    let t = 0;
+    root.querySelectorAll('.mins').forEach(el=>{ t += num(el); });
+    const budget = num(root.querySelector('.save[name="sac-minutes"]'));
+    const out = document.getElementById('mins-total');
+    if(!out) return;
+    out.textContent = budget ? (t + ' of ' + budget) : String(t);
+    out.style.color = !budget ? '#003049' : (t === budget ? '#177E89' : (t > budget ? '#DB3A34' : '#003049'));
+  }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('[data-example]').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+    const prompt = document.getElementById('sec-ai-prompt');
+    if(prompt) prompt.style.display = (p.showAiPrompt === false) ? 'none' : '';
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; }
+      else if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(!el) return;
+      if(el.type === 'checkbox') el.checked = (v === '1');
+      else el.value = v;
+    });
+  }
+  renderVals(){
+    const types = [['respect','Respect'],['influence','Influence'],['autonomy','Autonomy'],['accomplishment','Accomplishment']];
+    const typeRows = types.map(([k,label]) => ({
+      key:k, label,
+      desireField:'desire-'+k,
+      minsField:'mins-'+k,
+      blockField:'block-'+k,
+      controlField:'control-'+k
+    }));
+    return {
+      typeRows,
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=>{ if(el.type==='checkbox') el.checked=false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#b7a6c6; font-style:italic; }
+  .lk-url{ display:none; }
+  select.save{ -webkit-appearance:none; appearance:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block, .gridrow{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#9178B5"></rect>
+    <g transform="translate(30,30)" stroke="#241c33" stroke-width="4" fill="none">
+      <circle cx="20" cy="20" r="19"></circle>
+      <path d="M8 21 L17 30 L33 12"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Accessibility Audit Worksheet</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#9178B5; border:1.5px solid #9178B5; border-radius:7px; padding:8px 16px; cursor:pointer; color:#241c33;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#9178B5; color:#241c33; padding:42px 60px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#3a2449;">Chapter 5 &middot; Frontend &amp; Design &middot; Blank</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#241c33;">Accessibility Audit Worksheet</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#4a3563; margin:12px 0 0;">Your project</div>
+    <div style="height:3px; width:64px; background:#241c33; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Automated scanners are a great first pass for accessibility checks, but you should include these checks in your final manual QA review. Automation can tell you whether it includes everything, but only you can say whether the page makes sense to a screen reader. This worksheet includes one section for general setup and a per-page checklist to ensure you don't miss any critical steps.</p>
+
+    <div style="margin-top:18px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3a2b4d;">Want to see it filled in? See the <a href="5i-accessibility-audit-worksheet-case-study.dc.html" style="color:#7a5fa6; font-weight:700; text-decoration:none; border-bottom:1.5px solid #cbbde0;">Renovation Revolution example</a>.</div>
+
+
+
+    <!-- 01 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:44px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">01</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">Audit Setup</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; margin:0 0 16px; color:#3c4a52;">Requirements depend on where your users are. Write down the standard, the law behind it, and the tools you will actually run, so every page after this is measured the same way.</p>
+    <div id="setup-block" data-setup="1"></div>
+
+    <div style="margin:16px 0 0; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7a5fa6; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#3a2b4d;">"You are a senior frontend engineer responsible for accessibility. Our product is [one sentence on what it does and who uses it], and our users are in [countries or regions]. Tell me which accessibility standards and regulations legally apply to us, name the exact conformance level we have to hit, and list the five requirements at that level that teams most often fail."</div>
+    </div>
+
+    <!-- 02 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:46px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">02</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">Accessibility Audit</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; margin:0 0 16px; color:#3c4a52;">Fill out one checklist for every page in your app, and then compare pages to catch repetitive issues. For each check, mark Pass if the page is fine, Fix if it needs work, or N/A if it does not apply, then write down what has to change.</p>
+    <div data-pages="1"></div>
+    <button type="button" data-add="page" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:none; padding:10px 0 0; cursor:pointer;">+ Add a page</button>
+
+    <div style="margin:22px 0 0; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7a5fa6; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#3a2b4d;">"You are a senior frontend engineer reviewing one screen for accessibility. Here is the markup and styling for [page name]: [paste]. Audit it against [insert the rule you need to follow here]. For each failure, give the success criterion number, the exact element, one sentence on why it fails, and a suggested code change. Put the failures a screen reader user would hit first."</div>
+    </div>
+
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #9178B5;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#9178B5&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#9178B5&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#3A2449&quot;], &quot;section&quot;: &quot;Style&quot; }}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-a11y-blank-v2';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.example = this.buildExample();
+    const hasData = Object.keys(saved).some(k=> /^(setup|c|pg|chk|note|f)-/.test(k));
+    const data = hasData ? saved : this.example;
+    this.build(root, data);
+    this.fill(root, data);
+    this.setupAiButtons(root);
+    this.autosizeAll(root);
+    requestAnimationFrame(()=> this.autosizeAll(root));
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=> this.autosizeAll(root));
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && String(el.value).trim()) o[el.name]=el.value; });
+      o['__p'] = String(root.querySelectorAll('[data-pages] > .block').length);
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', (e)=>{ this._save(); if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target); });
+    root.addEventListener('change', ()=> this._save());
+    root.addEventListener('click', (e)=>{
+      const b = e.target.closest('[data-add]');
+      if(!b) return;
+      e.preventDefault();
+      const kind = b.getAttribute('data-add');
+      if(kind === 'page') this.append(root, '[data-pages]', this.pageHTML(root.querySelectorAll('[data-pages] > .block').length));
+      this._save();
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#9178B5';
+  }
+
+  get CHECKS(){
+    return [
+      ['Text resizing and zoom','Content stays usable when text is enlarged to 200%'],
+      ['Color contrast','Text stands out from its background (roughly 4.5:1 for body text)'],
+      ['Color is not the only signal','Anything shown by color alone is also in text or an icon'],
+      ['Alt text','Meaningful images have a short description, decorative ones are marked to skip'],
+      ['Keyboard-only path','Core task completes with Tab, Enter, and arrows, with a visible focus indicator'],
+      ['Labeled forms','Every field has a visible label, errors say what is wrong and how to fix it'],
+      ['Heading outline','Headings go in order (H1 to H2 to H3) with no skipped levels'],
+      ['Captions','Videos have accurate captions, audio has a transcript'],
+      ['Dark mode','Native dark mode or invert colors is available'],
+      ['Reduced motion','Animations can be reduced or stopped for users who prefer it']
+    ];
+  }
+
+  buildExample(){
+    const o = {};
+    o['__c'] = '4';
+    o['__p'] = '3';
+    o['__f'] = '4';
+    return o;
+  }
+
+  get S(){
+    return {
+      lbl:'font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#8a7f97; margin-bottom:5px;',
+      ta:'width:100%; box-sizing:border-box; resize:none; overflow:hidden; border:none; background:transparent; font-family:\'Lato\',sans-serif; font-size:13.5px; line-height:1.5; color:#1f2d33; padding:5px 2px; outline:none; border-bottom:1px solid #ece7f0;',
+      sel:'box-sizing:border-box; border:1px solid #e2d9ec; border-radius:6px; background:#fff; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:11px; color:#3a2b4d; padding:5px 8px; outline:none; cursor:pointer;'
+    };
+  }
+
+  setupHTML(data){
+    const S = this.S;
+    const f = (name, label, ph) => '<div><div style="'+S.lbl+'">'+label+'</div><textarea class="save" name="'+name+'" rows="1" placeholder="'+ph+'" style="'+S.ta+'"></textarea></div>';
+    return '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; background:#fbfafc; padding:18px 20px 20px; display:grid; grid-template-columns:1fr 1fr; gap:18px 24px;">'+
+      f('setup-standard','Target standard','WCAG 2.1 Level AA') +
+      f('setup-laws','Regulations that apply to us','which laws, and why they reach us') +
+      f('setup-tools','Automated tools, and where they run','scanner in CI, budget in pull requests') +
+      f('setup-devices','Devices and browsers we test on','the real ones our users hold') +
+      f('setup-sr','Screen readers we test with','one per platform is enough to start') +
+      f('setup-owner','Who runs the audit, who signs off','name the roles') +
+    '</div>';
+  }
+
+
+  pageHTML(i){
+    const S = this.S;
+    let rows = '<div style="display:grid; grid-template-columns:1.05fr 1.5fr 92px 1.5fr; gap:14px; padding:0 0 8px; border-bottom:1.5px solid #e2d9ec;">'+
+      ['Check','What you are looking for','Pass / Fix / N/A','Fix needed'].map(h=> '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#8a7f97;">'+h+'</div>').join('')+
+    '</div>';
+    this.CHECKS.forEach((c,j)=>{
+      rows += '<div class="gridrow" style="display:grid; grid-template-columns:1.05fr 1.5fr 92px 1.5fr; gap:14px; align-items:start; padding:11px 0; border-top:1px solid #f1ecf5;">'+
+        '<div style="font-family:\'Fraunces\',serif; font-weight:600; font-size:14px; line-height:1.4; color:#241c33;">'+c[0]+'</div>'+
+        '<div style="font-family:\'Lato\',sans-serif; font-size:12.5px; line-height:1.5; color:#5b6a74;">'+c[1]+'</div>'+
+        '<select class="save" name="chk-'+i+'-'+j+'" style="'+S.sel+' width:92px;"><option value=""></option><option value="Pass">Pass</option><option value="Fix">Fix</option><option value="N/A">N/A</option></select>'+
+        '<textarea class="save" name="note-'+i+'-'+j+'" rows="1" placeholder="what to fix" style="'+S.ta+' font-size:12.5px; color:#3c4a52;"></textarea>'+
+      '</div>';
+    });
+    return '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">'+
+      '<div style="background:#f3eff7; padding:12px 18px; display:flex; align-items:center; gap:10px;">'+
+        '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Page</span>'+
+        '<input class="save" name="pg-name-'+i+'" placeholder="page name" style="flex:1; border:none; border-bottom:1px solid #e2d9ec; background:transparent; font-family:\'Fraunces\',serif; font-weight:700; font-size:19px; color:#241c33; padding:2px 0; outline:none;">'+
+      '</div>'+
+      '<div style="padding:14px 18px 16px;">'+rows+'</div>'+
+    '</div>';
+  }
+
+
+
+  count(saved, key, re, min){
+    let max = -1;
+    if(saved && saved[key]) max = parseInt(saved[key],10) - 1;
+    Object.keys(saved||{}).forEach(k=>{ const m = k.match(re); if(m) max = Math.max(max, parseInt(m[1],10)); });
+    return Math.max(max + 1, min);
+  }
+
+  build(root, saved){
+    const setup = root.querySelector('[data-setup]');
+    if(setup) setup.innerHTML = this.setupHTML(saved);
+    const np = this.count(saved,'__p',/^(?:pg-name|chk|note)-(\d+)/,2);
+    const hp = root.querySelector('[data-pages]');
+    if(hp){ let h=''; for(let i=0;i<np;i++) h += this.pageHTML(i); hp.innerHTML = h; }
+  }
+
+  fill(root, data){
+    Object.entries(data||{}).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+  }
+
+  append(root, sel, html){
+    const host = root.querySelector(sel);
+    if(!host) return;
+    host.insertAdjacentHTML('beforeend', html);
+    const el = host.lastElementChild.querySelector('textarea, input');
+    if(el){ if(el.tagName === 'TEXTAREA') this.autosize(el); el.focus(); }
+  }
+
+  autosize(el){ if(!el) return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 22) + 'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea.save').forEach(el=> this.autosize(el)); }
+
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim();
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button'; ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#9178B5; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button'; copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#7a5fa6; background:transparent; border:1.5px solid #cbbde0; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied \u2014 paste in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear every field on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(root){
+          const data = this.example;
+          this.build(root, data);
+          this.fill(root, data);
+          this.autosizeAll(root);
+          this.applyTweaks();
+          if(this._save) this._save();
+        }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

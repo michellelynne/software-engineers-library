@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Montserrat:wght@600;700&family=Fraunces:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .fig{ background:#fff; box-sizing:border-box; }
+  .fig-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9178B5; }
+  .fig-title{ font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; margin:10px 0 0; color:#003049; }
+  .fig-rule{ height:4px; width:70px; background:#DB3A34; margin:16px 0 34px; }
+  .fig-caption{ font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#003049; margin-top:22px; }
+  .fig-caption span{ font-family:'Montserrat',sans-serif; font-weight:700; color:#9178B5; }
+  .edge-lbl{ font-family:'Lato',sans-serif; font-weight:700; paint-order:stroke; stroke:#fff; stroke-width:5px; stroke-linejoin:round; }
+  svg{ display:block; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="#9178B5" stroke-width="3"></circle>
+    <circle cx="50" cy="50" r="20" fill="none" stroke="#fff" stroke-width="3"></circle>
+    <circle cx="50" cy="50" r="10" fill="#177E89"></circle>
+  </svg>
+</template>
+
+<div style="max-width:1400px; margin:26px auto; display:flex; flex-direction:column; gap:24px;">
+
+  <div id="fig-10-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 10.1</div>
+    <h1 class="fig-title">Three Lists, Three Cadences: Who Hears What, and How Often</h1>
+    <div class="fig-rule"></div>
+
+    <div style="display:grid; grid-template-columns:400px 1fr; gap:40px; align-items:center; margin:0 0 34px;">
+      <svg viewBox="0 0 400 220" width="100%" style="font-family:'Lato',sans-serif;">
+        <circle cx="250" cy="110" r="100" fill="#003049" stroke="#003049" stroke-width="2.5"></circle>
+        <circle cx="250" cy="110" r="66" fill="#2C5F76" stroke="#2C5F76" stroke-width="2.5"></circle>
+        <circle cx="250" cy="110" r="34" fill="#C9DDE4" stroke="#C9DDE4" stroke-width="2.5"></circle>
+        <path d="M100,60 H165" stroke="#003049" stroke-width="1.5"></path>
+        <path d="M163,60 H186" stroke="#fff" stroke-width="2"></path>
+        <circle cx="185" cy="60" r="3.5" fill="#fff"></circle>
+        <text x="94" y="65" text-anchor="end" font-size="14" font-weight="700" fill="#003049">Sign-up</text>
+
+        <path d="M100,110 H152" stroke="#003049" stroke-width="1.5"></path>
+        <path d="M150,110 H201" stroke="#fff" stroke-width="2"></path>
+        <circle cx="200" cy="110" r="3.5" fill="#fff"></circle>
+        <text x="94" y="115" text-anchor="end" font-size="14" font-weight="700" fill="#003049">Stakeholders</text>
+
+        <path d="M100,160 H167" stroke="#003049" stroke-width="1.5"></path>
+        <path d="M165,160 L239,122" stroke="#fff" stroke-width="2"></path>
+        <circle cx="238" cy="122" r="3.5" fill="#003049"></circle>
+        <text x="94" y="165" text-anchor="end" font-size="14" font-weight="700" fill="#003049">Management</text>
+      </svg>
+      <div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#DB3A34;">Palest and smallest, smallest message</div>
+        <div style="font-family:'Lato',sans-serif; font-size:16px; line-height:1.6; color:#3a4a52; margin:10px 0 0;">Size and shade both track the size of the message. The management list is the small pale center, because it needs the least: a short read on impact, rarely. Each step outward gets darker as it gains detail and frequency, out to the sign-up list, which asked for everything.</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px;">
+      <div style="border:2.5px solid #003049; border-radius:12px; background:#003049; padding:20px 22px 22px; box-sizing:border-box; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#9dc6d4;">Outermost, largest</div>
+        </div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:28px; color:#fff; margin:8px 0 0; min-height:56px;">Sign-up list</div>
+        <div style="border-top:1.5px solid #35637a; margin:16px 0 0; padding:14px 0 0; min-height:152px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#9dc6d4;">Who</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#d8e6ec; margin:6px 0 0;">Anyone who asked to be there. First to try a new app, plus developers who want to integrate your tool into something else.</div>
+        </div>
+        <div style="border-top:1.5px solid #35637a; margin:0; padding:14px 0 0; min-height:132px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#9dc6d4;">What they get</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#d8e6ec; margin:6px 0 0;">Development updates. Work in progress, rough edges, what is landing next, and an open door for feedback.</div>
+        </div>
+        <div style="border-top:1.5px solid #35637a; margin:0; padding:14px 0 0;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#9dc6d4;">How often</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#fff; margin:6px 0 0;">Frequently</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #2C5F76; border-radius:12px; background:#e2edf1; padding:20px 22px 22px; box-sizing:border-box; display:flex; flex-direction:column;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#22546a;">Middle</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:28px; color:#003049; margin:8px 0 0; min-height:56px;">Stakeholders list</div>
+        <div style="border-top:1.5px solid #a9c6d1; margin:16px 0 0; padding:14px 0 0; min-height:152px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#22546a;">Who</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#35505c; margin:6px 0 0;">Everyone who will be impacted, whether or not they signed up for anything.</div>
+        </div>
+        <div style="border-top:1.5px solid #a9c6d1; margin:0; padding:14px 0 0; min-height:132px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#22546a;">What they get</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#35505c; margin:6px 0 0;">Targeted release updates that acclimate them to change coming, always paired with how to use the new tools.</div>
+        </div>
+        <div style="border-top:1.5px solid #a9c6d1; margin:0; padding:14px 0 0;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#22546a;">How often</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#003049; margin:6px 0 0;">A few times, at milestones</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #8fb2c0; border-radius:12px; background:#f5f9fa; padding:20px 22px 22px; box-sizing:border-box; display:flex; flex-direction:column;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#3d6f84;">Innermost, smallest</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:28px; color:#003049; margin:8px 0 0; min-height:56px;">Management list</div>
+        <div style="border-top:1.5px solid #cfe0e6; margin:16px 0 0; padding:14px 0 0; min-height:152px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#3d6f84;">Who</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#3a4a52; margin:6px 0 0;">The people who approved the work and answer for the budget behind it.</div>
+        </div>
+        <div style="border-top:1.5px solid #cfe0e6; margin:0; padding:14px 0 0; min-height:132px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#3d6f84;">What they get</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#3a4a52; margin:6px 0 0;">Impact and adoption. What the tool changed, who is using it, and how far along the migration is.</div>
+        </div>
+        <div style="border-top:1.5px solid #cfe0e6; margin:0; padding:14px 0 0;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:#3d6f84;">How often</div>
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#003049; margin:6px 0 0;">Rarely</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:18px; margin:22px 0 0; border:2.5px solid #DB3A34; border-radius:10px; background:#fdf1f0; padding:14px 20px;">
+      <div style="flex:none; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:#B32B26;">Same rule, all three</div>
+      <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#3a4a52;">Let anyone move outward. Someone on the stakeholders list who wants every detail should be able to join the sign-up list without asking permission.</div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 10.1</span> &nbsp;Detail and frequency both grow as the circle widens. Match the message to the ring rather than sending one update to everybody, which either drowns the innermost list or starves the outermost one.</div>
+  </div>
+
+  <div id="fig-10-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 10.2</div>
+    <h1 class="fig-title">The OAuth Client Credentials Flow, All Inside the SDK</h1>
+    <div class="fig-rule"></div>
+
+    <svg viewBox="0 0 1240 660" width="100%" style="font-family:'Lato',sans-serif;">
+      <rect x="152" y="196" width="36" height="366" rx="6" fill="#177E89" opacity="0.14"></rect>
+
+      <path d="M170,64 v520" stroke="#8fa4ab" stroke-width="2" stroke-dasharray="7 7"></path>
+      <path d="M610,64 v520" stroke="#8fa4ab" stroke-width="2" stroke-dasharray="7 7"></path>
+      <path d="M1065,64 v520" stroke="#8fa4ab" stroke-width="2" stroke-dasharray="7 7"></path>
+
+      <g>
+        <rect x="46" y="8" width="248" height="56" rx="10" fill="#e4f1f2" stroke="#177E89" stroke-width="2.5"></rect>
+        <text x="170" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#003049">Vendor app + SDK</text>
+        <text x="170" y="52" text-anchor="middle" font-size="13" fill="#3a6a70">uploading a catalog</text>
+      </g>
+      <g>
+        <rect x="470" y="8" width="280" height="56" rx="10" fill="#003049" stroke="#003049" stroke-width="2.5"></rect>
+        <text x="610" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Authorization server</text>
+        <text x="610" y="52" text-anchor="middle" font-size="13" fill="#a8cdd6">issues tokens</text>
+      </g>
+      <g>
+        <rect x="935" y="8" width="260" height="56" rx="10" fill="#f7f4fb" stroke="#9178B5" stroke-width="2.5"></rect>
+        <text x="1065" y="33" text-anchor="middle" font-size="16" font-weight="700" fill="#3A2449">Resource server</text>
+        <text x="1065" y="52" text-anchor="middle" font-size="13" fill="#5c4a70">the Renovation Revolution API</text>
+      </g>
+
+      <g font-size="13" font-weight="700" fill="#fff">
+        <circle cx="18" cy="130" r="15" fill="#DB3A34"></circle><text x="18" y="135" text-anchor="middle">1</text>
+        <circle cx="18" cy="196" r="15" fill="#DB3A34"></circle><text x="18" y="201" text-anchor="middle">2</text>
+        <circle cx="18" cy="290" r="15" fill="#DB3A34"></circle><text x="18" y="295" text-anchor="middle">3</text>
+        <circle cx="18" cy="356" r="15" fill="#DB3A34"></circle><text x="18" y="361" text-anchor="middle">4</text>
+        <circle cx="18" cy="496" r="15" fill="#DB3A34"></circle><text x="18" y="501" text-anchor="middle">5</text>
+        <circle cx="18" cy="562" r="15" fill="#DB3A34"></circle><text x="18" y="567" text-anchor="middle">6</text>
+      </g>
+
+      <path d="M170,130 h432 M602,130 l-11,-6.5 v13 Z" fill="#003049" stroke="#003049" stroke-width="2.5"></path>
+      <text class="edge-lbl" x="390" y="112" text-anchor="middle" font-size="15" fill="#003049">Client ID + client secret</text>
+      <text x="390" y="94" text-anchor="middle" font-size="13" fill="#5a6b72">grant_type=client_credentials</text>
+
+      <path d="M610,196 h-432 M178,196 l11,-6.5 v13 Z" fill="#177E89" stroke="#177E89" stroke-width="2.5" stroke-dasharray="9 6"></path>
+      <text class="edge-lbl" x="394" y="178" text-anchor="middle" font-size="15" fill="#177E89">Short-lived access token</text>
+      <text x="394" y="222" text-anchor="middle" font-size="13" fill="#3a6a70">expires_in: 3600</text>
+
+      <path d="M170,290 h887 M1057,290 l-11,-6.5 v13 Z" fill="#003049" stroke="#003049" stroke-width="2.5"></path>
+      <text class="edge-lbl" x="618" y="272" text-anchor="middle" font-size="15" fill="#003049">Upload request, Authorization: Bearer &lt;token&gt;</text>
+
+      <path d="M1065,356 h-887 M178,356 l11,-6.5 v13 Z" fill="#9178B5" stroke="#9178B5" stroke-width="2.5" stroke-dasharray="9 6"></path>
+      <text class="edge-lbl" x="618" y="338" text-anchor="middle" font-size="15" fill="#6d5490">200, catalog accepted</text>
+
+      <g>
+        <rect x="212" y="392" width="1010" height="48" rx="8" fill="none" stroke="#DB3A34" stroke-width="2.5" stroke-dasharray="10 7"></rect>
+        <text x="717" y="422" text-anchor="middle" font-size="14.5" font-weight="700" fill="#DB3A34">Steps 3 and 4 repeat for every call, as long as the token is still valid</text>
+      </g>
+
+      <path d="M170,496 h432 M602,496 l-11,-6.5 v13 Z" fill="#003049" stroke="#003049" stroke-width="2.5"></path>
+      <text class="edge-lbl" x="390" y="478" text-anchor="middle" font-size="15" fill="#003049">Nearly expired, so ask again</text>
+      <text x="390" y="460" text-anchor="middle" font-size="13" fill="#5a6b72">in the background, before anything fails</text>
+
+      <path d="M610,562 h-432 M178,562 l11,-6.5 v13 Z" fill="#177E89" stroke="#177E89" stroke-width="2.5" stroke-dasharray="9 6"></path>
+      <text class="edge-lbl" x="394" y="544" text-anchor="middle" font-size="15" fill="#177E89">Fresh access token</text>
+
+      <path d="M170,584 v22" stroke="#177E89" stroke-width="2.5"></path>
+      <text x="170" y="628" text-anchor="middle" font-size="14" font-weight="700" fill="#177E89">The token lives only here</text>
+      <text x="170" y="648" text-anchor="middle" font-size="13" fill="#3a6a70">held, used, and replaced inside the SDK</text>
+    </svg>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:26px 0 0;">
+      <div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:18px 20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:#12626B;">What the vendor writes</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#003049; margin:8px 0 0;">A client ID and secret, once, at initialization.</div>
+      </div>
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; background:#fdf1f0; padding:18px 20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:#B32B26;">What the vendor never handles</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#003049; margin:8px 0 0;">The token, its expiry, and every refresh.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 10.2</span> &nbsp;The machine-to-machine version of OAuth: long-lived credentials are exchanged for a short-lived token, the token does the work, and the SDK replaces it before it expires. Because the caller never touches the token, revoking one integration does not disturb the others.</div>
+  </div>
+
+</div>
+
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#241c33; color:#fff; border:1px solid #241c33; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+</body>
+</html>

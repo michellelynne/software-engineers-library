@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Caveat:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(22,32)">
+      <rect x="0" y="0" width="40" height="30" rx="3" fill="#888"></rect>
+      <rect x="12" y="8" width="42" height="30" rx="3" fill="#fff" stroke="#111" stroke-width="2"></rect>
+      <line x1="18" y1="17" x2="48" y2="17" stroke="#111" stroke-width="1.5"></line>
+      <line x1="18" y1="25" x2="44" y2="25" stroke="#999" stroke-width="1.5"></line>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Index Card Design &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 60px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 7 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Index Card Design</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Here is the exercise worked through for the case study, using the contractor&rsquo;s first run through the app.</p>
+
+    <div id="sec-how-to" class="block" style="margin-top:22px; background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:16px 18px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#555; margin-bottom:10px;">How to run the test</div>
+      <div style="display:flex; flex-direction:column; gap:7px; font-size:13px; line-height:1.5; color:#222;">
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">1</span><span>Draw each page on a single index card. Use the case study Page Flows.</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">2</span><span>If you need more room, such as a scroll or a popup, add a new card. Collect them into a deck.</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">3</span><span>Try to find a test user you haven&rsquo;t told about the app. Write down what interacting with the card does so you know what to do, but don&rsquo;t share it with users.</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">4</span><span>Hand them a single home screen card with the instruction: &ldquo;Treat this like an app.&rdquo;</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">5</span><span>Record the session if they&rsquo;ll let you. If not, take detailed notes of where they look and interact with the cards.</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">6</span><span>If they click, swipe, pinch or zoom, hand them the card for that page. If you don&rsquo;t have a card for what they do, mark that as an error.</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">7</span><span>Don&rsquo;t interrupt or give them any help, since a real visitor gets none either.</span></div>
+        <div style="display:flex; gap:10px; align-items:flex-start;"><span style="font-family:'Bebas Neue',sans-serif; font-size:16px; color:#111; flex:none; line-height:1.25;">8</span><span>Repeat the test with new cards as long as they&rsquo;ll let you. With index cards, you can quickly add and remove.</span></div>
+      </div>
+    </div>
+
+    <div id="sec-cards" class="block" style="margin-top:30px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 20px;">
+        <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#555; margin:0 0 6px;">Flow you&rsquo;re prototyping</label><div style="border-bottom:1.5px solid #111; padding:0 2px 5px; font-size:14px; color:#111;">Contractor sign-up to first bid</div></div>
+        <div><label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#555; margin:0 0 6px;">Persona &amp; device</label><div style="border-bottom:1.5px solid #111; padding:0 2px 5px; font-size:14px; color:#111;">Contractor, on a phone at a job site</div></div>
+      </div>
+
+      <div style="margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+        <div class="block" style="border:1.5px solid #111; border-radius:11px; background:#fff; overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; padding:11px 14px; background:#f4f4f4; border-bottom:1.5px solid #111;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#111; line-height:1; flex:none;">01</span>
+            <span style="flex:1; font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; border-bottom:1px solid #999; padding:0 2px 3px;">Login / Account</span>
+          </div>
+          <div style="position:relative; height:360px; margin:14px 16px; border:2px solid #111; border-radius:20px; background:repeating-linear-gradient(#fff, #fff 27px, #ececec 27px, #ececec 28px); overflow:hidden;">
+            <div style="position:absolute; left:50%; top:8px; transform:translateX(-50%); width:46px; height:5px; border-radius:3px; background:#ccc;"></div>
+          </div>
+        </div>
+        <div class="block" style="border:1.5px solid #111; border-radius:11px; background:#fff; overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; padding:11px 14px; background:#f4f4f4; border-bottom:1.5px solid #111;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#111; line-height:1; flex:none;">02</span>
+            <span style="flex:1; font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; border-bottom:1px solid #999; padding:0 2px 3px;">Contractor Onboarding</span>
+          </div>
+          <div style="position:relative; height:360px; margin:14px 16px; border:2px solid #111; border-radius:20px; background:repeating-linear-gradient(#fff, #fff 27px, #ececec 27px, #ececec 28px); overflow:hidden;">
+            <div style="position:absolute; left:50%; top:8px; transform:translateX(-50%); width:46px; height:5px; border-radius:3px; background:#ccc;"></div>
+          </div>
+        </div>
+        <div class="block" style="border:1.5px solid #111; border-radius:11px; background:#fff; overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; padding:11px 14px; background:#f4f4f4; border-bottom:1.5px solid #111;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#111; line-height:1; flex:none;">03</span>
+            <span style="flex:1; font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; border-bottom:1px solid #999; padding:0 2px 3px;">Contractor Profile</span>
+          </div>
+          <div style="position:relative; height:360px; margin:14px 16px; border:2px solid #111; border-radius:20px; background:repeating-linear-gradient(#fff, #fff 27px, #ececec 27px, #ececec 28px); overflow:hidden;">
+            <div style="position:absolute; left:50%; top:8px; transform:translateX(-50%); width:46px; height:5px; border-radius:3px; background:#ccc;"></div>
+          </div>
+        </div>
+        <div class="block" style="border:1.5px solid #111; border-radius:11px; background:#fff; overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; padding:11px 14px; background:#f4f4f4; border-bottom:1.5px solid #111;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#111; line-height:1; flex:none;">04</span>
+            <span style="flex:1; font-family:'Montserrat',sans-serif; font-weight:600; font-size:13px; color:#111; border-bottom:1px solid #999; padding:0 2px 3px;">Available Projects Summary</span>
+          </div>
+          <div style="position:relative; height:360px; margin:14px 16px; border:2px solid #111; border-radius:20px; background:repeating-linear-gradient(#fff, #fff 27px, #ececec 27px, #ececec 28px); overflow:hidden;">
+            <div style="position:absolute; left:50%; top:8px; transform:translateX(-50%); width:46px; height:5px; border-radius:3px; background:#ccc;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:36px 0 0;">Card Interactions</h2>
+    <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+    <div id="sec-interactions" class="block" style="display:flex; flex-direction:column; gap:9px;">
+      <div style="display:flex; align-items:center; gap:11px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:17px; color:#111; line-height:1; flex:none; width:20px; text-align:right;">1</span><div style="flex:1; border:1.5px solid #111; border-radius:6px; min-height:36px; background:#fff; padding:8px 11px; box-sizing:border-box; font-size:13.5px; line-height:1.4; color:#111;">Card 1: Tap &ldquo;Create account&rdquo; &rarr; hand them Card 2.</div></div>
+      <div style="display:flex; align-items:center; gap:11px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:17px; color:#111; line-height:1; flex:none; width:20px; text-align:right;">2</span><div style="flex:1; border:1.5px solid #111; border-radius:6px; min-height:36px; background:#fff; padding:8px 11px; box-sizing:border-box; font-size:13.5px; line-height:1.4; color:#111;">Card 2: Fill in licensing, insurance and service area, tap &ldquo;Next&rdquo; &rarr; hand them Card 3.</div></div>
+      <div style="display:flex; align-items:center; gap:11px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:17px; color:#111; line-height:1; flex:none; width:20px; text-align:right;">3</span><div style="flex:1; border:1.5px solid #111; border-radius:6px; min-height:36px; background:#fff; padding:8px 11px; box-sizing:border-box; font-size:13.5px; line-height:1.4; color:#111;">Card 3: Add previous work and specialties, tap &ldquo;Done&rdquo; &rarr; hand them Card 4.</div></div>
+      <div style="display:flex; align-items:center; gap:11px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:17px; color:#111; line-height:1; flex:none; width:20px; text-align:right;">4</span><div style="flex:1; border:1.5px solid #111; border-radius:6px; min-height:36px; background:#fff; padding:8px 11px; box-sizing:border-box; font-size:13.5px; line-height:1.4; color:#111;">Card 4: Scroll the open projects; tap one &rarr; hand them the Project Detail (Pre-Contract) card.</div></div>
+      <div style="display:flex; align-items:center; gap:11px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:17px; color:#111; line-height:1; flex:none; width:20px; text-align:right;">5</span><div style="flex:1; border:1.5px solid #111; border-radius:6px; min-height:36px; background:#fff;"></div></div>
+      <div style="display:flex; align-items:center; gap:11px;"><span style="font-family:'Bebas Neue',sans-serif; font-size:17px; color:#111; line-height:1; flex:none; width:20px; text-align:right;">6</span><div style="flex:1; border:1.5px solid #111; border-radius:6px; min-height:36px; background:#fff;"></div></div>
+    </div>
+
+    <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#111; margin:36px 0 0;">What you learned from testing</h2>
+    <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+    <div id="sec-testnotes" class="block">
+      <div style="display:grid; grid-template-columns:40px 1fr 1fr; gap:10px 16px; align-items:end;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#555;">Card</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#555;">Notes for testing</div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#555;">Changes to make</div>
+      </div>
+      <div style="display:grid; grid-template-columns:40px 1fr 1fr; gap:10px 16px; align-items:start; margin-top:8px;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#111; padding-top:8px;">01</div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#111; padding-top:8px;">02</div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#111; padding-top:8px;">03</div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:19px; color:#111; padding-top:8px;">04</div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+        <div style="border:1.5px solid #111; border-radius:6px; height:76px; background:#fff;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#111; color:#fff; border:1px solid #111; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){ return { doPrint: () => window.print() }; }
+}
+
+</script>
+</body>
+</html>

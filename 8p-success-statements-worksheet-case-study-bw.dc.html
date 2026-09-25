@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(28,32)">
+      <rect x="0" y="0" width="44" height="7" rx="2" fill="#fff"></rect>
+      <rect x="0" y="13" width="30" height="4" rx="2" fill="#888"></rect>
+      <rect x="0" y="23" width="44" height="4" rx="2" fill="#888"></rect>
+      <rect x="0" y="31" width="36" height="4" rx="2" fill="#888"></rect>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Success Statements &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Black &amp; white</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 64px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 8 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Success Statements</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#555; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Success Statements are a single, short sentence that shows the impact of what you did. They should not be longer than a resume bullet, 180-300 characters. This is the format:</p>
+
+    <div style="margin:22px 0 0; background:#f4f4f4; border:1px solid #ccc; border-radius:8px; padding:18px 22px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#555; margin-bottom:8px;">The Format</div>
+      <div style="font-family:'Fraunces',serif; font-style:italic; font-size:19px; line-height:1.5; color:#111;">&ldquo;I improved <em>this thing</em> by <em>this measurable amount</em> using <em>this method</em>.&rdquo;</div>
+    </div>
+
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:18px 0 0;">We&rsquo;ll do each section of the format separately, then combine them. All of the examples use Renovation Revolution. Let&rsquo;s pretend the app is up and running, because most of you are adding to existing projects. In this scenario, my goal for the quarter was to add a new vendor to the app.</p>
+
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Thing You Improved</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Find everything you completed. No format yet, this is brainstorming. Write down the project name and your role or a feature/bug on that project. This is only the "what" you did; we'll get into the technical details (the "how") in the next section. Look through your tickets, merged pull requests, design docs, emails, and chat messages. One item per line; you can repeat a project if there were multiple major features this quarter. If you want to include minor features, we will roll them up later. If you use the AI prompt, replace the examples with your own data sources and ensure they are connected via an MCP, skill, or direct connection.</p>
+
+      <div id="sec-1-brainstorm-prompt">
+        <div style="background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:14px 16px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#555; margin-bottom:6px;">AI Prompt</div>
+          <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.6; color:#222;">&ldquo;You are a software engineer compiling all the work you did over the last 90 days. Connect to these sources directly: code repository <b>[GitHub, GitLab]</b>, ticketing system <b>[Jira, Linear]</b>, design docs <b>[Google Docs, Confluence]</b>, email <b>[Outlook, Gmail]</b>, and chat <b>[Slack, Teams]</b>. My role is <b>[title]</b> on the <b>[team]</b> team, covering <b>[date range]</b>. Merge everything into a single list of work, removing duplicates where the same effort appears in more than one tool. Group it into projects, and for each project write one line naming it and my role in it. Note which items lack evidence of the outcome, and suggest a source you could check for what is missing.&rdquo;</div>
+        </div>
+      </div>
+
+      <div style="position:relative; margin:16px 0 16px; background:#f7f7f7; border:1px solid #ccc; border-left:3px solid #111; border-radius:0 8px 8px 0; padding:20px 20px 16px;">
+        <span style="position:absolute; top:-9px; left:14px; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.16em; text-transform:uppercase; padding:3px 9px; border-radius:3px;">Example</span>
+        <div style="display:flex; flex-direction:column; gap:7px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Reviewed vendor technical offerings</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Designed a connection from their catalog to our app</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Created a service to poll their catalog, match their items to our taxonomy, and review products for missing data</span></div>
+        </div>
+      </div>
+
+      <div id="sec-2-what-i-worked-on">
+        <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+          <div style="background:#111; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+            <span style="width:9px; height:9px; background:#fff; flex:none; transform:rotate(45deg);"></span>
+            <span style="font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:#fff;">What I worked on</span>
+          </div>
+          <div style="padding:16px 20px 20px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 10px;">Projects, roles, features, bugs</div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Method You Used</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Now that you have some projects, let&rsquo;s dive into the details. For each item, fill in how you solved the problem. Include all technical details; we'll edit and roll up similar items later. I think you will be surprised by how much you have accomplished.</p>
+
+      <div style="position:relative; margin:0 0 16px; background:#f7f7f7; border:1px solid #ccc; border-left:3px solid #111; border-radius:0 8px 8px 0; padding:20px 20px 16px;">
+        <span style="position:absolute; top:-9px; left:14px; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.16em; text-transform:uppercase; padding:3px 9px; border-radius:3px;">Example</span>
+        <div style="display:flex; flex-direction:column; gap:7px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Built a custom REST API connector for the vendor&rsquo;s legacy SOAP-based product catalog system</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Implemented an OAuth 2.0 authentication flow with token refresh and secure credential storage</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Created a data transformation layer mapping the vendor&rsquo;s product schema to our standardized format</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Built a webhook listener for real-time product updates (pricing, availability, specifications)</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Implemented rate limiting and retry logic handling vendor API constraints (100 requests per minute)</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Added a fallback to daily batch sync when real-time updates failed</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Added data quality validation, rejecting incomplete or malformed product records</span></div>
+        </div>
+      </div>
+
+      <div id="sec-3-technical-detail">
+        <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+          <div style="background:#111; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+            <span style="width:9px; height:9px; background:#fff; flex:none; transform:rotate(45deg);"></span>
+            <span style="font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:#fff;">The technical detail</span>
+          </div>
+          <div style="padding:16px 20px 20px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 10px;">What you actually built, integrated, tested, or fixed</div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Measurable Amount</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Impact should be shown in terms of time or money. It could reduce costs or increase profits. Labor is a considerable cost, so saving time is just as good as saving money. Did you add a feature that brought in more sales? Or reduced manual work for the sales team? Or for the customer service team, allowing them to take more calls per hour? Did you eliminate bugs to reduce churn? It can be challenging to obtain exact numbers, so you can use estimates (~10% of users). You might need to consult with other teams to acquire impact numbers. Let your boss know if you&rsquo;re going to talk to anyone you don&rsquo;t normally interact with.</p>
+
+      <div style="position:relative; margin:0 0 16px; background:#f7f7f7; border:1px solid #ccc; border-left:3px solid #111; border-radius:0 8px 8px 0; padding:20px 20px 16px;">
+        <span style="position:absolute; top:-9px; left:14px; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.16em; text-transform:uppercase; padding:3px 9px; border-radius:3px;">Example</span>
+        <div style="display:flex; flex-direction:column; gap:7px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Added 2,400 products to our items catalog, expanding it by 18%</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Increased offerings increase customer spend</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">Customer spend on vendor products grew roughly $10,000 during the pilot</span></div>
+        </div>
+        <div style="margin-top:12px; padding-top:10px; border-top:1px dashed #bbb; font-size:13px; line-height:1.55; color:#333;"><b>Who to ask:</b> Sales operations owns the pilot revenue figure. Support owns the churn rate for plumbing products.</div>
+      </div>
+
+      <div id="sec-4-impact">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">Who can I ask about the impact?</div>
+        <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:18px;"></div>
+        <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+          <div style="background:#111; padding:14px 20px; display:flex; align-items:center; gap:12px;">
+            <span style="width:9px; height:9px; background:#fff; flex:none; transform:rotate(45deg);"></span>
+            <span style="font-family:'Fraunces',serif; font-weight:700; font-size:18px; color:#fff;">The impact</span>
+          </div>
+          <div style="padding:16px 20px 20px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 10px;">Numbers, estimates, and percentages</div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px; margin-bottom:12px;"></div>
+            <div style="border-bottom:1.5px solid #bbb; height:32px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Success Statements</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Finally, time to write your Success Statements! Here is the format again:</p>
+
+      <div style="margin:0 0 18px; background:#f4f4f4; border:1px solid #ccc; border-radius:8px; padding:18px 22px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#555; margin-bottom:8px;">The Format</div>
+        <div style="font-family:'Fraunces',serif; font-style:italic; font-size:19px; line-height:1.5; color:#111;">&ldquo;I improved <em>this thing</em> by <em>this measurable amount</em> using <em>this method</em>.&rdquo;</div>
+      </div>
+
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">You might need to combine or summarize actions to match the format. Make sure the method is understandable to anyone at the organization; they might not understand all the technical jargon or even the projects you work on. I have included an AI prompt, but with this specific format, it can be easier to write it yourself. The more you practice, the better you&rsquo;ll get at writing these.</p>
+
+      <div id="sec-5-statements-prompt">
+        <div style="background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:14px 16px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#555; margin-bottom:6px;">AI Prompt</div>
+          <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.6; color:#222;">&ldquo;You are a software engineer compiling all the work you did over the last 90 days into Success Statements. Here is the raw data <b>[paste your lists from the sections above]</b>. Write Success Statements in this format: &ldquo;I improved this thing by this measurable amount using this method.&rdquo; A Success Statement is a single short sentence (no longer than a resume bullet point) that shows the impact of what I did, in language anyone can understand. Keep the method free from jargon and never invent data or numbers. Cite your Success Statements from the data I provided or data you are connecting to. Roll up related items into one statement. There can be many statements for a project, but one major change has more impact than multiple minor changes. Return one statement per line with the most impactful or interesting first. Highlight any data that could not be used because it did not have the information needed to fit the format, like a missing method or a measurable amount.&rdquo;</div>
+        </div>
+      </div>
+
+      <div style="position:relative; margin:16px 0 16px; background:#f7f7f7; border:1px solid #ccc; border-left:3px solid #111; border-radius:0 8px 8px 0; padding:20px 20px 16px;">
+        <span style="position:absolute; top:-9px; left:14px; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9px; letter-spacing:.16em; text-transform:uppercase; padding:3px 9px; border-radius:3px;">Example</span>
+        <div style="display:flex; flex-direction:column; gap:7px;">
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">&ldquo;I increased the product catalog by 18% and generated $10,000 in pilot sales through an automated sync with the new vendor.&rdquo;</span></div>
+          <div style="display:flex; gap:10px; align-items:baseline;"><span style="color:#666; font-size:11px; line-height:1.5; flex:none;">&#9670;</span><span style="font-size:13px; line-height:1.55; color:#333;">&ldquo;I reduced duplicate and incomplete products on the UI for the plumbing pipes vendor, decreasing customer churn for their products 10%, using a new data validation service.&rdquo;</span></div>
+        </div>
+      </div>
+
+      <div id="sec-6-success-statements">
+        <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden; margin-bottom:14px;">
+          <div style="background:#f4f4f4; border-bottom:1px solid #ccc; padding:11px 18px; display:flex; align-items:center; gap:11px;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; line-height:1; color:#666;">01</span>
+            <span style="font-family:'Fraunces',serif; font-weight:700; font-size:17px; color:#111;">Success Statement</span>
+          </div>
+          <div style="padding:16px 18px 18px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:16px;">
+              <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">I improved</div><div style="border-bottom:1.5px solid #bbb; height:30px;"></div></div>
+              <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">by</div><div style="border-bottom:1.5px solid #bbb; height:30px;"></div></div>
+              <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">using</div><div style="border-bottom:1.5px solid #bbb; height:30px;"></div></div>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">The statement, read back as one sentence</div>
+            <div style="border:1.5px solid #bbb; border-radius:6px; height:60px;"></div>
+          </div>
+        </div>
+        <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+          <div style="background:#f4f4f4; border-bottom:1px solid #ccc; padding:11px 18px; display:flex; align-items:center; gap:11px;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; line-height:1; color:#666;">02</span>
+            <span style="font-family:'Fraunces',serif; font-weight:700; font-size:17px; color:#111;">Success Statement</span>
+          </div>
+          <div style="padding:16px 18px 18px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:16px;">
+              <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">I improved</div><div style="border-bottom:1.5px solid #bbb; height:30px;"></div></div>
+              <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">by</div><div style="border-bottom:1.5px solid #bbb; height:30px;"></div></div>
+              <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">using</div><div style="border-bottom:1.5px solid #bbb; height:30px;"></div></div>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">The statement, read back as one sentence</div>
+            <div style="border:1.5px solid #bbb; border-radius:6px; height:60px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#666;">&#9671;</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Make It A Habit</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">You already write down what you did before standup. Keep those notes in a running document instead of throwing them away. Review the document weekly and mark anything that could become a Success Statement. Another option is to include Success Statements on your task tickets. For each feature, you will need to find a way to capture the impact. This will save you time later and help you determine if you&rsquo;re on the right track. If you didn&rsquo;t have any impact, maybe you are not prioritizing correctly.</p>
+
+      <div id="sec-7-habit">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">Where my running document lives, and when I review it</div>
+        <div style="border-bottom:1.5px solid #bbb; height:32px;"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){ return { doPrint: () => window.print() }; }
+}
+</script>
+</body>
+</html>

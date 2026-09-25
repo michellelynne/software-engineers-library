@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Montserrat:wght@600;700&family=Fraunces:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .fig{ background:#fff; box-sizing:border-box; }
+  .fig-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9178B5; }
+  .fig-title{ font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; margin:10px 0 0; color:#003049; }
+  .fig-rule{ height:4px; width:70px; background:#DB3A34; margin:16px 0 34px; }
+  .fig-caption{ font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#003049; margin-top:22px; }
+  .fig-caption span{ font-family:'Montserrat',sans-serif; font-weight:700; color:#9178B5; }
+  .edge-lbl{ font-family:'Lato',sans-serif; font-weight:700; paint-order:stroke; stroke:#fff; stroke-width:5px; stroke-linejoin:round; }
+  svg{ display:block; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="18" y="44" width="52" height="12" rx="2" fill="#177E89"></rect>
+    <rect x="70" y="44" width="12" height="12" rx="2" fill="#DB3A34"></rect>
+    <path d="M18,68 h64" stroke="#fff" stroke-width="2"></path>
+    <path d="M22,34 C36,34 40,22 50,22 C62,22 66,34 80,34" fill="none" stroke="#9178B5" stroke-width="3"></path>
+  </svg>
+</template>
+
+<div style="max-width:1400px; margin:26px auto; display:flex; flex-direction:column; gap:24px;">
+
+  <div id="fig-11-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 11.1</div>
+    <h1 class="fig-title">How "Average" Hides Issues</h1>
+    <div class="fig-rule"></div>
+
+    <svg viewBox="0 0 1240 470" width="100%" style="font-family:'Lato',sans-serif;">
+      <defs>
+        <clipPath id="c11-curve"><path d="M90,336 C150,334 200,306 240,101 C270,176 285,221 310,256 C360,296 420,311 480,318 C560,324 700,329 800,332 C900,334 1020,335 1180,335 L1180,336 Z"></path></clipPath>
+      </defs>
+
+      <rect x="615" y="50" width="565" height="286" fill="#DB3A34" opacity="0.07"></rect>
+      <path d="M90,336 C150,334 200,306 240,101 C270,176 285,221 310,256 C360,296 420,311 480,318 C560,324 700,329 800,332 C900,334 1020,335 1180,335" fill="#e6f2f3" stroke="none"></path>
+      <path d="M90,336 C150,334 200,306 240,101 C270,176 285,221 310,256 C360,296 420,311 480,318 C560,324 700,329 800,332 C900,334 1020,335 1180,335" fill="none" stroke="#177E89" stroke-width="3.5"></path>
+
+      <path d="M90,336 h1100" stroke="#003049" stroke-width="2.5"></path>
+      <path d="M90,336 v-286" stroke="#003049" stroke-width="2.5"></path>
+      <text x="66" y="200" transform="rotate(-90 66,200)" text-anchor="middle" font-size="14" font-weight="700" fill="#003049" letter-spacing="1">Number of requests</text>
+
+      <g font-size="13.5" fill="#5a6b72" text-anchor="middle">
+        <path d="M210,336 v8 M300,336 v8 M480,336 v8 M640,336 v8 M900,336 v8 M1120,336 v8" stroke="#8fa4ab" stroke-width="2"></path>
+        <text x="210" y="366">100ms</text>
+        <text x="300" y="366">200ms</text>
+        <text x="480" y="366">500ms</text>
+        <text x="640" y="366">1s</text>
+        <text x="900" y="366">5s</text>
+        <text x="1120" y="366">15s</text>
+      </g>
+      <text x="640" y="400" text-anchor="middle" font-size="14" font-weight="700" fill="#003049" letter-spacing="1">Response time</text>
+
+      <path d="M265,336 v-190" stroke="#003049" stroke-width="3"></path>
+      <circle cx="265" cy="146" r="5.5" fill="#003049"></circle>
+      <path d="M212,158 h47" stroke="#8fa4ab" stroke-width="1.6"></path>
+      <text x="204" y="152" text-anchor="end" font-size="14" font-weight="700" fill="#003049">p50 · 140ms</text>
+      <text x="204" y="174" text-anchor="end" font-size="13.5" fill="#5a6b72">half of users</text>
+
+      <path d="M300,336 v-232" stroke="#DB3A34" stroke-width="3" stroke-dasharray="9 7"></path>
+      <circle cx="300" cy="104" r="5.5" fill="#DB3A34"></circle>
+      <text class="edge-lbl" x="318" y="84" text-anchor="start" font-size="15" fill="#DB3A34">Average · 200ms</text>
+      <text x="318" y="64" text-anchor="start" font-size="13.5" fill="#a8443f">the number that gets reported</text>
+
+      <path d="M615,336 v-118" stroke="#003049" stroke-width="3"></path>
+      <circle cx="615" cy="218" r="5.5" fill="#003049"></circle>
+      <text class="edge-lbl" x="615" y="200" text-anchor="middle" font-size="14" fill="#003049">p95 · 900ms</text>
+      <text x="615" y="182" text-anchor="middle" font-size="13.5" fill="#5a6b72">1 user in 20 waits longer</text>
+
+      <path d="M1120,336 v-88" stroke="#DB3A34" stroke-width="3"></path>
+      <circle cx="1120" cy="248" r="5.5" fill="#DB3A34"></circle>
+      <text class="edge-lbl" x="1120" y="230" text-anchor="middle" font-size="14" fill="#DB3A34">p99 · 15s</text>
+      <text x="1120" y="212" text-anchor="middle" font-size="13.5" fill="#a8443f">1 user in 100 waits this long</text>
+
+      <path d="M615,430 h505" stroke="#DB3A34" stroke-width="2.5"></path>
+      <path d="M615,430 v-14 M1120,430 v-14" stroke="#DB3A34" stroke-width="2.5"></path>
+      <text x="867" y="456" text-anchor="middle" font-size="14.5" font-weight="700" fill="#DB3A34">The tail the average never shows you</text>
+    </svg>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin:26px 0 0;">
+      <div style="border:2.5px solid #003049; border-left-width:2.5px; border-radius:12px; background:#eef4f5; padding:18px 20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:#177E89;">What the average says</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:26px; color:#003049; margin:8px 0 0;">200ms. Everything is fine.</div>
+      </div>
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; background:#fdf1f0; padding:18px 20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:#DB3A34;">What the p99 says</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:26px; color:#003049; margin:8px 0 0;">20,000 of 2M users wait 15 seconds.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 11.1</span> &nbsp;Percentiles Better than Averages</div>
+  </div>
+
+  <div id="fig-11-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 11.2</div>
+    <h1 class="fig-title">From Indicator to Objective to Agreement, and the Budget Left Over</h1>
+    <div class="fig-rule"></div>
+
+    <div style="display:grid; grid-template-columns:1fr 74px 1fr 74px 1fr; align-items:stretch;">
+      <div style="border:2.5px solid #177E89; border-radius:12px; background:#e4f1f2; padding:20px 22px 22px; box-sizing:border-box;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#177E89;">Measure</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; color:#003049; margin:8px 0 0;">SLI</div>
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#003049; margin:2px 0 0;">Service Level Indicator</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52; margin:12px 0 0;">A metric such as latency, error rate, availability, or correctness.</div>
+        <div style="border-top:1.5px solid #9ccdd1; margin:14px 0 0; padding:12px 0 0; font-family:'Lato',sans-serif; font-weight:700; font-size:15px; color:#003049;">Requests that succeed in under 3 seconds</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:#DB3A34; text-align:center; line-height:1.3;">set a<br>target</div>
+        <svg viewBox="0 0 52 14" width="52" height="14" style="color:#DB3A34;"><path d="M2,7 h40 M42,7 l-8,-5 v10 Z" fill="currentColor" stroke="currentColor" stroke-width="2"></path></svg>
+      </div>
+
+      <div style="border:2.5px solid #003049; border-radius:12px; background:#003049; padding:20px 22px 22px; box-sizing:border-box;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#7fc3c9;">Commit internally</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; color:#fff; margin:8px 0 0;">SLO</div>
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#fff; margin:2px 0 0;">Service Level Objective</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#d3e2e7; margin:12px 0 0;">The target for that indicator, over a stated window.</div>
+        <div style="border-top:1.5px solid #35637a; margin:14px 0 0; padding:12px 0 0; font-family:'Lato',sans-serif; font-weight:700; font-size:15px; color:#fff;">99.5% over a rolling 30 days</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:#DB3A34; text-align:center; line-height:1.3;">promise<br>outward</div>
+        <svg viewBox="0 0 52 14" width="52" height="14" style="color:#DB3A34;"><path d="M2,7 h40 M42,7 l-8,-5 v10 Z" fill="currentColor" stroke="currentColor" stroke-width="2"></path></svg>
+      </div>
+
+      <div style="border:2.5px solid #9178B5; border-radius:12px; background:#f7f4fb; padding:20px 22px 22px; box-sizing:border-box;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#9178B5;">Sign with consequences</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; color:#3A2449; margin:8px 0 0;">SLA</div>
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#3A2449; margin:2px 0 0;">Service Level Agreement</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#4a3a58; margin:12px 0 0;">The contractual version, with penalties attached.</div>
+        <div style="border-top:1.5px solid #c9bade; margin:14px 0 0; padding:12px 0 0; font-family:'Lato',sans-serif; font-weight:700; font-size:15px; color:#3A2449;">99.0% or the customer gets credits</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 74px 1fr 74px 1fr; margin:14px 0 0;">
+      <div></div>
+      <div></div>
+      <div style="grid-column:3 / span 3;">
+        <svg viewBox="0 0 640 30" width="100%" height="30" preserveAspectRatio="none" style="color:#DB3A34;">
+          <path d="M40,2 v24 h560 v-24" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"></path>
+        </svg>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 74px 1fr 74px 1fr; margin:10px 0 0;">
+      <div></div>
+      <div></div>
+      <div style="grid-column:3 / span 3; display:flex; justify-content:center;">
+        <div style="padding:0 16px; text-align:center;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:#DB3A34;">Deliberate gap</div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#003049; margin:5px 0 0;">Aim higher internally than you promise externally. The half point between 99.5% and 99.0% is the room you have to miss without breaking the contract.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin:34px 0 0; border:2.5px solid #003049; border-radius:12px; overflow:hidden;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 20px; background:#003049;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">One month of requests</div>
+        <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14.5px; color:#cfe0e4;">2,000,000 requests</div>
+      </div>
+      <div style="padding:24px 20px 22px;">
+        <div style="display:flex; height:54px; border:2px solid #003049; border-radius:8px; overflow:hidden;">
+          <div style="flex:0 0 88%; background:#177E89; display:flex; align-items:center; padding:0 18px;">
+            <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:19px; color:#fff;">99.5% must succeed</div>
+          </div>
+          <div style="flex:1 1 auto; background:#DB3A34;"></div>
+        </div>
+        <div style="display:flex; align-items:flex-start; margin:0;">
+          <div style="flex:0 0 88%;"></div>
+          <div style="flex:1 1 auto; display:flex; justify-content:center;">
+            <svg viewBox="0 0 40 26" width="34" height="26" style="color:#DB3A34;"><path d="M20,26 v-18 M20,4 l-7,7 M20,4 l7,7" fill="none" stroke="currentColor" stroke-width="3"></path></svg>
+          </div>
+        </div>
+        <div style="display:flex; align-items:baseline; gap:22px; border:2.5px solid #DB3A34; border-radius:10px; background:#fdf1f0; padding:16px 20px; margin:4px 0 0;">
+          <div style="flex:none;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:#DB3A34;">Error budget</div>
+            <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:26px; color:#003049; margin:4px 0 0;">0.5% left over</div>
+          </div>
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#3a4a52;">10,000 failed requests, or about 3 hours 36 minutes of downtime, to spend on deploys, experiments, and migrations. Spend it all and you stop shipping until you have earned it back.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 11.2</span> &nbsp;SLI, SLO, and SLA</div>
+  </div>
+
+  <div id="fig-11-3" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 11.3</div>
+    <h1 class="fig-title">The Same Four Seconds, Logged Two Ways</h1>
+    <div class="fig-rule"></div>
+
+    <div style="display:grid; grid-template-columns:170px 1fr 1fr; gap:14px; align-items:stretch;">
+      <div></div>
+      <div style="border-radius:8px; padding:11px 16px; background:#B32B26; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Unstructured strings</div>
+      <div style="border-radius:8px; padding:11px 16px; background:#003049; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Structured with OpenTelemetry</div>
+
+      <div style="align-self:start; display:flex; flex-direction:column; padding:14px 0 0;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:19px; color:#003049; line-height:1.2;">quiz-api</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.45; color:#5a6b72; margin:5px 0 0;">takes the submission</div>
+      </div>
+      <div style="align-self:start; border:1.5px solid #cfdde2; border-radius:8px; background:#fff; padding:14px 16px; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; font-size:13px; line-height:1.9; color:#2b3a42;">2026-03-04 09:12:44 INFO  quiz submitted ok</div>
+      <div style="border:1.5px solid #cfdde2; border-radius:8px; background:#fff; padding:14px 16px; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; font-size:12.5px; line-height:1.75; color:#2b3a42;">"timestamp":    "2026-03-04T09:12:44.812Z"
+"trace_id":     "4bf92f3577b34da6a3ce929d0e0e4736"
+"span_id":      "00f067aa0ba902b7"
+"service.name": "quiz-api"
+"severity":     "INFO"
+"body":         "quiz submitted"
+"user.id":      "8f21c0"</div>
+
+      <div style="align-self:start; display:flex; flex-direction:column; padding:14px 0 0;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:19px; color:#003049; line-height:1.2;">quiz-service</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.45; color:#5a6b72; margin:5px 0 0;">stores the answers</div>
+      </div>
+      <div style="align-self:start; border:1.5px solid #cfdde2; border-radius:8px; background:#fff; padding:14px 16px; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; font-size:13px; line-height:1.9; color:#2b3a42;">Mar  4 09:12:44 [quiz-svc] user 8f21 -&gt; saving answers</div>
+      <div style="border:1.5px solid #cfdde2; border-radius:8px; background:#fff; padding:14px 16px; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; font-size:12.5px; line-height:1.75; color:#2b3a42;">"timestamp":        "2026-03-04T09:12:44.906Z"
+"trace_id":         "4bf92f3577b34da6a3ce929d0e0e4736"
+"span_id":          "1a2f4c8e9b0d3e57"
+"service.name":     "quiz-service"
+"severity":         "INFO"
+"body":             "quiz result stored"
+"user.id":          "8f21c0"
+"quiz.style_match": "farmhouse"</div>
+
+      <div style="align-self:start; display:flex; flex-direction:column; padding:14px 0 0;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:19px; color:#003049; line-height:1.2;">suggestions-service</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.45; color:#5a6b72; margin:5px 0 0;">ranks the upgrades, and fails</div>
+      </div>
+      <div style="align-self:start; border:1.5px solid #cfdde2; border-radius:8px; background:#fff; padding:14px 16px; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; font-size:13px; line-height:1.9; color:#2b3a42;">09:12:45.117 suggestions: ranking start (rows=42)
+
+2026-03-04 09:12:46 ERROR failed!!! retry 1</div>
+      <div style="border:1.5px solid #cfdde2; border-radius:8px; background:#fff; padding:14px 16px; font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace; white-space:pre-wrap; word-break:break-word; font-size:12.5px; line-height:1.75; color:#2b3a42;">"timestamp":     "2026-03-04T09:12:46.233Z"
+"trace_id":      "4bf92f3577b34da6a3ce929d0e0e4736"
+"span_id":       "7c3d5b1908fa42e6"
+"service.name":  "suggestions-service"
+"severity":      "ERROR"
+"body":          "suggestion ranking failed"
+"user.id":       "8f21c0"
+"error.type":    "TimeoutError"
+"retry.attempt": 1</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:22px 0 0;">
+      <div style="border:2.5px solid #B32B26; border-radius:12px; background:#fdf1f0; padding:18px 20px 20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:#B32B26;">What you cannot do with the left column</div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin:11px 0 0;">
+          <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52;">Three timestamp formats from three services, so you cannot put the four lines in order with confidence.</div>
+          <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52;">Nothing shared ties them together. Only someone who knows the code can guess these are one homeowner's quiz.</div>
+          <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52;">"failed!!!" never says what failed, for whom, or whether the retry worked.</div>
+        </div>
+      </div>
+      <div style="border:2.5px solid #177E89; border-radius:12px; background:#e4f1f2; padding:18px 20px 20px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:#12626B;">What the right column gives back</div>
+        <div style="display:flex; flex-direction:column; gap:9px; margin:11px 0 0;">
+          <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52;">One trace_id joins every line across all three services, so the story reassembles itself.</div>
+          <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52;">The keys look like your database, so searching logs is the same skill as querying data.</div>
+          <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52;">The error carries its type, its attempt number, and the homeowner it belongs to.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin:26px 0 0; border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+      <div style="padding:13px 18px; background:#e4f1f2; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#12626B;">One trace, three services, one query</div>
+      <div style="padding:22px 20px 24px; background:#fff;">
+        <svg viewBox="0 0 1240 132" width="100%" style="font-family:'Lato',sans-serif;">
+          <path d="M150,44 H1090" stroke="#177E89" stroke-width="3"></path>
+          <g>
+            <circle cx="150" cy="44" r="11" fill="#177E89"></circle>
+            <text x="150" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#003049">quiz-api</text>
+            <text x="150" y="108" text-anchor="middle" font-size="13.5" fill="#5a6b72">span 00f067aa0ba902b7</text>
+          </g>
+          <g>
+            <circle cx="620" cy="44" r="11" fill="#177E89"></circle>
+            <text x="620" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#003049">quiz-service</text>
+            <text x="620" y="108" text-anchor="middle" font-size="13.5" fill="#5a6b72">span 1a2f4c8e9b0d3e57</text>
+          </g>
+          <g>
+            <circle cx="1090" cy="44" r="11" fill="#B32B26"></circle>
+            <text x="1090" y="86" text-anchor="middle" font-size="16" font-weight="700" fill="#B32B26">suggestions-service</text>
+            <text x="1090" y="108" text-anchor="middle" font-size="13.5" fill="#8d5a57">span 7c3d5b1908fa42e6, the failure</text>
+          </g>
+          <text class="edge-lbl" x="620" y="22" text-anchor="middle" font-family="ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="14" font-weight="700" fill="#12626B">trace_id 4bf92f3577b34da6a3ce929d0e0e4736</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 11.3</span> &nbsp;Structured Logging</div>
+  </div>
+
+  <div id="fig-11-4" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 11.4</div>
+    <h1 class="fig-title">What the Breaker in Your Wall Is Actually Doing</h1>
+    <div class="fig-rule"></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; align-items:stretch;">
+
+      <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:13px 18px; background:#177E89;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Normal load</div>
+          <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#d3ebed;">9 amps</div>
+        </div>
+        <div style="padding:18px 16px 4px; background:#e4f1f2;">
+          <svg viewBox="0 0 420 230" width="100%">
+            <text x="14" y="70" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" letter-spacing="1.6" fill="#12626B">SUPPLY</text>
+            <circle cx="26" cy="112" r="7" fill="#177E89"></circle>
+            <path d="M33,112 H140" stroke="#177E89" stroke-width="4" fill="none"></path>
+            <path d="M78,105 l14,7 -14,7 z" fill="#177E89"></path>
+            <path d="M112,105 l14,7 -14,7 z" fill="#177E89"></path>
+            <rect x="140" y="58" width="112" height="108" rx="10" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+            <rect x="200" y="42" width="26" height="20" rx="5" fill="#177E89"></rect>
+            <text x="150" y="80" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" letter-spacing="1.4" fill="#12626B">ON</text>
+            <circle cx="163" cy="120" r="5.5" fill="#003049"></circle>
+            <circle cx="229" cy="120" r="5.5" fill="#003049"></circle>
+            <path d="M163,120 H229" stroke="#003049" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M252,112 H332" stroke="#177E89" stroke-width="4" fill="none"></path>
+            <path d="M286,105 l14,7 -14,7 z" fill="#177E89"></path>
+            <rect x="332" y="80" width="72" height="64" rx="10" fill="#177E89"></rect>
+            <text x="368" y="118" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="17" font-weight="700" fill="#fff">LOAD</text>
+            <text x="196" y="196" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="26" font-weight="700" fill="#003049">Closed</text>
+          </svg>
+        </div>
+        <div style="padding:4px 18px 18px; background:#e4f1f2; flex:1;">
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#3a4a52;">The contacts touch, so current runs from the supply straight through to the load.</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; overflow:hidden; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:13px 18px; background:#B32B26;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Overload</div>
+          <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#ffe1de;">31 amps on a 20 amp line</div>
+        </div>
+        <div style="padding:18px 16px 4px; background:#fdf1f0;">
+          <svg viewBox="0 0 420 230" width="100%">
+            <text x="14" y="70" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" letter-spacing="1.6" fill="#B32B26">SUPPLY</text>
+            <circle cx="26" cy="112" r="7" fill="#DB3A34"></circle>
+            <path d="M33,112 H140" stroke="#DB3A34" stroke-width="4" fill="none"></path>
+            <path d="M78,105 l14,7 -14,7 z" fill="#DB3A34"></path>
+            <path d="M112,105 l14,7 -14,7 z" fill="#DB3A34"></path>
+            <rect x="140" y="58" width="112" height="108" rx="10" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+            <rect x="166" y="42" width="26" height="20" rx="5" fill="#DB3A34"></rect>
+            <text x="150" y="80" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" letter-spacing="1.4" fill="#B32B26">OFF</text>
+            <circle cx="163" cy="120" r="5.5" fill="#003049"></circle>
+            <circle cx="229" cy="120" r="5.5" fill="#003049"></circle>
+            <path d="M163,120 L221,84" stroke="#003049" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M232,96 l12,-9 -3,9 8,-2 -13,12 3,-9 z" fill="#DB3A34"></path>
+            <path d="M252,112 H332" stroke="#c9d3d6" stroke-width="4" fill="none" stroke-dasharray="9 8"></path>
+            <rect x="332" y="80" width="72" height="64" rx="10" fill="#fff" stroke="#c9d3d6" stroke-width="2.5"></rect>
+            <text x="368" y="118" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="17" font-weight="700" fill="#98a6ab">DARK</text>
+            <text x="196" y="196" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="26" font-weight="700" fill="#003049">Tripped open</text>
+          </svg>
+        </div>
+        <div style="padding:4px 18px 18px; background:#fdf1f0; flex:1;">
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#3a4a52;">Too much current heats a strip of metal inside the breaker until it bends and snaps the contacts apart. The circuit goes dead in a fraction of a second, on purpose, and the rest of the house stays lit.</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #9178B5; border-radius:12px; overflow:hidden; display:flex; flex-direction:column;">
+        <div style="display:flex; align-items:baseline; justify-content:space-between; gap:10px; padding:13px 18px; background:#6A4F8C;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Reset</div>
+          <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#e6dcf3;">One try</div>
+        </div>
+        <div style="padding:18px 16px 4px; background:#f7f4fb;">
+          <svg viewBox="0 0 420 230" width="100%">
+            <text x="14" y="70" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" letter-spacing="1.6" fill="#6A4F8C">SUPPLY</text>
+            <circle cx="26" cy="112" r="7" fill="#9178B5"></circle>
+            <path d="M33,112 H140" stroke="#9178B5" stroke-width="4" fill="none"></path>
+            <path d="M78,105 l14,7 -14,7 z" fill="#9178B5"></path>
+            <path d="M112,105 l14,7 -14,7 z" fill="#9178B5"></path>
+            <rect x="140" y="58" width="112" height="108" rx="10" fill="#fff" stroke="#003049" stroke-width="2.5"></rect>
+            <rect x="183" y="42" width="26" height="20" rx="5" fill="#9178B5"></rect>
+            <path d="M172,32 A34,34 0 0 1 220,32" fill="none" stroke="#6A4F8C" stroke-width="2.5" stroke-dasharray="5 5"></path>
+            <path d="M220,32 l-8,-4 1,9 z" fill="#6A4F8C"></path>
+            <circle cx="163" cy="120" r="5.5" fill="#003049"></circle>
+            <circle cx="229" cy="120" r="5.5" fill="#003049"></circle>
+            <path d="M163,120 L224,102" stroke="#003049" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M252,112 H332" stroke="#9178B5" stroke-width="4" fill="none" stroke-dasharray="14 7"></path>
+            <rect x="332" y="80" width="72" height="64" rx="10" fill="#fff" stroke="#9178B5" stroke-width="2.5"></rect>
+            <text x="368" y="118" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="17" font-weight="700" fill="#6A4F8C">TEST</text>
+            <text x="196" y="196" text-anchor="middle" font-family="'Josefin Sans',sans-serif" font-size="26" font-weight="700" fill="#3A2449">Half-open</text>
+          </svg>
+        </div>
+        <div style="padding:4px 18px 18px; background:#f7f4fb; flex:1;">
+          <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.55; color:#4a3a58;">Someone walks to the panel and pushes the handle back. It half opens and tries again. If the fault is still there, it trips again immediately. If it is gone, the circuit is live again.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 11.4</span> &nbsp;Circuit Breakers</div>
+  </div>
+
+  <div id="fig-11-5" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 11.5</div>
+    <h1 class="fig-title">Resilience Applied to Renovation Revolution</h1>
+    <div class="fig-rule"></div>
+
+    <div style="display:flex; flex-direction:column; gap:22px;">
+
+      <div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; background:#003049;">
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#7fc3c9;">External dependencies</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Where it applies</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The rule we set</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #d6dfe2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049; background:#f2f6f7;">Timeout</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Room Capture calling the 3D scan service</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">8 seconds to accept the upload before it times out. 8 seconds derived from baseline.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #d6dfe2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049; background:#f2f6f7;">Asynchronous workflow</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Building the model and ranking suggestions after a scan</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Minutes of work, so no request waits on it. The orchestrator tells the app when the room is ready.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #d6dfe2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049; background:#f2f6f7;">Retry, backoff, jitter</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Order &amp; Delivery Tracking polling carrier APIs</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">3 retries at 1, 2, and 4 seconds, plus a random offset. Random offset so every shipment does not retry at once.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #d6dfe2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049; background:#f2f6f7;">Alert the owning team</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Vendor price sync feeding Product Catalog</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Page the catalog team on the first failure, not just ours. They cannot see who is showing old prices.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #d6dfe2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049; background:#f2f6f7;">Circuit breaker</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Style matching service behind Room Suggestions</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Open at 50% failures over 20 calls. Wait 30 seconds, try 1 request, resume only if it works.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #d6dfe2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049; background:#f2f6f7;">Bulkhead</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Every outbound dependency in the projects service</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">10 connections reserved for style matching. Capped so a slow quiz cannot take the ones Send to Contractor needs.</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #9178B5; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:230px 1fr; background:#6A4F8C;">
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#e6dcf3;">Label it first</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">What can be turned off before the whole app pauses</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr; border-top:1.5px solid #ddd3ea;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449; background:#f7f4fb;">Essential</div>
+          <div style="padding:15px 20px; display:flex; flex-wrap:wrap; gap:10px 12px;"><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#fff; background:#6A4F8C; border-radius:20px; padding:5px 13px;">Login / Account</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#fff; background:#6A4F8C; border-radius:20px; padding:5px 13px;">Order Review</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#fff; background:#6A4F8C; border-radius:20px; padding:5px 13px;">Send to Contractor</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#fff; background:#6A4F8C; border-radius:20px; padding:5px 13px;">Project Bidding</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#fff; background:#6A4F8C; border-radius:20px; padding:5px 13px;">Order &amp; Delivery Tracking</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#fff; background:#6A4F8C; border-radius:20px; padding:5px 13px;">Room Capture</div></div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr; border-top:1.5px solid #ddd3ea;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449; background:#f7f4fb;">Optional</div>
+          <div style="padding:15px 20px; display:flex; flex-wrap:wrap; gap:10px 12px;"><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#3A2449; background:#fff; border:2px solid #9178B5; border-radius:20px; padding:3px 13px;">Style Quiz</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#3A2449; background:#fff; border:2px solid #9178B5; border-radius:20px; padding:3px 13px;">Upsell Suggestions</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#3A2449; background:#fff; border:2px solid #9178B5; border-radius:20px; padding:3px 13px;">Featured Products</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#3A2449; background:#fff; border:2px solid #9178B5; border-radius:20px; padding:3px 13px;">Homeowner Interest Insights</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#3A2449; background:#fff; border:2px solid #9178B5; border-radius:20px; padding:3px 13px;">Supplier Deals</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:14px; color:#3A2449; background:#fff; border:2px solid #9178B5; border-radius:20px; padding:3px 13px;">Upgrade Preview 3D view</div></div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #9178B5; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; background:#6A4F8C;">
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#e6dcf3;">Graceful degradation</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Where it applies</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The rule we set</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #ddd3ea;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449; background:#f7f4fb;">Fallback</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Room Suggestions and Upgrade Preview</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Show the last saved suggestions, labeled with the date they were priced. Priced date shown because the list may be days old.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #ddd3ea;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449; background:#f7f4fb;">Read-only mode</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Project Bidding when saving a bid fails</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Browsing stays open, submitting is disabled with a banner. Disabled rather than failing so no bid is lost.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #ddd3ea;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449; background:#f7f4fb;">Feature flag</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Style Quiz and the 3D view on Upgrade Preview</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">1 switch each, because both are labeled optional. Quiz off leaves suggestions unfiltered, 3D off leaves the list view.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #ddd3ea;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449; background:#f7f4fb;">Load shedding</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Upsell Suggestions, Featured Products, Homeowner Interest Insights</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Shed these 3 first and return an empty panel. Chosen first because nothing downstream depends on them.</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; background:#177E89;">
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#d3ebed;">Self-healing</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Where it applies</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The rule we set</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #cfe0e2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#12626B; background:#f0f7f8;">Liveness check</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Workers running long tasks like photo processing</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Restart a worker stuck for 2 minutes. 2 minutes because the slowest healthy job finishes well inside it.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #cfe0e2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#12626B; background:#f0f7f8;">Readiness check</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">An API server instance during a traffic spike</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Report not ready until certain endpoints return data. No traffic while warming.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #cfe0e2;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#12626B; background:#f0f7f8;">Replacement rate</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">The same worker group over time</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Alert above 3 replacements an hour. Above that it is a leak or a full disk hiding behind a restart.</div>
+        </div>
+      </div>
+
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; background:#B32B26;">
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#ffe1de;">Cascading failures</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Where it applies</div>
+          <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The rule we set</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #f3d7d5;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#B32B26; background:#fdf1f0;">Backpressure</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Room Capture uploading images to the scan queue</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Reject with a retry-after once the queue is full. The phone holds the images instead of us dropping them.</div>
+        </div>
+        <div style="display:grid; grid-template-columns:230px 1fr 1.35fr; border-top:1.5px solid #f3d7d5;">
+          <div style="padding:15px 20px; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#B32B26; background:#fdf1f0;">Queue depth trend</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Scan queue and the order placement queue</div>
+          <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Alert on 10 minutes of steady growth, not on a count. 2,000 items draining fast is fine, 40 that keep climbing is not.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 11.5</span> &nbsp;Resilience Applied to Renovation Revolution</div>
+  </div>
+
+</div>
+
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#241c33; color:#fff; border:1px solid #241c33; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+</body>
+</html>

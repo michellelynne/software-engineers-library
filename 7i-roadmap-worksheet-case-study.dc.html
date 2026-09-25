@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#9aa9b2; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .rblock{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(24,26)">
+      <rect x="0" y="0" width="52" height="8" rx="4" fill="#fff"></rect>
+      <rect x="0" y="16" width="38" height="8" rx="4" fill="#9178B5"></rect>
+      <rect x="0" y="32" width="46" height="8" rx="4" fill="#fff"></rect>
+      <circle cx="60" cy="4" r="4" fill="#DB3A34"></circle>
+      <circle cx="46" cy="20" r="4" fill="#DB3A34"></circle>
+      <circle cx="54" cy="36" r="4" fill="#DB3A34"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(23,126,137,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">MVP Roadmap</span>
+    <span style="font-size:12px; color:#bfe3e2; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#dff0f0; background:transparent; border:1.5px solid #4fa3ab; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#0f5a63; border:1.5px solid #0f5a63; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 7 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">MVP Roadmap</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bfe3e2; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Here is the roadmap worked through for the case study. Every field is editable, so change the team, the tickets, or the hours and watch the estimate move.</p>
+
+    <div style="margin-top:18px; background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#204d52;">Working on your own product instead? Use the <a href="7i-roadmap-worksheet.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #9fd0d2;">blank version</a>.</div>
+
+    <div class="rblock" style="margin-top:30px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">What is the hypothesis for the MVP?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <textarea data-hypo="1" rows="3" placeholder="The one thing this MVP needs to prove&hellip;" style="width:100%; border:1.5px solid #cdd5da; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#1f2d33; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">Resources</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 14px;">These are the assumptions I am making about the team for the case study. You will want to figure this out for your own team. Never assume someone can work 8 hours a day, unless you have cleared all their other work, meetings and personal commitments. If they work more than you expect on a project, that&rsquo;s a bonus. A fullstack person splits their hours evenly across the two tracks.</p>
+      <div data-res-head="1"></div>
+      <div data-res="1"></div>
+      <button type="button" data-add-res="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add person / role</button>
+    </div>
+
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">Tickets</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 12px;">We are only trying to confirm whether people would use this. So one thing we don&rsquo;t need is onboarding. We can do that manually and seed sample data, so users see the best features instead of getting stuck gathering their own information together first. For every ticket ask: does a homeowner need it to send a project to a contractor, or does a contractor need it to find that project and get in touch? If not, it goes on the cut list below.</p>
+      <div data-tick-head="1"></div>
+      <div data-tick="1"></div>
+      <button type="button" data-add-tick="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#177E89; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add ticket</button>
+    </div>
+
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">Cut from the MVP</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 14px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 14px;">Naming what you are <em>not</em> building is as useful as the ticket list. These are real parts of the case study that do not help prove the hypothesis yet.</p>
+      <div style="display:grid; gap:9px;">
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">Contractor Onboarding</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">We sign up the first contractors ourselves and load their licensing and service area by hand.</span></div>
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">Room Capture</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">The 3D scan is the most expensive part of the design. The MVP will just use photos.</span></div>
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">Project Bidding</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">Contractors will contact homeowners manually.</span></div>
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">In-App Messaging</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">Users can use email to contact each other. Later, we&rsquo;ll keep them in the app with in-app messaging.</span></div>
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">Style Quiz</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">Taste matching only matters once people are picking products. Nothing in the hypothesis depends on it.</span></div>
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">Order &amp; Delivery Tracking</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">Everything after a contractor takes on a project, including Purchase Review and Supplier Deals, waits for a second experiment.</span></div>
+        <div style="display:grid; grid-template-columns:190px 1fr; gap:14px; align-items:baseline; padding:9px 12px; background:#f7f9fa; border-left:3px solid #9178B5; border-radius:0 6px 6px 0;"><span style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#0f5a63;">All vendor pages</span><span style="font-size:13px; line-height:1.5; color:#4a5c65;">Product Catalog, Featured Products, and Homeowner Interest Insights need a marketplace we don&rsquo;t have users for yet.</span></div>
+      </div>
+    </div>
+
+    <div class="rblock" style="margin-top:34px;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:34px; line-height:.78; color:#9178B5;">05</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:22px; color:#0f5a63; margin:0;">MVP Estimate</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 16px;"></div>
+      <p style="font-size:13.5px; line-height:1.55; color:#4a5c65; margin:0 0 16px;">Backend and infrastructure hours divide by the backend capacity, frontend hours divide by the frontend capacity. The two tracks run in parallel, so start with the <em>slower</em> one, then multiply it by 3 and round up to whole weeks. That padding covers meetings, reviews, bugs, and the unknowns. This updates as you edit the tables above.</p>
+      <div data-estimate="1"></div>
+      <div style="margin:22px 0 0; background:#eef7f7; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:12px 15px;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#177E89; margin-bottom:6px;">&#9671; AI Prompt</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#12474e;">"You are a staff engineer reviewing an MVP scope with me. Here is the hypothesis the MVP has to prove: [paste]. Here is my ticket list, each with a definition of done, a type of infra, backend or frontend, and an hour estimate: [paste]. Tell me which tickets do not help prove the hypothesis and could be cut or faked with seeded data, which hour estimates look low for a team that has not built this before, and what work I have forgotten that always shows up, such as auth, environments, or deploys. Give me the answer as a table of ticket, verdict, and reason."</div>
+      </div>
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#0f5a63;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#177E89&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#3A2449&quot;,&quot;#177E89&quot;,&quot;#003049&quot;,&quot;#DB3A34&quot;,&quot;#9178B5&quot;],&quot;section&quot;:&quot;Style&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-7-roadmap-cs-v3';
+    this.TYPES = ['Infra', 'Backend', 'Frontend'];
+    this.exHypo = 'Homeowners can post their renovation projects, and contractors can see them.';
+    this.exRes = [
+      { how:'Priya Nair',     focus:'Backend/Infra', hpd:'4', dpw:'5' },
+      { how:'Marcus Johnson', focus:'Frontend',      hpd:'4', dpw:'5' },
+      { how:'Sofia Alvarez',  focus:'Fullstack',     hpd:'4', dpw:'5' }
+    ];
+    this.exTick = [
+      { name:'Setup database', dod:'Database with tables', type:'Infra', hrs:'4' },
+      { name:'Deploy environment', dod:'Staging environment the team can push to, with a URL testers can reach.', type:'Infra', hrs:'8' },
+      { name:'Seed sample data', dod:'Script that loads sample homeowners, contractors, projects and rooms so no one starts on an empty screen.', type:'Infra', hrs:'4' },
+      { name:'AI image research', dod:'Research AI image recognition services', type:'Infra', hrs:'16' },
+      { name:'Start homeowner service', dod:'Service to save homeowner info. Endpoints for create, delete, update. Decide API format.', type:'Backend', hrs:'8' },
+      { name:'Start contractor service', dod:'Service to save contractor info. Endpoints for create, delete, update. Decide API format.', type:'Backend', hrs:'8' },
+      { name:'Project service', dod:'Create a project, list projects open for bids, read one project with its rooms.', type:'Backend', hrs:'8' },
+      { name:'Login and roles', dod:'Sign in with a role of homeowner or contractor, and see only the pages for that role.', type:'Backend', hrs:'8' },
+      { name:'Login / Account page', dod:'Login / Account page wired to the auth endpoints.', type:'Frontend', hrs:'4' },
+      { name:'Create Available Projects Summary page', dod:'Available Projects Summary page', type:'Frontend', hrs:'8' },
+      { name:'Create Contractors Directory page', dod:'Contractors Directory page', type:'Frontend', hrs:'8' },
+      { name:'Create Project Detail (Pre-Contract) page', dod:'Project Detail (Pre-Contract) page showing rooms, photos and budget range, with no homeowner contact details.', type:'Frontend', hrs:'8' },
+      { name:'Create Send to Contractor page', dod:'Send to Contractor page that opens a project for bids.', type:'Frontend', hrs:'8' }
+    ];
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = null;
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || 'null'); }catch(e){}
+    const data = saved || { hypo:this.exHypo, res:this.exRes.slice(), tick:this.exTick.slice() };
+    this.hypo = data.hypo != null ? data.hypo : this.exHypo;
+    this.res = data.res && data.res.length ? data.res : [{how:'',focus:'Backend/Infra',hpd:'',dpw:''}];
+    this.tick = data.tick && data.tick.length ? data.tick : [{name:'',dod:'',type:'Backend',hrs:''}];
+    const hy = root.querySelector('[data-hypo]');
+    if(hy) hy.value = this.hypo;
+    this.renderResHead(root);
+    this.renderTickHead(root);
+    this.renderRes(root);
+    this.renderTick(root);
+    this.renderEstimate(root);
+    root.addEventListener('input', (e)=> this.onEdit(root, e));
+    root.addEventListener('change', (e)=> this.onEdit(root, e));
+    root.addEventListener('click', (e)=>{
+      if(e.target.closest('[data-add-res]')){ e.preventDefault(); this.res.push({how:'',focus:'Backend/Infra',hpd:'4',dpw:'5'}); this.renderRes(root); this.renderEstimate(root); this.persist(); this.focusLast(root, '[data-res]'); }
+      else if(e.target.closest('[data-add-tick]')){ e.preventDefault(); this.tick.push({name:'',dod:'',type:'Backend',hrs:''}); this.renderTick(root); this.renderEstimate(root); this.persist(); this.focusLast(root, '[data-tick]'); }
+      else if(e.target.closest('[data-del-res]')){ e.preventDefault(); const i=+e.target.closest('[data-del-res]').getAttribute('data-del-res'); this.res.splice(i,1); this.renderRes(root); this.renderEstimate(root); this.persist(); }
+      else if(e.target.closest('[data-del-tick]')){ e.preventDefault(); const i=+e.target.closest('[data-del-tick]').getAttribute('data-del-tick'); this.tick.splice(i,1); this.renderTick(root); this.renderEstimate(root); this.persist(); }
+    });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+  }
+  focusLast(root, sel){
+    const host = root.querySelector(sel);
+    if(!host || !host.lastElementChild) return;
+    const inp = host.lastElementChild.querySelector('input, textarea');
+    if(inp) inp.focus();
+  }
+  esc(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  isFrontend(s){ return /front/i.test(s||''); }
+  isFullstack(s){ return /full/i.test(s||''); }
+  onEdit(root, e){
+    const el = e.target;
+    if(el.hasAttribute && el.hasAttribute('data-hypo')){ this.hypo = el.value; this.persist(); return; }
+    const rr = el.getAttribute('data-r'); const rf = el.getAttribute('data-rf');
+    const tr = el.getAttribute('data-t'); const tf = el.getAttribute('data-tf');
+    if(rr!=null && rf){ this.res[+rr][rf] = el.value; this.renderEstimate(root); this.persist(); }
+    else if(tr!=null && tf){ this.tick[+tr][tf] = el.value; if(tf==='dod'||tf==='name') this.autoGrow(el); if(tf==='hrs'||tf==='type') this.renderEstimate(root); this.persist(); }
+  }
+  persist(){
+    try{ localStorage.setItem(this.key, JSON.stringify({hypo:this.hypo, res:this.res, tick:this.tick})); }catch(e){}
+  }
+  cellHead(t, c){ return '<div style="font-family:Montserrat,sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff;'+(c?' text-align:center;':'')+'">'+t+'</div>'; }
+  renderResHead(root){
+    const h = root.querySelector('[data-res-head]');
+    if(h) h.innerHTML = '<div style="display:grid; grid-template-columns:1.3fr 1fr 92px 92px 26px; gap:10px; align-items:center; background:#0f5a63; padding:9px 12px; border-radius:6px 6px 0 0;">'+
+      this.cellHead('Name')+this.cellHead('Focus')+this.cellHead('Hrs / day',1)+this.cellHead('Days / wk',1)+'<span></span></div>';
+  }
+  inp(attrs, val, ph, extra){
+    return '<input type="text" '+attrs+' value="'+this.esc(val)+'" placeholder="'+(ph||'')+'" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box; '+(extra||'')+'">';
+  }
+  renderRes(root){
+    const host = root.querySelector('[data-res]');
+    if(!host) return;
+    let h = '';
+    this.res.forEach((r,i)=>{
+      const foc = '<select data-r="'+i+'" data-rf="focus" style="width:100%; border:1px solid #b9cfd2; border-radius:999px; background:#fff; font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#0f5a63; padding:5px 8px; outline:none; box-sizing:border-box;">'+
+        ['Backend/Infra','Frontend','Fullstack'].map(o=>'<option'+(o===r.focus?' selected':'')+'>'+o+'</option>').join('')+'</select>';
+      h += '<div style="display:grid; grid-template-columns:1.3fr 1fr 92px 92px 26px; gap:10px; align-items:center; padding:6px 12px; background:'+(i%2?'#f7f9fa':'#fff')+'; border-left:1px solid #e6edee; border-right:1px solid #e6edee; border-bottom:1px solid #e6edee;'+(i===this.res.length-1?' border-radius:0 0 6px 6px;':'')+'">'+
+        this.inp('data-r="'+i+'" data-rf="how"', r.how, 'Name')+
+        foc+
+        this.inp('data-r="'+i+'" data-rf="hpd"', r.hpd, '4', 'text-align:center; font-family:Bebas Neue,sans-serif; font-size:19px;')+
+        this.inp('data-r="'+i+'" data-rf="dpw"', r.dpw, '5', 'text-align:center; font-family:Bebas Neue,sans-serif; font-size:19px;')+
+        '<button type="button" data-del-res="'+i+'" class="no-print" title="Remove" style="border:none; background:transparent; color:#c2ccd0; font-size:16px; cursor:pointer; line-height:1; padding:0;">&times;</button>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+  }
+  renderTickHead(root){
+    const h = root.querySelector('[data-tick-head]');
+    if(h) h.innerHTML = '<div style="display:grid; grid-template-columns:1.1fr 1.8fr 108px 66px 26px; gap:10px; align-items:center; background:#0f5a63; padding:9px 12px; border-radius:6px 6px 0 0;">'+
+      this.cellHead('Name')+this.cellHead('Definition of done')+this.cellHead('Type',1)+this.cellHead('Hours',1)+'<span></span></div>';
+  }
+  renderTick(root){
+    const host = root.querySelector('[data-tick]');
+    if(!host) return;
+    let h = '';
+    this.tick.forEach((t,i)=>{
+      const type = '<select data-t="'+i+'" data-tf="type" style="width:100%; border:1px solid #b9cfd2; border-radius:999px; background:#fff; font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#0f5a63; padding:5px 8px; outline:none; box-sizing:border-box;">'+
+        this.TYPES.map(o=>'<option'+(o===t.type?' selected':'')+'>'+o+'</option>').join('')+'</select>';
+      h += '<div style="display:grid; grid-template-columns:1.1fr 1.8fr 108px 66px 26px; gap:10px; align-items:center; padding:8px 12px; background:'+(i%2?'#f7f9fa':'#fff')+'; border-left:1px solid #e6edee; border-right:1px solid #e6edee; border-bottom:1px solid #e6edee;'+(i===this.tick.length-1?' border-radius:0 0 6px 6px;':'')+'">'+
+        '<textarea data-t="'+i+'" data-tf="name" rows="1" placeholder="Ticket name" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:Lato,sans-serif; font-size:13px; line-height:1.4; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box; resize:none; overflow:hidden; min-height:32px;">'+this.esc(t.name)+'</textarea>'+
+        '<textarea data-t="'+i+'" data-tf="dod" rows="1" placeholder="What &lsquo;done&rsquo; looks like" style="width:100%; border:none; border-bottom:1px solid #dde4e7; background:transparent; font-family:\'Lato\',sans-serif; font-size:13px; line-height:1.4; color:#1f2d33; padding:6px 2px; outline:none; box-sizing:border-box; resize:none; overflow:hidden; min-height:32px;">'+this.esc(t.dod)+'</textarea>'+
+        type+
+        this.inp('data-t="'+i+'" data-tf="hrs"', t.hrs, '8', 'text-align:center; font-family:Bebas Neue,sans-serif; font-size:19px;')+
+        '<button type="button" data-del-tick="'+i+'" class="no-print" title="Remove" style="border:none; background:transparent; color:#c2ccd0; font-size:16px; cursor:pointer; line-height:1; padding:0;">&times;</button>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+    host.querySelectorAll('textarea[data-t]').forEach(el=> this.autoGrow(el));
+  }
+  autoGrow(el){
+    if(!el) return;
+    el.style.height = 'auto';
+    el.style.height = Math.max(32, el.scrollHeight) + 'px';
+  }
+  capacity(){
+    let be = 0, fe = 0;
+    this.res.forEach(r=>{
+      const cap = (parseFloat(r.hpd)||0) * (parseFloat(r.dpw)||0);
+      if(this.isFullstack(r.focus)){ be += cap/2; fe += cap/2; }
+      else if(this.isFrontend(r.focus)) fe += cap;
+      else be += cap;
+    });
+    return { be, fe };
+  }
+  ticketHours(){
+    let be = 0, fe = 0;
+    this.tick.forEach(t=>{
+      const h = parseFloat(t.hrs)||0;
+      if(this.isFrontend(t.type)) fe += h; else be += h;
+    });
+    return { be, fe };
+  }
+  fmtWeeks(w){ return (Math.round(w*10)/10).toString(); }
+  renderEstimate(root){
+    const host = root.querySelector('[data-estimate]');
+    if(!host) return;
+    const cap = this.capacity();
+    const hrs = this.ticketHours();
+    const beWeeks = cap.be > 0 ? hrs.be / cap.be : 0;
+    const feWeeks = cap.fe > 0 ? hrs.fe / cap.fe : 0;
+    const longer = Math.max(beWeeks, feWeeks);
+    const total = Math.ceil(longer * 3);
+    const track = (label, color, h, capw, weeks, note) => {
+      return '<div style="flex:1; min-width:200px; background:#fbfdfd; border:1px solid #e0eaea; border-radius:10px; padding:15px 17px;">'+
+        '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:'+color+'; margin-bottom:8px;">'+label+'</div>'+
+        '<div style="font-family:\'Lato\',sans-serif; font-size:12.5px; color:#5b7681; line-height:1.5;">'+h+' ticket hrs &divide; '+(capw||'0')+' hrs/wk</div>'+
+        '<div style="display:flex; align-items:baseline; gap:6px; margin-top:6px;"><span style="font-family:\'Bebas Neue\',sans-serif; font-size:38px; color:#0f5a63; line-height:.9;">'+this.fmtWeeks(weeks)+'</span><span style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:13px; color:#7d94a0;">weeks</span></div>'+
+        (note?'<div style="font-family:\'Lato\',sans-serif; font-size:11px; font-style:italic; color:#9aa9b2; margin-top:4px;">'+note+'</div>':'')+
+      '</div>';
+    };
+    host.innerHTML =
+      '<div style="display:flex; gap:16px; flex-wrap:wrap;">'+
+        track('Backend / Infra', '#177E89', hrs.be, cap.be, beWeeks, cap.be? '':'add a Backend/Infra person above')+
+        track('Frontend', '#9178B5', hrs.fe, cap.fe, feWeeks, cap.fe? '':'add a Frontend person above')+
+      '</div>'+
+      '<div style="margin-top:16px; background:#0f5a63; border-radius:10px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">'+
+        '<div><div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#8fd0d2;">MVP Estimate</div>'+
+          '<div style="font-family:\'Lato\',sans-serif; font-size:12.5px; color:#cfeaea; margin-top:3px;">The longer track ('+this.fmtWeeks(longer)+' wks) &times; 3, rounded up to whole weeks</div></div>'+
+        '<div style="display:flex; align-items:baseline; gap:8px;"><span style="font-family:\'Bebas Neue\',sans-serif; font-size:52px; color:#fff; line-height:.85;">'+this.fmtWeeks(total)+'</span><span style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:16px; color:#8fd0d2;">weeks</span></div>'+
+      '</div>';
+  }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the Renovation Revolution example?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        this.hypo = this.exHypo;
+        this.res = this.exRes.map(r=>Object.assign({}, r));
+        this.tick = this.exTick.map(t=>Object.assign({}, t));
+        if(root){
+          const hy = root.querySelector('[data-hypo]');
+          if(hy) hy.value = this.hypo;
+          this.renderRes(root); this.renderTick(root); this.renderEstimate(root);
+        }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
