@@ -128,9 +128,6 @@ Deciding whether to modernize, and doing it without breaking what works.
 
 | Skill | Where it comes from | What it does |
 |---|---|---|
-| `legacy-system-explainer` | Migrating a Legacy System | Explains what a legacy system does and lists what it could not work out, suggesting nothing yet |
-| `migration-candidate-ranking` | Migrating a Legacy System | Ranks features by how cleanly each extracts, least risky first, after the four should-we questions |
-| `migration-tdd-scaffolding` | Migrating a Legacy System | Writes the test plan before the implementation, each test naming the user outcome it protects |
 | `tech-evaluation-variations` | Dig In or Opt Out Worksheet | Surveys every category of tool that could solve your problem, including what you already own |
 
 ---
@@ -157,6 +154,19 @@ Telling the story of what you did.
 
 ---
 
+### Orphaned
+
+Built from an earlier draft of Migrating a Legacy System. The section was rewritten, so these
+wait in `skills/_orphan/` until the prompts settle and the skills are rebuilt.
+
+| Skill | Where it came from | What it does |
+|---|---|---|
+| `legacy-system-explainer` | Migrating a Legacy System | Explains what a legacy system does and lists what it could not work out, suggesting nothing yet |
+| `migration-candidate-ranking` | Migrating a Legacy System | Ranks features by how cleanly each extracts, least risky first, after the four should-we questions |
+| `migration-tdd-scaffolding` | Migrating a Legacy System | Writes the test plan before the implementation, each test naming the user outcome it protects |
+
+---
+
 ### Any phase
 
 | Skill | Where it comes from | What it does |
@@ -170,7 +180,8 @@ the tracker is how you answer that with a measurement instead of a feeling.
 
 ## Status
 
-Forty-nine skills, covering every phase of the book.
+Forty-six active skills, plus three orphaned in `skills/_orphan/` while Migrating a
+Legacy System is rewritten.
 
 ## If you are adding a skill
 
