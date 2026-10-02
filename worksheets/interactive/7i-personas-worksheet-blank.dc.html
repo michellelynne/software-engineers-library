@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#a9c2c4; font-style:italic; }
+  .lk-url{ display:none; }
+  .ta{ width:100%; box-sizing:border-box; resize:none; overflow:hidden; border:1px solid #d7e6e6; background:#fbfdfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.6; color:#1f2d33; padding:10px 12px; outline:none; border-radius:7px; }
+  .ta:focus{ border-color:#177E89; background:#fff; }
+  .fld{ width:100%; box-sizing:border-box; border:none; border-bottom:1px solid #d7e6e6; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:6px 2px; outline:none; }
+  .fld:focus{ border-bottom-color:#177E89; }
+  .role{ border:none; background:transparent; font-family:'Fraunces',serif; font-weight:700; font-size:19px; color:#12343a; outline:none; width:100%; padding:0; }
+  .role::placeholder{ color:#8fb6b9; font-style:italic; font-weight:400; }
+  .lbl{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#6b8d90; margin-bottom:5px; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    .ta{ background:#fff; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#177E89"></rect>
+    <g transform="translate(28,26)" fill="#0d474e">
+      <circle cx="22" cy="14" r="11"></circle>
+      <path d="M0 48c0-12 10-20 22-20s22 8 22 20z"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Personas Worksheet</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ addPersona }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">+ Persona</button>
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#177E89; color:#fff; padding:42px 60px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#bfe3e2;">Chapter 7 &middot; Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Personas</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#bfe3e2; margin:12px 0 0;">Your project</div>
+    <div style="height:3px; width:64px; background:#9178B5; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">When talking about MVP, I mentioned &ldquo;a user&rdquo;. But of course, in the case study and most applications, there are multiple user types, not one monolithic &ldquo;user.&rdquo; Even if everyone sees the same pages, you will at least need someone to handle operations or debugging. So let&rsquo;s start to fill in the personas. You should gather this from market research and user interviews. If you can&rsquo;t do those yet, create personas based on what you know about them.</p>
+
+    <div style="margin-top:18px; background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#204d52;">Want to see it filled in? See the <a href="7i-personas-worksheet-case-study.dc.html" style="color:#177E89; font-weight:700; text-decoration:none; border-bottom:1.5px solid #9fd0d2;">Renovation Revolution example</a>.</div>
+
+    <div id="sec-research-prompt" style="margin-top:16px; background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#0f5a63; margin-bottom:6px;">&#9671; AI Prompt &middot; Market research</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#204d52;">"You are a market researcher helping me understand the users of [product in one or two sentences, and the market or region it serves]. Identify the distinct user types this product needs. For each one, give me their likely demographics, daily context, motivations, pain points, and behaviors, and mark each item as either supported by public evidence or an assumption I still need to test. Then write ten interview questions I could ask a real user of the type I most need to validate. Cite your sources where you have them."</div>
+    </div>
+
+    <div style="margin-top:16px; background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#204d52;">Name each user type at the top of its card, then fill in the details. One item per line in the list fields. Add a card for every internal role too, such as the engineer on call and whoever answers support requests.</div>
+
+    <div data-personas="1" style="margin-top:26px;"></div>
+
+    <div style="margin:22px 0 0; background:#eaf4f4; border-left:3px solid #177E89; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#0f5a63; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#204d52;">"You are a product researcher helping me pressure-test user personas. Here is my product in one paragraph: [paste]. Here are the personas I have written: [paste]. For each one, tell me which motivations and pain points are actually assumptions rather than research findings, name the questions I would have to ask a real user to confirm each assumption, and point out any user type I have missed."</div>
+    </div>
+
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#0f5a63; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#0f5a63; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#0f5a63; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#0f5a63; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#177E89&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#177E89&quot;, &quot;#9178B5&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#3A2449&quot;], &quot;section&quot;: &quot;Style&quot; }}">
+class Component extends DCLogic {
+  cardHTML(k, n){
+    const f = (name, label, ph) => '<div><div class="lbl">'+label+'</div><input class="fld save" type="text" name="p-'+k+'-'+name+'" placeholder="'+ph+'"></div>';
+    const list = (name, label, ph) => '<div><div class="lbl">'+label+'</div><textarea class="ta save" name="p-'+k+'-'+name+'" rows="3" placeholder="'+ph+'"></textarea></div>';
+    return '<div class="block" id="persona-'+k+'" style="border:1px solid #d7e6e6; border-radius:12px; overflow:hidden; margin-bottom:18px;">'+
+      '<div style="background:#f7fafa; padding:12px 20px; display:flex; align-items:center; gap:12px;">'+
+        '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#0f5a63; flex:none;">Persona '+n+'</span>'+
+        '<input class="role save" type="text" name="p-'+k+'-role" placeholder="name this user type">'+
+      '</div>'+
+      '<div style="padding:18px 20px 20px;">'+
+        '<div style="display:grid; grid-template-columns:2fr 1fr; gap:14px 20px;">'+
+          f('name','Name','who they are')+
+          f('age','Age','')+
+        '</div>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; margin-top:14px;">'+
+          f('occupation','Occupation','what they do')+
+          f('tech','Tech Comfort','high, moderate, low')+
+        '</div>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; margin-top:14px;">'+
+          f('lifestyle','Lifestyle','how they live and work')+
+          f('goal','Main Goal','why they open the app')+
+        '</div>'+
+        '<div style="display:flex; flex-direction:column; gap:14px; margin-top:18px;">'+
+          list('motivations','Motivations and Goals','one per line')+
+          list('pains','Pain Points','one per line')+
+          list('behaviors','Behaviors and Needs','one per line')+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+  render(){
+    const host = document.querySelector('[data-personas]');
+    if(!host) return;
+    host.innerHTML = Array.from({length:this.count}, (_,i)=> this.cardHTML(i+1, i+1)).join('');
+    const root = document.getElementById('ws-root');
+    this.fill(root, this.data);
+    this.autosizeAll(root);
+  }
+  componentDidMount(){
+    this.key = 'ssl-7-personas-blank-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.data = saved;
+    this.count = Math.max(5, ...Object.keys(saved).map(n=> parseInt((n.match(/^p-(\d+)-/)||[])[1] || 0, 10)));
+    this.render();
+    requestAnimationFrame(()=> this.autosizeAll(root));
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=> this.autosizeAll(root));
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      this.data = o;
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', (e)=>{ this._save(); if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target); });
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#177E89';
+  }
+  fill(root, data){
+    if(!root) return;
+    Object.entries(data || {}).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+  }
+  autosize(el){ if(!el) return; el.style.height='auto'; el.style.height = Math.max(el.scrollHeight, 40)+'px'; }
+  autosizeAll(root){ if(root) root.querySelectorAll('textarea.save').forEach(el=> this.autosize(el)); }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      addPersona: () => { this.count += 1; this.render(); },
+      clearAll: () => {
+        if(!window.confirm('Clear every field on this worksheet?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        this.data = {}; this.count = 5;
+        this.render();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

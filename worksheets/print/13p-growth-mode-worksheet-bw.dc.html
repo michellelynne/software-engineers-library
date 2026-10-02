@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#fff; }
+  a{ color:#111; }
+  a:hover{ color:#111; }
+  .save:focus{ border-color:#111 !important; border-bottom-color:#111 !important; }
+  ::placeholder{ color:#999; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(26,26)">
+      <path d="M0 44 L16 26 L30 34 L48 6" stroke="#fff" stroke-width="4" fill="none"></path>
+      <circle cx="48" cy="6" r="6" fill="#111"></circle>
+      <circle cx="0" cy="44" r="5" fill="#111"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(17,17,17,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Achieve Growth Mode Goals</span>
+    <span style="font-size:12px; color:#bbb; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#ddd; background:transparent; border:1.5px solid #555; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#fff; color:#111; border-bottom:3px solid #111; padding:42px 64px 32px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#444;">Chapter 13 · Print Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Achieve Growth Mode Goals</h1>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">In the <a href="13p-set-growth-mode-goals-worksheet-bw.dc.html" style="color:#111; text-decoration:underline; text-underline-offset:3px;">Set Growth Mode Goals Worksheet</a>, we reviewed where we are and what we wanted our goals to be. To achieve those goals, we need:</p>
+    <div style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; margin:16px 0 0;">
+      <div style="border:1.5px solid #111; border-top-width:5px; border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:6px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; line-height:1; color:#111;">Desire</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.45; color:#333;">to make a change</div>
+      </div>
+      <div style="border:1.5px solid #111; border-top-width:5px; border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:6px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; line-height:1; color:#111;">Sacrifice</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.45; color:#333;">creates time for it</div>
+      </div>
+      <div style="border:1.5px solid #111; border-top-width:5px; border-radius:8px; padding:14px 16px; display:flex; flex-direction:column; gap:6px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; line-height:1; color:#111;">Opportunity</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.45; color:#333;">to act without blockers</div>
+      </div>
+    </div>
+
+    <div class="step" id="sec-desire">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Desire</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:0 0 12px;">From the <a href="13p-set-growth-mode-goals-worksheet-bw.dc.html" style="color:#111; text-decoration:underline; text-underline-offset:3px;">Set Growth Mode Goals Worksheet</a>, choose your top priority in each category.</p>
+      <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+        <sc-for list="{{ typeRows }}" as="row" hint-placeholder-count="5">
+          <div style="display:grid; grid-template-columns:143px 1fr; border-top:1px solid #bbb;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#111; padding:12px 13px; border-right:1px solid #bbb; background:#f0f0f0;">{{ row.label }}</div>
+            <input class="save" type="text" name="{{ row.desireField }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-sacrifice">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Sacrifice</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:0 0 12px;">You cannot add time to the day, you can only remove something that currently uses it. Start with the total minutes you can free up, then split them between the goals.</p>
+      <div style="display:flex; align-items:center; gap:14px; margin:0 0 0;">
+        <label style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; white-space:nowrap;">Minutes per week you can devote to growth</label>
+        <input class="save" type="text" name="sac-minutes" style="width:110px; border:none; border-bottom:2px solid #111; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:20px; color:#111; padding:6px 2px; outline:none; box-sizing:border-box;">
+      </div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:18px 0 12px;">Now split those minutes between the goals. Some goals need less time than others. If you are blocked or not ready for one, set it to zero, and change the budget as your priorities move.</p>
+      <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1fr 120px; background:#111;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Goal</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px; text-align:right;">Minutes</div>
+        </div>
+        <sc-for list="{{ typeRows }}" as="row" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:1fr 120px; border-top:1px solid #bbb;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#111; padding:12px 13px; border-right:1px solid #bbb; background:#f0f0f0;">{{ row.label }}</div>
+            <input class="save mins" type="text" name="{{ row.minsField }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; text-align:right; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:1fr 120px; border-top:2px solid #111; background:#f0f0f0;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#111; padding:11px 13px;">Total</div>
+          <div id="mins-total" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#111; padding:11px 13px; text-align:right;">0</div>
+        </div>
+      </div>
+      <div data-example="1" style="margin-top:14px; border:1.5px solid #bbb; border-radius:10px; overflow:hidden;">
+        <div style="background:#f0f0f0; border-bottom:1px solid #bbb; padding:9px 15px; display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+          <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111;">Example split</span>
+          <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:15px; color:#111;">120 minutes per week</span>
+        </div>
+        <div style="padding:14px 15px; display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; height:30px; border-radius:6px; overflow:hidden; gap:2px;"><div style="flex:60; background:#111; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#fff; min-width:0;">60</div><div style="flex:30; background:#666; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#fff; min-width:0;">30</div><div style="flex:30; background:#aaa; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#fff; min-width:0;">30</div></div>
+          <div style="display:flex; flex-wrap:wrap; gap:8px 22px;"><div style="display:flex; align-items:center; gap:8px; font-family:'Lato',sans-serif; font-size:13px; color:#111;"><span style="width:11px; height:11px; border-radius:3px; background:#111; flex:none;"></span>Influence<span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#111;">60</span></div><div style="display:flex; align-items:center; gap:8px; font-family:'Lato',sans-serif; font-size:13px; color:#111;"><span style="width:11px; height:11px; border-radius:3px; background:#666; flex:none;"></span>Autonomy<span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#666;">30</span></div><div style="display:flex; align-items:center; gap:8px; font-family:'Lato',sans-serif; font-size:13px; color:#111;"><span style="width:11px; height:11px; border-radius:3px; background:#aaa; flex:none;"></span>Accomplishment<span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#888;">30</span></div><div style="display:flex; align-items:center; gap:8px; font-family:'Lato',sans-serif; font-size:13px; color:#555;"><span style="width:11px; height:11px; border-radius:3px; border:1.5px dashed #999; box-sizing:border-box; flex:none;"></span>Respect<span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; color:#555;">0</span></div></div>
+        </div>
+      </div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:18px 0 12px;">What are you going to sacrifice to free up this time? What are you going to do less of or stop completely?</p>
+      <textarea class="save" name="sac-help" rows="3" style="width:100%; margin-top:0; border:1.5px solid #bbb; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-opportunity">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Opportunity</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:0 0 12px;">For each goal, identify any blockers and how you can remove them.</p>
+      <div data-example="1" style="margin:0 0 16px; border:1.5px solid #bbb; border-radius:10px; overflow:hidden;">
+        <div style="background:#f0f0f0; border-bottom:1px solid #bbb; padding:9px 15px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111;">Common blockers</div>
+        <div style="padding:14px 15px; display:flex; flex-direction:column; gap:12px;">
+          <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; align-items:center;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111;">People</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;"><span style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #111; border-radius:999px; padding:5px 12px 5px 9px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.2; color:#555;"><span style="width:7px; height:7px; border-radius:50%; background:#111; flex:none;"></span>A peer on my team</span><span style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #111; border-radius:999px; padding:5px 12px 5px 9px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.2; color:#555;"><span style="width:7px; height:7px; border-radius:50%; background:#111; flex:none;"></span>A peer on another team</span><span style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #111; border-radius:999px; padding:5px 12px 5px 9px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.2; color:#555;"><span style="width:7px; height:7px; border-radius:50%; background:#111; flex:none;"></span>My manager</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; align-items:center;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#555;">Organization</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;"><span style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #555; border-radius:999px; padding:5px 12px 5px 9px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.2; color:#555;"><span style="width:7px; height:7px; border-radius:50%; background:#555; flex:none;"></span>An organizational mandate</span><span style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px solid #555; border-radius:999px; padding:5px 12px 5px 9px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.2; color:#555;"><span style="width:7px; height:7px; border-radius:50%; background:#555; flex:none;"></span>Unspoken organization culture</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:110px minmax(0,1fr); gap:12px; align-items:center;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#111;">Yourself</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;"><span style="display:inline-flex; align-items:center; gap:7px; background:#fff; border:1.5px dashed #666; border-radius:999px; padding:5px 12px 5px 9px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.2; color:#555;"><span style="width:7px; height:7px; border-radius:50%; background:#666; flex:none;"></span>My own behavior or habits</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="border:1.5px solid #bbb; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:143px minmax(0,1fr) minmax(0,1fr); background:#111;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Goal</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Blocker</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Unblock?</div>
+        </div>
+        <sc-for list="{{ typeRows }}" as="row" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:143px minmax(0,1fr) minmax(0,1fr); border-top:1px solid #bbb;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#111; padding:12px 13px; border-right:1px solid #bbb; background:#f0f0f0;">{{ row.label }}</div>
+            <input class="save" type="text" name="{{ row.blockField }}" style="border:none; border-right:1px solid #bbb; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; outline:none; box-sizing:border-box;">
+            <input class="save" type="text" name="{{ row.controlField }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:20px 0 12px;">If you can't accomplish your goal on your own, make a plan to discuss with your manager.</p>
+      <textarea class="save" name="opp-manager" rows="3" style="width:100%; border:1.5px solid #bbb; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+
+    <div class="step" id="sec-deadline">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Deadline</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:0 0 10px;">Set a deadline to help you make progress.</p>
+      <input class="save" type="date" name="deadline-date" style="width:440px; max-width:100%; border:none; border-bottom:2px solid #111; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:18px; color:#111; padding:6px 2px; outline:none; box-sizing:border-box;">
+      <p style="font-size:14px; line-height:1.55; color:#333; margin:22px 0 12px;">Come back on that date and describe how it went. Redo the worksheets whenever you want to adjust your goals.</p>
+      <textarea class="save" name="deadline-review" rows="4" style="width:100%; border:1.5px solid #bbb; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+    </div>
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#111; color:#fff; border:1px solid #111; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#444; color:#fff; border:1px solid #444; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900},&quot;showExamples&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-10-growthmode-v1-bw';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.restore(root, saved);
+    this._save = () => { this.save(root); this.updateTotal(root); };
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.updateTotal(root);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){
+    const root = document.getElementById('ws-root');
+    if(root) this.updateTotal(root);
+    this.applyTweaks();
+  }
+  updateTotal(root){
+    const num = el => { const n = parseFloat(String(el && el.value).replace(/[^0-9.\-]/g,'')); return isNaN(n) ? 0 : n; };
+    let t = 0;
+    root.querySelectorAll('.mins').forEach(el=>{ t += num(el); });
+    const budget = num(root.querySelector('.save[name="sac-minutes"]'));
+    const out = document.getElementById('mins-total');
+    if(!out) return;
+    out.textContent = budget ? (t + ' of ' + budget) : String(t);
+    out.style.color = !budget ? '#111' : (t === budget ? '#111' : (t > budget ? '#111' : '#111'));
+  }
+  applyTweaks(){
+    const p = this.props || {};
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    const showEx = p.showExamples !== false;
+    root.querySelectorAll('[data-example]').forEach(el=>{ el.style.display = showEx ? '' : 'none'; });
+    const prompt = document.getElementById('sec-ai-prompt');
+    if(prompt) prompt.style.display = (p.showAiPrompt === false) ? 'none' : '';
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; }
+      else if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(!el) return;
+      if(el.type === 'checkbox') el.checked = (v === '1');
+      else el.value = v;
+    });
+  }
+  renderVals(){
+    const types = [['respect','Respect'],['influence','Influence'],['autonomy','Autonomy'],['accomplishment','Accomplishment'],['financial','Financial']];
+    const typeRows = types.map(([k,label]) => ({
+      key:k, label,
+      desireField:'desire-'+k,
+      minsField:'mins-'+k,
+      blockField:'block-'+k,
+      controlField:'control-'+k
+    }));
+    return {
+      typeRows,
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=>{ if(el.type==='checkbox') el.checked=false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

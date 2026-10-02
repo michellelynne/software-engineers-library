@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Josefin+Sans:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Bebas+Neue&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#b7a6c6; font-style:italic; }
+  .lk-url{ display:none; }
+  .ta{ width:100%; box-sizing:border-box; resize:none; overflow:hidden; border:1px solid #e6ddf0; background:#fbfafc; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; border-radius:7px; }
+  .ta:focus{ border-color:#9178B5; background:#fff; }
+  .lbl{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#8a7f97; margin-bottom:6px; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    .ta{ background:#fff; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#9178B5"></rect>
+    <g transform="translate(28,30)" stroke="#241c33" stroke-width="4" fill="none" stroke-linecap="round">
+      <path d="M0 20 L14 6 L28 20 L44 6"></path>
+      <circle cx="0" cy="20" r="3" fill="#241c33"></circle>
+      <circle cx="44" cy="6" r="3" fill="#241c33"></circle>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Frontend Decision Worksheet</span>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Reset</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#9178B5; border:1.5px solid #9178B5; border-radius:7px; padding:8px 16px; cursor:pointer; color:#241c33;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#9178B5; color:#241c33; padding:42px 60px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#3a2449;">Chapter 5 &middot; Frontend &amp; Design &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#241c33;">Frontend Decision Worksheet</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#4a3563; margin:12px 0 0;">Renovation Revolution</div>
+    <div style="height:3px; width:64px; background:#241c33; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Now you are the Senior Frontend Engineer. Before writing a line of code, you map how each persona moves through the app, then make the technical decisions that shape the whole project. The <strong>Contractor</strong> persona is filled in as an example. Complete the <strong>Homeowner</strong>, then work through the project decisions.</p>
+
+    <div style="margin-top:18px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:13px 16px; font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#3a2b4d;">Want to see it filled in? See the <a href="5i-frontend-decision-worksheet-case-study.dc.html" style="color:#7a5fa6; font-weight:700; text-decoration:none; border-bottom:1.5px solid #cbbde0;">Renovation Revolution example</a>.</div>
+
+    <!-- PART 1 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:40px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">01</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">User Workflow</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-size:14px; line-height:1.6; color:#4a3f56; margin:0 0 22px;">For each persona, note the <em>devices</em> they use, tell the story of their trip through the app in plain words, then write that same trip as shorthand <em>page flows</em> (page &rarr; page).</p>
+
+    <!-- Contractor persona -->
+    <div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+      <div style="background:#f3eff7; padding:12px 18px; display:flex; align-items:center; gap:10px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Persona</span>
+        <span style="font-family:'Fraunces',serif; font-weight:700; font-size:19px; color:#241c33;">Contractor</span>
+        <span style="margin-left:auto; font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#a08fb5;">Example</span>
+      </div>
+      <div style="padding:16px 18px 18px; display:flex; flex-direction:column; gap:16px;">
+        <div><div class="lbl">Devices: what will they use to access the app?</div><textarea class="ta save" name="dev-contractor" rows="1" placeholder="devices…"></textarea></div>
+        <div><div class="lbl">Page Flow Story: which pages, in what order?</div><textarea class="ta save" name="story-contractor" rows="1" placeholder="the journey…"></textarea></div>
+        <div><div class="lbl">Page Flows: page &rarr; page shorthand</div><textarea class="ta save" name="flows-contractor" rows="1" placeholder="Page A → Page B → Page C" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#003049;"></textarea></div>
+      </div>
+    </div>
+
+    <!-- Homeowner persona -->
+    <div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+      <div style="background:#f6f4f9; padding:12px 18px; display:flex; align-items:center; gap:10px;">
+        <span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Persona</span>
+        <span style="font-family:'Fraunces',serif; font-weight:700; font-size:19px; color:#241c33;">Homeowner</span>
+        <span style="margin-left:auto; font-family:'Montserrat',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:#c0b3d0;">Your turn</span>
+      </div>
+      <div style="padding:16px 18px 18px; display:flex; flex-direction:column; gap:16px;">
+        <div><div class="lbl">Devices: what will they use to access the app?</div><textarea class="ta save" name="dev-customer" rows="1" placeholder="As the Homeowner, I…"></textarea></div>
+        <div><div class="lbl">Page Flow Story: which pages, in what order?</div><textarea class="ta save" name="story-customer" rows="1" placeholder="the journey…"></textarea></div>
+        <div><div class="lbl">Page Flows: page &rarr; page shorthand</div><textarea class="ta save" name="flows-customer" rows="1" placeholder="Page A → Page B → Page C" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12.5px; color:#003049;"></textarea></div>
+      </div>
+    </div>
+    <p style="font-size:12.5px; line-height:1.55; color:#8a7f97; font-style:italic; margin:0 0 8px;">Need more practice? Add the Vendor persona too, using the button below.</p>
+    <div data-personas="1"></div>
+    <button type="button" data-add-persona="1" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; color:#003049; background:transparent; border:none; padding:8px 0 0; cursor:pointer;">+ Add a persona</button>
+
+    <!-- PART 2 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:46px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">02</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">Project Decisions</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-size:14px; line-height:1.6; color:#4a3f56; margin:0 0 8px;">Each decision comes with a definition and a few options to weigh. Think about what you would use for Renovation Revolution. The most common choice as of 2026 is already selected, but pick or write what is best for your team. Save this worksheet, and it can help you plan future projects.</p>
+
+    <div style="margin:14px 0 4px; background:#f3eff7; border-left:3px solid #9178B5; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7a5fa6; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.5; color:#3a2b4d;">"You are a senior frontend engineer helping me choose the architecture for [project description]. [number of engineers, time to MVP]. For each decision I name (I will paste the list), give me two or three realistic options. For each option, list the pros, the cons, and the team size or timeline it suits. Then recommend one option for this project in a sentence and name the biggest risk of picking it. Keep each decision to a short table."</div>
+    </div>
+
+    <div data-decisions="1"></div>
+
+
+    <!-- PART 3 -->
+    <div style="display:flex; align-items:baseline; gap:13px; margin:46px 0 0;">
+      <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#9178B5;">03</span>
+      <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#241c33; margin:0;">Page Decisions</h2>
+    </div>
+    <div style="height:3px; width:54px; background:#241c33; margin:12px 0 14px;"></div>
+    <p style="font-size:14px; line-height:1.6; color:#4a3f56; margin:0 0 14px;">With the project decisions settled, you can work through each page. This worksheet lists every page decision that needs to be made. You don't have to write it all out for each page, but it is worth doing once to get in the flow of making these decisions.</p>
+
+    <div data-pagespec="1"></div>
+
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #9178B5;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#7a5fa6; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mastheadColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#9178B5&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;#9178B5&quot;, &quot;#177E89&quot;, &quot;#003049&quot;, &quot;#DB3A34&quot;, &quot;#3A2449&quot;], &quot;section&quot;: &quot;Style&quot; }}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-frontend-decision-blank-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    this.buildDecisions(root);
+    this.buildPageSpec(root);
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.example = this.buildExample();
+    const hasData = Object.keys(saved).some(k=> !k.startsWith('__'));
+    const data = hasData ? saved : this.example;
+    if(data.__personas) this.restorePersonas(root, data.__personas);
+    Object.entries(data).forEach(([n,v])=>{
+      if(n.startsWith('__')) return;
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this.applyDefaults(root);
+    this.paintPicks(root);
+    this.autosizeAll(root);
+    requestAnimationFrame(()=> this.autosizeAll(root));
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=> this.autosizeAll(root));
+    this._save = () => {
+      const o = {};
+      root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name]=el.value; });
+      o['__personas'] = String(root.querySelectorAll('[data-personas] > .block').length);
+      try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+    };
+    root.addEventListener('input', (e)=>{ this._save(); if(e.target && e.target.tagName === 'TEXTAREA') this.autosize(e.target); });
+    root.addEventListener('click', (e)=>{
+      const ap = e.target.closest('[data-add-persona]');
+      if(ap){ e.preventDefault(); this.addPersona(root); this._save(); return; }
+      const mu = e.target.closest('[data-multi]');
+      if(mu){
+        e.preventDefault();
+        const inp = root.querySelector('.save[name="m-'+mu.getAttribute('data-multi')+'"]');
+        if(inp){
+          const v = mu.getAttribute('data-val');
+          const vals = inp.value ? inp.value.split(',') : [];
+          const at = vals.indexOf(v);
+          if(at > -1) vals.splice(at,1); else vals.push(v);
+          inp.value = vals.join(',');
+        }
+        this.paintPicks(root);
+        this._save();
+        return;
+      }
+      const pk = e.target.closest('[data-pick]');
+      if(pk){
+        e.preventDefault();
+        const inp = root.querySelector('.save[name="d-'+pk.getAttribute('data-pick')+'-pick"]');
+        if(inp){ const v = pk.getAttribute('data-val'); inp.value = (inp.value === v ? '' : v); }
+        this.paintPicks(root);
+        this._save();
+        return;
+      }
+    });
+    this.setupAiButtons(root);
+    this.applyTweaks();
+  }
+  setupAiButtons(root){
+    const boxes = [...root.querySelectorAll('div')].filter(d=>{
+      const f = d.firstElementChild;
+      return f && /AI Prompt/i.test(f.textContent || '') && d.children.length >= 2;
+    });
+    boxes.forEach(box=>{
+      if(box.querySelector('[data-ai-bar]')) return;
+      const textEl = box.children[1];
+      const prompt = (textEl.textContent || '').trim();
+      const bar = document.createElement('div');
+      bar.setAttribute('data-ai-bar','1');
+      bar.className = 'no-print';
+      bar.style.cssText = 'margin-top:11px; display:flex; gap:8px; align-items:center;';
+      const ask = document.createElement('button');
+      ask.type = 'button'; ask.textContent = 'Ask Claude \u2197';
+      ask.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:700; font-size:11px; letter-spacing:.03em; color:#fff; background:#9178B5; border:none; border-radius:6px; padding:7px 12px; cursor:pointer;';
+      const copy = document.createElement('button');
+      copy.type = 'button'; copy.textContent = 'Copy';
+      copy.style.cssText = 'font-family:Montserrat,sans-serif; font-weight:600; font-size:11px; color:#7a5fa6; background:transparent; border:1.5px solid #cbbde0; border-radius:6px; padding:6px 11px; cursor:pointer;';
+      const flash = (btn, msg) => { const o = btn.textContent; btn.textContent = msg; setTimeout(()=>{ btn.textContent = o; }, 2200); };
+      const cp = async () => {
+        try{ await navigator.clipboard.writeText(prompt); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=prompt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e2){} ta.remove(); }
+      };
+      ask.addEventListener('click', async ()=>{ await cp(); window.open('https://claude.ai/new','_blank','noopener'); flash(ask,'Copied, paste it in Claude'); });
+      copy.addEventListener('click', async ()=>{ await cp(); flash(copy,'Copied!'); });
+      bar.appendChild(ask); bar.appendChild(copy); box.appendChild(bar);
+    });
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#9178B5';
+  }
+  decisionDefs(){
+    return [
+      { key:'framework', title:'Framework', def:'A frontend framework is a collection of prewritten code, tools, and libraries that help developers build the UI and UX. These are used for the dynamic, interactive components. TypeScript is a statically typed superset of JavaScript and has become part of most new frontend projects.', bullets:['React is component-based, works well for complex interactions, and is backed by Meta.','Angular is a full-featured, opinionated framework well suited to large enterprise apps, and is backed by Google.','Vue is approachable and flexible with a gentle learning curve, and is community-maintained.'], opts:['React','Angular','Vue'] },
+      { key:'styling', title:'Styling Framework', def:'The styling framework is the same prewritten code, tools, and libraries, but it focuses on design, appearance, and responsiveness. It is the style instead of the interactive components.', bullets:['Plain CSS is straightforward and good for small projects.','Tailwind CSS supports rapid development with consistent design constraints, but can be verbose.','CSS frameworks provide pre-built components and faster development, but offer less flexibility.'], opts:['Plain CSS','Tailwind','CSS Framework'] },
+      { key:'designtool', title:'Design Tool', def:'A design system is a comprehensive set of standards, documentation, and principles, along with the toolkit of UI components and visual elements, that helps teams build consistent digital products. It serves as a single source of truth for an organization\u2019s design language. Design tokens are atomic values that represent design decisions such as colors, typography, and spacing. You need to choose a design tool that stores your tokens and lets you create your pages.', bullets:['Figma is the industry standard, browser-based and strong on real-time collaboration, with mature design-token, variable, and developer-handoff support.','Sketch is a macOS-native app with a long-established plugin ecosystem, favored by teams that want a fast local tool and are all on Macs.','Penpot is open source and self-hostable, works in the browser, and is built on web standards, which appeals to teams that want to avoid vendor lock-in or keep files in-house.'], opts:['Figma','Sketch','Penpot'] },
+      { key:'bundler', title:'Bundler', def:'A bundler takes your source code (JavaScript, CSS, images, and more) and packages it for production, handling tasks such as minification, code-splitting, and module resolution.', bullets:['Vite is the default for most new projects, with fast builds, modern defaults, and minimal configuration.','Webpack is the most established, with the largest plugin ecosystem and the deepest configurability. You are more likely to inherit it in an existing enterprise codebase than to choose it for something new.','Rollup excels at tree-shaking (analyzing your code, removing anything that is not needed, and generating smaller, more efficient files) and produces clean, optimized bundles for libraries. Vite uses it under the hood for production builds.'], opts:['Vite','Webpack','Rollup'] },
+      { key:'routing', title:'Routing', def:'Routing defines how URLs map to content in your application and how navigation between pages is handled.', bullets:['File-based routing organizes routes based on your file structure for intuitive navigation.','Custom routing gives complete control over URL patterns but requires more configuration.','URL conventions determine how parameters, locales, and trailing slashes are handled in your routes.'], opts:['File-based','Custom','URL conventions'] },
+      { key:'rendering', title:'Rendering', def:'Rendering determines how and when your application\u2019s HTML, CSS, and JavaScript are processed and displayed to users.', bullets:['SSG (Static Site Generation) pre-renders pages at build time for optimal performance and SEO.','SSR (Server-Side Rendering) generates HTML on each request for fresh content and SEO benefits.','CSR (Client-Side Rendering) builds the UI in the browser, ideal for highly interactive applications.','ISR (Incremental Static Regeneration) rebuilds individual static pages in the background after deploy, so content updates without a full rebuild.','Streaming sends HTML to the browser in chunks as it renders, so users can see and use the top of the page before the rest finishes rendering.'], opts:['SSG','SSR','CSR','ISR','Streaming'], follow:'Should any specific pages be rendered differently? Why?' },
+      { key:'testing', title:'Testing', def:'Frontend tests generally include unit, component, and end-to-end (E2E) testing. You should think about choosing one for each. Here are just a few sample options:', bullets:['Vitest is the default in most new projects, with a Jest-compatible API and faster runs.','Jest remains the most widely deployed, especially in established React codebases. Its API is the one most testing documentation assumes.','Playwright is a cross-browser end-to-end testing tool.'], opts:['Vitest','Jest','Playwright'] },
+      { key:'accessibility', noChoice:true, title:'Accessibility', def:'Accessibility is critical for the frontend. It expands your potential user base while giving them greater flexibility in how they consume your app. There are many tools available to scan and advise you on possible accessibility changes.', bullets:['Axe is the industry standard that catches roughly 57% of issues with automated scans and CI integration.<sup style="font-size:9px; vertical-align:super;">11</sup>','WAVE provides visual feedback and in-context reporting with a browser extension.','pa11y is a CLI with customizable tests, CI integration, and reporting.'], opts:['Axe','WAVE','pa11y'], note:'No choosing here, go try them all!' },
+      { key:'performance', title:'Performance Tracking', def:'Performance budgets establish measurable targets for your application\u2019s speed and responsiveness. Stakeholders can quickly get bored or aggravated when an application is slow. In 2006, Greg Linden (ex-Amazon engineer) posted on his blog about a Marissa Mayer presentation that said half-second delays at Google reduced traffic by 20%. His response was:', quote:'In A/B tests, we tried delaying the page in increments of 100 milliseconds and found that even very small delays would result in substantial and costly drops in revenue.', def2:'Even if you are not building at Google or Amazon\u2019s scale, especially for a new product, slowness will cost you profit. It is better to start measuring early so you can spot trends. Common scoring systems include LCP target, CLS target, INP target, and JS / CSS bundle budgets.', bullets:['Lighthouse runs locally in Chrome DevTools or CI and gives you a repeatable lab score, which is best for catching regressions before release.','WebPageTest runs from real devices and network conditions around the world, which is useful for testing what a slow phone on a bad connection actually experiences.','Chrome UX Report (CrUX) reports field data from real Chrome users, so it tells you how your live site performs rather than how it performs on your machine.'], opts:['Lighthouse','WebPageTest','Chrome UX Report'], follow:'Which targets will you hold yourself to?' },
+      { key:'observability', title:'Observability', def:'Observability will be a key principle and function we discuss later. If you don\'t know what is going on with your application, you will miss key issues and opportunities. Think about which analytics tools you will use and what you want them to track. ', bullets:['Google Analytics 4 is free, quick to install, and strongest for traffic, acquisition, and marketing questions. It is weaker for detailed product analysis.','Mixpanel is built around product analytics such as funnels, retention, and cohorts, so it answers questions about how people use features. It is priced per event volume.','OpenTelemetry is an open standard for traces, metrics, and logs rather than a product. It avoids vendor lock-in and ties frontend activity to backend traces, but you need a backend such as Grafana, Honeycomb, or Datadog to view it.'], opts:['Google Analytics 4','Mixpanel','OpenTelemetry'], follow:'What do you want them to track?' },
+      { key:'security', title:'Security', def:'Security is another huge aspect of your project. The longer you wait to implement it, the more difficult it becomes to do properly. Prioritize it early and make it a consistent part of your work.', bullets:['Automated vulnerability scanners such as OWASP ZAP, Burp Suite, and Acunetix can scan your site for common web vulnerabilities, including XSS and SQL injection.','Static analysis tools and linters, such as ESLint plugins and SonarQube, analyze your source code to catch insecure coding patterns before deployment.','Dependency auditing tools like npm audit, yarn npm audit, and Snyk check your project\u2019s third-party packages for known vulnerabilities.','Browser-based tools such as MDN HTTP Observatory, SecurityHeaders.com, and Lighthouse assess your website\u2019s security headers and adherence to best practices directly in the browser.'], opts:['Vulnerability scanners','Static analysis and linters','Dependency auditing','Browser-based tools'], follow:'Which specific tools, and where do they run?' },
+      { key:'localization', title:'Localization', def:'Even in a single region, localization can be helpful. If a substantial portion of your users use a different first language, it is a big win to accommodate them. There are tools available to automatically review translations, including i18next, FormatJS, and LinguiJS. However, language is complex, so consider hiring an interpreter who speaks the language fluently and can prevent gaffes.', bullets:['i18next is the most widely used option, framework-agnostic, with a large plugin ecosystem for detecting locale, loading translations, and formatting.','FormatJS (the library behind react-intl) is built on the browser\u2019s own Intl standards, so it is strongest for message formatting, plurals, dates, and currency.','LinguiJS extracts messages from your code at build time and ships small, compiled catalogs, which keeps bundles lean.','Not yet is a legitimate answer for a single-region launch, as long as you keep strings out of your components so you are not rewriting the UI later.'], opts:['i18next','FormatJS','LinguiJS','Not yet'], follow:'Localization strategy' },
+      { key:'api', title:'API and Data Contracts', def:'The API and data contracts between the frontend and backend should be a collaboration. Backend engineers often ask how they can best provide an API that meets your needs. They will sometimes provide options to start, but do not hesitate to make your opinion heard, especially early.', bullets:['REST is the most common and easiest to cache, debug, and document. You can end up making several calls, or receiving more data than you need, for one screen.','GraphQL lets the frontend ask for exactly the fields it needs in one request, which suits screens that pull from many sources. It adds server complexity and makes caching harder.','gRPC is fast and strongly typed with generated clients, and is a good fit for service-to-service traffic. In the browser it requires a proxy such as gRPC-Web.'], opts:['REST','GraphQL','gRPC'], follow:'Which API protocol do you want to employ? How will you mock your data for testing?' },
+      { key:'caching', title:'Caching', def:'Caching has an allure, but it is dangerous. It helps the website load more quickly, but it can reduce data accuracy. I have lost many hours trying to fix caching issues that should have been resolved at the database level. Think hard about how caching should be implemented and if you need it.', bullets:['HTTP caching uses response headers (Cache-Control, ETag) so browsers and proxies can reuse responses. It is the cheapest layer and the one to get right first.','A CDN caches responses at edge locations near your users, which is the biggest win for static assets and pages that are the same for everyone.','A client cache library (such as TanStack Query or SWR) caches in the browser and handles refetching, deduplication, and stale-while-revalidate for your app data.','None yet is reasonable early on. Correctness first, and add caching once you can measure what is slow.'], opts:['HTTP','CDN','Client cache library','None yet'], follow:'Do you need HTTP or CDN with a client cache library? Something else?' },
+    ];
+  }
+  get PILL_OFF(){ return "font-family:'Montserrat',sans-serif; font-weight:600; font-size:11px; color:#4a3f56; background:#f0ebf6; border:1px solid #e2d7ee; border-radius:20px; padding:5px 12px; cursor:pointer;"; }
+  get PILL_ON(){ return "font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; color:#fff; background:#9178B5; border:1px solid #9178B5; border-radius:20px; padding:5px 12px; cursor:pointer;"; }
+  paintPicks(root){
+    root.querySelectorAll('[data-pick]').forEach(btn=>{
+      const inp = root.querySelector('.save[name="d-'+btn.getAttribute('data-pick')+'-pick"]');
+      const on = !!inp && inp.value === btn.getAttribute('data-val');
+      btn.setAttribute('style', on ? this.PILL_ON : this.PILL_OFF);
+    });
+    root.querySelectorAll('[data-multi]').forEach(btn=>{
+      const inp = root.querySelector('.save[name="m-'+btn.getAttribute('data-multi')+'"]');
+      const vals = inp && inp.value ? inp.value.split(',') : [];
+      btn.setAttribute('style', vals.indexOf(btn.getAttribute('data-val')) > -1 ? this.PILL_ON : this.PILL_OFF);
+    });
+  }
+  pageSpecGroups(){
+    return [
+      { title:'Page Basics', fields:[
+        'Page name and path (for example, /project/[id])',
+        'Purpose and user goal',
+        'Rendering mode (inherits default, or override)',
+        'Required auth and roles (and fallback behavior)',
+        'Parent layout(s) used',
+      ]},
+      { title:'Component Spec (for any new or extended component)', fields:[
+        'Name',
+        'Purpose and usage guidelines',
+        'Props API (types, required or optional, defaults)',
+        'Variants (appearance, size, stateful options)',
+        'States and visuals (with examples)',
+        'Accessibility contract (roles, labels, focus, keyboard, announcements)',
+        'Performance notes (render cost, virtualization thresholds)',
+        'Dependencies (icons, portals, popper, others)',
+        'Examples and edge cases',
+        'Design link',
+      ]},
+      { title:'Component Usage, Variants and States', fields:[
+        'Name in design system',
+        'Purpose',
+        'Variants (size and kind)',
+        { label:'States (select all that apply)', multi:['default','hover','focus','active','disabled','loading','error','success','empty','selected'] },
+        'Accessibility notes (labels, roles, keyboard, focus behavior)',
+      ]},
+      { title:'Data Requirements', fields:[
+        'Queries (read): endpoint, schema, parameters, cache TTL, prefetching',
+        'Mutations (write): endpoint and schema. Optimistic update? Retries? Error handling',
+        'Pagination, sorting, and filtering rules',
+        'Error shapes and user messages',
+        'Offline or slow-network behavior (if applicable)',
+      ]},
+      { title:'Page States', fields:[
+        'Idle or initial',
+        'Loading (skeleton or spinner, and what loads progressively)',
+        'Empty (message and call to action)',
+        'Error (message, retry, fallbacks)',
+        'Success (post-action confirmation)',
+      ]},
+      { title:'Navigation and Routing', fields:[
+        'Entry points (from where?)',
+        'Exit points and calls to action',
+        'URL params and query handling',
+        'Breadcrumbs and tabs (active and selected logic)',
+      ]},
+      { title:'Forms and Validation (if applicable)', fields:[
+        'Fields and types',
+        'Validation schema (client, server), error messages, inline or summary',
+        'Autosave, throttling, and debounce',
+        'File uploads (limits, types, virus scan, progress UI)',
+        'Focus management on errors and success',
+      ]},
+      { title:'Performance Plan', fields:[
+        'Critical rendering path (above-the-fold components)',
+        'Code-splitting boundaries (route level, component level)',
+        'Image and font strategy (sizes, formats, preloads, lazy loading)',
+        'Target budgets (expected LCP, CLS, and INP for this page)',
+      ]},
+      { title:'Accessibility Specifics', fields:[
+        'Color contrast meets target (roughly 4.5:1 for body text)',
+        'Information not conveyed by color alone',
+        'Meaningful images have alt text, decorative images marked to skip',
+        'Form fields labeled, errors say what is wrong and how to fix it',
+        'Landmarks and headings outline',
+        'Keyboard-only path for the core task',
+        'Screen reader announcements (live regions) for dynamic updates',
+        'Reduced-motion alternatives for animations',
+      ]},
+      { title:'Analytics and Observability', fields:[
+        'Events to track (name, properties, IDs)',
+        'Key funnel or metric for this page',
+        'Error monitoring: expected error categories to tag',
+        'Feature flags controlling this page or feature',
+      ]},
+      { title:'Testing Plan', fields:[
+        'Unit and component tests (what to cover)',
+        'Integration and E2E scenarios (happy path, edge cases)',
+        'Visual regression targets (key states and screens)',
+        'Test data, fixtures, and stable selectors',
+      ]},
+      { title:'Risks, Dependencies, and Rollout', fields:[
+        'Known risks and unknowns',
+        'External dependencies (APIs, libraries, teams)',
+        'Rollout plan (flag name, exposure percentage, rollback steps)',
+        'Success criteria and validation plan after launch',
+      ]},
+      { title:'Definition of Done', yesno:[
+        'States covered (idle, loading, empty, error, success)',
+        'Accessibility checks passed (keyboard, screen reader, contrast)',
+        'Tests added: unit, integration, E2E, visual',
+        'Analytics events implemented and validated',
+        'Performance checked against budgets',
+        'Observability (error monitoring, RUM) wired',
+        'Rollout plan (flag or canary) noted',
+      ]},
+    ];
+  }
+  slug(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,44); }
+  buildPageSpec(root){
+    const host = root.querySelector('[data-pagespec]');
+    if(!host) return;
+    let h = '';
+    this.pageSpecGroups().forEach((g, gi)=>{
+      let inner = '';
+      (g.fields || []).forEach(f=>{
+        const label = typeof f === 'string' ? f : f.label;
+        const key = 'pg-'+gi+'-'+this.slug(label);
+        if(typeof f !== 'string' && f.multi){
+          inner += '<div><div class="lbl">'+label+'</div>'+
+            '<div style="display:flex; flex-wrap:wrap; gap:7px;">'+
+              f.multi.map(o=> '<button type="button" data-multi="'+key+'" data-val="'+o+'" style="'+this.PILL_OFF+'">'+o+'</button>').join('')+
+              '<input type="hidden" class="save" name="m-'+key+'">'+
+            '</div></div>';
+        } else {
+          inner += '<div><div class="lbl">'+label+'</div><textarea class="ta save" name="'+key+'" rows="1" placeholder="\u2026"></textarea></div>';
+        }
+      });
+      (g.yesno || []).forEach(label=>{
+        const key = 'pg-'+gi+'-'+this.slug(label);
+        inner += '<div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px;">'+
+          '<span style="font-size:13px; line-height:1.5; color:#5a4f66; flex:1; min-width:220px;">'+label+'</span>'+
+          '<div style="display:flex; gap:7px;">'+
+            ['Yes','No'].map(o=> '<button type="button" data-pick="'+key+'" data-val="'+o+'" style="'+this.PILL_OFF+'">'+o+'</button>').join('')+
+            '<input type="hidden" class="save" name="d-'+key+'-pick">'+
+          '</div></div>';
+      });
+      h += '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; padding:16px 18px 18px; margin-bottom:12px;">'+
+        '<div style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:#7a5fa6; margin-bottom:12px;">'+g.title+'</div>'+
+        '<div style="display:flex; flex-direction:column; gap:14px;">'+inner+'</div>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+  }
+  defaultPicks(){
+    return { framework:'React', styling:'Tailwind', designtool:'Figma', bundler:'Vite', routing:'File-based', rendering:'SSR', testing:'Vitest', performance:'Lighthouse', observability:'Google Analytics 4', security:'Dependency auditing', localization:'i18next', api:'REST', caching:'CDN' };
+  }
+  applyDefaults(root){
+    Object.entries(this.defaultPicks()).forEach(([k,v])=>{
+      const el = root.querySelector('.save[name="d-'+k+'-pick"]');
+      if(el && !el.value) el.value = v;
+    });
+  }
+  buildDecisions(root){
+    const host = root.querySelector('[data-decisions]');
+    if(!host) return;
+    const defs = this.decisionDefs();
+    let h = '';
+    defs.forEach((d, i)=>{
+      const pills = d.opts.map(o=> '<button type="button" data-pick="'+d.key+'" data-val="'+o+'" style="'+this.PILL_OFF+'">'+o+'</button>').join('')+'<input type="hidden" class="save" name="d-'+d.key+'-pick">';
+      const note = d.note ? '<div style="font-family:\'Fraunces\',serif; font-style:italic; font-size:12.5px; color:#b5651d; margin-top:8px;">'+d.note+'</div>' : '';
+      const bullets = d.bullets ? '<div style="display:flex; flex-direction:column; gap:6px; margin:9px 0 0;">'+d.bullets.map(b=> '<div style="display:flex; gap:8px;"><span style="color:#9178B5; flex:none; font-size:12.5px; line-height:1.5;">&bull;</span><span style="font-size:12.5px; line-height:1.5; color:#5a4f66;">'+b+'</span></div>').join('')+'</div>' : '';
+      const quote = d.quote ? '<div style="margin:11px 0 0; border-left:3px solid #9178B5; padding:2px 0 2px 13px; font-family:\'Fraunces\',serif; font-style:italic; font-size:13px; line-height:1.55; color:#4a3f56;">\u201C'+d.quote+'\u201D<sup style="font-size:9px; vertical-align:super;">12</sup></div>' : '';
+      const def2 = d.def2 ? '<p style="font-size:13px; line-height:1.55; color:#5a4f66; margin:9px 0 0;">'+d.def2+'</p>' : '';
+      const follow = d.follow ? '<div style="margin-top:12px;"><div class="lbl">'+d.follow+'</div><textarea class="ta save" name="d-'+d.key+'-follow" rows="1" placeholder="notes\u2026"></textarea></div>' : '';
+      const choice = d.noChoice ? '' : '<div style="margin-top:12px;"><div class="lbl">Why</div><textarea class="ta save" name="d-'+d.key+'" rows="1" placeholder="why this option fits\u2026"></textarea></div>';
+      h += '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; padding:16px 18px 18px; margin-bottom:12px;">'+
+        '<div style="display:flex; align-items:baseline; gap:11px;">'+
+          '<span style="font-family:\'Bebas Neue\',sans-serif; font-size:22px; color:#9178B5; line-height:1; flex:none; width:26px;">'+String(i+1).padStart(2,'0')+'</span>'+
+          '<div style="flex:1; min-width:0;">'+
+            '<div style="font-family:\'Fraunces\',serif; font-weight:600; font-size:18px; color:#241c33;">'+d.title+'</div>'+
+            '<p style="font-size:13px; line-height:1.55; color:#5a4f66; margin:5px 0 0;">'+d.def+'</p>'+
+            quote+def2+bullets+
+            '<div style="display:flex; flex-wrap:wrap; gap:7px; margin:11px 0 0;">'+pills+'</div>'+
+            note+
+            choice+
+            follow+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    });
+    host.innerHTML = h;
+  }
+  personaHTML(idx){
+    const lbl = 'font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#8a7f97; margin-bottom:6px;';
+    return '<div class="block" style="border:1px solid #ece7f0; border-radius:12px; overflow:hidden; margin-bottom:16px;">'+
+      '<div style="background:#f6f4f9; padding:12px 18px; display:flex; align-items:center; gap:10px;">'+
+        '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#7a5fa6;">Persona</span>'+
+        '<input class="save" name="pname-'+idx+'" placeholder="persona name" style="flex:1; border:none; border-bottom:1px solid #e2d9ec; background:transparent; font-family:\'Fraunces\',serif; font-weight:700; font-size:18px; color:#241c33; outline:none; padding:2px 0;">'+
+      '</div>'+
+      '<div style="padding:16px 18px 18px; display:flex; flex-direction:column; gap:16px;">'+
+        '<div><div style="'+lbl+'">Devices</div><textarea class="ta save" name="dev-x'+idx+'" rows="1" placeholder="devices\u2026"></textarea></div>'+
+        '<div><div style="'+lbl+'">Page Flow Story</div><textarea class="ta save" name="story-x'+idx+'" rows="1" placeholder="the journey\u2026"></textarea></div>'+
+        '<div><div style="'+lbl+'">Page Flows</div><textarea class="ta save" name="flows-x'+idx+'" rows="1" placeholder="Page A \u2192 Page B" style="font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:12.5px; color:#003049;"></textarea></div>'+
+      '</div>'+
+    '</div>';
+  }
+  restorePersonas(root, n){
+    const host = root.querySelector('[data-personas]');
+    if(!host) return;
+    const count = parseInt(n,10) || 0;
+    let h = '';
+    for(let i=0;i<count;i++) h += this.personaHTML(i);
+    host.innerHTML = h;
+  }
+  addPersona(root){
+    const host = root.querySelector('[data-personas]');
+    if(!host) return;
+    host.insertAdjacentHTML('beforeend', this.personaHTML(host.children.length));
+    const el = host.lastElementChild.querySelector('input');
+    if(el) el.focus();
+  }
+  buildExample(){
+    return {
+      'dev-contractor':'As the Contractor, I am often on the road and tend to use iPhone devices to interact with applications. I am rarely able to work on a desktop.',
+      'story-contractor':'As the contractor, I will first start with the onboarding user workflow. Then I will review the information I have provided that is visible to others on my profile page.\n\nWhen I am satisfied with my profile, I can start reviewing the available projects on the summary page. From there, I will select a project and can view a limited set of project information, excluding any homeowner contact information. If it looks interesting to me, I will create a bid for that contract.\n\nOnce a project is awarded, I can view homeowner contact information. I can examine each room in the project in detail and suggest changes to the work or purchases, and the project details page shows the status of any suggestions I have made.',
+      'flows-contractor':'Contractor Onboarding \u2192 Contractor Profile\nAvailable Projects Summary \u2192 Project Detail (Pre-Contract) \u2192 Project Bidding\nCurrent Projects Summary \u2192 Project Detail (Post-Contract) \u2192 Room Detail \u2192 Room Suggestions',
+      '__personas':'0'
+    };
+  }
+  autosize(el){ if(!el || el.tagName!=='TEXTAREA') return; el.style.height = 'auto'; el.style.height = Math.max(el.scrollHeight, 22) + 'px'; }
+  autosizeAll(root){ root.querySelectorAll('textarea.save').forEach(el=> this.autosize(el)); }
+  renderVals(){
+    return {
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Reset to the original Renovation Revolution example?')) return;
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        const root = document.getElementById('ws-root');
+        if(!root) return;
+        const host = root.querySelector('[data-personas]'); if(host) host.innerHTML='';
+        root.querySelectorAll('.save').forEach(el=> el.value='');
+        Object.entries(this.example).forEach(([n,v])=>{ if(n.startsWith('__')) return; const el = root.querySelector('.save[name="'+n+'"]'); if(el) el.value = v; });
+        this.paintPicks(root);
+        this.autosizeAll(root);
+        if(this._save) this._save();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

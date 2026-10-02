@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#fff; }
+  .save:focus{ border-color:#111 !important; border-bottom-color:#111 !important; }
+  ::placeholder{ color:#999; font-style:italic; }
+  a{ color:#111; text-decoration:none; }
+  a:hover{ color:#111; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(24,34)" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round">
+      <path d="M0 16 H30"></path>
+      <path d="M22 8 L30 16 L22 24" stroke="#111"></path>
+      <path d="M40 16 H52" stroke="#111"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(17,17,17,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Change Management</span>
+    <span style="font-size:12px; color:#bbb; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#ddd; background:transparent; border:1.5px solid #555; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#fff; border:1.5px solid #fff; border-radius:7px; padding:8px 16px; cursor:pointer; color:#111;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#fff; color:#111; border-bottom:3px solid #111; padding:42px 64px 32px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#444;">Chapter 10 · Print Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Change Management</h1>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Think about the application you are working on now. If you were in charge of the change management plan, how would you fill this out? If you are not currently working on one, use the Renovation Revolution case study.</p>
+
+    <div style="margin:24px 0 0;">
+      <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#111; margin:0 0 6px;">The application</label>
+      <input class="save" type="text" name="app-name" style="width:100%; border:none; border-bottom:2px solid #111; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:20px; color:#111; padding:8px 2px; outline:none; box-sizing:border-box;">
+    </div>
+
+    <div class="step" id="sec-problem">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Problem Definition</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Before anyone will adopt the application, they have to agree there is a problem worth solving. The original memo is a good starting point, but it usually needs rewriting for each audience.</p>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">What problem does this application solve?</span></div>
+      <textarea class="save" name="prob-what" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">Why did we decide to build it?</span></div>
+      <textarea class="save" name="prob-why" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">What could we have purchased, and why did we pass?</span></div>
+      <textarea class="save" name="prob-buy" rows="3" style="width:100%; margin-bottom:18px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">What is the impact of not having the application?</span></div>
+      <textarea class="save" name="prob-impact" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">How many people does the problem affect? Which orgs or teams?</span></div>
+      <textarea class="save" name="prob-count" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+            <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 12px;">What is the expected impact on the existing data at each stage of adoption?</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <sc-for list="{{ adoptionRows }}" as="row" hint-placeholder-count="5">
+          <div style="display:grid; grid-template-columns:200px 1fr; border-top:1px solid #ccc;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#111; padding:12px 13px; border-right:1px solid #ccc; background:#f4f4f4;">{{ row.label }}</div>
+            <input class="save" type="text" name="{{ row.field }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-buyin">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Stakeholder Buy-In</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">If your users do not want to use a new workflow or application, they will not. They will invent work arounds or do the bare minimum. You will need to bring them along and get them invested in the new method.</p>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">1</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">What is the current workflow or solution?</span></div>
+      <textarea class="save" name="buy-users" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">2</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">Are there new technical terms everyone needs to learn?</span></div>
+      <textarea class="save" name="buy-terms" rows="2" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">Expected release timeline</span></div>
+      <textarea class="save" name="buy-timeline" rows="2" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">4</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">Potential UAT participants</span></div>
+      <textarea class="save" name="buy-uat" rows="2" style="width:100%; margin-bottom:18px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">5</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">How resistant to change is this audience?</span></div>
+      <textarea class="save" name="buy-resistance" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">6</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">How will you collect feedback?</span></div>
+      <textarea class="save" name="buy-feedback" rows="3" style="width:100%; margin-bottom:0px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+        </div>
+
+    <div class="step" id="sec-comms">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Communication Plan</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Communication should be tailored to each group’s interest. Generally, you know who belongs in which group, but you’ll want to allow anyone to sign up for more communication if they want.</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.6fr .75fr 1.05fr; background:#111;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 12px;">List</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 12px;">Update frequency</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 12px;">Distribution method</div>
+        </div>
+        <sc-for list="{{ listRows }}" as="row" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:1.6fr .75fr 1.05fr; border-top:1px solid #ccc;">
+            <div style="padding:12px 13px; border-right:1px solid #ccc; background:#f4f4f4;">
+              <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.04em; color:#111;">{{ row.label }}</div>
+              <div style="font-family:'Lato',sans-serif; font-size:12px; line-height:1.45; color:#444; margin-top:3px;">{{ row.hint }}</div>
+            </div>
+            <input class="save" type="text" name="{{ row.freqField }}" style="border:none; border-right:1px solid #ccc; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; outline:none; box-sizing:border-box;">
+            <input class="save" type="text" name="{{ row.methodField }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#111; padding:12px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+          </div>
+
+    <div class="step" id="sec-release">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Release Planning</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 16px;"></div>
+      <p style="font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">The release plan should be part of initial design, not something that can wait until it’s complete. Use these questions to help you build that plan.</p>
+      <sc-for list="{{ releaseRows }}" as="row" hint-placeholder-count="8">
+        <div style="display:flex; align-items:center; gap:10px; margin:0 0 8px;"><span style="display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#111; color:#fff; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; flex:none;">{{ row.n }}</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:13.5px; color:#111;">{{ row.label }}</span></div>
+        <textarea class="save" name="{{ row.field }}" rows="3" style="width:100%; margin-bottom:16px; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:10px 12px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+      </sc-for>
+    </div>
+      </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#111; color:#fff; border:1px solid #111; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#111; color:#fff; border:1px solid #111; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-10-changemgmt-bw-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.restore(root, saved);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name] = el.value; });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+  }
+  renderVals(){
+    const adoptionRows = [
+      ['Initial release','adopt-initial'],
+      ['10% adoption','adopt-10'],
+      ['50% adoption','adopt-50'],
+      ['100% adoption','adopt-100'],
+      ['Old tool deprecation','adopt-eol']
+    ].map(([label,field])=>({label, field}));
+
+    const listRows = [
+      ['Highly Interested','Advocates and early testers who want every update','sign'],
+      ['Stakeholders','Everyone whose work is impacted by the change','stake'],
+      ['Management','Impact and usage reports with key metrics','mgmt']
+    ].map(([label,hint,k])=>({label, hint, freqField:'comm-'+k+'-freq', methodField:'comm-'+k+'-method'}));
+
+    const releaseRows = [
+      ['What is the data migration plan?','rel-migration',''],
+      ['What is the education plan? Classes, independent labs, documentation, other?','rel-education',''],
+      ['How will you incentivize adoption?','rel-incentive',''],
+      ['How will you handle end of life?','rel-eol',''],
+      ['What is your maintenance plan?','rel-maintenance',''],
+      ['What are your key performance metrics?','rel-metrics',''],
+      ['Which internal teams do you need to coordinate with?','rel-teams',''],
+      ['Anything else to include in the change management plan?','rel-other','']
+    ].map(([label,field,placeholder],i)=>({label, field, placeholder, n:i+1}));
+
+    return {
+      adoptionRows, listRows, releaseRows,
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=> el.value=''); this.save(root); }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

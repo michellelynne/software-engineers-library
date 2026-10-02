@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .save:focus{ border-color:#003049 !important; }
+  ::placeholder{ color:#aab4ba; font-style:italic; }
+  .lk-url{ display:none; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .day{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(28,28)"><rect x="0" y="0" width="44" height="44" rx="4" fill="none" stroke="#fff" stroke-width="4"></rect><rect x="0" y="0" width="44" height="11" fill="#DB3A34"></rect><path d="M8,24 L36,24 M8,34 L28,34" stroke="#7fc6cd" stroke-width="4"></path></g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Weekly Task Audit</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#003049; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 64px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#9fc4cf;">Chapter 13 · Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Weekly Task Audit</h1>
+    <div style="height:3px; width:64px; background:#DB3A34; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">Take a few minutes and write down all the tasks you perform in a week. Are there any you can seek help with? Can you get help from a partner, friends, or neighbors? From any groups you belong to? Local groups, such as clubs for parents, readers, or dodgeball enthusiasts, can help you build a community.</p>
+
+    <div id="sec-week">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#003049; margin:0;">Your Week</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#DB3A34; margin:12px 0 18px;"></div>
+
+      <div style="border:1.5px solid #003049; border-radius:10px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1.5fr) minmax(0,1fr) 62px; background:#003049;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:10px 12px;">Task</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:10px 12px; border-left:1px solid #1d4a60;">Ask for help (name)</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:10px 12px; border-left:1px solid #1d4a60;">Pay for help</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:10px 8px; border-left:1px solid #1d4a60; text-align:center;">Keep</div>
+        </div>
+        <sc-for list="{{ days }}" as="day" hint-placeholder-count="7">
+          <div class="day">
+            <div style="background:#eef6f7; border-top:1.5px solid #177E89; padding:8px 12px; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:16px; letter-spacing:.02em; color:#12626B;">{{ day.name }}</div>
+            <sc-for list="{{ day.rows }}" as="row" hint-placeholder-count="3">
+              <div style="display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1.5fr) minmax(0,1fr) 62px; border-top:1px solid #e2e8ec;">
+                <input class="save" type="text" name="{{ row.task }}" style="min-width:0; border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box;">
+                <input class="save" type="text" name="{{ row.ask }}" style="min-width:0; border:none; border-left:1px solid #e2e8ec; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box;">
+                <input class="save" type="text" name="{{ row.pay }}" style="min-width:0; border:none; border-left:1px solid #e2e8ec; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#003049; padding:10px 12px; outline:none; box-sizing:border-box;">
+                <label style="display:flex; align-items:center; justify-content:center; border-left:1px solid #e2e8ec;"><input class="save" type="checkbox" name="{{ row.keep }}" style="width:16px; height:16px; accent-color:#177E89;"></label>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="margin-top:46px; padding-top:22px; border-top:2px solid #003049;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#003049; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#003049; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#003049; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#003049; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">·</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#003049; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900},&quot;rowsPerDay&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:3,&quot;min&quot;:1,&quot;max&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#003049&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#003049&quot;,&quot;#177E89&quot;,&quot;#3A2449&quot;,&quot;#DB3A34&quot;],&quot;section&quot;:&quot;Style&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-13-weekly-tasks-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.saved = saved;
+    this.restore(root, saved);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){
+    const root = document.getElementById('ws-root');
+    if(root && this.saved) this.restore(root, this.saved);
+    this.applyTweaks();
+  }
+  applyTweaks(){
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = (this.props && this.props.mastheadColor) || '#003049';
+  }
+  save(root){
+    const o = Object.assign({}, this.saved || {});
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; else delete o[el.name]; }
+      else if(el.value && el.value.trim()) o[el.name] = el.value; else delete o[el.name];
+    });
+    this.saved = o;
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(!el) return;
+      if(el.type === 'checkbox') el.checked = (v === '1');
+      else el.value = v;
+    });
+  }
+  renderVals(){
+    const n = Math.max(1, Math.min(8, this.props.rowsPerDay ?? 3));
+    const names = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+    const days = names.map(name => {
+      const k = name.slice(0,3).toLowerCase();
+      const rows = [];
+      for(let i=1;i<=n;i++) rows.push({ task:`${k}-${i}-task`, ask:`${k}-${i}-ask`, pay:`${k}-${i}-pay`, keep:`${k}-${i}-keep` });
+      return { name, rows };
+    });
+    return {
+      days,
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        this.saved = {};
+        if(root) root.querySelectorAll('.save').forEach(el=>{ if(el.type==='checkbox') el.checked=false; else el.value=''; });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

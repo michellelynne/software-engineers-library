@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Montserrat:wght@600;700&family=Fraunces:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .fig{ background:#fff; box-sizing:border-box; }
+  .fig-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9178B5; }
+  .fig-title{ font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; margin:10px 0 0; color:#003049; }
+  .fig-rule{ height:4px; width:70px; background:#DB3A34; margin:16px 0 34px; }
+  .fig-caption{ font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#003049; margin-top:26px; }
+  .fig-caption span{ font-family:'Montserrat',sans-serif; font-weight:700; color:#9178B5; }
+  svg{ display:block; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="20" y="28" width="26" height="44" rx="3" fill="#177E89"></rect>
+    <rect x="52" y="28" width="26" height="44" rx="3" fill="#9178B5"></rect>
+    <rect x="20" y="16" width="58" height="6" rx="3" fill="#DB3A34"></rect>
+  </svg>
+</template>
+
+<div style="max-width:1400px; margin:26px auto; display:flex; flex-direction:column; gap:24px;">
+
+  <div id="fig-15-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.1</div>
+    <h1 class="fig-title">STAR and STAR++</h1>
+    <div class="fig-rule"></div>
+
+    <div style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px;">
+      <div style="position:relative; border-radius:14px; background:#177E89; padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:96px; line-height:.9; color:#fff;">S</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Situation</div>
+        <div style="height:2px; background:rgba(255,255,255,.45);"></div>
+        <div style="font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.5; color:#fff;">The context.</div>
+        <div style="position:absolute; right:-21px; top:50%; transform:translateY(-50%); width:28px; height:28px; border-radius:50%; background:#fff; border:2.5px solid #DB3A34; display:flex; align-items:center; justify-content:center; z-index:2;"><svg viewBox="0 0 12 12" width="12" height="12"><path d="M3,1.5 L9,6 L3,10.5 Z" fill="#DB3A34"></path></svg></div>
+      </div>
+      <div style="position:relative; border-radius:14px; background:#6A4F8C; padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:96px; line-height:.9; color:#fff;">T</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Task</div>
+        <div style="height:2px; background:rgba(255,255,255,.45);"></div>
+        <div style="font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.5; color:#fff;">What you were responsible for.</div>
+        <div style="position:absolute; right:-21px; top:50%; transform:translateY(-50%); width:28px; height:28px; border-radius:50%; background:#fff; border:2.5px solid #DB3A34; display:flex; align-items:center; justify-content:center; z-index:2;"><svg viewBox="0 0 12 12" width="12" height="12"><path d="M3,1.5 L9,6 L3,10.5 Z" fill="#DB3A34"></path></svg></div>
+      </div>
+      <div style="position:relative; border-radius:14px; background:#003049; padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:96px; line-height:.9; color:#fff;">A</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Action</div>
+        <div style="height:2px; background:rgba(255,255,255,.45);"></div>
+        <div style="font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.5; color:#fff;">What you did.</div>
+        <div style="position:absolute; right:-21px; top:50%; transform:translateY(-50%); width:28px; height:28px; border-radius:50%; background:#fff; border:2.5px solid #DB3A34; display:flex; align-items:center; justify-content:center; z-index:2;"><svg viewBox="0 0 12 12" width="12" height="12"><path d="M3,1.5 L9,6 L3,10.5 Z" fill="#DB3A34"></path></svg></div>
+      </div>
+      <div style="position:relative; border-radius:14px; background:#B32B26; padding:22px 22px 24px; display:flex; flex-direction:column; gap:10px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:96px; line-height:.9; color:#fff;">R</div>
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Result</div>
+        <div style="height:2px; background:rgba(255,255,255,.45);"></div>
+        <div style="font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.5; color:#fff;">What came of it.</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:14px; margin:14px 0 0;">
+      <div style="grid-column:1 / span 4; display:flex; align-items:center; gap:14px;">
+        <div style="flex:1; height:0; border-top:2.5px dashed #9178B5;"></div>
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#6A4F8C;">STAR++ adds</div>
+        <div style="flex:1; height:0; border-top:2.5px dashed #9178B5;"></div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:auto minmax(0,1fr) minmax(0,1fr); gap:14px; margin:14px 0 0; align-items:stretch;">
+      <div style="display:flex; align-items:center; justify-content:center; padding:0 14px 0 6px; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:88px; line-height:1; color:#9178B5; letter-spacing:-.04em;">++</div>
+      <div style="border:2.5px dashed #9178B5; border-radius:14px; background:#f7f4fb; padding:20px 22px; display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#6A4F8C;">Reflection</div>
+        <div style="font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.5; color:#4a3a58; flex:1; min-width:200px;">Looking back on what happened. What the experience taught you.</div>
+      </div>
+      <div style="border:2.5px dashed #9178B5; border-radius:14px; background:#f7f4fb; padding:20px 22px; display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#6A4F8C;">Refinement</div>
+        <div style="font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.5; color:#4a3a58; flex:1; min-width:200px;">How you changed because of what happened.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 15.1</span> &nbsp;The STAR Method</div>
+  </div>
+
+  <div id="table-15-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">TABLE 15.1</div>
+    <h1 class="fig-title">Demonstrating Senior Level Professional Skills</h1>
+    <div class="fig-rule"></div>
+
+    <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:270px 1fr; background:#177E89;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">In order to demonstrate..</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Tell a Story About</div>
+      </div>
+      <div style="display:grid; grid-template-columns:270px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Judgment</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Having made opinionated technical decisions amid ambiguity.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:270px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Collaboration</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Actively seeking and acting on feedback. Disagreeing about a project but committing to its success anyway. Doing what’s best for the organization even if it wasn’t the best for you personally.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:270px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Emotional Intelligence</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Reading others' emotions and adjusting your communication style to reach a successful conclusion.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:270px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Self-Awareness</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Managing personal emotions even under stressful situations. Receiving difficult feedback with grace and adjusting behavior. Knowledge of where you have expertise and where you have room to grow.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:270px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Systems Thinking</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Understanding the larger system your work fits into and how what you do affects the organization.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:270px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Scope of Influence</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">How far the work you did impacted outside of your own team.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Table 15.1</span> &nbsp;Senior behavioral skills</div>
+  </div>
+
+  <div id="fig-15-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.2</div>
+    <h1 class="fig-title">Scope Questions and Scale Questions</h1>
+    <div class="fig-rule"></div>
+    <div style="position:relative; border-radius:16px; background:#003049; padding:26px 30px 26px 84px; margin:0 0 24px;">
+      <div style="position:absolute; left:22px; top:6px; font-family:'Fraunces',serif; font-weight:700; font-size:96px; line-height:1; color:#DB3A34;">&ldquo;</div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#7fc3c9;">The prompt</div>
+      <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.7; color:#fff; margin:8px 0 0;">"I have a contractors marketplace app used in <span style="background:#6A4F8C; color:#fff; border-radius:6px; padding:1px 7px; box-decoration-break:clone; -webkit-box-decoration-break:clone;">hundreds of cities worldwide</span><sup style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#cdb8ea; margin-left:5px;">Scale</sup>. Contractors can search for clients and bid on jobs. I want to add a vendor catalog feature. Parts suppliers can upload product catalogs and <span style="background:#177E89; color:#fff; border-radius:6px; padding:1px 7px; box-decoration-break:clone; -webkit-box-decoration-break:clone;">keep them up to date</span><sup style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7fd0d6; margin-left:5px;">Scope</sup>. How would you design this?"</div>
+    </div>
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:20px; align-items:start;">
+      <div style="border:2.5px solid #177E89; border-radius:14px; overflow:hidden; background:#fff;"><div style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:#177E89;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff;">Scope</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#fff; opacity:.9;">(functional questions)</div><div style="margin-left:auto; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff; opacity:.35;">8</div></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">1</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">Who uploads the catalogs, the suppliers themselves or an admin?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">2</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">What formats can they upload? CSV, PDF, their own API feed?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">3</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">What is in a catalog? Names, descriptions, prices, photos?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">4</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">Does it need real-time availability, or is approximate stock fine?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">5</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">Do vendors push updates, or do we pull from their inventory?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">6</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">Can contractors order in the app, or is the catalog reference only?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">7</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">Is search across all catalogs, or per vendor?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#e3f2f3; color:#177E89; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">8</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52; padding-top:2px;">Are prices public, or negotiated when a contractor makes contact?</span></div></div>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="border:2.5px solid #6A4F8C; border-radius:14px; overflow:hidden; background:#fff;"><div style="display:flex; align-items:center; gap:14px; padding:14px 18px; background:#6A4F8C;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff;">Scale</div><div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#fff; opacity:.9;">(non-functional questions)</div><div style="margin-left:auto; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:30px; line-height:1; color:#fff; opacity:.35;">5</div></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#efe8f7; color:#6A4F8C; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">1</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#4a3a58; padding-top:2px;">How many vendors do we support at launch?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#efe8f7; color:#6A4F8C; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">2</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#4a3a58; padding-top:2px;">How many SKUs does a vendor carry?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#efe8f7; color:#6A4F8C; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">3</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#4a3a58; padding-top:2px;">How often does a vendor send an update?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#efe8f7; color:#6A4F8C; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">4</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#4a3a58; padding-top:2px;">Do vendors specify the region they supply?</span></div><div style="display:flex; align-items:flex-start; gap:12px; padding:11px 16px; border-top:1px solid #e6ebee; "><span style="flex:none; width:26px; height:26px; border-radius:50%; background:#efe8f7; color:#6A4F8C; display:flex; align-items:center; justify-content:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px;">5</span><span style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#4a3a58; padding-top:2px;">How often is each catalog or item updated?</span></div></div>
+        <div style="border:2.5px dashed #DB3A34; border-radius:14px; background:#fff; padding:16px; display:flex; flex-direction:column; gap:12px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#B32B26;">The hints in this prompt</div>
+          <div style="display:flex; flex-direction:column; gap:6px; padding:14px 16px; border-radius:10px; background:#eef6f7; border-left:0;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#12626B;">"Keep them up to date"</span><span style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.5; color:#3a4a52;">This is not a one-time upload.</span></div>
+          <div style="display:flex; flex-direction:column; gap:6px; padding:14px 16px; border-radius:10px; background:#f7f4fb; border-left:0;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:#6A4F8C;">"Hundreds of cities worldwide"</span><span style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.5; color:#3a4a52;">The scale is international.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 15.2</span> &nbsp;Clarifying Questions for System Design</div>
+  </div>
+
+  <div id="fig-15-3" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.3</div>
+    <h1 class="fig-title">Simple System Design Workflow</h1>
+    <div class="fig-rule"></div>
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr); align-items:center;"><div style="border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#12626B;">Client</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#6A4F8C;">API</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Data Store</div></div></div>
+    <div class="fig-caption"><span>Figure 15.3</span> &nbsp;Simple system design workflow</div>
+  </div>
+
+  <div id="fig-15-4" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.4</div>
+    <h1 class="fig-title">Catalog Search Design</h1>
+    <div class="fig-rule"></div>
+    <div style="display:grid; grid-template-columns:minmax(0,.8fr) 56px minmax(max-content,1.25fr) 64px minmax(0,.9fr) 56px minmax(0,.9fr); grid-auto-rows:1fr; row-gap:22px;">
+      <div style="grid-row:1 / span 2; grid-column:1; display:flex; align-items:center;"><div style="flex:1;"><div style="border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#12626B;">Catalog Search</div></div></div></div>
+      <div style="grid-row:1 / span 2; grid-column:2; display:flex; align-items:center; justify-content:center;"><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div></div>
+      <div style="grid-row:1 / span 2; grid-column:3; display:flex; align-items:center;"><div style="flex:1;"><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-weight:700; font-size:15px; line-height:1.5; color:#6A4F8C; text-align:left; white-space:pre;">POST /search
+{data: "text",
+ location: "lat,long",
+ sortby: "price"}</div></div></div></div>
+      <div style="grid-row:1 / span 2; grid-column:4; position:relative; align-self:stretch;"><div style="position:absolute; left:0; width:50%; top:50%; border-top:2.5px solid #DB3A34; transform:translateY(-1px);"></div><div style="position:absolute; left:50%; top:25%; height:50%; border-left:2.5px solid #DB3A34; transform:translateX(-1px);"></div><div style="position:absolute; left:50%; right:10px; top:25%; border-top:2.5px solid #DB3A34; transform:translateY(-1px);"></div><div style="position:absolute; left:50%; right:10px; top:75%; border-top:2.5px solid #DB3A34; transform:translateY(-1px);"></div><svg viewBox="0 0 12 14" width="12" height="14" style="position:absolute; right:0; top:25%; transform:translateY(-50%);"><path d="M12,7 L0,0 V14 Z" fill="#DB3A34"></path></svg><svg viewBox="0 0 12 14" width="12" height="14" style="position:absolute; right:0; top:75%; transform:translateY(-50%);"><path d="M12,7 L0,0 V14 Z" fill="#DB3A34"></path></svg></div>
+      <div style="grid-row:1; grid-column:5; display:flex; align-items:center;"><div style="flex:1; min-width:0;"><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Item Database</div></div></div></div><div style="grid-row:1; grid-column:6; display:flex; align-items:center; justify-content:center;"><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div></div><div style="grid-row:1; grid-column:7; display:flex; align-items:center;"><div style="flex:1; min-width:0;"><div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden; background:#fff;"><div style="padding:7px 16px; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">SKU</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Name</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Desc</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Price</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Available</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Photo S3</div></div></div></div>
+      <div style="grid-row:2; grid-column:5; display:flex; align-items:center;"><div style="flex:1; min-width:0;"><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Vendor Database</div></div></div></div><div style="grid-row:2; grid-column:6; display:flex; align-items:center; justify-content:center;"><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div></div><div style="grid-row:2; grid-column:7; display:flex; align-items:center;"><div style="flex:1; min-width:0;"><div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden; background:#fff;"><div style="padding:7px 16px; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">VendorId</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Name</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Phone</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Email</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Photo</div></div></div></div>
+    </div>
+    <div class="fig-caption"><span>Figure 15.4</span> &nbsp;Catalog search design</div>
+  </div>
+
+  <div id="fig-15-5" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.5</div>
+    <h1 class="fig-title">Create a Vendor</h1>
+    <div class="fig-rule"></div>
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr); align-items:center;"><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#6A4F8C;">POST Vendor</div><div style="font-family:'Lato',sans-serif; font-size:14.5px; color:#3a4a52;">(create)</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Vendor Database</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden; background:#fff;"><div style="padding:7px 16px; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">VendorId</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Name</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Phone</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Email</div><div style="padding:7px 16px; border-top:1px solid #dde5e8; font-family:'Lato',sans-serif; font-weight:700; font-size:15.5px; color:#003049;">Photo</div></div></div>
+    <div class="fig-caption"><span>Figure 15.5</span> &nbsp;Create a vendor</div>
+  </div>
+
+  <div id="fig-15-6" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.6</div>
+    <h1 class="fig-title">Uploading Bulk Items or Updating a Single SKU</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; flex-direction:column; gap:28px;">
+      <div style="display:grid; grid-template-columns:minmax(0,1.3fr) 56px minmax(0,1fr) 56px minmax(0,1fr); align-items:center;"><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-weight:700; font-size:15px; line-height:1.4; color:#6A4F8C; overflow-wrap:break-word;">POST Vendor/VendorId/items</div><div style="font-family:'Lato',sans-serif; font-size:14.5px; color:#3a4a52;">(add)</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#12626B;">List of item data</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Upload Photo(s)</div></div></div>
+      <div style="display:grid; grid-template-columns:minmax(0,1.3fr) 56px minmax(0,1fr) 56px minmax(0,1fr); align-items:center;"><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'SFMono-Regular',Menlo,Consolas,monospace; font-weight:700; font-size:15px; line-height:1.4; color:#6A4F8C; overflow-wrap:break-word;">POST Vendor/VendorId/items/sku</div><div style="font-family:'Lato',sans-serif; font-size:14.5px; color:#3a4a52;">(update)</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#12626B;">Single item data</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Upload Photo(s)</div></div></div>
+    </div>
+    <div class="fig-caption"><span>Figure 15.6</span> &nbsp;Uploading bulk items or updating a single SKU</div>
+  </div>
+
+  <div id="fig-15-7" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 15.7</div>
+    <h1 class="fig-title">Connecting Multiple Services</h1>
+    <div class="fig-rule"></div>
+    <div style="display:grid; grid-template-columns:minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr) 56px minmax(0,1fr); align-items:center;"><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#6A4F8C;">Items Upload Service</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #DB3A34; border-radius:12px; background:#fdf1f0; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#B32B26;">Item Queue</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #6A4F8C; border-radius:12px; background:#f7f4fb; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#6A4F8C;">Item Processing Service</div></div><div style="display:flex; align-items:center; justify-content:center;"><svg viewBox="0 0 40 20" width="34" height="18"><path d="M2,10 h26" stroke="#DB3A34" stroke-width="2.5"></path><path d="M38,10 l-12,-7 v14 Z" fill="#DB3A34"></path></svg></div><div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:22px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; min-height:110px; box-sizing:border-box;"><div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; line-height:1.2; color:#003049;">Items Database</div></div></div>
+    <div class="fig-caption"><span>Figure 15.7</span> &nbsp;Connecting multiple services</div>
+  </div>
+
+
+</div>
+
+<a class="ws-home" href="../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#241c33; color:#fff; border:1px solid #241c33; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+</body>
+</html>

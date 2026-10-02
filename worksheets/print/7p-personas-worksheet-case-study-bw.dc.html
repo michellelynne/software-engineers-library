@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#111"></rect>
+    <g transform="translate(28,26)" fill="#777">
+      <circle cx="22" cy="14" r="11"></circle>
+      <path d="M0 48c0-12 10-20 22-20s22 8 22 20z"></path>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Personas Worksheet &middot; Print</span>
+    <span style="font-size:12px; color:#9178B5; white-space:nowrap;">Case study &middot; Renovation Revolution</span>
+  </div>
+  <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div style="padding:42px 60px 28px; border-bottom:3px solid #111;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#555;">Chapter 7 &middot; Worksheet &middot; Case Study</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Personas</h1>
+    <div style="font-family:'Fraunces',serif; font-style:italic; font-size:17px; color:#444; margin:12px 0 0;">Renovation Revolution</div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">When talking about MVP, I mentioned &ldquo;a user&rdquo;. But of course, in the case study and most applications, there are multiple user types, not one monolithic &ldquo;user.&rdquo; Even if everyone sees the same pages, you will at least need someone to handle operations or debugging. So let&rsquo;s start to fill in the personas. You should gather this from market research and user interviews. If you can&rsquo;t do those yet, create personas based on what you know about them.</p>
+
+    <div id="sec-research-prompt" style="margin-top:16px; background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#555; margin-bottom:6px;">&#9671; AI Prompt &middot; Market research</div>
+      <div style="font-size:13px; line-height:1.5; color:#222;">"You are a market researcher helping me understand the users of [product in one or two sentences, and the market or region it serves]. Identify the distinct user types this product needs. For each one, give me their likely demographics, daily context, motivations, pain points, and behaviors, and mark each item as either supported by public evidence or an assumption I still need to test. Then write ten interview questions I could ask a real user of the type I most need to validate. Cite your sources where you have them."</div>
+    </div>
+
+    <div style="margin-top:16px; background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:13px 16px; font-size:13px; line-height:1.55; color:#333;">The first two are filled in as examples. Fill out the rest. One item per line in the list fields.</div>
+
+    <div data-personas="1" style="margin-top:26px;"></div>
+
+    <div id="sec-ai-prompt" style="margin:22px 0 0; background:#f4f4f4; border-left:3px solid #111; border-radius:0 6px 6px 0; padding:12px 15px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#555; margin-bottom:6px;">&#9671; AI Prompt</div>
+      <div style="font-size:13px; line-height:1.5; color:#222;">"You are a product researcher helping me pressure-test user personas. Here is my product in one paragraph: [paste]. Here are the personas I have written: [paste]. For each one, tell me which motivations and pain points are actually assumptions rather than research findings, name the questions I would have to ask a real user to confirm each assumption, and point out any user type I have missed."</div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  PERSONAS(){
+    return [
+      { key:'homeowner', title:'Homeowner', example:true },
+      { key:'contractor', title:'General Contractor', example:true },
+      { key:'vendor', title:'Vendor', occupation:'Renovation Parts Vendor' },
+      { key:'engineer', title:'Engineer Admin', occupation:'Engineer On-Call for App' },
+      { key:'ops', title:'Operations Support', occupation:'Customer Support On-Call for App' }
+    ];
+  }
+  DATA(){
+    return {
+      homeowner: {
+        name:'Alice Beagles', age:'34', occupation:'Marketing Manager', tech:'High',
+        lifestyle:'Busy urban professional, values aesthetics and convenience',
+        goal:'Book a contractor for renovation',
+        motivations:['Envisions a beautiful, functional living space tailored to her style.','Seeks an efficient, low-stress renovation process.','Prefers personalized recommendations that fit her taste and budget.','Wants to avoid purchasing the wrong items or missing support items.','Limit inaccurate estimates leading to rising costs after the renovation starts.'],
+        pains:['Overwhelmed by too many choices and technical details.','Worried about forgetting key components or choosing incompatible items.','Dislikes coordinating logistics between designers, suppliers, and contractors.','Fears costly errors or delays due to miscommunication.'],
+        behaviors:['Uses her phone to scan and model her room for a realistic preview.','Takes a style quiz to streamline options and reduce decision fatigue.','Wants visual and list-based upgrade options for easy comparison.','Prefers curated, style-matched item lists to avoid overwhelming choices.','Needs assurance that all parts are included and compatible before ordering.','Desires a seamless way to send selections to her contractor for review and execution.']
+      },
+      contractor: {
+        name:'Elizabeth Moskowitz', age:'41', occupation:'Licensed General Contractor', tech:'Moderate',
+        lifestyle:'Runs a small but growing renovation business',
+        goal:'Book homeowners for medium-to-large renovations',
+        motivations:['Wants to maximize profit by focusing on high-value projects.','Seeks a steady pipeline of well-informed, ready-to-renovate clients.','Aims to deliver projects efficiently, with minimal delays or errors.','Interested in upselling additional services to boost revenue.'],
+        pains:['Frustrated by incomplete orders and missing components.','Dislikes wasting labor time on short visits.','Concerned about mistakes in client-selected products or configurations.','Wants better leverage with suppliers for bulk discounts.'],
+        behaviors:['Reviews project size and scope before committing.','Prefers clients who are educated about their services via the app.','Insists on reviewing all purchases to catch errors early.','Relies on the Renovation Revolution app to ensure all necessary parts are included in orders.','Wants to upsell clients with relevant add-ons during the process, when appropriate.','Needs a way to track orders and deliveries to ensure timely completion.','Wants to use purchasing data to negotiate better pricing with suppliers.']
+      }
+    };
+  }
+  lbl(){ return "font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#888; margin-bottom:5px;"; }
+  val(v){ return '<div style="font-size:14px; line-height:1.6; color:#222; border-bottom:1px solid #ddd; padding:4px 2px 6px;">'+v+'</div>'; }
+  writein(h){ return '<div style="border:1px solid #ccc; border-radius:6px; height:'+h+'px;"></div>'; }
+  bullets(items){
+    return '<div style="display:flex; flex-direction:column; gap:6px;">'+items.map(b=>
+      '<div style="display:flex; gap:9px;"><span style="color:#111; font-size:14px; line-height:1.5; flex:none;">&bull;</span><div style="font-size:13.5px; line-height:1.5; color:#333;">'+b+'</div></div>'
+    ).join('')+'</div>';
+  }
+  cardHTML(p, i){
+    const d = this.DATA()[p.key];
+    const field = (label, v, h) => '<div><div style="'+this.lbl()+'">'+label+'</div>'+(v ? this.val(v) : this.writein(h||30))+'</div>';
+    const list = (label, arr, h) => '<div><div style="'+this.lbl()+'">'+label+'</div>'+(arr ? this.bullets(arr) : this.writein(h||78))+'</div>';
+    return '<div class="block" id="'+String(i+1)+'-persona-'+p.key+'" style="border:1px solid #ccc; border-radius:12px; overflow:hidden; margin-bottom:18px;">'+
+      '<div style="background:'+(p.example ? '#f0f0f0' : '#fafafa')+'; padding:12px 20px; display:flex; align-items:center; gap:10px;">'+
+        '<span style="font-family:\'Montserrat\',sans-serif; font-weight:700; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#666;">Persona</span>'+
+        '<span style="font-family:\'Fraunces\',serif; font-weight:700; font-size:19px; color:#111;">'+p.title+'</span>'+
+        '<span style="margin-left:auto; font-family:\'Montserrat\',sans-serif; font-weight:600; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:'+(p.example ? '#888' : '#999')+';">'+(p.example ? 'Example' : 'Your turn')+'</span>'+
+      '</div>'+
+      '<div style="padding:18px 20px 20px;">'+
+        '<div style="display:grid; grid-template-columns:2fr 1fr; gap:14px 20px;">'+
+          field('Name', d && d.name)+
+          field('Age', d && d.age)+
+        '</div>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; margin-top:14px;">'+
+          field('Occupation', (d && d.occupation) || p.occupation)+
+          field('Tech Comfort', d && d.tech)+
+        '</div>'+
+        '<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 20px; margin-top:14px;">'+
+          field('Lifestyle', d && d.lifestyle)+
+          field('Main Goal', d && d.goal)+
+        '</div>'+
+        '<div style="display:flex; flex-direction:column; gap:16px; margin-top:18px;">'+
+          list('Motivations and Goals', d && d.motivations)+
+          list('Pain Points', d && d.pains)+
+          list('Behaviors and Needs', d && d.behaviors)+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }
+  componentDidMount(){
+    const host = document.querySelector('[data-personas]');
+    if(host) host.innerHTML = this.PERSONAS().map((p,i)=> this.cardHTML(p,i)).join('');
+  }
+  renderVals(){ return { doPrint: () => window.print() }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#fff; }
+  .save:focus{ border-color:#111 !important; border-bottom-color:#111 !important; }
+  ::placeholder{ color:#999; font-style:italic; }
+  .lk-url{ display:none; }
+  a{ color:#111; }
+  a:hover{ color:#111; }
+  .cell{ border:none; background:transparent; width:100%; box-sizing:border-box; font-family:'Lato',sans-serif; font-size:13px; color:#111; padding:9px 10px; outline:none; }
+  .cell:focus{ background:#f4f4f4; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .step{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 200 200" width="100%">
+    <rect width="200" height="200" fill="#111"></rect>
+    <path d="M100 52c-16 0-28 12-28 28 0 24-8 32-12 36h80c-4-4-12-12-12-36 0-16-12-28-28-28z" fill="#fff"></path>
+    <circle cx="100" cy="140" r="9" fill="#111"></circle>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(17,17,17,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Alert Audit</span>
+    <span style="font-size:12px; color:#bbb; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#ddd; background:transparent; border:1.5px solid #555; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#111; border:1.5px solid #111; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#111; font-family:'Lato',sans-serif; max-width:880px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#fff; color:#111; border-bottom:3px solid #111; padding:42px 64px 32px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#444;">Chapter 11 · Print Worksheet</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#111;">Alert Audit</h1>
+  </div>
+
+  <div style="padding:34px 64px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">This worksheet will provide a framework to systematically improve your alerts. You should aim for a smaller set of alerts that are actionable and tied to user impact. If you would not be comfortable with an alert triggering a page to a coworker in the middle of the night, it should not survive the audit. Try to schedule this audit at least once per year. This is a great task for someone during a quiet on-call or a new engineer you want to better understand the system.</p>
+
+    <div class="step" id="sec-inventory" style="margin:40px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Alert Inventory</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">List every active alert for the service you are auditing.</p>
+      <div style="margin:0 0 18px;">
+        <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#111; margin:0 0 8px;">Service name</label>
+        <input class="save" type="text" name="service-name" style="width:100%; border:none; border-bottom:1.5px solid #999; background:transparent; font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:22px; color:#111; padding:6px 2px; outline:none; box-sizing:border-box;">
+        <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#111; margin:16px 0 8px;">Link to edit</label>
+        <input class="save" type="text" name="service-link" style="width:100%; border:none; border-bottom:1.5px solid #999; background:transparent; font-family:'Lato',sans-serif; font-size:15px; color:#111; padding:6px 2px; outline:none; box-sizing:border-box;">
+      </div>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.3fr 1.7fr 1fr 1.2fr 1fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ invHeads }}" as="h" hint-placeholder-count="5">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ invRows }}" as="r" hint-placeholder-count="8">
+          <div style="display:grid; grid-template-columns:1.3fr 1.7fr 1fr 1.2fr 1fr; border-top:1px solid #ccc;">
+            <sc-for list="{{ r.fields }}" as="f" hint-placeholder-count="5">
+              <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ f }}"></div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-symptom" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">User Impact</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">For each alert, decide whether a user notices anything when it fires. If yes, describe what they experience, such as a failed checkout, a slow page, or missing data. If no, the alert is watching an internal system state, and you should question whether it needs to page anyone.</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.2fr .5fr 2fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ symHeads }}" as="h" hint-placeholder-count="3">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ symRows }}" as="r" hint-placeholder-count="6">
+          <div style="display:grid; grid-template-columns:1.2fr .5fr 2fr; border-top:1px solid #ccc;">
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.nameField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><select class="save cell" name="{{ r.impactField }}" style="cursor:pointer;"><option value=""></option><option value="Yes">Yes</option><option value="No">No</option></select></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.detailField }}"></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-response" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Alert Response</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">If the on-call engineer cannot figure out how to respond to the alert, it is not useful. Runbooks are the classic answer to this problem. Now we can also ask AI to review the code, data, and logs to help us debug. The question then is not whether documentation exists, but whether an on-call engineer can respond in a reasonable amount of time.</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.2fr 1.1fr 2fr .9fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ respHeads }}" as="h" hint-placeholder-count="4">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ respRows }}" as="r" hint-placeholder-count="6">
+          <div style="display:grid; grid-template-columns:1.2fr 1.1fr 2fr .9fr; border-top:1px solid #ccc;">
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.nameField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.runbookField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.actionField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.timeField }}"></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-noise" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Noise Check</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">False positives will result in engineers ignoring this alert. Divide the number of alerts fired in thirty days by the number that were real to get the percentage that are real.</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:2fr .8fr 1fr .7fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ noiseHeads }}" as="h" hint-placeholder-count="4">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ noiseRows }}" as="r" hint-placeholder-count="6">
+          <div style="display:grid; grid-template-columns:2fr .8fr 1fr .7fr; border-top:1px solid #ccc;">
+            <sc-for list="{{ r.fields }}" as="f" hint-placeholder-count="4">
+              <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ f }}"></div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-slo" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">05</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">SLO Connection</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">The strongest alerts are derived directly from your SLO error budget. If an alert is not connected to a user-facing commitment, ask whether it needs to exist at all.</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.2fr 1.4fr 1.6fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ sloHeads }}" as="h" hint-placeholder-count="3">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ sloRows }}" as="r" hint-placeholder-count="6">
+          <div style="display:grid; grid-template-columns:1.2fr 1.4fr 1.6fr; border-top:1px solid #ccc;">
+            <sc-for list="{{ r.fields }}" as="f" hint-placeholder-count="3">
+              <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ f }}"></div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-verdict" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">06</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Audit Verdicts</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Give each alert one of four verdicts and write down the action you will take.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:0 0 18px;">
+        <sc-for list="{{ verdicts }}" as="v" hint-placeholder-count="4">
+          <div style="border:1.5px solid #999; border-left:4px solid #111; border-radius:6px; padding:10px 13px;">
+            <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#111;">{{ v.name }}</div>
+            <div style="font-family:'Lato',sans-serif; font-size:12.5px; line-height:1.5; color:#444; margin:4px 0 0;">{{ v.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.2fr .8fr 2.2fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ verdictHeads }}" as="h" hint-placeholder-count="3">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ verdictRows }}" as="r" hint-placeholder-count="8">
+          <div style="display:grid; grid-template-columns:1.2fr .8fr 2.2fr; border-top:1px solid #ccc;">
+            <sc-for list="{{ r.fields }}" as="f" hint-placeholder-count="3">
+              <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ f }}"></div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-gaps" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">07</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">New Alerts</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 14px;"></div>
+      <p style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.55; color:#444; margin:0 0 16px;">Are there any failure modes that have no alert coverage at all? Any support tickets or incidents that could have been prevented with an alert?</p>
+      <div style="border:1.5px solid #999; border-radius:8px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1.4fr 1.3fr 1.3fr .7fr; background:#f4f4f4; border-bottom:1.5px solid #999;">
+          <sc-for list="{{ gapHeads }}" as="h" hint-placeholder-count="4">
+            <div style="padding:9px 10px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#111; border-right:1px solid #ccc;">{{ h }}</div>
+          </sc-for>
+        </div>
+        <sc-for list="{{ gapRows }}" as="r" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:1.4fr 1.3fr 1.3fr .7fr; border-top:1px solid #ccc;">
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.nameField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.sliField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><input class="save cell" type="text" name="{{ r.sloField }}"></div>
+            <div style="border-right:1px solid #ccc; min-height:38px;"><select class="save cell" name="{{ r.doneField }}" style="cursor:pointer;"><option value=""></option><option value="Yes">Yes</option><option value="No">No</option></select></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="step" id="sec-reflection" style="margin:44px 0 0;">
+      <div style="display:flex; align-items:baseline; gap:13px;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:38px; line-height:.78; color:#111;">08</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:24px; color:#111; margin:0;">Reflection</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#111; margin:12px 0 18px;"></div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <sc-for list="{{ reflection }}" as="q" hint-placeholder-count="4">
+          <div>
+            <label style="display:block; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.06em; color:#111; margin:0 0 7px;">{{ q.label }}</label>
+            <textarea class="save" name="{{ q.field }}" rows="3" style="width:100%; border:1.5px solid #999; border-radius:6px; background:#fff; font-family:'Lato',sans-serif; font-size:14px; line-height:1.5; color:#111; padding:9px 11px; outline:none; box-sizing:border-box; resize:vertical;"></textarea>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#111; color:#fff; border:1px solid #111; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#111; color:#fff; border:1px solid #111; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:880,&quot;height&quot;:900},&quot;inventoryRows&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:8,&quot;min&quot;:4,&quot;max&quot;:16,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;evaluationRows&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  componentDidMount(){
+    this.key = 'ssl-11-alert-audit-bw-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    this.restore(root, saved);
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'checkbox'){ if(el.checked) o[el.name] = '1'; }
+      else if(el.type === 'radio'){ if(el.checked) o[el.name] = el.value; }
+      else if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  restore(root, saved){
+    Object.entries(saved).forEach(([n,v])=>{
+      const els = root.querySelectorAll('.save[name="'+n+'"]');
+      if(!els.length) return;
+      if(els[0].type === 'radio'){ els.forEach(el=>{ el.checked = (String(el.value) === String(v)); }); }
+      else if(els[0].type === 'checkbox'){ els[0].checked = (v === '1'); }
+      else { els[0].value = v; }
+    });
+  }
+  rows(prefix, cols, count){
+    const out = [];
+    for(let i=1;i<=count;i++){
+      out.push({ n:i, fields: cols.map(c => prefix+'-'+i+'-'+c) });
+    }
+    return out;
+  }
+  renderVals(){
+    const invRowCount = this.props.inventoryRows ?? 8;
+    const evalRowCount = this.props.evaluationRows ?? 6;
+    return {
+      invHeads: ['Alert name','Metric','Threshold','Escalation policy','Last fired'],
+      invRows: this.rows('inv', ['name','metric','threshold','escalation','last'], invRowCount),
+      symHeads: ['Alert name','User impact','If yes, what is the impact?'],
+      symRows: this.rows('sym', ['name','impact','detail'], evalRowCount).map(r => ({ ...r, nameField: r.fields[0], impactField: r.fields[1], detailField: r.fields[2] })),
+      respHeads: ['Alert name','Runbook location','First action for the on-call engineer','Time to resolve'],
+      respRows: this.rows('resp', ['name','runbook','action','time'], evalRowCount).map(r => ({ ...r, nameField: r.fields[0], runbookField: r.fields[1], actionField: r.fields[2], timeField: r.fields[3] })),
+      noiseHeads: ['Alert name','# Fired 30D','Real Incidents 30D','% Real'],
+      noiseRows: this.rows('noise', ['name','fired','real','assessment'], evalRowCount),
+      sloHeads: ['Alert name','Which SLO','If not, should it be?'],
+      sloRows: this.rows('slo', ['name','which','should'], evalRowCount),
+      verdicts: [
+        { name:'Keep', text:'Symptom-based, documented response, low noise, tied to an SLO.' },
+        { name:'Tune', text:'Directionally right, but the threshold, window, or scope needs adjustment.' },
+        { name:'Replace', text:'Cause-based, and should become a symptom-based or SLO-derived equivalent.' },
+        { name:'Delete', text:'Adds no signal, has no documented response, or has never fired meaningfully.' }
+      ],
+      verdictHeads: ['Alert name','Verdict','Action'],
+      verdictRows: this.rows('verdict', ['name','verdict','action'], invRowCount),
+      gapHeads: ['Alert name','SLI','SLO','Implemented'],
+      gapRows: this.rows('gap', ['name','sli','slo','done'], 4).map(r => ({ ...r, nameField: r.fields[0], sliField: r.fields[1], sloField: r.fields[2], doneField: r.fields[3] })),
+      reflection: [
+        { label:'After this audit, how many alerts will you delete or replace?', field:'ref-count' },
+        { label:'Is there a pattern to the alerts you are deleting?', field:'ref-pattern' },
+        { label:'Who else should be involved in this audit in the future?', field:'ref-who' },
+        { label:'When will you run this audit again?', field:'ref-when' }
+      ],
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear all your answers on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=>{ if(el.type==='checkbox'||el.type==='radio') el.checked=false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

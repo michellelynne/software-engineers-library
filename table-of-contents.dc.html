@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="support.js"></script>
+<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -23,7 +23,7 @@
   <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#9178B5;">Software Engineer's Library</div>
   <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:64px; line-height:.98; margin:16px 0 0; color:#003049;">Worksheets</h1>
   <div style="height:4px; width:72px; background:#DB3A34; margin:22px 0 20px;"></div>
-  <p style="font-family:'Fraunces',serif; font-size:19px; line-height:1.55; margin:0; color:#3A2449;">Every worksheet from the book, organized by chapter. Each comes in up to four versions: a blank to fill in, a worked case-study example, and print-ready color and black-and-white sheets.</p>
+  <p style="font-family:'Fraunces',serif; font-size:19px; line-height:1.55; margin:0; color:#3A2449;">Every worksheet from the book, organized by chapter. Each comes in up to three versions: a blank to fill in, a worked case-study example, and a print-ready black-and-white sheet.</p>
   <div style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#6b6459; margin-top:14px;">{{ meta }}</div>
 
   <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="16">
@@ -42,7 +42,7 @@
             <div style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid {{ ch.color }}; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:14px;">
               <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">{{ item.title }}</div>
               <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                <sc-for list="{{ item.chips }}" as="c" hint-placeholder-count="4">
+                <sc-for list="{{ item.chips }}" as="c" hint-placeholder-count="3">
                   <a href="{{ c.href }}" style="{{ c.style }}" style-hover="{{ c.styleHover }}">{{ c.label }}</a>
                 </sc-for>
               </div>
@@ -69,14 +69,17 @@
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;">
-      <sc-for list="{{ reference }}" as="item" hint-placeholder-count="1">
+      <sc-for list="{{ reference }}" as="item" hint-placeholder-count="3">
         <div style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #9178B5; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:14px;">
           <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">{{ item.title }}</div>
           <div style="display:flex; flex-wrap:wrap; gap:8px;">
-            <sc-for list="{{ item.chips }}" as="c" hint-placeholder-count="1">
+            <sc-for list="{{ item.chips }}" as="c" hint-placeholder-count="2">
               <a href="{{ c.href }}" style="{{ c.style }}" style-hover="{{ c.styleHover }}">{{ c.label }}</a>
             </sc-for>
           </div>
+        </div>
+      </sc-for>
+    </div>
   </section>
 
   <!-- BOOK IMAGES (index only) -->
@@ -89,41 +92,49 @@
       </div>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;">
-      <a href="2-1i-impact-effort-matrix-worksheet.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="worksheets/interactive/2i-impact-effort-matrix-worksheet.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figure 2.1 &middot; Impact / Effort Matrix</div>
-        <img src="images/book-images/impact-effort-matrix.png" alt="Impact / Effort Matrix" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+        <img src="site-images/toc-thumbnails/impact-effort-matrix.png" alt="Impact / Effort Matrix" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-4-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-4-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 4.1&ndash;4.6 &middot; Backend &amp; System Design</div>
-        <img src="images/book-images/basic-system-design.png" alt="Chapter 4 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+        <img src="site-images/toc-thumbnails/basic-system-design.png" alt="Chapter 4 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-9-networking-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-6-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 6.1&ndash;6.4 &middot; Working Across Cultures</div>
+        <img src="site-images/toc-thumbnails/chapter-6-figures.png" alt="Chapter 6 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+      </a>
+      <a href="figures/chapter-9-networking-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 9.1&ndash;9.3 &middot; Networking &amp; Branding</div>
+        <img src="site-images/toc-thumbnails/chapter-9-networking-decision-tree.png" alt="Chapter 9 networking figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-9-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
-        <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Distributed Systems &middot; chapter number to confirm</div>
-        <img src="images/chapter-9-figures-frames/9-1-six-components-of-distributed-systems.png" alt="Chapter 9 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
-      </a>
-      <a href="chapter-10-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-10-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 10.1&ndash;10.2 &middot; Productionizing</div>
-        <img src="images/chapter-10-figures-frames/10-1-three-tier-communication.png" alt="Chapter 10 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+        <img src="site-images/toc-thumbnails/chapter-10-figures.png" alt="Chapter 10 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-11-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-11-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 11.1&ndash;11.5 &middot; Reliability &amp; Resilience</div>
-        <img src="images/chapter-11-frames/fig-11-4.png" alt="Chapter 11 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+        <img src="site-images/toc-thumbnails/chapter-11-figures.png" alt="Chapter 11 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-12-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-12-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 12.1&ndash;12.7 &middot; Testing &amp; Support Routing</div>
-        <img src="images/chapter-12-figures-frames/12-1-functional-tests.png" alt="Chapter 12 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+        <img src="site-images/toc-thumbnails/chapter-12-figures.png" alt="Chapter 12 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-13-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-13-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 13.1&ndash;13.6 &middot; Career Growth Goal Types</div>
+        <img src="site-images/toc-thumbnails/chapter-13-figures.png" alt="Chapter 13 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-15-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-14-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+        <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 14.1&ndash;14.12 &middot; Scaling to Distributed Systems</div>
+        <img src="site-images/toc-thumbnails/chapter-14-figures.png" alt="Chapter 14 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
+      </a>
+      <a href="figures/chapter-15-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 15.1&ndash;15.3 &middot; The Behavioral Interview</div>
+        <img src="site-images/toc-thumbnails/chapter-15-figures.png" alt="Chapter 15 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
-      <a href="chapter-16-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
+      <a href="figures/chapter-16-figures.dc.html" style="background:#fff; border:1px solid #e3ddd2; border-left:4px solid #DB3A34; border-radius:8px; padding:18px 20px; display:flex; flex-direction:column; gap:12px;">
         <div style="font-family:'Fraunces',serif; font-weight:600; font-size:19px; line-height:1.22; color:#1f2d33;">Figures 16.1&ndash;16.4 &middot; Maintenance Mode</div>
+        <img src="site-images/toc-thumbnails/chapter-16-figures.png" alt="Chapter 16 figures" style="width:100%; height:auto; border:1px solid #e8e4db; border-radius:6px; display:block;">
       </a>
     </div>
   </section>
@@ -147,17 +158,15 @@ class Component extends DCLogic {
     const VPAL = {
       blank:      { bg:'#eef1f4', fg:'#3f5a66' },
       caseStudy:  { bg:'#f6e7d6', fg:'#b5651d' },
-      printColor: { bg:'#e6eff0', fg:'#2c6b73' },
       printBw:    { bg:'#ececec', fg:'#4a4a4a' },
       overview:   { bg:'#dbe4e8', fg:'#003049' },
     };
     const CHIP_DEFS = [
       ['blank', 'Blank'],
       ['caseStudy', 'Case Study'],
-      ['printColor', 'Print \u00B7 Color'],
       ['printBw', 'Print \u00B7 B&W'],
     ];
-    const BASE = "display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; border-radius:6px; padding:8px 12px; transition:filter .15s ease, transform .15s ease;";
+    const BASE = "display:inline-flex; align-items:center; font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; border-radius:6px; padding:8px 12px; flex:1 1 0; justify-content:center; white-space:nowrap; transition:filter .15s ease, transform .15s ease;";
 
     const chip = (key, label, href) => {
       if (href) {
@@ -201,89 +210,75 @@ class Component extends DCLogic {
     };
     const ITEMS = {
       1: [
-        item('Identifying Industries', { blank:'1-1i-identifying-industries-worksheet.dc.html',    printColor:'1-1p-identifying-industries-worksheet-color.dc.html',   printBw:'1-1p-identifying-industries-worksheet-bw.dc.html' }),
-        item('Company Filters',        { blank:'1-2i-company-filters-worksheet.dc.html',          printColor:'1-2p-company-filters-worksheet-color.dc.html',          printBw:'1-2p-company-filters-worksheet-bw.dc.html' }),
-        item('Company List & Alerts',  { blank:'1-3i-company-list-and-alerts-worksheet.dc.html',   printColor:'1-3p-company-list-and-alerts-worksheet-color.dc.html',  printBw:'1-3p-company-list-and-alerts-worksheet-bw.dc.html' }),
-        item('Skills Self-Assessment', { blank:'1-4i-skills-self-assessment-worksheet.dc.html',    printColor:'1-4p-skills-self-assessment-worksheet-color.dc.html',   printBw:'1-4p-skills-self-assessment-worksheet-bw.dc.html' }),
+        item('Identifying Industries', { blank:'worksheets/interactive/1i-identifying-industries-worksheet.dc.html',   printBw:'worksheets/print/1p-identifying-industries-worksheet-bw.dc.html' }),
+        item('Company Filters',        { blank:'worksheets/interactive/1i-company-filters-worksheet.dc.html',          printBw:'worksheets/print/1p-company-filters-worksheet-bw.dc.html' }),
+        item('Company List & Alerts',  { blank:'worksheets/interactive/1i-company-list-and-alerts-worksheet.dc.html',  printBw:'worksheets/print/1p-company-list-and-alerts-worksheet-bw.dc.html' }),
+        item('Skills Self-Assessment', { blank:'worksheets/interactive/1i-skills-self-assessment-worksheet.dc.html',   printBw:'worksheets/print/1p-skills-self-assessment-worksheet-bw.dc.html' }),
       ],
       2: [
-        item('Prioritization for Engineers', { blank:'2-1i-prioritization-worksheet.dc.html', printColor:'2-1p-prioritization-worksheet-color.dc.html', printBw:'2-1p-prioritization-worksheet-bw.dc.html' }),
-        item('Organization Context',      { blank:'2-2i-organization-context-worksheet.dc.html', printColor:'2-2p-organization-context-worksheet-color.dc.html', printBw:'2-2p-organization-context-worksheet-bw.dc.html' }),
-        item('Proposal Memo',             { blank:'2-3i-proposal-memo-worksheet.dc.html', caseStudy:'2-3i-proposal-memo-worksheet-case-study.dc.html', printColor:'2-3p-proposal-memo-worksheet-case-study-color.dc.html', printBw:'2-3p-proposal-memo-worksheet-case-study-bw.dc.html' }),
-        item('User Stories',              { blank:'2-4i-user-stories-worksheet.dc.html', caseStudy:'2-4i-user-stories-worksheet-case-study.dc.html', printBw:'2-4p-user-stories-worksheet-bw.dc.html' }),
+        item('Prioritization for Engineers', { blank:'worksheets/interactive/2i-prioritization-worksheet.dc.html', printBw:'worksheets/print/2p-prioritization-worksheet-bw.dc.html' }),
+        item('Organization Context',      { blank:'worksheets/interactive/2i-organization-context-worksheet.dc.html', printBw:'worksheets/print/2p-organization-context-worksheet-bw.dc.html' }),
+        item('Proposal Memo',             { blank:'worksheets/interactive/2i-proposal-memo-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/2i-proposal-memo-worksheet-case-study.dc.html', printBw:'worksheets/print/2p-proposal-memo-worksheet-case-study-bw.dc.html' }),
+        item('User Stories',              { blank:'worksheets/interactive/2i-user-stories-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/2i-user-stories-worksheet-case-study.dc.html', printBw:'worksheets/print/2p-user-stories-worksheet-blank-bw.dc.html' }),
       ],
       3: [
-        item('Build vs Buy',       { blank:'3-1i-build-vs-buy-worksheet-blank.dc.html', caseStudy:'3-1i-build-vs-buy-worksheet-case-study.dc.html', printBw:'3-1p-build-vs-buy-worksheet-case-study-bw.dc.html' }),
-        item('Engineering Survey', { blank:'3-2i-engineering-survey-worksheet.dc.html', printBw:'3-2p-engineering-survey-worksheet-case-study-bw.dc.html' }),
+        item('Build vs Buy',       { blank:'worksheets/interactive/3i-build-vs-buy-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/3i-build-vs-buy-worksheet-case-study.dc.html', printBw:'worksheets/print/3p-build-vs-buy-worksheet-case-study-bw.dc.html' }),
+        item('Engineering Survey', { blank:'worksheets/interactive/3i-engineering-survey-worksheet.dc.html', printBw:'worksheets/print/3p-engineering-survey-worksheet-case-study-bw.dc.html' }),
       ],
       4: [
-        item('Backend Technical Decisions', { blank:'4i-backend-technical-decisions-worksheet-blank.dc.html', caseStudy:'4i-backend-technical-decisions-worksheet-case-study.dc.html', printBw:'4p-backend-technical-decisions-worksheet-case-study-bw.dc.html' }),
-        item('Backend Designer',            { overview:'4i-backend-designer-worksheet.dc.html' }),
-        item('Search & Filters',            { blank:'4i-search-and-filters-worksheet-blank.dc.html', caseStudy:'4i-search-and-filters-worksheet.dc.html', printBw:'4p-search-and-filters-worksheet-case-study-bw.dc.html' }),
-        item('Stakeholder Authorization',     { blank:'4i-permissions-worksheet-blank.dc.html', caseStudy:'4i-permissions-worksheet.dc.html', printBw:'4p-permissions-worksheet-case-study-bw.dc.html' }),
-        item('Database Tables',             { caseStudy:'4i-database-tables-worksheet.dc.html', printBw:'4p-database-tables-worksheet-case-study-bw.dc.html' }),
-        item('API',                         { caseStudy:'4i-api-worksheet-case-study.dc.html', printBw:'4p-api-worksheet-case-study-bw.dc.html' }),
-        item('Figures 4.1\u20134.6: Backend & System Design', { printColor:'chapter-4-figures.dc.html' }),
+        item('Backend Technical Decisions', { blank:'worksheets/interactive/4i-backend-technical-decisions-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/4i-backend-technical-decisions-worksheet-case-study.dc.html', printBw:'worksheets/print/4p-backend-technical-decisions-worksheet-case-study-bw.dc.html' }),
+        item('Backend Designer',            { overview:'worksheets/interactive/4i-backend-designer-worksheet.dc.html' }),
+        item('Search & Filters',            { blank:'worksheets/interactive/4i-search-and-filters-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/4i-search-and-filters-worksheet-case-study.dc.html', printBw:'worksheets/print/4p-search-and-filters-worksheet-case-study-bw.dc.html' }),
+        item('Stakeholder Authorization',     { blank:'worksheets/interactive/4i-permissions-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/4i-permissions-worksheet-case-study.dc.html', printBw:'worksheets/print/4p-permissions-worksheet-case-study-bw.dc.html' }),
+        item('Database Tables',             { caseStudy:'worksheets/interactive/4i-database-tables-worksheet-case-study.dc.html', printBw:'worksheets/print/4p-database-tables-worksheet-case-study-bw.dc.html' }),
+        item('API',                         { blank:'worksheets/interactive/4i-api-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/4i-api-worksheet-case-study.dc.html', printBw:'worksheets/print/4p-api-worksheet-case-study-bw.dc.html' }),
       ],
       5: [
-        item('Designer Worksheet',         { blank:'5i-designer-worksheet-blank.dc.html', caseStudy:'5i-designer-worksheet-case-study.dc.html', printBw:'5p-designer-worksheet-case-study-bw.dc.html' }),
-        item('Frontend Decision Worksheet',{ blank:'5i-frontend-decision-worksheet-blank.dc.html', caseStudy:'5i-frontend-decision-worksheet-case-study.dc.html', printBw:'5p-frontend-decision-worksheet-case-study-bw.dc.html' }),
-        item('Accessibility Audit Worksheet', { blank:'5i-accessibility-audit-worksheet-blank.dc.html', caseStudy:'5i-accessibility-audit-worksheet-case-study.dc.html', printBw:'5p-accessibility-audit-worksheet-case-study-bw.dc.html' }),
+        item('Designer Worksheet',         { blank:'worksheets/interactive/5i-designer-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/5i-designer-worksheet-case-study.dc.html', printBw:'worksheets/print/5p-designer-worksheet-case-study-bw.dc.html' }),
+        item('Frontend Decision Worksheet',{ blank:'worksheets/interactive/5i-frontend-decision-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/5i-frontend-decision-worksheet-case-study.dc.html', printBw:'worksheets/print/5p-frontend-decision-worksheet-case-study-bw.dc.html' }),
+        item('Accessibility Audit Worksheet', { blank:'worksheets/interactive/5i-accessibility-audit-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/5i-accessibility-audit-worksheet-case-study.dc.html', printBw:'worksheets/print/5p-accessibility-audit-worksheet-case-study-bw.dc.html' }),
       ],
       6: [
-        item('Starting a Mentorship',          { blank:'6i-mentorship-worksheet.dc.html', printBw:'6p-mentorship-worksheet-bw.dc.html' }),
-        item('Dig In or Opt Out',              { blank:'6i-dig-in-or-opt-out-worksheet.dc.html', printBw:'6p-dig-in-or-opt-out-worksheet-bw.dc.html' }),
-        item('Figure 6.2: Region Communication', { printColor:'chapter-6-figures.dc.html', printBw:'chapter-6-figures-bw.dc.html' }),
+        item('Starting a Mentorship',          { blank:'worksheets/interactive/6i-mentorship-worksheet.dc.html', printBw:'worksheets/print/6p-mentorship-worksheet-bw.dc.html' }),
+        item('Dig In or Opt Out',              { blank:'worksheets/interactive/6i-dig-in-or-opt-out-worksheet.dc.html', printBw:'worksheets/print/6p-dig-in-or-opt-out-worksheet-bw.dc.html' }),
       ],
       7: [
-        item('Personas',          { blank:'7i-personas-worksheet-blank.dc.html', caseStudy:'7i-personas-worksheet-case-study.dc.html', printBw:'7p-personas-worksheet-case-study-bw.dc.html' }),
-        item('Index Card Design', { blank:'7i-index-card-design-worksheet.dc.html', caseStudy:'7i-index-card-design-worksheet-case-study.dc.html', printBw:'7p-index-card-design-worksheet-bw.dc.html' }),
-        item('Roadmap',           { blank:'7i-roadmap-worksheet.dc.html', caseStudy:'7i-roadmap-worksheet-case-study.dc.html', printBw:'7p-roadmap-worksheet-case-study-bw.dc.html' }),
+        item('Personas',          { blank:'worksheets/interactive/7i-personas-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/7i-personas-worksheet-case-study.dc.html', printBw:'worksheets/print/7p-personas-worksheet-case-study-bw.dc.html' }),
+        item('Index Card Design', { blank:'worksheets/interactive/7i-index-card-design-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/7i-index-card-design-worksheet-case-study.dc.html', printBw:'worksheets/print/7p-index-card-design-worksheet-case-study-bw.dc.html' }),
+        item('Roadmap',           { blank:'worksheets/interactive/7i-roadmap-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/7i-roadmap-worksheet-case-study.dc.html', printBw:'worksheets/print/7p-roadmap-worksheet-case-study-bw.dc.html' }),
       ],
       8: [
-        item('Success Statements', { blank:'8i-success-statements-worksheet-blank.dc.html', caseStudy:'8i-success-statements-worksheet-case-study.dc.html', printBw:'8p-success-statements-worksheet-case-study-bw.dc.html' }),
-        item('Brag Sheet',         { blank:'8i-brag-sheet-worksheet-blank.dc.html', caseStudy:'8i-brag-sheet-worksheet-case-study.dc.html', printBw:'8p-brag-sheet-worksheet-case-study-bw.dc.html' }),
-        item('Newsletter', { blank:'8i-newsletter-worksheet.dc.html', printBw:'8i-newsletter-worksheet-bw.dc.html' }),
-        item('Making Opportunities', { blank:'8i-making-opportunities-worksheet.dc.html', printBw:'8i-making-opportunities-worksheet-bw.dc.html' }),
+        item('Success Statements', { blank:'worksheets/interactive/8i-success-statements-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/8i-success-statements-worksheet-case-study.dc.html', printBw:'worksheets/print/8p-success-statements-worksheet-case-study-bw.dc.html' }),
+        item('Brag Sheet',         { blank:'worksheets/interactive/8i-brag-sheet-worksheet-blank.dc.html', caseStudy:'worksheets/interactive/8i-brag-sheet-worksheet-case-study.dc.html', printBw:'worksheets/print/8p-brag-sheet-worksheet-case-study-bw.dc.html' }),
+        item('Newsletter', { blank:'worksheets/interactive/8i-newsletter-worksheet.dc.html', printBw:'worksheets/print/8p-newsletter-worksheet-bw.dc.html' }),
+        item('Making Opportunities', { blank:'worksheets/interactive/8i-making-opportunities-worksheet.dc.html', printBw:'worksheets/print/8p-making-opportunities-worksheet-bw.dc.html' }),
       ],
       9: [
-        item('Networking Preparation', { blank:'9i-networking-worksheet.dc.html', printBw:'9p-networking-worksheet-bw.dc.html' }),
-        item('Branding Review',        { blank:'9i-branding-worksheet.dc.html', printBw:'9p-branding-worksheet-bw.dc.html' }),
-        item('Figures 9.1\u20139.3: Networking & Branding', { printColor:'chapter-9-networking-figures.dc.html' }),
-        item('Figures (unnumbered): Distributed Systems', { printColor:'chapter-9-figures.dc.html' }),
+        item('Networking Preparation', { blank:'worksheets/interactive/9i-networking-worksheet.dc.html', printBw:'worksheets/print/9p-networking-worksheet-bw.dc.html' }),
+        item('Branding Review',        { blank:'worksheets/interactive/9i-branding-worksheet.dc.html', printBw:'worksheets/print/9p-branding-worksheet-bw.dc.html' }),
       ],
       10: [
-        item('Productionizing', { blank:'10i-productionizing-worksheet.dc.html', printBw:'10p-productionizing-worksheet-bw.dc.html' }),
-        item('Change Management', { blank:'10i-change-management-worksheet.dc.html', printBw:'10i-change-management-worksheet-bw.dc.html' }),
-        item('Figures 10.1\u201310.2: Stakeholder Cadence & OAuth', { printColor:'chapter-10-figures.dc.html' }),
+        item('Productionizing', { blank:'worksheets/interactive/10i-productionizing-worksheet.dc.html', printBw:'worksheets/print/10p-productionizing-worksheet-bw.dc.html' }),
+        item('Change Management', { blank:'worksheets/interactive/10i-change-management-worksheet.dc.html', printBw:'worksheets/print/10p-change-management-worksheet-bw.dc.html' }),
       ],
       11: [
-        item('Reliability Audit', { blank:'11i-reliability-audit-worksheet.dc.html', printBw:'11p-reliability-audit-worksheet-bw.dc.html' }),
-        item('Alert Audit', { blank:'11i-alert-audit-worksheet.dc.html', printBw:'11p-alert-audit-worksheet-bw.dc.html' }),
-        item('Failure Audit', { blank:'11i-failure-audit-worksheet.dc.html' }),
-        item('Figures 11.1\u201311.5: Reliability & Resilience', { printColor:'chapter-11-figures.dc.html' }),
+        item('Reliability Audit', { blank:'worksheets/interactive/11i-reliability-audit-worksheet.dc.html', printBw:'worksheets/print/11p-reliability-audit-worksheet-bw.dc.html' }),
+        item('Alert Audit', { blank:'worksheets/interactive/11i-alert-audit-worksheet.dc.html', printBw:'worksheets/print/11p-alert-audit-worksheet-bw.dc.html' }),
+        item('Failure Audit', { blank:'worksheets/interactive/11i-failure-audit-worksheet.dc.html' }),
       ],
       12: [
-        item('Figures 12.1\u201312.7: Testing & Support Routing', { printColor:'chapter-12-figures.dc.html' }),
       ],
       13: [
-        item('Goal Type: Respect',  { blank:'13i-goal-types-worksheet.dc.html' }),
-        item('Goal Type: Influence',  { blank:'13i-goal-type-influence-worksheet.dc.html' }),
-        item('Goal Type: Autonomy',  { blank:'13i-goal-type-autonomy-worksheet.dc.html' }),
-        item('Goal Type: Sense of Accomplishment',  { blank:'13i-goal-type-accomplishment-worksheet.dc.html' }),
-        item('Goal Type: Financial',  { blank:'13i-goal-type-financial-worksheet.dc.html' }),
-        item('Growth Mode', { blank:'13i-growth-mode-worksheet.dc.html' }),
-        item('Figures 13.1\u201313.6: Career Growth Goal Types', { printColor:'chapter-13-figures.dc.html' }),
+        item('Weekly Task Audit', { blank:'worksheets/interactive/13i-weekly-tasks-worksheet.dc.html', printBw:'worksheets/print/13p-weekly-tasks-worksheet-bw.dc.html' }),
+        item('Set Growth Mode Goals', { blank:'worksheets/interactive/13i-set-growth-mode-goals-worksheet.dc.html', printBw:'worksheets/print/13p-set-growth-mode-goals-worksheet-bw.dc.html' }),
+        item('Achieve Growth Mode Goals', { blank:'worksheets/interactive/13i-growth-mode-worksheet.dc.html', printBw:'worksheets/print/13p-growth-mode-worksheet-bw.dc.html' }),
       ],
       14: [
-        item('Distributed Systems Design', { caseStudy:'14i-distributed-systems-worksheet-case-study.dc.html', printBw:'14p-distributed-systems-worksheet-case-study-bw.dc.html' }),
       ],
       15: [
-        item('Behavioral Story Bank', { blank:'15i-behavioral-story-worksheet.dc.html' }),
-        item('Figures 15.1\u201315.3: Behavioral Interview', { printColor:'chapter-15-figures.dc.html' }),
+        item('Behavioral Story Bank', { blank:'worksheets/interactive/15i-behavioral-story-worksheet.dc.html', printBw:'worksheets/print/15p-behavioral-story-worksheet-bw.dc.html' }),
       ],
       16: [
-        item('Figures 16.1\u201316.4: Maintenance Mode', { printColor:'chapter-16-figures.dc.html' }),
       ],
     };
 
@@ -318,9 +313,9 @@ class Component extends DCLogic {
       return { label, href, style, styleHover: style + ' filter:brightness(.94); transform:translateY(-1px);' };
     };
     const reference = [
-      { title: 'User Stories', chips: [ refChip('Interactive', 'refi-user-stories.dc.html'), refChip('Print', 'refp-user-stories.dc.html') ] },
-      { title: 'Pages', chips: [ refChip('Interactive', 'refi-pages.dc.html'), refChip('Print', 'refp-pages.dc.html') ] },
-      { title: 'Database Tables', chips: [ refChip('Interactive', 'refi-database-tables.dc.html') ] },
+      { title: 'User Stories', chips: [ refChip('Interactive', 'reference/refi-user-stories.dc.html'), refChip('Print', 'reference/refp-user-stories.dc.html') ] },
+      { title: 'Pages', chips: [ refChip('Interactive', 'reference/refi-pages.dc.html'), refChip('Print', 'reference/refp-pages.dc.html') ] },
+      { title: 'Database Tables', chips: [ refChip('Interactive', 'reference/refi-database-tables.dc.html') ] },
     ];
 
     const total = Object.values(ITEMS).reduce((n, arr) =>
