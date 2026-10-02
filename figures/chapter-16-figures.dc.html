@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Montserrat:wght@600;700&family=Fraunces:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .fig{ background:#fff; box-sizing:border-box; }
+  .fig-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9178B5; }
+  .fig-title{ font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; margin:10px 0 0; color:#003049; }
+  .fig-rule{ height:4px; width:70px; background:#DB3A34; margin:16px 0 34px; }
+  .fig-caption{ font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#003049; margin-top:26px; }
+  .fig-caption span{ font-family:'Montserrat',sans-serif; font-weight:700; color:#9178B5; }
+  svg{ display:block; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="20" y="24" width="60" height="10" rx="2" fill="#DB3A34"></rect>
+    <rect x="20" y="44" width="60" height="10" rx="2" fill="#177E89"></rect>
+    <rect x="20" y="64" width="60" height="10" rx="2" fill="#9178B5"></rect>
+  </svg>
+</template>
+
+<div style="max-width:1400px; margin:26px auto; display:flex; flex-direction:column; gap:24px;">
+
+  <div id="fig-16-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 16.1</div>
+    <h1 class="fig-title">Signals a Product Is Heading for Maintenance Mode</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">None of these is decisive alone</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Three or four at once, and the decision has already been made for you.</span></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+      <div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden;">
+        <div style="padding:13px 20px; background:#003049; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The roadmap</div>
+        <div style="padding:18px 20px; font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.6; color:#3a4a52;">Every item is technical debt or support work. Nothing on it grows the product.</div>
+      </div>
+      <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+        <div style="padding:13px 20px; background:#177E89; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The people</div>
+        <div style="padding:18px 20px; font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.6; color:#3a4a52;">Engineers and product managers have stopped bringing big ideas to the table.</div>
+      </div>
+      <div style="border:2.5px solid #9178B5; border-radius:12px; overflow:hidden;">
+        <div style="padding:13px 20px; background:#6A4F8C; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The metrics</div>
+        <div style="padding:18px 20px; font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.6; color:#4a3a58;">Flat. Churn may look healthy, but growth has stopped.</div>
+      </div>
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; overflow:hidden;">
+        <div style="padding:13px 20px; background:#B32B26; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The hiring</div>
+        <div style="padding:18px 20px; font-family:'Lato',sans-serif; font-size:15.5px; line-height:1.6; color:#3a4a52;">It is hard to find engineers who want to work on it.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 16.1</span> &nbsp;Maintenance Mode Signals</div>
+  </div>
+
+  <div id="fig-16-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 16.2</div>
+    <h1 class="fig-title">Sorting a Product Into Maintenance Mode</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Every feature gets exactly one move</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Worked on the Renovation Revolution case study.</span></div>
+
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:0 0 24px;">
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; background:#fdf1f0; padding:16px 18px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#B32B26;">Deprecate</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52; margin:7px 0 0;">Low use, high upkeep. Sunset it.</div>
+      </div>
+      <div style="border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:16px 18px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#12626B;">Automate</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52; margin:7px 0 0;">Keep it, but take the manual work out of it.</div>
+      </div>
+      <div style="border:2.5px solid #9178B5; border-radius:12px; background:#f7f4fb; padding:16px 18px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#6A4F8C;">Consolidate</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#4a3a58; margin:7px 0 0;">Merge it into something else to shrink the surface area.</div>
+      </div>
+      <div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:16px 18px;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#003049;">Maintain</div>
+        <div style="font-family:'Lato',sans-serif; font-size:14.5px; line-height:1.55; color:#3a4a52; margin:7px 0 0;">Leave it running. Security and bug fixes only.</div>
+      </div>
+    </div>
+
+    <div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; background:#003049;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Feature or component</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Move</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Why</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">AR room preview</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#B32B26;">Deprecate</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Low usage, and expensive to keep working across OS updates.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Design inspiration feed</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#B32B26;">Deprecate</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Needs a paid content pipeline with no payoff in maintenance mode.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Contractor onboarding</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#12626B;">Automate</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Replace manual review with a self-serve flow and automated checks.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Support inbox</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#12626B;">Automate</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">An FAQ bot handles common questions. Humans only on escalations.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Two messaging surfaces: chat and project comments</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#6A4F8C;">Consolidate</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Merge into one thread and cut the maintenance in half.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Push reminders and alerts</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#6A4F8C;">Consolidate</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Fold into a single notification service and delete the noisy alerts.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Payments and escrow</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#003049;">Maintain</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Revenue still flows through it. Security patches only, zero feature work.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 170px 1.3fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#f2f6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Core project tracker</div>
+        <div style="padding:15px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#003049;">Maintain</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">The reason people stay. Keep it stable.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 16.2</span> &nbsp;Deprecate, Automate, Consolidate, Maintain</div>
+  </div>
+
+  <div id="fig-16-3" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 16.3</div>
+    <h1 class="fig-title">Who Hears What, and What They Have to Do</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">One message per audience</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">What is changing, why now, what is next, and the one action they take.</span></div>
+
+    <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:260px 1.3fr 1fr; background:#177E89;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Audience</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">What is changing</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">The action they take</div>
+      </div>
+      <div style="display:grid; grid-template-columns:260px 1.3fr 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Homeowners mid-project</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">AR preview and the inspiration feed retire on [date]. Everything else keeps working.</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Export saved designs before [date].</div>
+      </div>
+      <div style="display:grid; grid-template-columns:260px 1.3fr 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Contractors</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Chat and project comments become one thread.</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Nothing. Links redirect automatically.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:260px 1.3fr 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Leadership</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">The team moves to [new product] after a six-week wind-down.</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Approve the maintenance staffing level.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:260px 1.3fr 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Support team</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Tier-1 questions move to the bot.</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Review the escalation path.</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 16.3</span> &nbsp;Maintenance Mode Communication Plan</div>
+  </div>
+
+  <div id="fig-16-4" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 16.4</div>
+    <h1 class="fig-title">Drop, Delegate, Keep</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Career maintenance mode</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Sort every obligation, at work and at home, into one of three columns.</span></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; align-items:stretch;">
+      <div style="border:2.5px solid #DB3A34; border-radius:12px; overflow:hidden; display:flex; flex-direction:column;">
+        <div style="padding:14px 20px; background:#B32B26;">
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Drop</div>
+          <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#ffe1de; margin:3px 0 0;">it can wait</div>
+        </div>
+        <div style="padding:18px 20px; background:#fff; font-family:'Lato',sans-serif; font-size:15px; line-height:1.6; color:#3a4a52; flex:1;">The extras: interview panels, intern mentoring, team social organizing, the newest experimental project. Ask for a break from them by name.</div>
+      </div>
+      <div style="border:2.5px solid #9178B5; border-radius:12px; overflow:hidden; display:flex; flex-direction:column;">
+        <div style="padding:14px 20px; background:#6A4F8C;">
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Delegate</div>
+          <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#e6dcf3; margin:3px 0 0;">it can be outsourced</div>
+        </div>
+        <div style="padding:18px 20px; background:#fff; font-family:'Lato',sans-serif; font-size:15px; line-height:1.6; color:#4a3a58; flex:1;">Work a teammate can own, and life tasks someone else can do for pay or in trade. Asking for help is not a failure, it buys back hours.</div>
+      </div>
+      <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden; display:flex; flex-direction:column;">
+        <div style="padding:14px 20px; background:#177E89;">
+          <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:24px; color:#fff;">Keep</div>
+          <div style="font-family:'Lato',sans-serif; font-weight:700; font-size:13.5px; color:#d3ebed; margin:3px 0 0;">critical, and it has to be you</div>
+        </div>
+        <div style="padding:18px 20px; background:#fff; font-family:'Lato',sans-serif; font-size:15px; line-height:1.6; color:#3a4a52; flex:1;">The one project that still adds real value, the people who depend on you, and the creative outlet that is yours alone.</div>
+      </div>
+    </div>
+
+    <div style="margin:24px 0 0; border:2.5px dashed #003049; border-radius:12px; background:#eef4f5; padding:18px 22px; display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 18px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#12626B; flex:none;">Put a date on it</div>
+      <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.6; color:#3a4a52; flex:1; min-width:320px;">Maintenance mode needs a built-in review point, or it quietly becomes permanent. Pick the date now and put it on your calendar.</div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 16.4</span> &nbsp;Career Maintenance Mode Sort</div>
+  </div>
+
+</div>
+
+<a class="ws-home" href="../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#241c33; color:#fff; border:1px solid #241c33; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+</body>
+</html>

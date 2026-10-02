@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#a8bcc6; font-style:italic; }
+  a{ color:#177E89; text-decoration:none; }
+  a:hover{ color:#003049; }
+  .lk-url{ display:none; }
+  .save:focus{ border-color:#177E89 !important; background:#fff !important; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <path d="M26,72 L26,54 L40,54 L40,72 Z" fill="#177E89"></path>
+    <path d="M44,72 L44,42 L58,42 L58,72 Z" fill="#9fc4cf"></path>
+    <path d="M62,72 L62,28 L76,28 L76,72 Z" fill="#DB3A34"></path>
+    <path d="M20,78 L84,78" stroke="#fff" stroke-width="3"></path>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Making Opportunities Worksheet</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 60px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#8fb3c4;">Chapter 8 &middot; The Senior Promotion</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Making Opportunities Worksheet</h1>
+    <div style="font-family:'Fraunces',serif; font-size:17px; color:#bde3e6; margin:12px 0 0;">Deciding which role you want next, and what it takes to get there</div>
+    <div style="height:3px; width:64px; background:#177E89; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">When you are interviewing for a new job, the interviewer will often ask why you want to work there. They want to know that you are interested in the product and have done at least some research on the company. They don&#8217;t want a canned answer. Obviously, all jobs have their boring parts, and no role is going to be all fun and games (except the role Director of Fun and Games, which is a real job for the Philadelphia Phillies).<sup style="font-family:'Montserrat',sans-serif; font-size:10px; color:#9178B5;">5</sup></p>
+
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:16px 0 0;">When you want a promotion, you need to be able to answer the same question. I know your heart (or your wallet) says &#8220;money please!&#8221; but your head needs to come up with a professional answer. You should also know for yourself, to help you establish your goals. So take a minute and write it down for me. Think about which role you want next and why. Be specific; tell me what you expect that role to look like. Think about the day-to-day as well as the long-term responsibilities. If you had that dream job, think about what you want to have accomplished in three, six, or twelve months.</p>
+
+    <div class="block" id="sec-role">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Which Role Do You Want Next?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">Write the job description. First the summary, then a list of skills.</p>
+      <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:16px;">
+        <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">The role</div><input class="save" type="text" name="role-title" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+        <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">When you want it</div><input class="save" type="text" name="role-when" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+      </div>
+      <div style="margin:16px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Summary</div>
+        <textarea class="save" name="role-picture" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+      </div>
+      <div style="margin:16px 0 0;">
+        <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Skills</div>
+        <div style="border:1px solid #e6ecf0; border-radius:12px; padding:6px 16px 14px;">
+          <sc-for list="{{ skillRows }}" as="s" hint-placeholder-count="6">
+            <div style="display:flex; align-items:center; gap:11px; border-bottom:1px solid #e6ecf0;">
+              <span style="width:7px; height:7px; border-radius:50%; background:#177E89; flex:none;"></span>
+              <input class="save" type="text" name="{{ s.field }}" style="flex:1; border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 0; outline:none;">
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" id="sec-why">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Why That Role?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:2px;">
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">What you like about that role?</div>
+          <textarea class="save" name="why-honest" rows="4" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        </div>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">How does it match your long term goals?</div>
+          <textarea class="save" name="why-pro" rows="4" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" id="sec-responsibilities">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">03</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">What Are The Responsibilities?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">What does an average day look like?</div>
+      <textarea class="save" name="day-picture" rows="4" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin:20px 0 6px;">What is the breakdown of tasks?</div>
+      <div style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1fr 96px; background:#003049;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Task</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px; text-align:right;">% of day</div>
+        </div>
+        <sc-for list="{{ dayRows }}" as="r" hint-placeholder-count="5">
+          <div style="display:grid; grid-template-columns:1fr 96px; border-top:1px solid #e6ecf0;">
+            <input class="save" type="text" name="{{ r.field }}" style="border:none; border-right:1px solid #e6ecf0; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 13px; outline:none; box-sizing:border-box;">
+            <input class="save pct" type="text" inputMode="numeric" name="{{ r.pctField }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 13px; outline:none; box-sizing:border-box; text-align:right;">
+          </div>
+        </sc-for>
+        <div style="display:grid; grid-template-columns:1fr 96px; border-top:2px solid #003049; background:#f4f7f9;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#003049; padding:11px 13px;">Total (should be 100%)</div>
+          <div id="pct-total" style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#003049; padding:11px 13px; text-align:right;">0%</div>
+        </div>
+      </div>
+      <button type="button" onClick="{{ addDayRow }}" class="no-print" style="margin-top:14px; font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; letter-spacing:.04em; color:#177E89; background:transparent; border:1.5px dashed #b9cdd6; border-radius:8px; padding:10px 15px; cursor:pointer;">+ Add a line</button>
+    </div>
+
+    <div class="block" id="sec-milestones">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">04</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">What Is Your 3, 6, 12 Month Impact?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 16px;">You have the role. What do you want to have accomplished by each mark? Write outcomes, not tasks.</p>
+      <sc-for list="{{ milestoneRows }}" as="m" hint-placeholder-count="3">
+        <div class="block" style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden; margin-bottom:14px;">
+          <div style="background:#eef2f5; padding:11px 18px; display:flex; align-items:center; gap:11px;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; line-height:1; color:#177E89;">{{ m.num }}</span>
+            <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:16px; color:#003049;">{{ m.label }}</span>
+          </div>
+          <div style="padding:14px 18px 16px;">
+            <textarea class="save" name="{{ m.field }}" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div class="block" id="sec-actions">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">05</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">How To Make It Happen?</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 16px;">Now that we know what we want, let's make it happen.</p>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Which skills did you list that you need to learn?</div>
+          <textarea class="save" name="act-skills-to-learn" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        </div>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:8px;">Does this job already exist at your organization?</div>
+          <div style="display:flex; gap:22px;">
+            <label style="display:flex; align-items:center; gap:8px; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; cursor:pointer;"><input class="save" type="radio" name="act-exists" value="yes" style="width:16px; height:16px; accent-color:#177E89;">Yes</label>
+            <label style="display:flex; align-items:center; gap:8px; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; cursor:pointer;"><input class="save" type="radio" name="act-exists" value="no" style="width:16px; height:16px; accent-color:#DB3A34;">No</label>
+          </div>
+        </div>
+        <div style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; background:#eaf4f5; padding:10px 16px;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; line-height:1; letter-spacing:.06em; color:#177E89;">YES</span>
+            <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:15px; color:#003049;">It exists already</span>
+          </div>
+          <div style="padding:14px 16px 16px; display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Can you talk to someone with the role and get advice? Who, and what will you ask them?</div>
+          <textarea class="save" name="act-yes-advice" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        </div>
+          </div>
+        </div>
+        <div style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; background:#fbeeed; padding:10px 16px;">
+            <span style="font-family:'Bebas Neue',sans-serif; font-size:20px; line-height:1; letter-spacing:.06em; color:#DB3A34;">NO</span>
+            <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:15px; color:#003049;">It does not exist yet</span>
+          </div>
+          <div style="padding:14px 16px 16px; display:flex; flex-direction:column; gap:16px;">
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Who would most benefit from you having this role?</div>
+          <textarea class="save" name="act-who-benefits" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        </div>
+        <div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Who should you talk to first, and how should you frame it? Ask them for help with next steps.</div>
+          <textarea class="save" name="act-who-first" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:920,&quot;height&quot;:900},&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#003049&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#003049&quot;,&quot;#177E89&quot;,&quot;#3A2449&quot;,&quot;#DB3A34&quot;],&quot;section&quot;:&quot;Style&quot;},&quot;responsibilityCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  state = { extraDayRows: 0 };
+  componentDidMount(){
+    this.key = 'ssl-8-opportunities-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    Object.entries(saved).forEach(([n,v])=>{
+      const els = root.querySelectorAll('.save[name="'+n+'"]');
+      els.forEach(el=>{ if(el.type === 'radio'){ if(el.value === v) el.checked = true; } else { el.value = v; } });
+    });
+    this._save = () => { this.save(root); this.updateTotal(root); };
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.updateTotal(root);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){
+    const root = document.getElementById('ws-root');
+    if(root) this.updateTotal(root);
+    this.applyTweaks();
+  }
+  updateTotal(root){
+    let t = 0;
+    root.querySelectorAll('.pct').forEach(el=>{ const n = parseFloat(String(el.value).replace(/[^0-9.\-]/g,'')); if(!isNaN(n)) t += n; });
+    const out = document.getElementById('pct-total');
+    if(out){
+      out.textContent = (Math.round(t*10)/10) + '%';
+      out.style.color = (t === 100) ? '#177E89' : (t > 100 ? '#DB3A34' : '#003049');
+    }
+  }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{
+      if(el.type === 'radio'){ if(el.checked) o[el.name] = el.value; return; }
+      if(el.value && el.value.trim()) o[el.name] = el.value;
+    });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  renderVals(){
+    const bullets = (prefix, n, ph) => Array.from({length:n}, (_,i) => ({ field: prefix+'-'+(i+1), ph: i===0 ? ph : '' }));
+    const rc = Math.max(2, Math.min(20, (this.props.responsibilityCount ?? 5) + this.state.extraDayRows));
+    return {
+      dayRows: bullets('day', rc, '').map(r => ({ ...r, pctField: r.field + '-pct' })),
+      addDayRow: () => this.setState(st => ({ extraDayRows: st.extraDayRows + 1 })),
+      skillRows: bullets('role-skill', 6, ''),
+      milestoneRows: [
+        { num:'03', label:'3 Months', field:'ms-3', ph:'The first thing people would notice.' },
+        { num:'06', label:'6 Months', field:'ms-6', ph:'Something shipped, changed, or measurably better.' },
+        { num:'12', label:'12 Months', field:'ms-12', ph:'What makes the promotion look obvious in hindsight.' }
+      ],
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear everything on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=>{ if(el.type === 'radio') el.checked = false; else el.value=''; }); this.save(root); }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

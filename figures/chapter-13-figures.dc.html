@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Montserrat:wght@600;700&family=Fraunces:wght@500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html,body{ margin:0; background:#e9eef0; }
+  a{ color:#177E89; }
+  a:hover{ color:#DB3A34; }
+  .fig{ background:#fff; box-sizing:border-box; }
+  .fig-label{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:13px; letter-spacing:.24em; text-transform:uppercase; color:#9178B5; }
+  .fig-title{ font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:38px; margin:10px 0 0; color:#003049; }
+  .fig-rule{ height:4px; width:70px; background:#DB3A34; margin:16px 0 34px; }
+  .fig-caption{ font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:#003049; margin-top:26px; }
+  .fig-caption span{ font-family:'Montserrat',sans-serif; font-weight:700; color:#9178B5; }
+  svg{ display:block; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <rect x="22" y="66" width="56" height="12" rx="2" fill="#177E89"></rect>
+    <rect x="22" y="48" width="42" height="12" rx="2" fill="#9178B5"></rect>
+    <rect x="22" y="30" width="28" height="12" rx="2" fill="#DB3A34"></rect>
+  </svg>
+</template>
+
+<div style="max-width:1400px; margin:26px auto; display:flex; flex-direction:column; gap:24px;">
+
+  <div id="tbl-13-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">TABLE 13.1</div>
+    <h1 class="fig-title">Seven Forms of Respect</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Ask of each one</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Am I giving this? Am I getting it?</span></div>
+
+    <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; background:#177E89;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Type</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Definition</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Actions</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Procedure</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Following established formal processes, instructions, and rules</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">When requests are fulfilled exactly as asked, and when clear operational guidelines are set and maintained</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Punctuality</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Honoring people's time.</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Arriving on time or early to meetings, ending them on schedule, and providing advanced notice if you will not meet that criteria</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Information</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Providing access to data, files, and updates</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Copying colleagues on emails, inviting them to meetings, and proactively offering background context without being asked</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Candor</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Offering clear, actionable feedback</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Being honest, engaging in constructive, unemotional debates, and asking challenging questions as an equal peer</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Consideration</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Anticipating and adapting to other people's needs, feelings, and comfort</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Interacting with interpersonal sensitivity and proactively making adjustments to help minimize burdens on others</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Acknowledgment</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Expressing explicit appreciation and recognition</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Publicly or privately praising people for their contributions, validating their hard work, and ensuring they feel seen and heard</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Attention</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Actively listening and being fully present</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Removing distractions and focusing entirely on the person speaking without interrupting</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Table 13.1</span> &nbsp;Respect Types</div>
+  </div>
+
+  <div id="fig-13-1" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 13.1</div>
+    <h1 class="fig-title">How Far Your Influence Reaches</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Scope</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Whose behavior, thinking, or decisions are you changing?</span></div>
+
+    <div style="border:2px solid #dde5e8; border-radius:12px; background:#f6f9fa; padding:26px 22px 18px; margin:0 0 22px;">
+      <svg viewBox="0 0 1280 330" width="100%" role="img" aria-label="Influence scope: as the group grows, each person in it gets smaller">
+        <line x1="10" y1="256" x2="1270" y2="256" stroke="#c9d4d8" stroke-width="2"></line>
+          <g transform="translate(124,106) scale(3.6)"><circle cx="10" cy="7" r="6.5" fill="#DB3A34"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#DB3A34"></path></g>
+          <g transform="translate(415,100) scale(1.7)"><circle cx="10" cy="7" r="6.5" fill="#177E89"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#177E89"></path></g>
+          <g transform="translate(463,100) scale(1.7)"><circle cx="10" cy="7" r="6.5" fill="#177E89"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#177E89"></path></g>
+          <g transform="translate(511,100) scale(1.7)"><circle cx="10" cy="7" r="6.5" fill="#177E89"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#177E89"></path></g>
+          <g transform="translate(415,182) scale(1.7)"><circle cx="10" cy="7" r="6.5" fill="#177E89"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#177E89"></path></g>
+          <g transform="translate(463,182) scale(1.7)"><circle cx="10" cy="7" r="6.5" fill="#177E89"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#177E89"></path></g>
+          <g transform="translate(511,182) scale(1.7)"><circle cx="10" cy="7" r="6.5" fill="#177E89"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#177E89"></path></g>
+        <rect x="657" y="30" width="136" height="104" rx="12" fill="#f7f4fb" stroke="#9178B5" stroke-width="2"></rect>
+          <g transform="translate(685,48) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(717,48) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(749,48) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(685,88) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(717,88) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(749,88) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+        <rect x="807" y="30" width="136" height="104" rx="12" fill="#f7f4fb" stroke="#9178B5" stroke-width="2"></rect>
+          <g transform="translate(835,48) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(867,48) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(899,48) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(835,88) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(867,88) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(899,88) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+        <rect x="657" y="146" width="136" height="104" rx="12" fill="#f7f4fb" stroke="#9178B5" stroke-width="2"></rect>
+          <g transform="translate(685,164) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(717,164) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(749,164) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(685,204) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(717,204) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(749,204) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+        <rect x="807" y="146" width="136" height="104" rx="12" fill="#f7f4fb" stroke="#9178B5" stroke-width="2"></rect>
+          <g transform="translate(835,164) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(867,164) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(899,164) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(835,204) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(867,204) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+          <g transform="translate(899,204) scale(0.8)"><circle cx="10" cy="7" r="6.5" fill="#9178B5"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#9178B5"></path></g>
+        <rect x="976" y="26" width="88" height="106" rx="4" fill="#eef4f5" stroke="#003049" stroke-width="2"></rect>
+        <rect x="976" y="26" width="88" height="14" rx="4" fill="#003049"></rect>
+          <g transform="translate(989.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(989.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(989.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(989.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+        <rect x="1076" y="26" width="88" height="106" rx="4" fill="#eef4f5" stroke="#003049" stroke-width="2"></rect>
+        <rect x="1076" y="26" width="88" height="14" rx="4" fill="#003049"></rect>
+          <g transform="translate(1089.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1089.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1089.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1089.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+        <rect x="1176" y="26" width="88" height="106" rx="4" fill="#eef4f5" stroke="#003049" stroke-width="2"></rect>
+        <rect x="1176" y="26" width="88" height="14" rx="4" fill="#003049"></rect>
+          <g transform="translate(1189.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,48.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1189.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,68.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1189.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,88.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1189.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,108.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+        <rect x="976" y="144" width="88" height="106" rx="4" fill="#eef4f5" stroke="#003049" stroke-width="2"></rect>
+        <rect x="976" y="144" width="88" height="14" rx="4" fill="#003049"></rect>
+          <g transform="translate(989.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(989.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(989.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(989.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1007.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1025.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1043.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+        <rect x="1076" y="144" width="88" height="106" rx="4" fill="#eef4f5" stroke="#003049" stroke-width="2"></rect>
+        <rect x="1076" y="144" width="88" height="14" rx="4" fill="#003049"></rect>
+          <g transform="translate(1089.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1089.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1089.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1089.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1107.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1125.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1143.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+        <rect x="1176" y="144" width="88" height="106" rx="4" fill="#eef4f5" stroke="#003049" stroke-width="2"></rect>
+        <rect x="1176" y="144" width="88" height="14" rx="4" fill="#003049"></rect>
+          <g transform="translate(1189.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,166.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1189.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,186.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1189.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,206.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1189.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1207.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1225.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+          <g transform="translate(1243.4,226.6) scale(0.36)"><circle cx="10" cy="7" r="6.5" fill="#003049"></circle><path d="M0,40 L0,27 Q0,16 10,16 Q20,16 20,27 L20,40 Z" fill="#003049"></path></g>
+        <text x="160" y="294" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="21" fill="#003049">Individual</text>
+        <text x="160" y="320" text-anchor="middle" font-family="Lato, sans-serif" font-size="17" fill="#3a4a52">one colleague</text>
+        <path d="M315,190 L325,200 L315,210" fill="none" stroke="#DB3A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+        <text x="480" y="294" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="21" fill="#003049">Team</text>
+        <text x="480" y="320" text-anchor="middle" font-family="Lato, sans-serif" font-size="17" fill="#3a4a52">the people you ship with</text>
+        <path d="M635,190 L645,200 L635,210" fill="none" stroke="#DB3A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+        <text x="800" y="294" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="21" fill="#003049">Cross-team</text>
+        <text x="800" y="320" text-anchor="middle" font-family="Lato, sans-serif" font-size="17" fill="#3a4a52">engineering around you</text>
+        <path d="M955,190 L965,200 L955,210" fill="none" stroke="#DB3A34" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+        <text x="1120" y="294" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="21" fill="#003049">Industry</text>
+        <text x="1120" y="320" text-anchor="middle" font-family="Lato, sans-serif" font-size="17" fill="#3a4a52">people you will never meet</text>
+      </svg>
+    </div>
+
+    <div class="fig-caption"><span>Figure 13.1</span> &nbsp;Influence Scope</div>
+  </div>
+
+  <div id="tbl-13-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">TABLE 13.2</div>
+    <h1 class="fig-title">How Far Your Influence Reaches</h1>
+    <div class="fig-rule"></div>
+
+    <div style="border:2.5px solid #177E89; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:210px 1fr; background:#177E89;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Type</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Actions</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Individual</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Mentoring, code review, persuading a stakeholder one-on-one</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Team</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Proposing and implementing a new process, setting a technical standard, changing approach to stakeholders</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Cross-Team</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Architectural direction, hiring criteria, shaping an engineering-wide practice</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef6f7; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Industry</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Writing books, blogs, newsletters, creating podcasts, developing training methods, publishing research, coining a term, speaking at conferences, contributing to open-source tools</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Table 13.2</span> &nbsp;Influence Scope</div>
+  </div>
+
+  <div id="fig-13-2" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 13.2</div>
+    <h1 class="fig-title">What Your Influence Changes</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Target</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Pick a channel, then a scope, then a target.</span></div>
+
+    <div style="margin:0 auto 26px; width:fit-content; max-width:100%; box-sizing:border-box; border:2.5px dashed #9178B5; border-radius:12px; background:#f7f4fb; padding:18px 22px; display:flex; flex-direction:column; align-items:center; gap:14px;">
+      <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.6; color:#4a3a58; text-align:center;">"Glue work" was already happening before Tanya Reilly named it. Naming it made it visible and trackable.</div>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:10px;">
+        <div style="display:flex; align-items:center; gap:12px; background:#fff; border:2px solid #9178B5; border-radius:12px; padding:10px 18px 10px 10px;"><div style="width:34px; height:34px; border-radius:50%; background:#9178B5; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:17px; line-height:1; flex:none;">1</div><div style="display:flex; flex-direction:column; gap:3px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; line-height:1; letter-spacing:.16em; text-transform:uppercase; color:#6A4F8C;">Channel</div><div style="font-family:'Fraunces',serif; font-weight:600; font-size:17px; line-height:1.1; color:#003049;">External</div></div></div>
+        <svg viewBox="0 0 26 16" width="26" height="16" style="flex:none; display:block;"><path d="M0,8 L16,8" stroke="#DB3A34" stroke-width="3"></path><path d="M14,2 L24,8 L14,14 Z" fill="#DB3A34"></path></svg>
+        <div style="display:flex; align-items:center; gap:12px; background:#fff; border:2px solid #177E89; border-radius:12px; padding:10px 18px 10px 10px;"><div style="width:34px; height:34px; border-radius:50%; background:#177E89; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:17px; line-height:1; flex:none;">2</div><div style="display:flex; flex-direction:column; gap:3px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; line-height:1; letter-spacing:.16em; text-transform:uppercase; color:#12626B;">Scope</div><div style="font-family:'Fraunces',serif; font-weight:600; font-size:17px; line-height:1.1; color:#003049;">Tech</div></div></div>
+        <svg viewBox="0 0 26 16" width="26" height="16" style="flex:none; display:block;"><path d="M0,8 L16,8" stroke="#DB3A34" stroke-width="3"></path><path d="M14,2 L24,8 L14,14 Z" fill="#DB3A34"></path></svg>
+        <div style="display:flex; align-items:center; gap:12px; background:#fff; border:2px solid #003049; border-radius:12px; padding:10px 18px 10px 10px;"><div style="width:34px; height:34px; border-radius:50%; background:#003049; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:17px; line-height:1; flex:none;">3</div><div style="display:flex; flex-direction:column; gap:3px;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10.5px; line-height:1; letter-spacing:.16em; text-transform:uppercase; color:#003049;">Target</div><div style="font-family:'Fraunces',serif; font-weight:600; font-size:17px; line-height:1.1; color:#003049;">Narrative</div></div></div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:0; margin:0 0 22px;">
+      <div style="border:2.5px solid #9178B5; border-radius:12px; background:#f7f4fb; padding:16px 18px; display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; align-items:center;">
+        <div style="display:flex; align-items:center; gap:10px;"><div style="width:34px; height:34px; border-radius:50%; background:#9178B5; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:18px; flex:none;">1</div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#6A4F8C;">Channel</div></div>
+        <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px;">
+          <div style="display:flex; justify-content:center;"><div style="width:44%;"><div style="background:#fff; border:2px solid #9178B5; border-radius:10px; padding:11px 14px; display:flex; flex-direction:column; gap:4px; text-align:center;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; color:#003049;">Internal</div></div></div></div>
+          <div style="display:flex; justify-content:center;"><div style="width:44%;"><div style="background:#fff; border:2px solid #9178B5; border-radius:10px; padding:11px 14px; display:flex; flex-direction:column; gap:4px; text-align:center;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; color:#003049;">External</div></div></div></div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:0 20.5px;"><div></div><svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="width:100%; height:44px; display:block;"><path d="M300,0 L300,30 M100,30 L500,30 M100,30 L100,60 M300,30 L300,60 M500,30 L500,60" fill="none" stroke="#DB3A34" stroke-width="3" vector-effect="non-scaling-stroke"></path><path d="M900,0 L900,30 M700,30 L1100,30 M700,30 L700,60 M900,30 L900,60 M1100,30 L1100,60" fill="none" stroke="#DB3A34" stroke-width="3" vector-effect="non-scaling-stroke"></path></svg></div>
+      <div style="border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:16px 18px; display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; align-items:center;">
+        <div style="display:flex; align-items:center; gap:10px;"><div style="width:34px; height:34px; border-radius:50%; background:#177E89; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:18px; flex:none;">2</div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#12626B;">Scope</div></div>
+        <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px;">
+          <div style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px;"><div style="background:#fff; border:2px solid #177E89; border-radius:10px; padding:11px 4px; display:flex; flex-direction:column; gap:4px; text-align:center; min-width:0;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(11.5px, 1.2vw, 16.5px); line-height:1.2; color:#003049;">Individual</div></div><div style="background:#fff; border:2px solid #177E89; border-radius:10px; padding:11px 4px; display:flex; flex-direction:column; gap:4px; text-align:center; min-width:0;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(11.5px, 1.2vw, 16.5px); line-height:1.2; color:#003049;">Team</div></div><div style="background:#fff; border:2px solid #177E89; border-radius:10px; padding:11px 4px; display:flex; flex-direction:column; gap:4px; text-align:center; min-width:0;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(11.5px, 1.2vw, 16.5px); line-height:1.2; color:#003049;">Cross-Team</div></div></div>
+          <div style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px;"><div style="background:#fff; border:2px solid #177E89; border-radius:10px; padding:11px 4px; display:flex; flex-direction:column; gap:4px; text-align:center; min-width:0;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(11.5px, 1.2vw, 16.5px); line-height:1.2; color:#003049;">Tech</div></div><div style="background:#fff; border:2px solid #177E89; border-radius:10px; padding:11px 4px; display:flex; flex-direction:column; gap:4px; text-align:center; min-width:0;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(11.5px, 1.2vw, 16.5px); line-height:1.2; color:#003049;">Industry</div></div><div style="background:#fff; border:2px solid #177E89; border-radius:10px; padding:11px 4px; display:flex; flex-direction:column; gap:4px; text-align:center; min-width:0;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:clamp(11.5px, 1.2vw, 16.5px); line-height:1.2; color:#003049;">Other</div></div></div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:0 20.5px;"><div></div><div style="position:relative; height:52px;"><svg viewBox="0 0 1200 60" preserveAspectRatio="none" style="position:absolute; left:0; top:0; width:100%; height:40px; display:block;"><path d="M100,0 L100,28 M300,0 L300,28 M500,0 L500,28 M700,0 L700,28 M900,0 L900,28 M1100,0 L1100,28 M100,28 L1100,28 M600,28 L600,60" fill="none" stroke="#DB3A34" stroke-width="3" vector-effect="non-scaling-stroke"></path></svg><svg viewBox="0 0 30 14" width="30" height="14" style="position:absolute; left:50%; top:38px; margin-left:-15px; display:block;"><path d="M6,0 L15,12 L24,0 Z" fill="#DB3A34"></path></svg></div></div>
+      <div style="border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:16px 18px; display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; align-items:center;">
+        <div style="display:flex; align-items:center; gap:10px;"><div style="width:34px; height:34px; border-radius:50%; background:#003049; color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:18px; flex:none;">3</div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:#003049;">Target</div></div>
+        <div style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px;">
+          <div style="background:#fff; border:2px solid #003049; border-radius:10px; padding:11px 14px; display:flex; flex-direction:column; gap:4px; text-align:center;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; color:#003049;">Decisions</div><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.45; color:#3a4a52;">Affect what gets built, chosen, or prioritized.</div></div>
+          <div style="background:#fff; border:2px solid #003049; border-radius:10px; padding:11px 14px; display:flex; flex-direction:column; gap:4px; text-align:center;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; color:#003049;">Behavior</div><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.45; color:#3a4a52;">Change how people work, not just what they decide.</div></div>
+          <div style="background:#fff; border:2px solid #003049; border-radius:10px; padding:11px 14px; display:flex; flex-direction:column; gap:4px; text-align:center;"><div style="font-family:'Fraunces',serif; font-weight:600; font-size:16.5px; color:#003049;">Narrative</div><div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.45; color:#3a4a52;">Reshape the story.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 13.2</span> &nbsp;Influence Target</div>
+  </div>
+
+  <div id="tbl-13-3" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">TABLE 13.3</div>
+    <h1 class="fig-title">Four Kinds of Autonomy</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Ask of each one</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Which kind of autonomy do you need more of?</span></div>
+
+    <div style="border:2.5px solid #9178B5; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:210px 1fr; background:#6A4F8C;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Type</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Actions</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #ddd3ea;">
+        <div style="padding:15px 20px; background:#f7f4fb; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449;">Task</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Self-directed project time, proposing work, volunteering for initiatives aligned with interests</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #ddd3ea;">
+        <div style="padding:15px 20px; background:#f7f4fb; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449;">Time</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Setting own schedule, work expectations based on output rather than hours, deciding when to respond to communication</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #ddd3ea;">
+        <div style="padding:15px 20px; background:#f7f4fb; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449;">Technique</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Choosing own tools, methods, and processes to reach a goal, gathering feedback, not consensus, experimentation with approval</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr; border-top:1.5px solid #ddd3ea;">
+        <div style="padding:15px 20px; background:#f7f4fb; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#3A2449;">Team</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Selecting collaborators for initiatives, influencing hiring decisions</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Table 13.3</span> &nbsp;Autonomy Types</div>
+  </div>
+
+  <div id="tbl-13-4" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">TABLE 13.4</div>
+    <h1 class="fig-title">Where a Sense of Accomplishment Comes From</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#9178B5; flex:none;">Ask of each one</span><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Are you missing any of these?</span></div>
+
+    <div style="border:2.5px solid #003049; border-radius:12px; overflow:hidden;">
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; background:#003049;">
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Type</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Definition</div>
+        <div style="padding:13px 20px; font-family:'Montserrat',sans-serif; font-weight:700; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:#fff;">Actions</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef4f5; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Progress</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Meaningful forward movement on work, even in small steps<sup>13</sup></div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Shipping a phase or feature of a defined roadmap, tracking daily wins, closing out a task blocked for an extended time</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef4f5; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Comprehension</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Getting demonstrably better at an interesting technical task<sup>14</sup></div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Taking on stretch work, seeking feedback for improvement rather than evaluation, noticeable skill improvement over a longer time period</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef4f5; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Impact</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Seeing your work being used or being important to stakeholders or users<sup>15</sup></div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Connecting your contributions to observable, positive outcomes</div>
+      </div>
+      <div style="display:grid; grid-template-columns:210px 1fr 1.2fr; border-top:1.5px solid #dde5e8;">
+        <div style="padding:15px 20px; background:#eef4f5; font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; color:#003049;">Completion</div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Finishing something with a defined scope and being able to call it done.<sup>16</sup></div>
+        <div style="padding:15px 20px; font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Having a definition of done and reaching it, closing out projects instead of trailing off</div>
+      </div>
+    </div>
+
+    <div class="fig-caption"><span>Table 13.4</span> &nbsp;Sense of Accomplishment Taxonomy</div>
+  </div>
+
+  <div id="fig-13-3" class="fig" style="padding:56px 60px 60px;">
+    <div class="fig-label">FIGURE 13.3</div>
+    <h1 class="fig-title">The Financial Ladder</h1>
+    <div class="fig-rule"></div>
+    <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:-22px 0 28px;"><span style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Which rung are you funding now, and which is next?</span></div>
+
+    <div style="display:flex; flex-direction:column; margin:0 0 24px;">
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px;">
+        <div style="position:relative; height:26px;"><div style="position:absolute; left:40px; top:0; bottom:0; width:10px; background:#5f7278; border-radius:5px 5px 0 0;"></div><div style="position:absolute; left:140px; top:0; bottom:0; width:10px; background:#5f7278; border-radius:5px 5px 0 0;"></div></div>
+        <div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px; align-items:stretch;">
+        <div style="position:relative; min-height:104px;">
+          <div style="position:absolute; left:40px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:140px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:44px; width:102px; top:calc(50% - 6px); height:12px; border-radius:6px; background:#DB3A34;"></div>
+          <div style="position:absolute; left:74px; top:calc(50% - 21px); width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #DB3A34; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:20px; color:#DB3A34;">5</div>
+          <div style="position:absolute; left:150px; right:-10px; top:calc(50% - 1.5px); height:3px; background:#DB3A34;"></div>
+        </div>
+        <div style="display:flex; align-items:center; padding:7px 0;">
+          <div style="flex:1; display:grid; grid-template-columns:230px minmax(0,1fr); gap:18px; align-items:center; border:2.5px solid #DB3A34; border-radius:12px; background:#fdf1f0; padding:14px 20px;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Guilt-free spending</div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:#DB3A34; border-radius:999px; padding:3px 9px;">Requires 1&ndash;4</span></div>
+            </div>
+            <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Fun. Hobbies, restaurants, travel, events. Experiences and purchases you should enjoy guilt-free once you have climbed the ladder.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px; align-items:stretch;">
+        <div style="position:relative; min-height:104px;">
+          <div style="position:absolute; left:40px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:140px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:44px; width:102px; top:calc(50% - 6px); height:12px; border-radius:6px; background:#9178B5;"></div>
+          <div style="position:absolute; left:74px; top:calc(50% - 21px); width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #9178B5; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:20px; color:#9178B5;">4</div>
+          <div style="position:absolute; left:150px; right:-10px; top:calc(50% - 1.5px); height:3px; background:#9178B5;"></div>
+        </div>
+        <div style="display:flex; align-items:center; padding:7px 0;">
+          <div style="flex:1; display:grid; grid-template-columns:230px minmax(0,1fr); gap:18px; align-items:center; border:2.5px dashed #9178B5; border-radius:12px; background:#f7f4fb; padding:14px 20px;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Buying time</div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:#9178B5; border-radius:999px; padding:3px 9px;">Requires 1&ndash;3</span><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#6A4F8C; border:1.5px solid #9178B5; border-radius:999px; padding:2px 8px;">Added rung</span></div>
+            </div>
+            <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">A babysitter, a cleaner, a rideshare, delivery. You can't spend on fun until you have the free time. This can help you add time in the day.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px; align-items:stretch;">
+        <div style="position:relative; min-height:104px;">
+          <div style="position:absolute; left:40px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:140px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:44px; width:102px; top:calc(50% - 6px); height:12px; border-radius:6px; background:#003049;"></div>
+          <div style="position:absolute; left:74px; top:calc(50% - 21px); width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #003049; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:20px; color:#003049;">3</div>
+          <div style="position:absolute; left:150px; right:-10px; top:calc(50% - 1.5px); height:3px; background:#003049;"></div>
+        </div>
+        <div style="display:flex; align-items:center; padding:7px 0;">
+          <div style="flex:1; display:grid; grid-template-columns:230px minmax(0,1fr); gap:18px; align-items:center; border:2.5px solid #003049; border-radius:12px; background:#eef4f5; padding:14px 20px;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Investments</div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:#003049; border-radius:999px; padding:3px 9px;">Requires 1&ndash;2</span></div>
+            </div>
+            <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Long term savings focused on compounding. Generally retirement, 401(k) , pension, Roth IRA.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px; align-items:stretch;">
+        <div style="position:relative; min-height:104px;">
+          <div style="position:absolute; left:40px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:140px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:44px; width:102px; top:calc(50% - 6px); height:12px; border-radius:6px; background:#12626B;"></div>
+          <div style="position:absolute; left:74px; top:calc(50% - 21px); width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #12626B; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:20px; color:#12626B;">2</div>
+          <div style="position:absolute; left:150px; right:-10px; top:calc(50% - 1.5px); height:3px; background:#12626B;"></div>
+        </div>
+        <div style="display:flex; align-items:center; padding:7px 0;">
+          <div style="flex:1; display:grid; grid-template-columns:230px minmax(0,1fr); gap:18px; align-items:center; border:2.5px solid #12626B; border-radius:12px; background:#eef6f7; padding:14px 20px;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Savings</div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:#12626B; border-radius:999px; padding:3px 9px;">Requires 1</span></div>
+            </div>
+            <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">An emergency fund, house, car, wedding or big trip. Anything with a clear target and deadline.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px; align-items:stretch;">
+        <div style="position:relative; min-height:104px;">
+          <div style="position:absolute; left:40px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:140px; top:0; bottom:0; width:10px; background:#5f7278;"></div>
+          <div style="position:absolute; left:44px; width:102px; top:calc(50% - 6px); height:12px; border-radius:6px; background:#177E89;"></div>
+          <div style="position:absolute; left:74px; top:calc(50% - 21px); width:42px; height:42px; border-radius:50%; background:#fff; border:3px solid #177E89; box-sizing:border-box; display:flex; align-items:center; justify-content:center; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:20px; color:#177E89;">1</div>
+          <div style="position:absolute; left:150px; right:-10px; top:calc(50% - 1.5px); height:3px; background:#177E89;"></div>
+        </div>
+        <div style="display:flex; align-items:center; padding:7px 0;">
+          <div style="flex:1; display:grid; grid-template-columns:230px minmax(0,1fr); gap:18px; align-items:center; border:2.5px solid #177E89; border-radius:12px; background:#eef6f7; padding:14px 20px;">
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div style="font-family:'Fraunces',serif; font-weight:600; font-size:18px; color:#003049;">Fixed Costs</div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap;"><span style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#fff; background:#177E89; border-radius:999px; padding:3px 9px;">Start here</span></div>
+            </div>
+            <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.5; color:#3a4a52;">Rent or mortgage, utilities, insurance, loan payments, and groceries.</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:190px minmax(0,1fr); column-gap:10px;">
+        <div style="position:relative; height:22px;"><div style="position:absolute; left:40px; top:0; height:12px; width:10px; background:#5f7278;"></div><div style="position:absolute; left:140px; top:0; height:12px; width:10px; background:#5f7278;"></div><div style="position:absolute; left:10px; right:10px; top:12px; height:4px; border-radius:2px; background:#c9d4d8;"></div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <div style="border:2.5px dashed #177E89; border-radius:12px; background:#eef6f7; padding:18px 22px; display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 18px;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#12626B; flex:none;">How to read it</div>
+      <div style="font-family:'Lato',sans-serif; font-size:15px; line-height:1.6; color:#3a4a52; flex:1; min-width:320px;">The higher you are on the ladder, the lower financial should be on your goals priority list.</div>
+    </div>
+
+    <div class="fig-caption"><span>Figure 13.3</span> &nbsp;Financial Ladder</div>
+  </div>
+
+</div>
+
+<a class="ws-home" href="../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#241c33; color:#fff; border:1px solid #241c33; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+</body>
+</html>

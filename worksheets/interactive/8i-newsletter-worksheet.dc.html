@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;family=Josefin+Sans:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;family=Bebas+Neue&amp;family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+<style>
+  @media print { .ws-home { display:none !important; } }
+  html,body{ margin:0; background:#e9eef0; }
+  ::placeholder{ color:#a8bcc6; font-style:italic; }
+  a{ color:#177E89; text-decoration:none; }
+  a:hover{ color:#003049; }
+  .lk-url{ display:none; }
+  .save:focus{ border-color:#177E89 !important; background:#fff !important; }
+  @media print{
+    html,body{ background:#fff; }
+    .no-print{ display:none !important; }
+    #ws-root{ box-shadow:none !important; margin:0 !important; max-width:none !important; }
+    .block{ break-inside:avoid; }
+    .lk-title{ display:none; }
+    .lk-url{ display:inline; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    @page{ margin:0.5in; }
+  }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#003049"></rect>
+    <g transform="translate(24,30)">
+      <rect x="0" y="0" width="52" height="40" fill="#fff"></rect>
+      <rect x="6" y="7" width="26" height="4" fill="#003049"></rect>
+      <rect x="6" y="16" width="40" height="3" fill="#9fc4cf"></rect>
+      <rect x="6" y="23" width="40" height="3" fill="#9fc4cf"></rect>
+      <rect x="6" y="30" width="18" height="4" fill="#DB3A34"></rect>
+    </g>
+  </svg>
+</template>
+
+<div class="no-print" style="position:sticky; top:0; z-index:20; background:rgba(0,48,73,.97); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:space-between; gap:16px; padding:11px 22px; font-family:'Montserrat',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:12px; min-width:0;">
+    <span style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:14px; letter-spacing:.04em; color:#fff; white-space:nowrap;">Newsletter Worksheet</span>
+    <span style="font-size:12px; color:#7fc6cd; white-space:nowrap;">Auto-saves in your browser</span>
+  </div>
+  <div style="display:flex; gap:9px;">
+    <button onClick="{{ clearAll }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; color:#cfe0e2; background:transparent; border:1.5px solid #2d5266; border-radius:7px; padding:8px 14px; cursor:pointer;">Clear</button>
+    <button onClick="{{ doPrint }}" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:12px; letter-spacing:.04em; background:#177E89; border:1.5px solid #177E89; border-radius:7px; padding:8px 16px; cursor:pointer; color:#fff;">Print / Save PDF</button>
+  </div>
+</div>
+
+<div id="ws-root" style="background:#fff; color:#1f2d33; font-family:'Lato',sans-serif; max-width:920px; margin:26px auto; padding:0 0 70px; box-shadow:0 2px 24px rgba(0,48,73,.10); box-sizing:border-box; overflow:hidden;">
+
+  <div id="ws-masthead" style="background:#003049; color:#fff; padding:42px 60px 38px;">
+    <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#8fb3c4;">Chapter 8 &middot; The Senior Promotion</div>
+    <h1 style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:46px; line-height:1.0; margin:14px 0 0; color:#fff;">Newsletter Worksheet</h1>
+    <div style="font-family:'Fraunces',serif; font-size:17px; color:#bde3e6; margin:12px 0 0;">A template to help you organize data for your Newsletters</div>
+    <div style="height:3px; width:64px; background:#177E89; margin:20px 0 0;"></div>
+  </div>
+
+  <div style="padding:34px 60px 0;">
+    <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.58; margin:0;">A team newsletter makes your work visible to the people who decide what happens next. A regular release schedule is common: long enough to have substantial work done, but frequent enough to maintain your visibility. I have used Q4 to discuss the entire past year and Q1 to feature bigger initiatives for the next year. You can use any time frame that makes sense to you. Use this template to gather data right after you finish it so you don't forget. These are two options for two different audiences. Memos are for management; demos are for users. These are references; research the templates your organization uses and model yours after them. Use your Success Statements and other concrete data to make your case.</p>
+
+    <div class="block" style="margin:30px 0 0; padding:12px 0 10px; border-top:2px solid #003049; border-bottom:1px solid #e6ecf0;">
+      <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#003049;">Both Newsletters</div>
+      <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.55; color:#4a5560; margin-top:3px;">Start with the basics that both Newsletters need.</div>
+    </div>
+
+    <div class="block" style="margin:22px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Team name</div><input class="save" type="text" name="team-name" placeholder="The team this Newsletter is from" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+      <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Time period</div><input class="save" type="text" name="quarter" placeholder="The dates this covers" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+    </div>
+    <div class="block" style="margin:16px 0 0;">
+      <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">What the team does, in one or two sentences</div>
+      <textarea class="save" name="team-what" rows="2" placeholder="Write it for a reader who has never heard of your team." style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+    </div>
+
+    <div class="block" id="sec-dist">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">01</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Distribution</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 16px;">Each Newsletter has a different audience and a separate distribution plan. Deciding who receives it will help you focus the content. Designating an owner will help maintain the Newsletter when you are busy or leave for good.</p>
+      <sc-for list="{{ distRows }}" as="d" hint-placeholder-count="2">
+        <div class="block" style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+          <div style="background:#eef2f5; padding:10px 18px; font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:16px; color:#003049;">{{ d.label }}</div>
+          <div style="padding:16px 18px 18px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px 18px;">
+            <div style="grid-column:span 3;"><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Who receives it</div><input class="save" type="text" name="{{ d.listField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+            <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">How it gets sent</div><input class="save" type="text" name="{{ d.sendField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+            <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">How it gets made</div><input class="save" type="text" name="{{ d.formatField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+            <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Goal date to send</div><input class="save" type="text" name="{{ d.dateField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+            <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Who creates it</div><input class="save" type="text" name="{{ d.createField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+            <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Who sends it</div><input class="save" type="text" name="{{ d.ownerField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+            <div><div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">Who reviews it</div><input class="save" type="text" name="{{ d.reviewField }}" style="width:100%; border:none; border-bottom:1.5px solid #dde5ea; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:8px 2px; outline:none; box-sizing:border-box;"></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div class="block" id="sec-reading">
+      <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+        <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">02</span>
+        <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Further Reading</h2>
+      </div>
+      <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+      <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">Each Newsletter should include links to more information. These can include design memos, dashboards, release notes and so on.</p>
+      <div style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:1fr 1.3fr; background:#003049;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">What it is</div>
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:9px 13px;">Where it lives</div>
+        </div>
+        <sc-for list="{{ memoLinkRows }}" as="l" hint-placeholder-count="4">
+          <div style="display:grid; grid-template-columns:1fr 1.3fr; border-top:1px solid #e6ecf0;">
+            <input class="save" type="text" name="{{ l.labelField }}" style="border:none; border-right:1px solid #e6ecf0; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 13px; outline:none; box-sizing:border-box;">
+            <input class="save" type="text" name="{{ l.urlField }}" style="border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 13px; outline:none; box-sizing:border-box;">
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div id="body-memo">
+      <div class="block" style="margin:42px 0 0; padding:12px 0 10px; border-top:2px solid #003049; border-bottom:1px solid #e6ecf0;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#003049;">Memo Newsletter</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.55; color:#4a5560; margin-top:3px;">Primarily for management, but can be useful for other teams, especially those you collaborate with or who use your product.</div>
+      </div>
+      <div class="block" id="sec-ai-prompt">
+        <div style="background:#eaf4f5; border-left:3px solid #177E89; border-radius:0 8px 8px 0; padding:16px 18px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#146672; margin-bottom:8px;">AI Prompt</div>
+          <div style="font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f4650;">You are a director of engineering who reads dozens of team newsletters. Here are my raw notes from this time period: <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[paste]</span>. My team is <span style="background:#fff; border-bottom:1px solid #b9d5d8; padding:1px 5px;">[team and what it does]</span>. Draft the Key Insights section as two paragraphs a VP would understand without needing to understand the technology, but is interested in how it got done. If multiple features affected the same result, roll that data up, then sort the rest into highlights, lowlights, and key investments as one-line bullets. Tell me which items are the most interesting and exciting, and which claim needs more information.</div>
+        </div>
+      </div>
+
+      <div class="block" id="sec-insights">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">03</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Key Insights</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">Key Insights include major accomplishments and plans for the next time period, presented in one or two paragraphs. The more teams they have, the less time anyone will have to read a memo from each team. Ask yourself, when writing, if someone only reads the Key Insights, what would your team's brand be?</p>
+        <textarea class="save" name="memo-insights" rows="3" placeholder="No acronyms your reader would have to look up." style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.68; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+        <div style="height:12px;"></div>
+        <textarea class="save" name="memo-insights-2" rows="3" placeholder="" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.68; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+      </div>
+
+      <div class="block" id="sec-impact">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">04</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Impact</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">Showing instead of telling the results of your work. What can people do now that they couldn't before? Use visuals, including charts, adoption curves, cost savings, and anything that shows impact to the organization at a glance.</p>
+        <div style="border:1.5px dashed #b9cdd6; border-radius:10px; background:#f7fafb; padding:22px 18px; text-align:center; margin-bottom:14px;">
+          <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#7c8b93;">Chart or figure goes here</div>
+          <div style="font-family:'Lato',sans-serif; font-size:13px; line-height:1.55; color:#8a99a2; margin-top:5px;">One image that a reader could understand without the caption</div>
+        </div>
+        <textarea class="save" name="memo-impact" rows="4" placeholder="Which numbers are you showing, where do they come from, and what should the reader conclude?" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+      </div>
+
+      <div class="block" id="sec-highlights">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">05</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Highlights</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">The expanded details from the Key Insights summary. Show progress on long-running projects and anything completed. Include any teams you collaborated with. They will be reading this and deserve recognition.</p>
+        <sc-for list="{{ highlightRows }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex; align-items:center; gap:11px; border-bottom:1px solid #e6ecf0;">
+            <span style="width:7px; height:7px; border-radius:50%; background:#177E89; flex:none;"></span>
+            <input class="save" type="text" name="{{ r.field }}" placeholder="{{ r.ph }}" style="flex:1; border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 0; outline:none;">
+          </div>
+        </sc-for>
+        <button type="button" onClick="{{ addHighlight }}" class="no-print" style="margin-top:14px; font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; letter-spacing:.04em; color:#177E89; background:transparent; border:1.5px dashed #b9cdd6; border-radius:8px; padding:10px 15px; cursor:pointer;">+ Add a line</button>
+      </div>
+
+      <div class="block" id="sec-lowlights">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">06</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Lowlights</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">Focusing just on the positives shows a lack of self-awareness. These can include incidents, changes in team composition, or missed deadlines. Keep these short, one sentence each, with a max of three.</p>
+        <sc-for list="{{ lowlightRows }}" as="r" hint-placeholder-count="3">
+          <div style="display:flex; align-items:center; gap:11px; border-bottom:1px solid #e6ecf0;">
+            <span style="width:7px; height:7px; border-radius:50%; background:#177E89; flex:none;"></span>
+            <input class="save" type="text" name="{{ r.field }}" placeholder="{{ r.ph }}" style="flex:1; border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 0; outline:none;">
+          </div>
+        </sc-for>
+      </div>
+
+      <div class="block" id="sec-investments">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">07</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Key Investments</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">The plan for the next time period. Your audience will expect to see progress on these, so only list what you have the resources for.</p>
+        <sc-for list="{{ investmentRows }}" as="r" hint-placeholder-count="5">
+          <div style="display:flex; align-items:center; gap:11px; border-bottom:1px solid #e6ecf0;">
+            <span style="width:7px; height:7px; border-radius:50%; background:#177E89; flex:none;"></span>
+            <input class="save" type="text" name="{{ r.field }}" placeholder="{{ r.ph }}" style="flex:1; border:none; background:transparent; font-family:'Lato',sans-serif; font-size:14px; color:#1f2d33; padding:11px 0; outline:none;">
+          </div>
+        </sc-for>
+        <button type="button" onClick="{{ addInvestment }}" class="no-print" style="margin-top:14px; font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; letter-spacing:.04em; color:#177E89; background:transparent; border:1.5px dashed #b9cdd6; border-radius:8px; padding:10px 15px; cursor:pointer;">+ Add a line</button>
+      </div>
+
+
+    </div>
+
+    <div id="body-demo">
+      <div class="block" style="margin:46px 0 0; padding:12px 0 10px; border-top:2px solid #003049; border-bottom:1px solid #e6ecf0;">
+        <div style="font-family:'Josefin Sans',sans-serif; font-weight:700; font-size:22px; color:#003049;">Demo Newsletter</div>
+        <div style="font-family:'Lato',sans-serif; font-size:13.5px; line-height:1.55; color:#4a5560; margin-top:3px;">For your users and anyone who wants a deeper dive into how new features turned out. Each one should have a visual component.</div>
+      </div>
+      <div class="block" id="sec-demo-summary">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:38px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">08</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">Summary</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 14px;">Similar to Key Insights but with a focus on what your users would be excited about. Progress is less interesting than what is released.</p>
+        <textarea class="save" name="demo-summary" rows="4" placeholder="No jargon, clear to anyone new to the project." style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.68; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+      </div>
+
+      <div class="block" id="sec-demo-features">
+        <div style="display:flex; align-items:baseline; gap:13px; margin:42px 0 0;">
+          <span style="font-family:'Bebas Neue',sans-serif; font-size:36px; line-height:.78; color:#177E89;">09</span>
+          <h2 style="font-family:'Fraunces',serif; font-weight:600; font-size:25px; color:#003049; margin:0;">New Features</h2>
+        </div>
+        <div style="height:3px; width:54px; background:#003049; margin:12px 0 14px;"></div>
+        <p style="font-size:14px; line-height:1.6; color:#4a5560; margin:0 0 16px;">For each feature, you'll have a visual and any extra explanation. Keep it succinct; let the visual do the talking.</p>
+        <sc-for list="{{ featureRows }}" as="f" hint-placeholder-count="2">
+          <div class="block" style="border:1px solid #e6ecf0; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+            <div style="background:#eef2f5; padding:11px 18px; display:flex; align-items:center; gap:11px;">
+              <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; line-height:1; color:#177E89;">{{ f.num }}</span>
+              <input class="save" type="text" name="{{ f.nameField }}" placeholder="Feature name, as users would say it" style="flex:1; border:none; background:transparent; font-family:'Fraunces',serif; font-weight:700; font-size:17px; color:#003049; padding:2px 0; outline:none;">
+            </div>
+            <div style="padding:16px 18px 18px;">
+              <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin-bottom:6px;">What the image or video will be</div>
+              <textarea class="save" name="{{ f.mediaField }}" rows="2" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+              <div style="font-family:'Montserrat',sans-serif; font-weight:700; font-size:9.5px; letter-spacing:.13em; text-transform:uppercase; color:#7c8b93; margin:14px 0 6px;">Explanation that runs underneath it</div>
+              <textarea class="save" name="{{ f.textField }}" rows="3" style="width:100%; box-sizing:border-box; border:1px solid #dde5ea; border-radius:7px; background:#fafcfd; font-family:'Lato',sans-serif; font-size:14px; line-height:1.62; color:#1f2d33; padding:11px 13px; outline:none; resize:vertical;"></textarea>
+            </div>
+          </div>
+        </sc-for>
+        <button type="button" onClick="{{ addFeature }}" class="no-print" style="font-family:'Montserrat',sans-serif; font-weight:600; font-size:11.5px; letter-spacing:.04em; color:#177E89; background:transparent; border:1.5px dashed #b9cdd6; border-radius:8px; padding:11px 16px; cursor:pointer;">+ Add a feature</button>
+      </div>
+
+
+    </div>
+
+    <div style="margin-top:44px; padding-top:22px; border-top:2px solid #177E89;">
+      <div style="font-family:'Fraunces',serif; font-weight:700; font-size:16px; color:#003049;">Michelle Brenner</div>
+      <div style="margin-top:4px; font-family:'Lato',sans-serif; font-size:12.5px;"><a href="https://www.amazon.com/dp/B0FS7R6MN4" style="color:#177E89; text-decoration:none;"><span class="lk-title">Software Engineer's Library</span><span class="lk-url">amazon.com/dp/B0FS7R6MN4</span></a></div>
+      <div style="display:flex; flex-wrap:wrap; gap:7px 18px; margin-top:13px; font-family:'Lato',sans-serif; font-size:12.5px;">
+        <a href="https://www.michellebrenner.com" style="color:#177E89; text-decoration:none;"><span class="lk-title">Website</span><span class="lk-url">michellebrenner.com</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://linkedin.com/in/michellebrenner" style="color:#177E89; text-decoration:none;"><span class="lk-title">LinkedIn</span><span class="lk-url">linkedin.com/in/michellebrenner</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://instagram.com/michellebspeaks" style="color:#177E89; text-decoration:none;"><span class="lk-title">Instagram</span><span class="lk-url">instagram.com/michellebspeaks</span></a>
+        <span style="color:#cdd5da;">&middot;</span>
+        <a href="https://github.com/michellelynne/software-engineers-library" style="color:#177E89; text-decoration:none;"><span class="lk-title">GitHub</span><span class="lk-url">github.com/michellelynne/software-engineers-library</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<a class="ws-home" href="../../table-of-contents.dc.html" title="Back to Table of Contents" style="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#003049; color:#fff; border:1px solid #003049; box-shadow:0 4px 14px rgba(0,0,0,.18); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none;" style-hover="position:fixed; left:18px; bottom:18px; z-index:9999; display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; background:#DB3A34; color:#fff; border:1px solid #DB3A34; box-shadow:0 6px 18px rgba(0,0,0,.24); font-family:'Montserrat','Helvetica Neue',sans-serif; font-weight:700; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; text-decoration:none; transform:translateY(-1px);"><span style="font-size:13px; line-height:1;">&#9664;</span>Contents</a>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:920,&quot;height&quot;:900},&quot;mastheadColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#003049&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#003049&quot;,&quot;#177E89&quot;,&quot;#3A2449&quot;,&quot;#DB3A34&quot;],&quot;section&quot;:&quot;Style&quot;},&quot;featureCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;min&quot;:1,&quot;max&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;linkCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:4,&quot;min&quot;:1,&quot;max&quot;:8,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showAiPrompt&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  state = { extraFeatures: 0, extraHighlights: 0, extraInvestments: 0 };
+  componentDidMount(){
+    this.key = 'ssl-8-newsletter-v1';
+    const root = document.getElementById('ws-root');
+    if(!root) return;
+    let saved = {};
+    try{ saved = JSON.parse(localStorage.getItem(this.key) || '{}'); }catch(e){}
+    Object.entries(saved).forEach(([n,v])=>{
+      if(n === '__mode') return;
+      const el = root.querySelector('.save[name="'+n+'"]');
+      if(el) el.value = v;
+    });
+    this._save = () => this.save(root);
+    root.addEventListener('input', this._save);
+    root.addEventListener('change', this._save);
+    this.applyTweaks();
+  }
+  componentDidUpdate(){ this.applyTweaks(); }
+  applyTweaks(){
+    const p = this.props || {};
+    const mast = document.getElementById('ws-masthead');
+    if(mast) mast.style.background = p.mastheadColor || '#003049';
+    const prompt = document.getElementById('sec-ai-prompt');
+    if(prompt) prompt.style.display = (p.showAiPrompt === false) ? 'none' : '';
+  }
+  save(root){
+    const o = {};
+    root.querySelectorAll('.save').forEach(el=>{ if(el.value && el.value.trim()) o[el.name] = el.value; });
+    try{ localStorage.setItem(this.key, JSON.stringify(o)); }catch(e){}
+  }
+  renderVals(){
+    const fc = Math.max(1, Math.min(20, (this.props.featureCount ?? 2) + this.state.extraFeatures));
+    const featureRows = [];
+    for(let i=1;i<=fc;i++) featureRows.push({ num:String(i).padStart(2,'0'), nameField:'demo-f'+i+'-name', mediaField:'demo-f'+i+'-media', textField:'demo-f'+i+'-text' });
+    const bullets = (prefix, n, ph) => Array.from({length:n}, (_,i) => ({ field: prefix+'-'+(i+1), ph: i===0 ? ph : '' }));
+    const highlightRows = bullets('memo-highlight', 5 + this.state.extraHighlights, 'Always include impact, similar to Success Statements.');
+    const lowlightRows = bullets('memo-lowlight', 3, 'What happened, and what changed because of it.');
+    const investmentRows = bullets('memo-investment', 5 + this.state.extraInvestments, 'What you are working on next, and why it is worth the time.');
+    const lc = Math.max(1, Math.min(8, this.props.linkCount ?? 4));
+    const linkRows = [];
+    for(let i=1;i<=lc;i++) linkRows.push({ labelField:'link-'+i+'-label', urlField:'link-'+i+'-url' });
+    const memoLinkRows = linkRows.map((r,i) => ({ labelField:'memo-link-'+(i+1)+'-label', urlField:'memo-link-'+(i+1)+'-url' }));
+    const demoLinkRows = linkRows.map((r,i) => ({ labelField:'demo-link-'+(i+1)+'-label', urlField:'demo-link-'+(i+1)+'-url' }));
+    return {
+      featureRows, linkRows, memoLinkRows, demoLinkRows, highlightRows, lowlightRows, investmentRows,
+      distRows: [
+        { label:'Memo', listField:'dist-memo-list', sendField:'dist-memo-send', formatField:'dist-memo-format', reviewField:'dist-memo-review', dateField:'dist-memo-date', createField:'dist-memo-create', ownerField:'dist-memo-owner' },
+        { label:'Demo', listField:'dist-demo-list', sendField:'dist-demo-send', formatField:'dist-demo-format', reviewField:'dist-demo-review', dateField:'dist-demo-date', createField:'dist-demo-create', ownerField:'dist-demo-owner' }
+      ],
+      addFeature: () => this.setState(s => ({ extraFeatures: s.extraFeatures + 1 })),
+      addHighlight: () => this.setState(s => ({ extraHighlights: s.extraHighlights + 1 })),
+      addInvestment: () => this.setState(s => ({ extraInvestments: s.extraInvestments + 1 })),
+      doPrint: () => window.print(),
+      clearAll: () => {
+        if(!window.confirm('Clear everything on this worksheet?')) return;
+        const root = document.getElementById('ws-root');
+        try{ localStorage.removeItem(this.key); }catch(e){}
+        if(root){ root.querySelectorAll('.save').forEach(el=> el.value=''); this.save(root); }
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>
